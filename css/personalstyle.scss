@@ -1,13 +1,14 @@
 /*Thanks to subtlepatterns.com for providing the background*/
 $brown: #B34514;
 $cream: #FFE1B8;
+$grey: #808080;
 
 /*This will make the subtle pattern repeat as the background for all pages*/
 body 
 { 
     background: url(../images/old_map.png) repeat 0 0;
 }
-
+    
 .brown
 {
 	color: $brown;
@@ -38,20 +39,15 @@ body
 
 .font-small
 {
-    font-size: 16px;
+    font: 22px;
 }
 
 .font-medium
 {
-    font: 22px;
-}
-
-.font-large
-{
     font-size: 30px;
 }
 
-.font-header
+.font-large
 {
     font-weight: 700;   /*if this is not here ubuntu:bold will not work for some reason and just be normal ubuntu*/
     font-size: 50px;
@@ -163,5 +159,15 @@ NOTE: I did grap this from stack overflow ages ago and I have tried to find wher
 	float: left;
     text-align: right;
     width: 33.33333%;
+}
+
+.footer-right > a
+{
+    color: $brown;
+}
+
+.footer-right > a:hover
+{
+    color: $grey;
 }
 /*END OF FOOTER*/

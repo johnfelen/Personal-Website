@@ -22,15 +22,12 @@ body {
   font-family: 'Vollkorn', Georgia, Times, serif; }
 
 .font-small {
-  font-size: 16px; }
-
-.font-medium {
   font: 22px; }
 
-.font-large {
+.font-medium {
   font-size: 30px; }
 
-.font-header {
+.font-large {
   font-weight: 700;
   /*if this is not here ubuntu:bold will not work for some reason and just be normal ubuntu*/
   font-size: 50px; }
@@ -113,6 +110,12 @@ body {
   float: left;
   text-align: right;
   width: 33.33333%; }
+
+.footer-right > a {
+  color: #B34514; }
+
+.footer-right > a:hover {
+  color: #808080; }
 
 /*END OF FOOTER*/
 
