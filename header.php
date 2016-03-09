@@ -22,12 +22,18 @@
     
         <!--top navigation bar-->
         <div class="navbar">
-   
+           
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.php">Home</a></li>
-                    <li><a href="portfolio.php">Portfolio</a></li>
-                    <li><a href="contact.php">Contact Me</a></li>
+                    <li <?php echo ( $pageName === "Home" ) ? "class=\"active\"" : ""; ?> >
+                        <a href="index.php">Home</a>
+                    </li>
+                    <li <?php echo ( $pageName === "Portfolio" ) ? "class=\"active\"" : ""; ?> >
+                        <a href="portfolio.php">Portfolio</a>
+                    </li>
+                    <li <?php echo ( $pageName === "Contact Me" ) ? "class=\"active\"" : ""; ?> >
+                        <a href="contact.php">Contact Me</a>
+                    </li>
                 </ul>
             </div>
                 
@@ -37,9 +43,8 @@
         <div class="header-footer">
             <hr class="brown">
                 <h1>
-
                     <?php 
-                        echo "<span class=\"glyphicon glyphicon-{$glyphiconName} brown\"/>";      
+                        echo "<span class=\"glyphicon glyphicon-{$glyhiconName} brown\"/>";      
                         echo htmlspecialchars( $pageName ); 
                     ?>
                 </h1>
