@@ -4,19 +4,23 @@
         <meta charset="utf-8">
         <title>
             <?php
-                echo htmlspecialchars( $pageTitle );    //replace the title with the $pageTitle variable that is set in the individual php files
+                echo htmlspecialchars( $pageName );    
             ?>
         </title>
         
         <link href="http://fonts.googleapis.com/css?family=Ubuntu:bold" rel="stylesheet" type="text/css">
 		<link href="http://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet" type="text/css">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/personalstyle.css" rel="stylesheet">
-        <link href="images/home.ico" rel="shortcut icon" type="image/x-icon">
+        <link href="css/personalstyle.css" rel="stylesheet">    <!--SASS compiles into this .css file-->
+        
+        <?php
+            echo "<link href=\"images/{$glyphiconName}.ico\" rel=\"shortcut icon\" type=\"image/x-icon\">";
+        ?>
     
     </head>
     <body>
     
+        <!--top navigation bar-->
         <div class="navbar">
    
             <div class="navbar-collapse">
@@ -29,6 +33,15 @@
                 
         </div>
 
-        <div class="header_footer">
-            <hr><h1><span class="glyphicon glyphicon-home icon"></span>Home</h1><hr>
+        <!--header-->
+        <div class="header-footer">
+            <hr class="brown">
+                <h1>
+
+                    <?php 
+                        echo "<span class=\"glyphicon glyphicon-{$glyphiconName} brown\"/>";      
+                        echo htmlspecialchars( $pageName ); 
+                    ?>
+                </h1>
+            <hr class="brown">
         </div>

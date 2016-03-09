@@ -1,5 +1,6 @@
 <?php
-    $pageTitle = "Home";
+    $pageName = "Home";
+    $glyphiconName = "home";
     include( "header.php" );
 ?>
 

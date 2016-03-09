@@ -1,5 +1,6 @@
 <?php
-    $pageTitle = "Contact";
+    $pageName = "Contact Me";
+    $glyphiconName = "envelope";
     include( "header.php" );
 ?>
 
