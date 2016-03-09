@@ -1,8 +1,18 @@
 /*Thanks to subtlepatterns.com for providing the background*/
 /*This will make the subtle pattern repeat as the background for all pages*/
 body {
-  background: url(../images/old_map.png) repeat 0 0; }
+  background: url(../images/old_map.png) repeat 0 0;
+  -webkit-animation-delay: 0.1s;
+  -webkit-animation-name: fontfix;
+  -webkit-animation-duration: 0.1s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear; }
 
+@-webkit-keyframes fontfix {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 1; } }
 .brown {
   color: #B34514;
   border-color: #B34514; }
@@ -12,6 +22,15 @@ body {
   margin-left: 10%;
   margin-right: 10%; }
 
+/*START OF FONTS AND SIZES*/
+h1 {
+  font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+  font-size: 50px;
+  margin-bottom: 0px;
+  color: #B34514;
+  /*Brown*/ }
+
+/*END OF FONTS AND SIZES*/
 /*START OF NAVBAR ELEMENTS*/
 .navbar {
   background-color: #B34514;
@@ -74,5 +93,34 @@ body {
   .nav.navbar-nav li {
     text-align: left; } }
 /*END OF NAVBAR ELEMENTS*/
+/*START OF FOOTER*/
+p.footer-left {
+  font-family: 'Vollkorn', Georgia, Times, serif;
+  font-size: 14px;
+  line-height: 25px;
+  color: #B34514;
+  float: left;
+  text-align: left;
+  width: 33.33333%; }
+
+p.footer-center {
+  font-family: 'Vollkorn', Georgia, Times, serif;
+  font-size: 14px;
+  line-height: 25px;
+  color: #B34514;
+  float: left;
+  text-align: center;
+  width: 33.33333%; }
+
+p.footer-right {
+  font-family: 'Vollkorn', Georgia, Times, serif;
+  font-size: 14px;
+  line-height: 25px;
+  color: #B34514;
+  float: left;
+  text-align: right;
+  width: 33.33333%; }
+
+/*END OF FOOTER*/
 
 /*# sourceMappingURL=personalstyle.css.map */

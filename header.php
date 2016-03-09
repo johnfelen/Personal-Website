@@ -2,11 +2,9 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>
             <?php
-                echo htmlspecialchars( $pageName );    
+                echo "<title>{$pageName}</title>";    
             ?>
-        </title>
         
         <link href="http://fonts.googleapis.com/css?family=Ubuntu:bold" rel="stylesheet" type="text/css">
 		<link href="http://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet" type="text/css">
@@ -25,13 +23,13 @@
            
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li <?php echo ( $pageName === "Home" ) ? "class=\"active\"" : ""; ?> >
+                    <li <?php echo ( $pageName === "Home" ) ? "class=\"active\"" : ""; ?>>
                         <a href="index.php">Home</a>
                     </li>
-                    <li <?php echo ( $pageName === "Portfolio" ) ? "class=\"active\"" : ""; ?> >
+                    <li <?php echo ( $pageName === "Portfolio" ) ? "class=\"active\"" : ""; ?>>
                         <a href="portfolio.php">Portfolio</a>
                     </li>
-                    <li <?php echo ( $pageName === "Contact Me" ) ? "class=\"active\"" : ""; ?> >
+                    <li <?php echo ( $pageName === "Contact Me" ) ? "class=\"active\"" : ""; ?>>
                         <a href="contact.php">Contact Me</a>
                     </li>
                 </ul>
@@ -42,11 +40,8 @@
         <!--header-->
         <div class="header-footer">
             <hr class="brown">
-                <h1>
-                    <?php 
-                        echo "<span class=\"glyphicon glyphicon-{$glyhiconName} brown\"/>";      
-                        echo htmlspecialchars( $pageName ); 
-                    ?>
-                </h1>
+                <?php 
+                    echo "<h1><span class=\"glyphicon glyphicon-{$glyphiconName} brown\"/>{$pageName}</h1>";      
+                ?>
             <hr class="brown">
         </div>
