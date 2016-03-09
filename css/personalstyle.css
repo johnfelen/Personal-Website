@@ -1,0 +1,7 @@
+/*Thanks to subtlepatterns.com for providing the background*/
+
+/*This will make the subtle pattern repeat as the background for all pages*/
+body 
+{ 
+    background: url(../images/old_map.png) repeat 0 0;
+}
