@@ -16,3 +16,19 @@
     
     </head>
     <body>
+    
+        <div class="navbar">
+   
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.php">Home</a></li>
+                    <li><a href="portfolio.php">Portfolio</a></li>
+                    <li><a href="contact.php">Contact Me</a></li>
+                </ul>
+            </div>
+                
+        </div>
+
+        <div class="header_footer">
+            <hr><h1><span class="glyphicon glyphicon-home icon"></span>Home</h1><hr>
+        </div>

@@ -1,0 +1,95 @@
+/*Thanks to subtlepatterns.com for providing the background*/
+$brown: #B34514;
+$cream: #FFE1B8;
+
+/*This will make the subtle pattern repeat as the background for all pages*/
+body 
+{ 
+    background: url(../images/old_map.png) repeat 0 0;
+}
+
+/*START OF NAVBAR ELEMENTS*/
+.navbar
+{
+	background-color: $brown;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+.navbar .nav > li.active  > a	/*Change color of active navbar*/
+{
+	margin-left: 10px;
+	margin-right: 10px;
+	background-color: $cream;
+	color: $brown;
+}
+
+.navbar .nav > li.active > a:hover	/*Change color of active navbar hover*/
+{
+	margin-left: 10px;
+	margin-right: 10px;
+	background-color: $brown;
+	color: $cream;
+}
+
+.navbar .nav > li > a	/*Change color of nonactive navbar*/
+{	
+	margin-left: 10px;
+	margin-right: 10px;
+	background-color: $brown;
+	color: $cream;
+}
+
+.navbar .nav > li > a:hover	/*Change color of nonactive navbar hover*/
+{	
+	margin-left: 10px;
+	margin-right: 10px;
+	background-color: $cream;
+	color: $brown;
+}
+
+.nav-pills > li > a 
+{
+	width: 225px;
+	background-color: $brown;
+	color: $cream;
+}
+
+.nav-pills > li > a:hover 
+{
+	width: 225px;
+	background-color: $cream;
+	color: $brown;
+}
+ 
+@media (min-width:768px) 
+{ 
+/* These center the navbar elements */
+	.nav.navbar-nav 
+	{
+		float: left;
+	}
+ 
+	.nav.navbar-nav 
+	{
+		clear: left;
+		float: left;
+		margin: 0;
+		padding: 0;
+		position: relative;
+		left: 50%;
+		text-align: center;
+	}
+	
+	.nav.navbar-nav > li 
+	{
+		position: relative;
+		right: 50%;
+	}
+	
+	.nav.navbar-nav li 
+	{
+		text-align: left
+	}
+}
+/*END OF NAVBAR ELEMENTS*/

@@ -1,7 +1,68 @@
 /*Thanks to subtlepatterns.com for providing the background*/
-
 /*This will make the subtle pattern repeat as the background for all pages*/
-body 
-{ 
-    background: url(../images/old_map.png) repeat 0 0;
-}
+body {
+  background: url(../images/old_map.png) repeat 0 0; }
+
+/*START OF NAVBAR ELEMENTS*/
+.navbar {
+  background-color: #B34514;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px; }
+
+.navbar .nav > li.active > a {
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #FFE1B8;
+  color: #B34514; }
+
+.navbar .nav > li.active > a:hover {
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #B34514;
+  color: #FFE1B8; }
+
+.navbar .nav > li > a {
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #B34514;
+  color: #FFE1B8; }
+
+.navbar .nav > li > a:hover {
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #FFE1B8;
+  color: #B34514; }
+
+.nav-pills > li > a {
+  width: 225px;
+  background-color: #B34514;
+  color: #FFE1B8; }
+
+.nav-pills > li > a:hover {
+  width: 225px;
+  background-color: #FFE1B8;
+  color: #B34514; }
+
+@media (min-width: 768px) {
+  /* These center the navbar elements */
+  .nav.navbar-nav {
+    float: left; }
+
+  .nav.navbar-nav {
+    clear: left;
+    float: left;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left: 50%;
+    text-align: center; }
+
+  .nav.navbar-nav > li {
+    position: relative;
+    right: 50%; }
+
+  .nav.navbar-nav li {
+    text-align: left; } }
+/*END OF NAVBAR ELEMENTS*/
+
+/*# sourceMappingURL=personalstyle.css.map */
