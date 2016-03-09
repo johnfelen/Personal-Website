@@ -15,12 +15,6 @@ body
     border-color: $brown;
 }
 
-.header-footer
-{
-	margin-left:10%;	
-	margin-right:10%;	
-}
-
 /*START OF FONTS*/
 .font-ubuntu
 {
@@ -60,8 +54,6 @@ body
 	background-color: $brown;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	margin-left:10%;	
-	margin-right:10%;	
 }
 
 .navbar .nav > li.active  > a	/*Change color of active navbar*/
