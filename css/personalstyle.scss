@@ -16,7 +16,6 @@ body
 
 .header-footer
 {
-	width: 80%;
 	margin-left:10%;	
 	margin-right:10%;	
 }
@@ -65,50 +64,38 @@ body
 	background-color: $brown;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
+	margin-left:10%;	
+	margin-right:10%;	
 }
 
 .navbar .nav > li.active  > a	/*Change color of active navbar*/
 {
-	margin-left: 10px;
-	margin-right: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
 	background-color: $cream;
 	color: $brown;
 }
 
 .navbar .nav > li.active > a:hover	/*Change color of active navbar hover*/
 {
-	margin-left: 10px;
-	margin-right: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
 	background-color: $brown;
 	color: $cream;
 }
 
 .navbar .nav > li > a	/*Change color of nonactive navbar*/
 {	
-	margin-left: 10px;
-	margin-right: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
 	background-color: $brown;
 	color: $cream;
 }
 
 .navbar .nav > li > a:hover	/*Change color of nonactive navbar hover*/
 {	
-	margin-left: 10px;
-	margin-right: 10px;
-	background-color: $cream;
-	color: $brown;
-}
-
-.nav-pills > li > a 
-{
-	width: 225px;
-	background-color: $brown;
-	color: $cream;
-}
-
-.nav-pills > li > a:hover 
-{
-	width: 225px;
+    margin-left: 15px;
+    margin-right: 15px;
 	background-color: $cream;
 	color: $brown;
 }
@@ -146,30 +133,31 @@ NOTE: I did grap this from stack overflow ages ago and I have tried to find wher
 }
 /*END OF NAVBAR ELEMENTS*/
 
-/*START OF FOOTER*/
-p.footer-left
+/*CHECK HERE FOR DOWNLOAD LINKS*/
+.nav-pills > li > a 
 {
-    font-size: 15px;
+	background-color: $brown;
+	color: $cream;
+}
+
+.nav-pills > li > a:hover 
+{
+	background-color: $cream;
+	color: $brown;
+}
+
+/*START OF FOOTER*/
+.footer-left
+{
     line-height: 25px;
 	color: $brown;
 	float: left;
 	text-align: left;
-    width:33.33333%;
+    width: 66.66666%;
 }
 
-p.footer-center
+.footer-right
 {
-    font-size: 15px;
-    line-height: 25px;
-	color: $brown;
-	float: left;
-    text-align: center;
-    width: 33.33333%;
-}
-
-p.footer-right
-{
-    font-size: 15px;
     line-height: 25px;
 	color: $brown;
 	float: left;

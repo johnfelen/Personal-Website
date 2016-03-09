@@ -21,13 +21,13 @@
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li<?php echo ( $pageName === "Home" ) ? " class=\"active\"" : ""; ?>>
-                        <a href="index.php">Home</a>
+                        <a href="index.php" title="Home"><span class="glyphicon glyphicon-home font-large"></span></a>
                     </li>
                     <li<?php echo ( $pageName === "Portfolio" ) ? " class=\"active\"" : ""; ?>>
-                        <a href="portfolio.php">Portfolio</a>
+                        <a href="portfolio.php" title="Portfolio"><span class="glyphicon glyphicon-folder-open font-large"></a>
                     </li>
                     <li<?php echo ( $pageName === "Contact Me" ) ? " class=\"active\"" : ""; ?>>
-                        <a href="contact.php">Contact Me</a>
+                        <a href="contact.php" title="Contact Me"><span class="glyphicon glyphicon-envelope font-large"></a>
                     </li>
                 </ul>
             </div>
