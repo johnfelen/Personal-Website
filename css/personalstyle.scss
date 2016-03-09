@@ -16,7 +16,6 @@ body
     border-color: $brown;
 }
 
-
 .container-main
 {
 	padding: 30px;
@@ -44,18 +43,23 @@ body
 
 .font-small
 {
-    font: 22px;
+    font-size: 20px;
 }
 
 .font-medium
 {
-    font-size: 32px;
+    font-size: 28px;
 }
 
 .font-large
 {
     font-weight: 700;   /*if this is not here ubuntu:bold will not work for some reason and just be normal ubuntu*/
-    font-size: 50px;
+    font-size: 60px;
+}
+
+.font-center
+{
+    text-align: center;
 }
 /*END OF FONTS*/
 
@@ -65,6 +69,7 @@ body
 	background-color: $brown;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
+    font-size: 32px;    /*enlarges the glyphicon links*/
 }
 
 .navbar .nav > li.active  > a	/*Change color of active navbar*/
@@ -148,7 +153,7 @@ NOTE: I did grap this from stack overflow ages ago and I have tried to find wher
 /*START OF FOOTER*/
 .footer-left
 {
-    line-height: 25px;
+    padding-top: 8px;   /*psuedo vertically centers the "John Felen's Personal Website" in the footer*/
 	color: $brown;
 	float: left;
 	text-align: left;
@@ -157,7 +162,6 @@ NOTE: I did grap this from stack overflow ages ago and I have tried to find wher
 
 .footer-right
 {
-    line-height: 25px;
 	color: $brown;
 	float: left;
     text-align: right;

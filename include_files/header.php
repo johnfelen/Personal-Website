@@ -18,7 +18,7 @@
     
         <!--top navigation bar-->
         <?php include( "include_files/start-row-10.php" ); ?>
-        <div class="navbar font-medium">
+        <div class="navbar">
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li<?php echo ( $pageName === "Home" ) ? " class=\"active\"" : ""; ?>>

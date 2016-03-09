@@ -13,7 +13,7 @@
                 <a href="https://www.linkedin.com/in/johnfelen" title="Connect with Me"><i class="fa fa-linkedin fa-2x"></i></a>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </p>
-            <hr class="brown"><hr class="brown"><hr class="brown">  <!--this somehow fixes the way too much space between two <br>s and one <hr>, margins/padding did not fix the error but tripple <hr> works-->
+            <hr class="brown"><hr class="brown"><hr class="brown"><hr class="brown">  <!--this somehow fixes the way too much space between three <br>s and one <hr>, margins/padding did not fix the error but 4x <hr> works-->
         </div>
         <?php include( "include_files/end-row-10.php" ); ?>
 	</body>
