@@ -9,6 +9,13 @@ body {
   color: #B34514;
   border-color: #B34514; }
 
+.container-main {
+  padding: 30px;
+  background-color: #FFE1B8;
+  border-radius: 10px;
+  border-color: #B34514;
+  border-style: solid; }
+
 /*START OF FONTS*/
 .font-ubuntu {
   font-family: 'Ubuntu', sans-serif; }
