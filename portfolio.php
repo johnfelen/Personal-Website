@@ -1,9 +1,9 @@
 <?php
     $pageName = "Portfolio";
     $glyphiconName = "folder-open";
-    include( "header.php" );
+    include( "include_files/header.php" );
 ?>
 
 <?php
-    include( "footer.php" );
+    include( "include_files/footer.php" );
 ?>
