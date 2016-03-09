@@ -6,7 +6,8 @@
                 echo "<title>{$pageName}</title>";    
             ?>
         
-        <link href="http://fonts.googleapis.com/css?family=Ubuntu:bold" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'>
 		<link href="http://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet" type="text/css">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/personalstyle.css" rel="stylesheet">    <!--SASS compiles into this .css file-->
@@ -19,7 +20,7 @@
     <body>
     
         <!--top navigation bar-->
-        <div class="navbar">
+        <div class="navbar font-ubuntu">
            
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -40,8 +41,11 @@
         <!--header-->
         <div class="header-footer">
             <hr class="brown">
-                <?php 
-                    echo "<h1><span class=\"glyphicon glyphicon-{$glyphiconName} brown\"/>{$pageName}</h1>";      
-                ?>
+                <h1 class="font-ubuntu">
+                    <?php 
+                        echo "<span class=\"glyphicon glyphicon-{$glyphiconName} brown\"></span>";
+                        echo ( $pageName === "Portfolio" ) ? " {$pageName}" : "{$pageName}";    //this if is just for formatting since the folder in Portfolio will cover part of the 'P' without a space   
+                    ?>
+                </h1>
             <hr class="brown">
         </div>

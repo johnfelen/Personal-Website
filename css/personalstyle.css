@@ -1,18 +1,8 @@
 /*Thanks to subtlepatterns.com for providing the background*/
 /*This will make the subtle pattern repeat as the background for all pages*/
 body {
-  background: url(../images/old_map.png) repeat 0 0;
-  -webkit-animation-delay: 0.1s;
-  -webkit-animation-name: fontfix;
-  -webkit-animation-duration: 0.1s;
-  -webkit-animation-iteration-count: 1;
-  -webkit-animation-timing-function: linear; }
+  background: url(../images/old_map.png) repeat 0 0; }
 
-@-webkit-keyframes fontfix {
-  from {
-    opacity: 1; }
-  to {
-    opacity: 1; } }
 .brown {
   color: #B34514;
   border-color: #B34514; }
@@ -22,17 +12,20 @@ body {
   margin-left: 10%;
   margin-right: 10%; }
 
-/*START OF FONTS AND SIZES*/
-h1 {
-  font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
-  font-size: 50px;
-  margin-bottom: 0px;
-  color: #B34514;
-  /*Brown*/ }
+/*START OF FONTS*/
+.font-ubuntu {
+  font-family: 'Ubuntu', sans-serif; }
 
-/*END OF FONTS AND SIZES*/
+.font-ubuntu-mono {
+  font-family: 'Ubuntu Mono'; }
+
+.font-vollkorn {
+  font-family: 'Vollkorn', Georgia, Times, serif; }
+
+/*END OF FONTS*/
 /*START OF NAVBAR ELEMENTS*/
 .navbar {
+  font-size: 16px;
   background-color: #B34514;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px; }
@@ -95,8 +88,7 @@ h1 {
 /*END OF NAVBAR ELEMENTS*/
 /*START OF FOOTER*/
 p.footer-left {
-  font-family: 'Vollkorn', Georgia, Times, serif;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 25px;
   color: #B34514;
   float: left;
@@ -104,8 +96,7 @@ p.footer-left {
   width: 33.33333%; }
 
 p.footer-center {
-  font-family: 'Vollkorn', Georgia, Times, serif;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 25px;
   color: #B34514;
   float: left;
@@ -113,8 +104,7 @@ p.footer-center {
   width: 33.33333%; }
 
 p.footer-right {
-  font-family: 'Vollkorn', Georgia, Times, serif;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 25px;
   color: #B34514;
   float: left;
