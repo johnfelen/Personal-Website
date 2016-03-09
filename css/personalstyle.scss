@@ -36,12 +36,32 @@ body
 {
     font-family: 'Vollkorn', Georgia, Times, serif;
 }
+
+.font-small
+{
+    font-size: 16px;
+}
+
+.font-medium
+{
+    font: 22px;
+}
+
+.font-large
+{
+    font-size: 30px;
+}
+
+.font-header
+{
+    font-weight: 700;   /*if this is not here ubuntu:bold will not work for some reason and just be normal ubuntu*/
+    font-size: 50px;
+}
 /*END OF FONTS*/
 
 /*START OF NAVBAR ELEMENTS*/
 .navbar
 {
-    font-size: 16px;
 	background-color: $brown;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
