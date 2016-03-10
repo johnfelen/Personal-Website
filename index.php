@@ -6,8 +6,8 @@
 ?>
     
 <!--Pokemon reference for a little humour-->
-<p class="font-vollkorn font-medium font-center brown" id="pokemon">
-HELLO
+<p class="font-ubuntu-mono font-medium font-center brown" id="pokemon">
+
 </p>
     
 <?php
