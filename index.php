@@ -9,11 +9,11 @@
 <div class="row">
     <div class="col-xs-3"></div>
         <div class="col-xs-6">
-            <img src="../images/me.jpg" class="picture" alt="Picture of Me" width="100%">
+            <img src="../images/me.jpg" class="picture" alt="Picture of Me" width="100%"/>
             <blink>
-            <p class="font-ubuntu-mono font-medium font-center brown">
-                Click to Continue
-            </p>
+                <p class="font-ubuntu-mono font-medium font-center brown">
+                    Click to Continue
+                </p>
             </blink>
         </div>
     <div class="col-xs-3"></div>
@@ -22,6 +22,8 @@
 <p class="font-ubuntu-mono font-medium font-center brown" id="pokemon">
 
 </p>
+
+<p class="font-center"><i id="loading" class="fa fa-spinner fa-pulse fa-3x brown"></i></p>
 
 <!--based on second last response on http://stackoverflow.com/questions/18105152/alternative-for-blink since the actual <blink> tag is deprecated-->
 <script type="text/javascript">
