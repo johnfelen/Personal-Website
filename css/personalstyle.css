@@ -101,15 +101,6 @@ body {
   .nav.navbar-nav li {
     text-align: left; } }
 /*END OF NAVBAR ELEMENTS*/
-/*CHECK HERE FOR DOWNLOAD LINKS*/
-.nav-pills > li > a {
-  background-color: #B34514;
-  color: #FFE1B8; }
-
-.nav-pills > li > a:hover {
-  background-color: #FFE1B8;
-  color: #B34514; }
-
 /*START OF FOOTER*/
 .footer {
   position: absolute; }
