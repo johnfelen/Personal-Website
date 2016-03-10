@@ -4,7 +4,7 @@
         
         <!--start of the actual footer part-->
         <?php include( "include_files/start-row-10.php" ); ?>
-        <div class="header-footer font-vollkorn font-small">
+        <div class="font-vollkorn font-small">
             <hr class="brown">
             <p class="footer-left font-small">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;John Felen's Personal Website</p> 
             <p class="footer-right font-small">
@@ -14,7 +14,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </p>
             <hr class="brown"><hr class="brown"><hr class="brown"><hr class="brown">  <!--this somehow fixes the way too much space between three <br>s and one <hr>, margins/padding did not fix the error but 4x <hr> works-->
-        </div>
+        </>
         <?php include( "include_files/end-row-10.php" ); ?>
 	</body>
 </html> 

@@ -20,7 +20,7 @@
         <?php echo "<link href=\"images/{$glyphiconName}.ico\" rel=\"shortcut icon\" type=\"image/x-icon\">"; ?>
     
     </head>
-    <body<?php echo ( $pageName === "Home" ) ? " onclick=\"printNextLine()\"" : ""; ?>>
+    <body<?php echo ( $pageName === "Home" ) ? " onload=\"printNextLine()\" onclick=\"printNextLine()\"" : ""; ?>>
     
         <!--top navigation bar-->
         <?php include( "include_files/start-row-10.php" ); ?>

@@ -8,7 +8,7 @@ body
 { 
     background: url(../images/old_map.png) repeat 0 0;
     overflow-x:hidden;  /*gets rid of bottom horizontal bar*/
-}
+}    
     
 .brown
 {
@@ -23,7 +23,11 @@ body
 	border-radius: 10px;
 	border-color: $brown;
 	border-style: solid;
+    min-height: 100%;
 }
+
+/*HERE*/
+
 
 /*START OF FONTS*/
 .font-ubuntu
@@ -151,6 +155,11 @@ NOTE: I did grap this from stack overflow ages ago and I have tried to find wher
 }
 
 /*START OF FOOTER*/
+.footer
+{
+    position:absolute;
+}
+
 .footer-left
 {
     padding-top: 8px;   /*psuedo vertically centers the "John Felen's Personal Website" in the footer*/

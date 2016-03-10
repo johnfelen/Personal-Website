@@ -6,9 +6,9 @@ var lines = [ "Hello there! Welcome to the world of Earth!",
 "I study humans as profession.",
 "First, what is your name?" ];
 var count = 0;
-var currentlyTyping = false;    //used to stop repeat clicking which will cause gibberish to type out
+var currentlyTyping = false;    //used to stop repeat clicking which would cause gibberish to type out
 
-function printNextLine()
+function printNextLine()    
 {
     if( count < lines.length && !currentlyTyping )
     {
@@ -34,15 +34,4 @@ function printNextLine()
         currentlyTyping = true;
         printNextChar();
     }
-}
-
-
-
-function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
-  }
 }

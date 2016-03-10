@@ -6,6 +6,14 @@
 ?>
     
 <!--Pokemon reference for a little humour-->
+<div class="row">
+    <div class="col-xs-3"></div>
+        <div class="col-xs-6">
+            <img class="professor" src="../images/me.jpg" width="100%">
+        </div>
+    <div class="col-xs-3"></div>
+</div>
+
 <p class="font-ubuntu-mono font-medium font-center brown" id="pokemon">
 
 </p>

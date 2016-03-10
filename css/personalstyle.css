@@ -14,8 +14,10 @@ body {
   background-color: #FFE1B8;
   border-radius: 10px;
   border-color: #B34514;
-  border-style: solid; }
+  border-style: solid;
+  min-height: 100%; }
 
+/*HERE*/
 /*START OF FONTS*/
 .font-ubuntu {
   font-family: 'Ubuntu', sans-serif; }
@@ -105,6 +107,9 @@ body {
   color: #B34514; }
 
 /*START OF FOOTER*/
+.footer {
+  position: absolute; }
+
 .footer-left {
   padding-top: 8px;
   /*psuedo vertically centers the "John Felen's Personal Website" in the footer*/
