@@ -6,7 +6,13 @@
         
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css">
 		<link href="http://fonts.googleapis.com/css?family=Ubuntu:bold" rel="stylesheet" type="text/css">
-        <?php echo( $pageName === "Home" ) ? "<link href=\"https://fonts.googleapis.com/css?family=Ubuntu+Mono\" rel=\"stylesheet\" type=\"text/css\">\n" : ""; ?>
+        <?php 
+            if ( $pageName === "Home" ) 
+            {
+                echo "<link href=\"https://fonts.googleapis.com/css?family=Ubuntu+Mono\" rel=\"stylesheet\" type=\"text/css\">\n"; 
+                echo "<script src=\"js/home.js\" type=\"text/javascript\"></script>\n";
+            }
+        ?>
 		<link href="http://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -14,7 +20,7 @@
         <?php echo "<link href=\"images/{$glyphiconName}.ico\" rel=\"shortcut icon\" type=\"image/x-icon\">"; ?>
     
     </head>
-    <body>
+    <body<?php echo ( $pageName === "Home" ) ? " onclick=\"printNextLine()\"" : ""; ?>>
     
         <!--top navigation bar-->
         <?php include( "include_files/start-row-10.php" ); ?>
