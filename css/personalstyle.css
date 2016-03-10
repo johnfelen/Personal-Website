@@ -14,10 +14,14 @@ body {
   background-color: #FFE1B8;
   border-radius: 10px;
   border-color: #B34514;
-  border-style: solid;
-  min-height: 100%; }
+  border-style: solid; }
 
 /*HERE*/
+.picture {
+  border-color: #B34514;
+  border-style: 2px solid;
+  border-radius: 10px; }
+
 /*START OF FONTS*/
 .font-ubuntu {
   font-family: 'Ubuntu', sans-serif; }

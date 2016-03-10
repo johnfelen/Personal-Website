@@ -23,11 +23,15 @@ body
 	border-radius: 10px;
 	border-color: $brown;
 	border-style: solid;
-    min-height: 100%;
 }
 
 /*HERE*/
-
+.picture
+{
+    border-color: $brown;
+    border-style: 2px solid;
+    border-radius: 10px;
+}
 
 /*START OF FONTS*/
 .font-ubuntu
