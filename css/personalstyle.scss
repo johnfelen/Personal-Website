@@ -25,13 +25,18 @@ body
 	border-style: solid;
 }
 
-/*HERE*/
+/*START OF MISC HOME CSS*/
 .picture
 {
-    border-color: $brown;
-    border-style: solid;
+    border-style: 2px solid;
     border-radius: 10px;
 }
+
+.invisible
+{
+    visiblity: hidden;
+}
+/*END OF MISC HOME CSS*/
 
 /*START OF FONTS*/
 .font-ubuntu

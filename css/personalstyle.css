@@ -16,12 +16,15 @@ body {
   border-color: #B34514;
   border-style: solid; }
 
-/*HERE*/
+/*START OF MISC HOME CSS*/
 .picture {
-  border-color: #B34514;
-  border-style: solid;
+  border-style: 2px solid;
   border-radius: 10px; }
 
+.invisible {
+  visiblity: hidden; }
+
+/*END OF MISC HOME CSS*/
 /*START OF FONTS*/
 .font-ubuntu {
   font-family: 'Ubuntu', sans-serif; }
