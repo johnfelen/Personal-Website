@@ -19,13 +19,12 @@
     <div class="col-xs-3"></div>
 </div>
 
-<p class="font-ubuntu-mono font-medium font-center brown" id="pokemon">
-
-</p>
+<p class="font-ubuntu-mono font-medium font-center brown" id="pokemon"></p>
 
 <p class="font-center"><i id="loading" class="fa fa-spinner fa-pulse fa-3x brown"></i></p>
 
-<!--based on second last response on http://stackoverflow.com/questions/18105152/alternative-for-blink since the actual <blink> tag is deprecated-->
+<!--based on second last response on http://stackoverflow.com/questions/18105152/alternative-for-blink since the actual <blink> tag is deprecated, I wonder why
+NOTE: I also tried to move the javascript into the home.js file but it did not work and kept saying that blink() was not defined, since it was not an error I decided to work on other parts of the project with my time-->
 <script type="text/javascript">
     function blink() 
     {
@@ -39,8 +38,14 @@
                 s.style.visibility = "hidden";
             }
             
-            else if( count >= lines.length )    //we are done with printing out so we can stop showing(and blinking) click to continue
+            else if( count == lines.length )
             {
+                s.text = "Choose Your Name"
+            }
+            
+            else if( count == lines.length + 1 )    //we are done with printing out so we can stop blinking( previously "click to continue" but now "chose your name" )
+            {
+                s.style.visibility = "visible";
                 return;
             }
             
