@@ -1,4 +1,18 @@
 <?php
+    session_start();    //The time session is based off of the best answer from http://stackoverflow.com/questions/520237/how-do-i-expire-a-php-session-after-30-minutes because session.gc_maxlifetime is explained in the post to not be the best way because of the gabarge collection randomness
+    if( isset( $_SESSION[ "lastStartTime" ] ) && time() - $_SESSION[ "lastStartTime" ] > 900 )  //if they were here in the last 15 minutes, do not do all the printing out just have the static page
+    {
+        session_unset();
+        session_destory();
+    }
+    
+    else if( isset( $_SESSION[ "lastStartTime" ] ) ) //it hasn't been 15 minutes so show the static page
+    {
+        header( "Location: static_index.php" );
+    }
+    
+    $_SESSION[ "lastStartTime" ] = time();  //fall through and set the time variable, the 15 minutes is so that the user won't have to continually go through the home page print outs wihtin a normal viewing of my website
+    //which I deem to be 15 minutes, and if they want to see it again, 15 minutes is a short amount of time to do something else and come back
     $pageName = "Home";
     $glyphiconName = "home";
     include( "include_files/header.php" );
