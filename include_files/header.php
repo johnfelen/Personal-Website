@@ -51,7 +51,7 @@
         <!--header-->
         <?php include( "include_files/start-row-10.php" ); ?>
         <hr class="brown">
-            <h1 class="font-ubuntu font-large brown">
+            <h1 class="font-ubuntu font-header brown">
                 <?php 
                     echo "<span class=\"glyphicon glyphicon-{$glyphiconName} brown\"></span>";
                     echo ( $pageName === "Portfolio" ) ? " {$pageName}" : "{$pageName}";    //this if is just for formatting since the folder in Portfolio will cover part of the 'P' without a space   

@@ -16,6 +16,20 @@ body {
   border-color: #B34514;
   border-style: solid; }
 
+.colored-link > a {
+  color: #B34514; }
+
+.colored-link > a:hover {
+  color: #808080; }
+
+/*vertical-center is based off the second answer http://stackoverflow.com/questions/8865458/how-to-align-text-vertically-center-in-div-with-css */
+.vertical-center {
+  display: flex;
+  justify-content: center;
+  /* align horizontal */
+  align-items: center;
+  /* align vertical */ }
+
 /*START OF MISC HOME CSS*/
 .picture {
   border-style: 2px solid;
@@ -49,6 +63,9 @@ body {
   font-size: 28px; }
 
 .font-large {
+  font-size: 44px; }
+
+.font-header {
   font-weight: 700;
   /*if this is not here ubuntu:bold will not work for some reason and just be normal ubuntu*/
   font-size: 60px; }
@@ -128,12 +145,6 @@ body {
   float: left;
   text-align: right;
   width: 33.33333%; }
-
-.footer-right > a {
-  color: #B34514; }
-
-.footer-right > a:hover {
-  color: #808080; }
 
 /*END OF FOOTER*/
 

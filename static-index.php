@@ -43,7 +43,7 @@
 <div class="row" id="names">
     <div class="col-xs-3"></div>
     <div class="col-xs-6 container-main">
-        <table class="font-ubuntu-mono font-large brown font-center fill-n-center">
+        <table class="font-ubuntu-mono font-header brown font-center fill-n-center">
             <tr><td>NEW NAME</td></tr>
             <tr><td>RED</td></tr>
             <tr><td>ASH</td></tr>
