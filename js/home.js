@@ -5,7 +5,23 @@ var lines = [ "Hello there! Welcome to the world of Earth!",
 "Myself...",
 "I study humans as profession.",
 "First, what is your name?" ];
-var spinner = "<i id=\"loading\" class=\"fa fa-spinner fa-pulse fa-3x brown\"></i>";
+var nameTable = "\
+<div class=\"col-xs-3\"></div>\
+    <div class=\"col-xs-6 container-main\">\
+        <table class=\"font-ubuntu-mono font-large brown font-center fill-n-center\">\
+            <tr class=\"grey\"><td>NEW NAME</td></tr>\
+            <tr class=\"grey\"><td>RED</td></tr>\
+            <tr class=\"grey\"><td>ASH</td></tr>\
+            <tr class=\"grey\"><td>JACK</td></tr>\
+        </table>\
+    </div>\
+<div class=\"col-xs-3\"></div>";
+var movingSpinner = "<i class=\"fa fa-spinner fa-pulse fa-3x brown\"></i>";
+var frozenSpinner = "<i class=\"fa fa-spinner fa-3x brown\"></i>"
+var brokenMessage = "It looks like the game froze. &nbsp;\
+Maybe try to blow into the cartridge and try again in 15 minutes. &nbsp;\
+While you are here, feel free to explore my personal website. ";
+
 var count = 0;
 var currentlyTyping = false;    //used to stop repeat clicking which would cause gibberish to type out
 
@@ -36,14 +52,23 @@ function printNextLine()
         printNextChar();
     }
     
-    else if( count == lines.length )   //print out loading spinner
+    else if( count == lines.length )   //print out the name chosing table
     {
-        document.getElementById( "spinner" ).innerHTML =  spinner + "<br>";
+        document.getElementById( "names" ).innerHTML =  nameTable + "<br>";
         count++;
     }
     
-    else if( count == lines.length + 1 )    //"freeze" the spinner and print out the blow in the catridge statement, check back in 10 minutes(for the session) etc
+    else if( count == lines.length + 1 )    //print out spinner to simulate loading
     {
+        document.getElementById( "continue" ).innerHTML =  movingSpinner + "<br>";
         count++;
     }
+    
+     else if( count == lines.length + 2 )    //"freeze" the spinner and print out the blow in the cartridge statement, check back in 15 minutes(for the session) etc
+    {
+        document.getElementById( "continue" ).innerHTML =  frozenSpinner + "<br>";
+        document.getElementById( "broken" ).innerHTML =  brokenMessage + "<br>";
+        count++;
+    }
+    
 }

@@ -11,7 +11,8 @@
         <div class="col-xs-6">
             <img src="../images/me.jpg" class="picture" alt="Picture of Me" width="100%"/>
             <blink class="invisible">
-                <p class="font-ubuntu-mono font-medium font-center brown">
+                <p class="font-vollkorn font-medium font-center brown" id="broken"></p>
+                <p class="font-ubuntu-mono font-medium font-center brown" id="continue">
                     Click to Continue
                 </p>
             </blink>
@@ -20,21 +21,8 @@
 </div>
 
 <p class="font-ubuntu-mono font-medium font-center brown" id="pokemon"></p>
-<p class="font-center" id="spinner"></p>
 
-<div class="row">
-    <div class="col-xs-3"></div>
-        <div class="col-xs-6 container-main">
-<table class="font-ubuntu-mono font-large brown font-center" style="margin: 0px auto;">				
-				<tr><td>NEW NAME</td></tr>
-				<tr><td>RED</td></tr>
-                <tr><td>ASH</td></tr>
-                <tr><td>JACK</td></tr>
-                </table>
-                </center>
-                        </div>
-    <div class="col-xs-3"></div>
-</div>
+<div class="row" id="names"></div>
 
 <!--based on second last response on http://stackoverflow.com/questions/18105152/alternative-for-blink since the actual <blink> tag is deprecated, I wonder why
 NOTE: I also tried to move the javascript into the home.js file but it did not work and kept saying that blink() was not defined, since it was not an error I decided to work on other parts of the project with my time-->

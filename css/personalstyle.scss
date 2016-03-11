@@ -36,6 +36,17 @@ body
 {
     visiblity: hidden;
 }
+
+.fill-n-center
+{
+    margin: 0px auto;
+    width: 100%;
+}
+
+tr.grey:hover
+{
+    background-color: $grey;
+}
 /*END OF MISC HOME CSS*/
 
 /*START OF FONTS*/
