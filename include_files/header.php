@@ -10,6 +10,7 @@
             if ( $pageName === "Home" ) 
             {
                 echo "<link href=\"https://fonts.googleapis.com/css?family=Ubuntu+Mono\" rel=\"stylesheet\" type=\"text/css\">\n"; 
+                echo "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js\"></script>";
                 echo "<script src=\"js/home.js\" type=\"text/javascript\"></script>\n";
             }
         ?>

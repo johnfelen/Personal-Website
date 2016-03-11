@@ -35,7 +35,7 @@ function printNextLine()
         var currentCharIndex = 0;
         function printNextChar()
         {
-            if( currentCharIndex == chars.length )
+            if( currentCharIndex == chars.length )  //base case
             {
                 document.getElementById( "pokemon" ).innerHTML =  document.getElementById( "pokemon" ).innerHTML + "<br>";
                 count++;
@@ -58,17 +58,17 @@ function printNextLine()
         count++;
     }
     
-    else if( count == lines.length + 1 )    //print out spinner to simulate loading
+    else if( count == lines.length + 1 )    //print out spinner to simulate loading and stop the table from highlighting on hover
     {
+        $("tr").removeClass();
         document.getElementById( "continue" ).innerHTML =  movingSpinner + "<br>";
         count++;
     }
     
-     else if( count == lines.length + 2 )    //"freeze" the spinner and print out the blow in the cartridge statement, check back in 15 minutes(for the session) etc
+     else if( count == lines.length + 2 )    //"freeze" the spinner and print out that the game broken, set session, and stop the hover effect on the table
     {
         document.getElementById( "continue" ).innerHTML =  frozenSpinner + "<br>";
         document.getElementById( "broken" ).innerHTML =  brokenMessage + "<br>";
         count++;
     }
-    
 }
