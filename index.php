@@ -39,12 +39,13 @@ NOTE: I also tried to move the javascript into the home.js file but it did not w
                 s.style.visibility = "hidden";
             }
             
-            else if( count == lines.length )
+            else if( count == lines.length + 1 )    //they now can "choose" their name so change "click to continue" to "choose your name", because of the below else if must have the s.style.visibility line
             {
-                s.text = "Choose Your Name"
+                document.getElementById( "continue" ).innerHTML =  "Choose Your Name<br>";
+                s.style.visibility = ( s.style.visibility === "visible" ) ? "hidden" : "visible";
             }
             
-            else if( count == lines.length + 1 )    //we are done with printing out so we can stop blinking( previously "click to continue" but now "chose your name" )
+            else if( count == lines.length + 2 )    //we are done with blinking, make the text visible so the "loading" simulation will show
             {
                 s.style.visibility = "visible";
                 return;
@@ -59,6 +60,7 @@ NOTE: I also tried to move the javascript into the home.js file but it did not w
         window.setTimeout(blink, 350);
     }
 
+    //these for are from the stack overflow, it works so I'm not going to change it
     if ( document.addEventListener ) 
     {
         document.addEventListener( "DOMContentLoaded", blink, false );
