@@ -1,14 +1,14 @@
 <?php
     session_start();    //The time session is based off of the best answer from http://stackoverflow.com/questions/520237/how-do-i-expire-a-php-session-after-30-minutes because session.gc_maxlifetime is explained in the post to not be the best way because of the gabarge collection randomness
-    if( isset( $_SESSION[ "lastStartTime" ] ) && time() - $_SESSION[ "lastStartTime" ] > 900 )  //if they were here in the last 15 minutes, do not do all the printing out just have the static page
+    if( isset( $_SESSION[ "lastStartTime" ] ) && time() - $_SESSION[ "lastStartTime" ] <= 900 )  //it hasn't been 15 minutes so show the static page
     {
-        session_unset();
-        session_destory();
+        header( "Location: static-index.php" );
     }
     
-    else if( isset( $_SESSION[ "lastStartTime" ] ) ) //it hasn't been 15 minutes so show the static page
+    else if( isset( $_SESSION[ "lastStartTime" ] ) )    //its been 15 minutes since they first came here so show them this page and delete the old session
     {
-        header( "Location: static_index.php" );
+        session_unset();
+        session_destroy();
     }
     
     $_SESSION[ "lastStartTime" ] = time();  //fall through and set the time variable, the 15 minutes is so that the user won't have to continually go through the home page print outs wihtin a normal viewing of my website

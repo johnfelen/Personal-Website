@@ -7,11 +7,17 @@
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css">
 		<link href="http://fonts.googleapis.com/css?family=Ubuntu:bold" rel="stylesheet" type="text/css">
         <?php 
+            //next two lines are checking if to put the javascript in the fiiles by getting the calling php file
+            $callingFullPath = explode("/", $_SERVER["SCRIPT_FILENAME"] );
+            $callingScript = $callingFullPath[ count( $callingFullPath ) - 1 ];
             if ( $pageName === "Home" ) 
             {
                 echo "<link href=\"https://fonts.googleapis.com/css?family=Ubuntu+Mono\" rel=\"stylesheet\" type=\"text/css\">\n"; 
-                echo "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js\"></script>";
-                echo "<script src=\"js/home.js\" type=\"text/javascript\"></script>\n";
+                if( $callingScript === "index.php" )
+                {
+                    echo "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js\"></script>";
+                    echo "<script src=\"js/home.js\" type=\"text/javascript\"></script>\n";
+                }
             }
         ?>
 		<link href="http://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet" type="text/css">
@@ -21,8 +27,8 @@
         <?php echo "<link href=\"images/{$glyphiconName}.ico\" rel=\"shortcut icon\" type=\"image/x-icon\">"; ?>
     
     </head>
-    <body<?php echo ( $pageName === "Home" ) ? " onload=\"printNextLine()\" onclick=\"printNextLine()\"" : ""; ?>>
-    
+    <body<?php echo( $callingScript === "index.php" ) ? " onload=\"printNextLine()\" onclick=\"printNextLine()\"" : "";?>>    <!--don't call function if we load the static page-->
+
         <!--top navigation bar-->
         <?php include( "include_files/start-row-10.php" ); ?>
         <div class="navbar">
