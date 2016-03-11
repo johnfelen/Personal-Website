@@ -16,7 +16,7 @@ body
     border-color: $brown;
 }
 
-.container-main
+.container-main /*for some reason I cannot make borders around images or tables so I am going to use container-main for the table border*/
 {
 	padding: 30px;
 	background-color: $cream;
