@@ -12,6 +12,19 @@
         }
     }
     
+    function getNextQuery( $portfolioDB, $currSortChoice, $orderAttribute )
+    {
+        if( $currSortChoice === "fa-sort-asc" )
+        {
+            return $portfolioDB->query( "SELECT * FROM `project descriptions` ORDER BY `{$orderAttribute}` ASC" );
+        }
+        
+        else if( $currSortChoice === "fa-sort-desc" )
+        {
+            return $portfolioDB->query( "SELECT * FROM `project descriptions` ORDER BY `{$orderAttribute}` DESC" );
+        }
+    }
+    
     $pageName = "Portfolio";
     $glyphiconName = "folder-open";
     include( "php_include_files/header.php" );
@@ -23,14 +36,16 @@
         die( "Error connecting to database" );
     }
     
-    if( isset( $_GET[ "name" ] ) && $_GET[ "name" ] !== "SORT" )
+    echo $_GET[ "name" ];
+    
+    if( isset( $_GET[ "name" ] ) )
     {
-        $result = $portfolioDB->query( "SELECT * FROM `project descriptions` ORDER BY `Name` {$_GET[ 'name' ]}" );
+        $result = getNextQuery( $portfolioDB, $_GET[ "name" ], "name" );
     }
     
-    else if( isset( $_GET[ "time" ] ) && $_GET[ "time" ] !== "SORT" )
+    else if( isset( $_GET[ "time" ] ) )
     {
-        $result = $portfolioDB->query( "SELECT * FROM `project descriptions` ORDER BY `Month Finished` {$_GET[ 'time' ]}" );
+        $result = getNextQuery( $portfolioDB, $_GET[ "time" ], "time" );
     }
     
     else    //default start
