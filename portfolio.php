@@ -3,13 +3,26 @@
     $glyphiconName = "folder-open";
     include( "include_files/header.php" );
     
-    $db = new mysqli( "localhost", "root", "jfelen62" );
+    $portfolioDB = new mysqli( "localhost", "root", "jfelen62", "portfolio" );
     
-    if( $db->connect_error )
+    if( $portfolioDB->connect_error )
     {
-        die( $db->connect_error );
+        die( "Error connecting to database" );
     }
     
+    $result = $portfolioDB->query( "SELECT `Name`,`Link`,`Description`FROM `project descriptions` ORDER BY 'Month Finished' ASC" );
+    
+    if( !$result )
+    {
+        die( "Error with query" );
+    }
+    
+    while( $row = $result->fetch_assoc() )
+    {
+        echo $row[ "Name" ] . "<br>";
+    }
+    
+    mysqli_close( $portfolioDB );
 ?>
 
 <hr class="brown">
