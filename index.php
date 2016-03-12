@@ -15,8 +15,8 @@
     //which I deem to be 15 minutes, and if they want to see it again, 15 minutes is a short amount of time to do something else and come back
     $pageName = "Home";
     $glyphiconName = "home";
-    include( "include_files/header.php" );
-    include( "include_files/start-row-10.php" );
+    include( "php_include_files/header.php" );
+    include( "php_include_files/start-row-10.php" );
 ?>
     
 <!--Pokemon reference for a little humour-->
@@ -97,6 +97,6 @@ NOTE: I also tried to move the javascript into the home.js file but it did not w
 </script>
     
 <?php
-    include( "include_files/end-row-10.php" );
-    include( "include_files/footer.php" );
+    include( "php_include_files/end-row-10.php" );
+    include( "php_include_files/footer.php" );
 ?>

@@ -1,7 +1,7 @@
 <?php
     $pageName = "Portfolio";
     $glyphiconName = "folder-open";
-    include( "include_files/header.php" );
+    include( "php_include_files/header.php" );
     
     $portfolioDB = new mysqli( "localhost", "root", "jfelen62", "portfolio" );
     
@@ -39,5 +39,5 @@
     echo "<hr class=\"brown\">";
     
     mysqli_close( $portfolioDB );
-    include( "include_files/footer.php" );
+    include( "php_include_files/footer.php" );
 ?>
