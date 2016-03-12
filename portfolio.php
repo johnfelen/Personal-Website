@@ -7,7 +7,7 @@
         header( "Location: portfolio.php?name=fa-sort-asc");
     }
     
-    function getNextHref( $currHref )
+    function getNextHref( $currHref )   //will figure out which get attribute will be passed on for each sort button
     {
         if( $currHref === "fa-sort" )
         {
@@ -25,7 +25,7 @@
         }
     }
     
-    function getNextQuery( $portfolioDB, $currSortChoice, $orderAttribute )
+    function getQuery( $portfolioDB, $currSortChoice, $orderAttribute ) //get the query for how the projects will be displayed
     {
         if( $currSortChoice === "fa-sort-asc" )
         {
@@ -54,15 +54,15 @@
         {
             $currComparator = $row[ "Name" ][ 0 ];
             echo "<p class=\"font-ubuntu-mono font-header font-center brown\">{$currComparator}</p>";
-            return $currComparator;
         }
         
         else if( $sortType === "YEAR" && $currComparator !== date( "Y", strtotime( $row[ "Month Finished" ] ) ) )
         {
             $currComparator = date( "Y", strtotime( $row[ "Month Finished" ] ) );
             echo "<p class=\"font-ubuntu-mono font-header font-center brown\">{$currComparator}</p>";
-            return $currComparator;
         }
+        
+        return $currComparator;
     }
     
     $pageName = "Portfolio";
@@ -79,7 +79,7 @@
     if( isset( $_GET[ "name" ] ) )  //sort by name and set the variables for later
     {
         $name =  $_GET[ "name" ];
-        $result = getNextQuery( $portfolioDB, $name, "name" );
+        $result = getQuery( $portfolioDB, $name, "name" );
         $currComparator = "z";
         $sortType = "NAME";
     }
@@ -87,7 +87,7 @@
     else if( isset( $_GET[ "time" ] ) ) //sort by time and set the variables for later
     {
         $time = $_GET[ "time" ];
-        $result = getNextQuery( $portfolioDB, $time, "time" );
+        $result = getQuery( $portfolioDB, $time, "time" );
         $currComparator = "0";
         $sortType = "YEAR";
     }
@@ -102,12 +102,10 @@
         <li><a href=\"portfolio.php?time={$nextTime}\">Time Finished <i class=\"fa {$time}\"></i></a></li>
     </ul>";
     
-    //formatting and printing out project names(that are linked) and printing their description
-
     echo "<hr class=\"brown\">";
     while( $row = $result->fetch_assoc() )
     {
-        printNewSort( $currComparator, $sortType, $row );
+        $currComparator = printNewSort( $currComparator, $sortType, $row );
         echo "
         <hr class=\"brown\">
         <div class=\"row vertical-center\">	
