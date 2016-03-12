@@ -82,25 +82,25 @@ body {
   font-size: 32px;
   /*enlarges the glyphicon links*/ }
 
-.navbar .nav > li.active > a {
+.nav > li.active > a {
   margin-left: 15px;
   margin-right: 15px;
   background-color: #FFE1B8;
   color: #B34514; }
 
-.navbar .nav > li.active > a:hover {
+.nav > li.active > a:hover {
   margin-left: 15px;
   margin-right: 15px;
   background-color: #B34514;
   color: #FFE1B8; }
 
-.navbar .nav > li > a {
+.nav > li > a {
   margin-left: 15px;
   margin-right: 15px;
   background-color: #B34514;
   color: #FFE1B8; }
 
-.navbar .nav > li > a:hover {
+.nav > li > a:hover {
   margin-left: 15px;
   margin-right: 15px;
   background-color: #FFE1B8;
