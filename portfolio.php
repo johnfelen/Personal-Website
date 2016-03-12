@@ -1,7 +1,4 @@
 <?php
-    echo $_GET[ "name" ];
-    echo $_GET[ "time" ];
-
     if( !isset( $_GET[ "name" ] ) && !isset( $_GET[ "time" ] ) )    //redirect if they are going to portfolio wil nothing in get, so it will sort by name of project by default
     {
         header( "Location: portfolio.php?name=fa-sort-asc");
@@ -79,7 +76,7 @@
     if( isset( $_GET[ "name" ] ) )  //sort by name and set the variables for later
     {
         $name =  $_GET[ "name" ];
-        $result = getQuery( $portfolioDB, $name, "name" );
+        $result = getQuery( $portfolioDB, $name, "Name" );
         $currComparator = "z";
         $sortType = "NAME";
     }
@@ -87,7 +84,7 @@
     else if( isset( $_GET[ "time" ] ) ) //sort by time and set the variables for later
     {
         $time = $_GET[ "time" ];
-        $result = getQuery( $portfolioDB, $time, "time" );
+        $result = getQuery( $portfolioDB, $time, "Month Finished" );
         $currComparator = "0";
         $sortType = "YEAR";
     }
