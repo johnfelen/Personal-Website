@@ -3,71 +3,13 @@
     {
         header( "Location: portfolio.php?name=fa-sort-asc");
     }
-    
-    function getNextHref( $currHref )   //will figure out which get attribute will be passed on for each sort button
-    {
-        if( $currHref === "fa-sort" )
-        {
-            return "fa-sort-asc";
-        }
-        
-        else if( $currHref === "fa-sort-asc" )
-        {
-            return "fa-sort-desc";
-        }
-        
-        else
-        {
-            return "fa-sort-asc";
-        }
-    }
-    
-    function getQuery( $portfolioDB, $currSortChoice, $orderAttribute ) //get the query for how the projects will be displayed
-    {
-        if( $currSortChoice === "fa-sort-asc" )
-        {
-            $result = $portfolioDB->query( "SELECT * FROM `project descriptions` ORDER BY `{$orderAttribute}` ASC" );
-        }
-        
-        else if( $currSortChoice === "fa-sort-desc" )
-        {
-            $result = $portfolioDB->query( "SELECT * FROM `project descriptions` ORDER BY `{$orderAttribute}` DESC" );
-        }
-        
-        if( !$result )
-        {
-            die( "Error with query" );
-        }
-        
-        else
-        {
-            return $result;
-        }
-    }
-    
-    function printNewSort( $currComparator, $sortType, $row ) //checks if the next item would be in a different "tier" and prints it out if it is, for example if the year changes print out the year change
-    {
-        if( $sortType === "NAME" && $currComparator !== $row[ "Name" ][ 0 ] )
-        {
-            $currComparator = $row[ "Name" ][ 0 ];
-            echo "<p class=\"font-ubuntu-mono font-header font-center brown\">{$currComparator}</p>";
-        }
-        
-        else if( $sortType === "YEAR" && $currComparator !== date( "Y", strtotime( $row[ "Month Finished" ] ) ) )
-        {
-            $currComparator = date( "Y", strtotime( $row[ "Month Finished" ] ) );
-            echo "<p class=\"font-ubuntu-mono font-header font-center brown\">{$currComparator}</p>";
-        }
-        
-        return $currComparator;
-    }
-    
+       
     $pageName = "Portfolio";
     $glyphiconName = "folder-open";
     include( "php_include_files/header.php" );
+    require( "php_include_files/portfolio-funcions.php" );
     
     $portfolioDB = new mysqli( "localhost", "root", "jfelen62", "portfolio" );
-    
     if( $portfolioDB->connect_error )
     {
         die( "Error connecting to database" );
@@ -78,7 +20,7 @@
     if( isset( $_GET[ "name" ] ) )  //sort by NAME and set the variables for sorting buttons
     {
         $name =  $_GET[ "name" ];
-        $result = getQuery( $portfolioDB, $name, "Name" );
+        $result = queryProjects( $portfolioDB, $name, "Name" );
         $currComparator = "z";
         $sortType = "NAME";
         $nextName = getNextHref( $name );
@@ -89,7 +31,7 @@
     else if( isset( $_GET[ "time" ] ) ) //sort by TIME and set the variables for sorting buttons
     {
         $time = $_GET[ "time" ];
-        $result = getQuery( $portfolioDB, $time, "Month Finished" );
+        $result = queryProjects( $portfolioDB, $time, "Month Finished" );
         $currComparator = "0";
         $sortType = "YEAR";
         $name = "fa-sort";
@@ -108,7 +50,7 @@
     echo "<hr class=\"brown\">";
     while( $row = $result->fetch_assoc() )
     {
-        $currComparator = printNewSort( $currComparator, $sortType, $row );
+        $currComparator = printTierChange( $currComparator, $sortType, $row ); 
         echo "
         <hr class=\"brown\">
         <div class=\"row vertical-center\">	
