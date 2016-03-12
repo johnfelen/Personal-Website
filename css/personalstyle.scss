@@ -6,7 +6,7 @@ $grey: #808080;
 /*This will make the subtle pattern repeat as the background for all pages*/
 body 
 { 
-    background: url(../images/old_map.png) repeat 0 0;
+    background: url("../images/old-map.png") repeat 0 0;
     overflow-x:hidden;  /*gets rid of bottom horizontal bar*/
 }    
     
@@ -153,8 +153,8 @@ body
  
 @media (min-width:768px) 
 { 
-/* These center the navbar elements 
-NOTE: I did grap this from stack overflow ages ago and I have tried to find where I got it to give credit for this project but I came up empty handed*/
+/* These center the main navbar elements 
+NOTE: I did grab this from stack overflow ages ago and I have tried to find where I got it to give credit for this project but I came up empty handed*/
 	.nav.navbar-nav 
 	{
 		float: left;
