@@ -5,7 +5,7 @@
     include( "php_include_files/start-row-10.php" );
 ?>
 
-<p class="font-vollkorn font-medium font-center brown" >
+<p class="font-vollkorn font-small font-center brown" >
     I was born at a young age of zero months in Pittsburgh, Pennsylvania. &nbsp;
     I am now 247 months old. &nbsp;
     In my trek for an education I went to the school district known as Mt. Lebanon. &nbsp;
@@ -23,7 +23,7 @@
 </p>
 
 <br>
-<p class="font-vollkorn font-medium font-center brown" >
+<p class="font-vollkorn font-small font-center brown" >
     If you wish to contact me, please do so through my e-mail address: johnfelen@pitt.edu.  &nbsp;
     A link to my r&eacute;sum&eacute; is in the footer. &nbsp;
 </p>

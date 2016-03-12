@@ -10,16 +10,13 @@
             //next two lines are checking if to put the javascript in the fiiles by getting the calling php file
             $callingFullPath = explode("/", $_SERVER["SCRIPT_FILENAME"] );
             $callingScript = $callingFullPath[ count( $callingFullPath ) - 1 ];
-            if ( $pageName === "Home" ) 
+            if( $callingScript === "index.php" )
             {
-                echo "<link href=\"https://fonts.googleapis.com/css?family=Ubuntu+Mono\" rel=\"stylesheet\" type=\"text/css\">\n"; 
-                if( $callingScript === "index.php" )
-                {
-                    echo "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js\"></script>";
-                    echo "<script src=\"js/home.js\" type=\"text/javascript\"></script>\n";
-                }
+                echo "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js\"></script>";
+                echo "<script src=\"js/home.js\" type=\"text/javascript\"></script>\n";
             }
         ?>
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet" type="text/css">
 		<link href="http://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
