@@ -1,9 +1,11 @@
 /*Thanks to subtlepatterns.com for providing the background*/
 /*This will make the subtle pattern repeat as the background for all pages*/
 body {
-  background: url("../images/old-map.png") repeat 0 0;
   overflow-x: hidden;
   /*gets rid of bottom horizontal bar*/ }
+
+.bg-map {
+  background: url("../images/old-map.png") repeat 0 0; }
 
 .brown {
   color: #B34514;

@@ -23,6 +23,12 @@
 </p>
 
 <br>
+<!--For some reason some styles have to be done inline, when I try them in an external style sheet it breaks-->
+<textarea rows="10" class="font-vollkorn font-small brown bg-map" placeholder="Type your Message Here"
+style="width:100%; resize:vertical; border: 3px solid;">
+</textarea>
+
+<br>
 <p class="font-vollkorn font-small font-center brown" >
     If you wish to contact me, please do so through my e-mail address: johnfelen@pitt.edu.  &nbsp;
     A link to my r&eacute;sum&eacute; is in the footer. &nbsp;
