@@ -29,31 +29,32 @@
 
 <!--form for their message-->
 <br>
-<form action="portfolio.php" method="post">
-    <!--For some reason some styles have to be done inline with a text area(atleast the ones that I have inline, when I try them in an external style sheet they are not applied-->
+<form action="contact.php" method="post">
+    <!--For some reason some styles have to be done inline with a text area(atleast the ones that I have inline, when I try them in an external style sheet they are not applied
+    Also the rounded corners for the text area are based the accepted answer from http://stackoverflow.com/questions/26272350/rounded-corners-to-a-textarea-->
     <div class="row">
         <div class="col-xs-5">
-            <textarea rows="1" class="font-vollkorn font-small brown bg-map" placeholder="Your Name"
-            style="width:100%; resize:none; border: 3px solid;"></textarea>
+            <textarea rows="1" class="font-vollkorn font-small brown bg-map" placeholder="Your Name" name="name" 
+            style="width:100%; resize:none; border-radius:10px; box-shadow: 0 0 0 3px; border: 3px solid transparent;"></textarea>
         </div>
     </div>
     <br>
     <div class="row">
         <div class="col-xs-5">
-            <textarea rows="1" class="font-vollkorn font-small brown bg-map" placeholder="Your Email"
-            style="width:100%; resize:none; border: 3px solid;"></textarea>
+            <textarea rows="1" class="font-vollkorn font-small brown bg-map" placeholder="Your Email" name="email" 
+            style="width:100%; resize:none; border-radius:10px; box-shadow: 0 0 0 3px; border: 3px solid transparent;"></textarea>
         </div>    
     </div>
 
     <br>
-    <textarea rows="10" class="font-vollkorn font-small brown bg-map" placeholder="Your Message"
-    style="width:100%; resize:vertical; border: 3px solid;"></textarea>
+    <textarea rows="10" class="font-vollkorn font-small brown bg-map" placeholder="Your Message" name="message" 
+    style="width:100%; resize:vertical; border-radius:10px; box-shadow: 0 0 0 3px; border: 3px solid transparent;"></textarea>
 
     <br><br>
     <div class="row">
         <div class="col-xs-9"></div>
         <div class="col-xs-3">
-            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Submit Message"/>
+            <input class="btn btn-lg btn-primary btn-block btn-brown" type="submit" value="Submit Message" title="Send Me The Message!"/>
         </div>
     </div>
 </form>

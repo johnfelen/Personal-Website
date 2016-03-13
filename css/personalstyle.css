@@ -11,6 +11,14 @@ body {
   color: #B34514;
   border-color: #B34514; }
 
+.btn-brown {
+  background-color: #FFE1B8;
+  color: #B34514; }
+
+.btn-brown:hover {
+  background-color: #B34514;
+  color: #FFE1B8; }
+
 .container-main {
   padding: 30px;
   background-color: #FFE1B8;
