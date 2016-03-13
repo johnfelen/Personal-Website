@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
     if( !isset( $_GET[ "name" ] ) && !isset( $_GET[ "time" ] ) )    //redirect if they are going to portfolio wil nothing in get, so it will sort by name of project by default
     {
         header( "Location: portfolio.php?name=fa-sort-asc");
@@ -10,10 +11,19 @@
     require( "php_include_files/portfolio-funcions.php" );
     
     $portfolioDB = new mysqli( "localhost", "root", "jfelen62", "portfolio" );
+=======
+    $pageName = "Portfolio";
+    $glyphiconName = "folder-open";
+    include( "php_include_files/header.php" );
+    
+    $portfolioDB = new mysqli( "localhost", "root", "jfelen62", "portfolio" );
+    
+>>>>>>> 6df4286fa3fb728fb522623c6309846a7a78cf01
     if( $portfolioDB->connect_error )
     {
         die( "Error connecting to database" );
     }
+<<<<<<< HEAD
         
     /*For part two of the project I may add a sort type or two such as what the project was done for: school, myself, research etc and also languages used,
     if I do that I will probably refactor the portfolio to object oriented code since it will probably get more confusing then it is now, but it does work properly now */
@@ -52,6 +62,21 @@
     {
         $currComparator = printTierChange( $currComparator, $sortType, $row ); 
         echo "
+=======
+    
+    $result = $portfolioDB->query( "SELECT `Name`,`Link`,`Description` FROM `project descriptions` ORDER BY `Month Finished` ASC" );
+    
+    if( !$result )
+    {
+        die( "Error with query" );
+    }
+    
+    //formatting and printing out project names(that are linked) and printing their description
+    echo "<hr class=\"brown\">";
+    while( $row = $result->fetch_assoc() )
+    {
+        echo"
+>>>>>>> 6df4286fa3fb728fb522623c6309846a7a78cf01
         <hr class=\"brown\">
         <div class=\"row vertical-center\">	
             <div class=\"col-xs-3\">
@@ -61,7 +86,11 @@
             </div>
             
             <div class=\"col-xs-9\">
+<<<<<<< HEAD
                 <p class=\"font-vollkorn font-center font-small brown\">{$row[ 'Description' ]}</p>
+=======
+                <p class=\"font-vollkorn font-center font-medium brown\">{$row[ 'Description' ]}</p>
+>>>>>>> 6df4286fa3fb728fb522623c6309846a7a78cf01
             </div>
         </div>
         <hr class=\"brown\">";

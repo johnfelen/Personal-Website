@@ -6,7 +6,11 @@ $grey: #808080;
 /*This will make the subtle pattern repeat as the background for all pages*/
 body 
 { 
+<<<<<<< HEAD
     background: url("../images/old-map.png") repeat 0 0;
+=======
+    background: url(../images/old_map.png) repeat 0 0;
+>>>>>>> 6df4286fa3fb728fb522623c6309846a7a78cf01
     overflow-x:hidden;  /*gets rid of bottom horizontal bar*/
 }    
     
@@ -119,7 +123,11 @@ body
     font-size: 32px;    /*enlarges the glyphicon links*/
 }
 
+<<<<<<< HEAD
 .nav > li.active  > a	/*Change color of active navbar*/
+=======
+.navbar .nav > li.active  > a	/*Change color of active navbar*/
+>>>>>>> 6df4286fa3fb728fb522623c6309846a7a78cf01
 {
     margin-left: 15px;
     margin-right: 15px;
@@ -127,7 +135,11 @@ body
 	color: $brown;
 }
 
+<<<<<<< HEAD
 .nav > li.active > a:hover	/*Change color of active navbar hover*/
+=======
+.navbar .nav > li.active > a:hover	/*Change color of active navbar hover*/
+>>>>>>> 6df4286fa3fb728fb522623c6309846a7a78cf01
 {
     margin-left: 15px;
     margin-right: 15px;
@@ -135,7 +147,11 @@ body
 	color: $cream;
 }
 
+<<<<<<< HEAD
 .nav > li > a	/*Change color of nonactive navbar*/
+=======
+.navbar .nav > li > a	/*Change color of nonactive navbar*/
+>>>>>>> 6df4286fa3fb728fb522623c6309846a7a78cf01
 {	
     margin-left: 15px;
     margin-right: 15px;
@@ -143,7 +159,11 @@ body
 	color: $cream;
 }
 
+<<<<<<< HEAD
 .nav > li > a:hover	/*Change color of nonactive navbar hover*/
+=======
+.navbar .nav > li > a:hover	/*Change color of nonactive navbar hover*/
+>>>>>>> 6df4286fa3fb728fb522623c6309846a7a78cf01
 {	
     margin-left: 15px;
     margin-right: 15px;
@@ -153,8 +173,13 @@ body
  
 @media (min-width:768px) 
 { 
+<<<<<<< HEAD
 /* These center the main navbar elements 
 NOTE: I did grab this from stack overflow ages ago and I have tried to find where I got it to give credit for this project but I came up empty handed*/
+=======
+/* These center the navbar elements 
+NOTE: I did grap this from stack overflow ages ago and I have tried to find where I got it to give credit for this project but I came up empty handed*/
+>>>>>>> 6df4286fa3fb728fb522623c6309846a7a78cf01
 	.nav.navbar-nav 
 	{
 		float: left;

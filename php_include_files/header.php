@@ -10,6 +10,7 @@
             //next two lines are checking if to put the javascript in the fiiles by getting the calling php file
             $callingFullPath = explode("/", $_SERVER["SCRIPT_FILENAME"] );
             $callingScript = $callingFullPath[ count( $callingFullPath ) - 1 ];
+<<<<<<< HEAD
             if( $callingScript === "index.php" )
             {
                 echo "<script src=\"js/home.js\" type=\"text/javascript\"></script>\n";
@@ -22,6 +23,20 @@
         <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet" type="text/css">
 		<link href="http://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+=======
+            if ( $pageName === "Home" ) 
+            {
+                echo "<link href=\"https://fonts.googleapis.com/css?family=Ubuntu+Mono\" rel=\"stylesheet\" type=\"text/css\">\n"; 
+                if( $callingScript === "index.php" )
+                {
+                    echo "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js\"></script>";
+                    echo "<script src=\"js/home.js\" type=\"text/javascript\"></script>\n";
+                }
+            }
+        ?>
+		<link href="http://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+>>>>>>> 6df4286fa3fb728fb522623c6309846a7a78cf01
 		<link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/personalstyle.css" rel="stylesheet">    <!--SASS compiles into this .css file-->
         <?php echo "<link href=\"images/{$glyphiconName}.ico\" rel=\"shortcut icon\" type=\"image/x-icon\">"; ?>
