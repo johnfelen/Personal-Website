@@ -22,11 +22,21 @@
     I am planning to graduate from the University of Pittsburgh in Spring 2016 and am currently looking for a job post-graduation.
 </p>
 
+<!--For some reason some styles have to be done inline with a text area(atleast the ones that I have inline, when I try them in an external style sheet they are not applied-->
+<div class="row">
+    <div class="col-xs-6">
+        <textarea rows="1" class="font-vollkorn font-small brown bg-map" placeholder="Your Name"
+        style="width:100%; resize:none; border: 3px solid;"></textarea>
+    </div>
+    <div class="col-xs-6">
+        <textarea rows="1" class="font-vollkorn font-small brown bg-map" placeholder="Your Email"
+        style="width:100%; resize:none; border: 3px solid;"></textarea>
+    </div>    
+</div>
+
 <br>
-<!--For some reason some styles have to be done inline, when I try them in an external style sheet it breaks-->
-<textarea rows="10" class="font-vollkorn font-small brown bg-map" placeholder="Type your Message Here"
-style="width:100%; resize:vertical; border: 3px solid;">
-</textarea>
+<textarea rows="10" class="font-vollkorn font-small brown bg-map" placeholder="Your Message"
+style="width:100%; resize:vertical; border: 3px solid;"></textarea>
 
 <br>
 <p class="font-vollkorn font-small font-center brown" >
