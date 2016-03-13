@@ -30,31 +30,26 @@
 <!--form for their message-->
 <br>
 <form action="contact.php" method="post">
-    <!--For some reason some styles have to be done inline with a text area(atleast the ones that I have inline, when I try them in an external style sheet they are not applied
-    Also the rounded corners for the text area are based the accepted answer from http://stackoverflow.com/questions/26272350/rounded-corners-to-a-textarea-->
     <div class="row">
         <div class="col-xs-5">
-            <textarea rows="1" class="font-vollkorn font-small brown bg-map" placeholder="Your Name" name="name" 
-            style="width:100%; resize:none; border-radius:10px; box-shadow: 0 0 0 3px; border: 3px solid transparent;"></textarea>
+            <textarea rows="1" class="font-vollkorn font-small rounded-textarea bg-map" placeholder="Your Name" name="name" style="resize:none;"></textarea>
         </div>
     </div>
     <br>
     <div class="row">
         <div class="col-xs-5">
-            <textarea rows="1" class="font-vollkorn font-small brown bg-map" placeholder="Your Email" name="email" 
-            style="width:100%; resize:none; border-radius:10px; box-shadow: 0 0 0 3px; border: 3px solid transparent;"></textarea>
+            <textarea rows="1" class="font-vollkorn font-small rounded-textarea bg-map" placeholder="Your Email" name="email" style="resize:none;"></textarea>
         </div>    
     </div>
 
     <br>
-    <textarea rows="10" class="font-vollkorn font-small brown bg-map" placeholder="Your Message" name="message" 
-    style="width:100%; resize:vertical; border-radius:10px; box-shadow: 0 0 0 3px; border: 3px solid transparent;"></textarea>
+    <textarea rows="10" class="font-vollkorn font-small rounded-textarea bg-map" placeholder="Your Message" name="message" style="resize:vertical;"></textarea>
 
     <br><br>
     <div class="row">
         <div class="col-xs-9"></div>
         <div class="col-xs-3">
-            <input class="btn btn-lg btn-primary btn-block btn-brown" type="submit" value="Submit Message" title="Send Me The Message!"/>
+            <input class="btn btn-lg btn-primary btn-block btn-brown font-vollkorn font-small" type="submit" value="Submit Message" title="Send Me The Message!"/>
         </div>
     </div>
 </form>

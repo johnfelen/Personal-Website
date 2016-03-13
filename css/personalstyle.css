@@ -11,13 +11,33 @@ body {
   color: #B34514;
   border-color: #B34514; }
 
+/*The rounded corners for the text area are based the accepted answer from http://stackoverflow.com/questions/26272350/rounded-corners-to-a-textarea */
+.rounded-textarea {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 0 3px #B34514;
+  border: 3px solid transparent; }
+
 .btn-brown {
-  background-color: #FFE1B8;
-  color: #B34514; }
+  background-color: #B34514;
+  color: #FFE1B8;
+  border-color: #FFE1B8; }
 
 .btn-brown:hover {
+  background-color: #FFE1B8;
+  color: #B34514;
+  border-color: #B34514; }
+
+/* This is for when the input button is clicked in and held I found the correct pseudo selectors(for the :active:focus) at the verified answer for http://stackoverflow.com/questions/31379175/bootstrap-button-on-click-showing-default-colour */
+.btn-brown:active:focus {
   background-color: #B34514;
-  color: #FFE1B8; }
+  color: #FFE1B8;
+  border-color: #FFE1B8; }
+
+.btn-brown:focus {
+  background-color: #B34514;
+  color: #FFE1B8;
+  border-color: #FFE1B8; }
 
 .container-main {
   padding: 30px;
