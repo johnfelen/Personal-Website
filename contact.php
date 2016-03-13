@@ -22,27 +22,41 @@
     I am planning to graduate from the University of Pittsburgh in Spring 2016 and am currently looking for a job post-graduation.
 </p>
 
-<!--For some reason some styles have to be done inline with a text area(atleast the ones that I have inline, when I try them in an external style sheet they are not applied-->
-<div class="row">
-    <div class="col-xs-6">
-        <textarea rows="1" class="font-vollkorn font-small brown bg-map" placeholder="Your Name"
-        style="width:100%; resize:none; border: 3px solid;"></textarea>
-    </div>
-    <div class="col-xs-6">
-        <textarea rows="1" class="font-vollkorn font-small brown bg-map" placeholder="Your Email"
-        style="width:100%; resize:none; border: 3px solid;"></textarea>
-    </div>    
-</div>
-
-<br>
-<textarea rows="10" class="font-vollkorn font-small brown bg-map" placeholder="Your Message"
-style="width:100%; resize:vertical; border: 3px solid;"></textarea>
-
-<br>
 <p class="font-vollkorn font-small font-center brown" >
-    If you wish to contact me, please do so through my e-mail address: johnfelen@pitt.edu.  &nbsp;
-    A link to my r&eacute;sum&eacute; is in the footer. &nbsp;
+    If you wish to contact me, you can send me a message through the form below or send an email to johnfelen@pitt.edu.  &nbsp;
+    A link to my r&eacute;sum&eacute; is in the footer along with links to my GitHub and LinkedIn.
 </p>
+
+<!--form for their message-->
+<br>
+<form action="portfolio.php" method="post">
+    <!--For some reason some styles have to be done inline with a text area(atleast the ones that I have inline, when I try them in an external style sheet they are not applied-->
+    <div class="row">
+        <div class="col-xs-5">
+            <textarea rows="1" class="font-vollkorn font-small brown bg-map" placeholder="Your Name"
+            style="width:100%; resize:none; border: 3px solid;"></textarea>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-5">
+            <textarea rows="1" class="font-vollkorn font-small brown bg-map" placeholder="Your Email"
+            style="width:100%; resize:none; border: 3px solid;"></textarea>
+        </div>    
+    </div>
+
+    <br>
+    <textarea rows="10" class="font-vollkorn font-small brown bg-map" placeholder="Your Message"
+    style="width:100%; resize:vertical; border: 3px solid;"></textarea>
+
+    <br><br>
+    <div class="row">
+        <div class="col-xs-9"></div>
+        <div class="col-xs-3">
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Submit Message"/>
+        </div>
+    </div>
+</form>
 
 <?php
     include( "php_include_files/end-row-10.php" );
