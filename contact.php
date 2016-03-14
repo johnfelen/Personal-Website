@@ -11,15 +11,47 @@
     }
     else if( isset( $_POST[ "name" ] ) && isset( $_POST[ "name" ] ) && isset( $_POST[ "name" ] ) )  //technically I only have to check for one since I'm using pattern and required for the inputs, but this will check if they entered anything into the text areas
     {
-        $name = mysqli_real_escape_string( $contactDB, $_POST[ "name" ] );
-        $email = mysqli_real_escape_string( $contactDB, $_POST[ "email" ] );
-        $message = mysqli_real_escape_string( $contactDB, $_POST[ "message" ] );
-    
-        $result = $contactDB->query( "INSERT INTO `messages` (`Name`, `Email`, `Message`) VALUES( '{$name}', '{$email}', '{$message}' );" );
-        
-        if( !$result )
+        //name and email validity test is based on http://www.w3schools.com/php/php_form_url_email.asp
+        $name = test_input( $_POST[ "name" ] );
+        if( !preg_match( "/^[a-zA-Z ]*$/", $name ) ) 
         {
-            $errorWithQuery = "Error with Query";
+            $nameError = "Only letters and white space allowed."; 
+        }
+        
+        else
+        {
+            $name = mysqli_real_escape_string( $contactDB, $_POST[ "name" ] );
+        }
+        
+        $email = test_input( $_POST[ "email" ] );
+        if( !filter_var( $email, FILTER_VALIDATE_EMAIL) ) 
+        {
+            $emailError = "Invalid email format."; 
+        }
+        
+        else
+        {
+            $email = mysqli_real_escape_string( $contactDB, $_POST[ "email" ] );
+            
+            //check if the email has already been in the database        
+            $checkPK = $contactDB->query( "SELECT * FROM  `messages`  WHERE `Email` = '{$email}'" );
+            if( mysqli_num_rows( $checkPK ) > 0 )
+            {
+                $emailError = "Email is already in database.";
+            }
+        }
+        
+        $message = mysqli_real_escape_string( $contactDB, $_POST[ "message" ] );
+
+        if( !isset( $nameError ) && !isset( $emailError ) ) //only insert into the query if there are no name or email errors
+        {
+            $result = $contactDB->query( "INSERT INTO `messages` (`Name`, `Email`, `Message`) VALUES( '{$name}', '{$email}', '{$message}' );" );
+            
+            if( !$result )
+            {
+                $queryError = "Error with query.";
+            }
+        
         }
     }
     
@@ -69,7 +101,7 @@
 
     <br><br>
     <input class="btn btn-lg btn-primary btn-brown font-vollkorn font-small pull-right"
-    <?php echo ( isset( $errorWithQuery ) ) ? "value=\"Error with DB\" title=\"{$errorWithQuery}\"": "type=\"submit\" value=\"Submit Message\" title=\"Send Me The Message!\""; ?>
+    <?php echo ( isset( $queryError ) ) ? "value=\"Error with DB\" title=\"{$queryError}\"": "type=\"submit\" value=\"Submit Message\" title=\"Send Me The Message!\""; ?>
     />
 </form>
 
