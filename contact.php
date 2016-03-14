@@ -5,6 +5,7 @@
     include( "php_include_files/start-row-10.php" );
     require( "php_include_files/contact-functions.php" );
 
+    $queryDone = false;
     $contactDB = new mysqli( "localhost", "root", "jfelen62", "personal website" );
     if( $contactDB->connect_error )
     {
@@ -16,8 +17,7 @@
         $name = test_input( $_POST[ "name" ] );
         if( !preg_match( "/^[a-zA-Z ]*$/", $name ) ) 
         {
-            $nameError = "Only letters and white space allowed."; 
-            echo $nameError;
+            $name = "Only letters and white space allowed."; 
         }
         
         else
@@ -28,8 +28,7 @@
         $email = test_input( $_POST[ "email" ] );
         if( !filter_var( $email, FILTER_VALIDATE_EMAIL) ) 
         {
-            $emailError = "Invalid email format."; 
-            echo $emailError;
+            $email = "Invalid email format."; 
         }
         
         else
@@ -40,20 +39,24 @@
             $checkPK = $contactDB->query( "SELECT * FROM  `messages`  WHERE `Email` = '{$email}'" );
             if( mysqli_num_rows( $checkPK ) > 0 )
             {
-                $emailError = "Email is already in database.";
-                echo $emailError;
+                $email = "Email is already in database.";
             }
         }
         
         $message = mysqli_real_escape_string( $contactDB, $_POST[ "message" ] );
-
-        if( !isset( $nameError ) && !isset( $emailError ) ) //only insert into the query if there are no name or email errors
+        //only insert into the query if there are no name or email errors I am using $name/$email instead of specific error variables so if there is an error in on input the other inputs that are correct do not get deleted and the code has less control statements in the text areas
+        if( $name !== "Only letters and white space allowed." && ( $email !== "Invalid email format." || $email !== "Email is already in database." ) ) 
         {
             $result = $contactDB->query( "INSERT INTO `messages` (`Name`, `Email`, `Message`) VALUES( '{$name}', '{$email}', '{$message}' );" );
             
             if( !$result )
             {
                 $queryError = "Error with query.";
+            }
+            
+            else
+            {
+                $queryDone = true;
             }
         }
     }
@@ -89,18 +92,21 @@
 <form action="contact.php" method="post">
     <div class="row">
         <div class="col-xs-5">
-            <textarea rows="1" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Name" name="name" pattern=".{1,70}" required title="1 to 70 Characters" style="resize:none;"></textarea>
+            <textarea rows="1" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Name" name="name" 
+            pattern=".{1,70}" required title="1 to 70 Characters" style="resize:none;"><?php echo ( isset( $name ) && !$queryDone ) ? $name: ""; ?></textarea>
         </div>
     </div>
     <br>
     <div class="row">
         <div class="col-xs-5">
-            <textarea rows="1" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Email" name="email" pattern=".{1,70}" required title="1 to 70 Characters" style="resize:none;"></textarea>
+            <textarea rows="1" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Email" name="email" pattern=".{1,70}" 
+            required title="1 to 70 Characters" style="resize:none;"><?php echo ( isset( $email ) && !$queryDone ) ? $email: ""; ?></textarea>
         </div>    
     </div>
 
     <br>
-    <textarea rows="10" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Message" name="message" pattern=".{1}" required title="At Least 1 Character" style="resize:vertical;"></textarea>
+    <textarea rows="10" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Message" name="message" 
+    pattern=".{1}" required title="At Least 1 Character" style="resize:vertical;"><?php echo ( isset( $message ) && !$queryDone ) ? $message: ""; ?></textarea>
 
     <br><br>
     <input class="btn btn-lg btn-primary btn-brown font-vollkorn font-small pull-right"
