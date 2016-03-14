@@ -3,6 +3,29 @@
     $glyphiconName = "envelope";
     include( "php_include_files/header.php" );
     include( "php_include_files/start-row-10.php" );
+    
+    $contactDB = new mysqli( "localhost", "root", "jfelen62", "personal website" );
+    if( $contactDB->connect_error )
+    {
+        die( "Error connecting to database" );
+    }
+    
+    if( isset( $_POST[ "name" ] ) && isset( $_POST[ "email" ] ) && isset( $_POST[ "message" ] ) )    //checks if everything is set, if it is do the query       
+        $result = $contactDB->query( "INSERT INTO `messages` VALUES( {$_POST[ "name" ]}, {$_POST[ "email" ]}, {$_POST[ "message" ]} );" );
+        
+        if( !$result )
+        {
+            die( "Error with query" );
+        }
+    }
+    
+    else if( isset( $_POST[ "name" ] ) || isset( $_POST[ "email" ] ) || isset( $_POST[ "message" ] ) )  //since not everything is set, if one or two of the things are set put the data back into their forms and the ones that is not filled tell them to insert there
+    {
+    
+    }
+    
+    
+    mysqli_close( $portfolioDB );
 ?>
 
 <p class="font-vollkorn font-small font-center brown" >
@@ -46,7 +69,7 @@
     <textarea rows="10" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Message" name="message" style="resize:vertical;"></textarea>
 
     <br><br>
-    <input class="btn btn-lg btn-primary btn-brown font-vollkorn font-small pull-right" type="submit" value="Submit Message" title="Send Me The Message!"/>
+    <input class="btn btn-lg btn-primary btn-brown font-vollkorn font-small pull-right" type="submit" value="Submit Message" id="submit" title="Send Me The Message!"/>
 </form>
 
 <?php

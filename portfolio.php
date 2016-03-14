@@ -56,12 +56,12 @@
         <div class=\"row vertical-center\">	
             <div class=\"col-xs-3\">
                 <p class=\"font-ubuntu font-large font-center colored-link\">
-                    <a href=\"{$row[ 'Link' ]}\" title=\"{$row[ 'Link' ]}\" target=\"_blank\">{$row[ 'Name' ]}</a>
+                    <a href=\"{$row[ "Link" ]}\" title=\"{$row[ "Link" ]}\" target=\"_blank\">{$row[ "Name" ]}</a>
                 </p>
             </div>
             
             <div class=\"col-xs-9\">
-                <p class=\"font-vollkorn font-center font-small brown\">{$row[ 'Description' ]}</p>
+                <p class=\"font-vollkorn font-center font-small brown\">{$row[ "Description" ]}</p>
             </div>
         </div>
         <hr class=\"brown\">";
