@@ -7,15 +7,16 @@
     $contactDB = new mysqli( "localhost", "root", "jfelen62", "personal website" );
     if( $contactDB->connect_error )
     {
-        die( "Error connecting to database" );
+        $errorWithQuery = $contactDB->connect_error;    //used to print out later so they cannot submit anything, I want the page to load but not allow them to keep submitting if there is an error
     }
     
-    if( isset( $_POST[ "name" ] ) && isset( $_POST[ "email" ] ) && isset( $_POST[ "message" ] ) )    //checks if everything is set, if it is do the query       
+    else if( isset( $_POST[ "name" ] ) && isset( $_POST[ "email" ] ) && isset( $_POST[ "message" ] ) )    //checks if everything is set, if it is do the query       
+    {
         $result = $contactDB->query( "INSERT INTO `messages` VALUES( {$_POST[ "name" ]}, {$_POST[ "email" ]}, {$_POST[ "message" ]} );" );
         
         if( !$result )
         {
-            die( "Error with query" );
+            $errorWithQuery = "Error with Query";
         }
     }
     
@@ -23,7 +24,6 @@
     {
     
     }
-    
     
     mysqli_close( $portfolioDB );
 ?>
@@ -69,7 +69,9 @@
     <textarea rows="10" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Message" name="message" style="resize:vertical;"></textarea>
 
     <br><br>
-    <input class="btn btn-lg btn-primary btn-brown font-vollkorn font-small pull-right" type="submit" value="Submit Message" id="submit" title="Send Me The Message!"/>
+    <input class="btn btn-lg btn-primary btn-brown font-vollkorn font-small pull-right"
+    <?php echo ( isset( $errorWithQuery ) ) ? "value=\"Error Connecting to DB\" title=\"{$errorWithQuery}\"": "type=\"submit\" value=\"Submit Message\" title=\"Send Me The Message!\""; ?>
+    />
 </form>
 
 <?php

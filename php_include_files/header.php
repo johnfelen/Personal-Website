@@ -27,7 +27,7 @@
         <?php echo "<link href=\"images/{$glyphiconName}.ico\" rel=\"shortcut icon\" type=\"image/x-icon\">"; ?>
     
     </head>
-    <body class="bg-map"<?php echo( $callingScript === "index.php" ) ? " onload=\"printNextLine()\" onclick=\"printNextLine()\"" : "";?>>    <!--don't call function if we load the static page-->
+    <body class="bg-map"<?php echo ( $callingScript === "index.php" ) ? " onload=\"printNextLine()\" onclick=\"printNextLine()\"" : "";?>>    <!--don't call function if we load the static page-->
 
         <!--top navigation bar-->
         <?php include( "php_include_files/start-row-10.php" ); ?>
