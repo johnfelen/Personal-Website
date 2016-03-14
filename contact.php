@@ -3,33 +3,24 @@
     $glyphiconName = "envelope";
     include( "php_include_files/header.php" );
     include( "php_include_files/start-row-10.php" );
-    
-    //setting the variables in the beginning allows me to not check if they are set in the else if statements below
-    $name = ( isset( $_POST[ "name" ] ) ) ? $_POST[ "name" ] : "";
-    $email = ( isset( $_POST[ "email" ] ) ) ? $_POST[ "email" ] : "";
-    $message = ( isset( $_POST[ "message" ] ) ) ? $_POST[ "message" ] : "";
-    
+
     $contactDB = new mysqli( "localhost", "root", "jfelen62", "personal website" );
     if( $contactDB->connect_error )
     {
         $errorWithQuery = $contactDB->connect_error;    //used to print out later so they cannot submit anything, I want the page to load but not allow them to keep submitting if there is an error
     }
-    
-    else if( $name !== "" && $email !== "" && $message !== "" )    //checks if everything is set, if it is do the query       
+    else if( isset( $_POST[ "name" ] ) && isset( $_POST[ "name" ] ) && isset( $_POST[ "name" ] ) )  //technically I only have to check for one since I'm using pattern and required for the inputs, but this will check if they entered anything into the text areas
     {
+        $name = mysqli_real_escape_string( $contactDB, $_POST[ "name" ] );
+        $email = mysqli_real_escape_string( $contactDB, $_POST[ "email" ] );
+        $message = mysqli_real_escape_string( $contactDB, $_POST[ "message" ] );
+    
         $result = $contactDB->query( "INSERT INTO `messages` (`Name`, `Email`, `Message`) VALUES( '{$name}', '{$email}', '{$message}' );" );
         
         if( !$result )
         {
             $errorWithQuery = "Error with Query";
         }
-        
-        $name = $email = $message = ""; //clear them all for when checking to put previously written texts back into the text areas 
-    }
-    
-    else if( $name !== "" || $email !== "" || $message !== ""  )  //since not everything is set, put the data back into the text areas that were filled and the ones that is not filled tell them to insert there
-    {
-        echo "here";
     }
     
     mysqli_close( $contactDB );
