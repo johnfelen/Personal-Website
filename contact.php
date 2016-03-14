@@ -5,7 +5,7 @@
     include( "php_include_files/start-row-10.php" );
     require( "php_include_files/contact-functions.php" );
 
-    $queryDone = false;
+    $queryDone = false; //it is used in the below text areas to alert that the query is not done, and if the query is done it will tell them that the message has been received
     $contactDB = new mysqli( "localhost", "root", "jfelen62", "personal website" );
     if( $contactDB->connect_error )
     {
@@ -14,7 +14,8 @@
     else if( isset( $_POST[ "name" ] ) && isset( $_POST[ "name" ] ) && isset( $_POST[ "name" ] ) )  //technically I only have to check for one since I'm using pattern and required for the inputs, but this will check if they entered anything into the text areas
     {
         //name and email validity test is based on http://www.w3schools.com/php/php_form_url_email.asp
-        $name = test_input( $_POST[ "name" ] );
+        $name = trim( $_POST[ "name" ] );
+        $name = test_input( $name );
         if( !preg_match( "/^[a-zA-Z ]*$/", $name ) ) 
         {
             $name = "Only letters and white space allowed."; 
@@ -22,18 +23,19 @@
         
         else
         {
-            $name = mysqli_real_escape_string( $contactDB, $_POST[ "name" ] );
+            $name = mysqli_real_escape_string( $contactDB, $name );
         }
         
-        $email = test_input( $_POST[ "email" ] );
-        if( !filter_var( $email, FILTER_VALIDATE_EMAIL) ) 
+        $email = trim( $_POST[ "email" ] );
+        $email = test_input( $email );
+        if( !filter_var( $email, FILTER_VALIDATE_EMAIL ) ) 
         {
             $email = "Invalid email format."; 
         }
         
         else
         {
-            $email = mysqli_real_escape_string( $contactDB, $_POST[ "email" ] );
+            $email = mysqli_real_escape_string( $contactDB, $email );
             
             //check if the email has already been in the database        
             $checkPK = $contactDB->query( "SELECT * FROM  `messages`  WHERE `Email` = '{$email}'" );
@@ -43,7 +45,8 @@
             }
         }
         
-        $message = mysqli_real_escape_string( $contactDB, $_POST[ "message" ] );
+        $message = trim( $_POST[ "message" ] );
+        $message = mysqli_real_escape_string( $contactDB, $message );
         //only insert into the query if there are no name or email errors I am using $name/$email instead of specific error variables so if there is an error in on input the other inputs that are correct do not get deleted and the code has less control statements in the text areas
         if( $name !== "Only letters and white space allowed." && ( $email !== "Invalid email format." || $email !== "Email is already in database." ) ) 
         {
@@ -56,7 +59,7 @@
             
             else
             {
-                $queryDone = true;
+                $queryDone = true;  
             }
         }
     }
@@ -93,14 +96,14 @@
     <div class="row">
         <div class="col-xs-5">
             <textarea rows="1" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Name" name="name" 
-            pattern=".{1,70}" required title="1 to 70 Characters" style="resize:none;"><?php echo ( isset( $name ) && !$queryDone ) ? $name: ""; ?></textarea>
+            pattern=".{1,70}" required title="Only Letters/Spaces, 1 to 70 Characters" style="resize:none;"><?php echo ( isset( $name ) && !$queryDone ) ? $name: ""; ?></textarea>
         </div>
     </div>
     <br>
     <div class="row">
         <div class="col-xs-5">
             <textarea rows="1" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Email" name="email" pattern=".{1,70}" 
-            required title="1 to 70 Characters" style="resize:none;"><?php echo ( isset( $email ) && !$queryDone ) ? $email: ""; ?></textarea>
+            required title="Only Valid Emails, 1 to 70 Characters" style="resize:none;"><?php echo ( isset( $email ) && !$queryDone ) ? $email: ""; ?></textarea>
         </div>    
     </div>
 
