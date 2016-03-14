@@ -4,15 +4,20 @@
     include( "php_include_files/header.php" );
     include( "php_include_files/start-row-10.php" );
     
+    //setting the variables in the beginning allows me to not check if they are set in the else if statements below
+    $name = ( isset( $_POST[ "name" ] ) ) ? $_POST[ "name" ] : "";
+    $email = ( isset( $_POST[ "email" ] ) ) ? $_POST[ "email" ] : "";
+    $message = ( isset( $_POST[ "message" ] ) ) ? $_POST[ "message" ] : "";
+    
     $contactDB = new mysqli( "localhost", "root", "jfelen62", "personal website" );
     if( $contactDB->connect_error )
     {
         $errorWithQuery = $contactDB->connect_error;    //used to print out later so they cannot submit anything, I want the page to load but not allow them to keep submitting if there is an error
     }
     
-    else if( isset( $_POST[ "name" ] ) && isset( $_POST[ "email" ] ) && isset( $_POST[ "message" ] ) )    //checks if everything is set, if it is do the query       
+    else if( $name !== "" && $email !== "" && $message !== "" )    //checks if everything is set, if it is do the query       
     {
-        $result = $contactDB->query( "INSERT INTO `messages` VALUES( {$_POST[ "name" ]}, {$_POST[ "email" ]}, {$_POST[ "message" ]} );" );
+        $result = $contactDB->query( "INSERT INTO `messages` (`Name`, `Email`, `Message`) VALUES( '{$name}', '{$email}', '{$message}' );" );
         
         if( !$result )
         {
@@ -20,12 +25,12 @@
         }
     }
     
-    else if( isset( $_POST[ "name" ] ) || isset( $_POST[ "email" ] ) || isset( $_POST[ "message" ] ) )  //since not everything is set, if one or two of the things are set put the data back into their forms and the ones that is not filled tell them to insert there
+    else if( $name !== "" || $email !== "" || $message !== ""  )  //since not everything is set, put the data back into the text areas that were filled and the ones that is not filled tell them to insert there
     {
-    
+        echo "here";
     }
     
-    mysqli_close( $portfolioDB );
+    mysqli_close( $contactDB );
 ?>
 
 <p class="font-vollkorn font-small font-center brown" >
@@ -70,7 +75,7 @@
 
     <br><br>
     <input class="btn btn-lg btn-primary btn-brown font-vollkorn font-small pull-right"
-    <?php echo ( isset( $errorWithQuery ) ) ? "value=\"Error Connecting to DB\" title=\"{$errorWithQuery}\"": "type=\"submit\" value=\"Submit Message\" title=\"Send Me The Message!\""; ?>
+    <?php echo ( isset( $errorWithQuery ) ) ? "value=\"Error with DB\" title=\"{$errorWithQuery}\"": "type=\"submit\" value=\"Submit Message\" title=\"Send Me The Message!\""; ?>
     />
 </form>
 
