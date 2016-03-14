@@ -23,6 +23,8 @@
         {
             $errorWithQuery = "Error with Query";
         }
+        
+        $name = $email = $message = ""; //clear them all for when checking to put previously written texts back into the text areas 
     }
     
     else if( $name !== "" || $email !== "" || $message !== ""  )  //since not everything is set, put the data back into the text areas that were filled and the ones that is not filled tell them to insert there
@@ -56,22 +58,23 @@
 </p>
 
 <!--form for their message-->
+<!--Since I am using HTML5 I don't have to worry about using php to check if nothing has been imputed I am using pattern and required found at the accepted answer at http://stackoverflow.com/questions/10281962/is-there-a-minlength-validation-attribute-in-html5 -->
 <br>
 <form action="contact.php" method="post">
     <div class="row">
         <div class="col-xs-5">
-            <textarea rows="1" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Name" name="name" style="resize:none;"></textarea>
+            <textarea rows="1" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Name" name="name" pattern=".{1,70}" required title="1 to 70 Characters" style="resize:none;"></textarea>
         </div>
     </div>
     <br>
     <div class="row">
         <div class="col-xs-5">
-            <textarea rows="1" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Email" name="email" style="resize:none;"></textarea>
+            <textarea rows="1" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Email" name="email" pattern=".{1,70}" required title="1 to 70 Characters" style="resize:none;"></textarea>
         </div>    
     </div>
 
     <br>
-    <textarea rows="10" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Message" name="message" style="resize:vertical;"></textarea>
+    <textarea rows="10" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Message" name="message" pattern=".{1}" required title="At Least 1 Character" style="resize:vertical;"></textarea>
 
     <br><br>
     <input class="btn btn-lg btn-primary btn-brown font-vollkorn font-small pull-right"
