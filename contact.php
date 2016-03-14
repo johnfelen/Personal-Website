@@ -106,12 +106,26 @@
 
     <br>
     <textarea rows="10" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Message" name="message" 
-    pattern=".{1}" required title="At Least 1 Character" style="resize:vertical;"><?php echo ( isset( $message ) && !$queryDone ) ? $message: ""; ?></textarea>
+    pattern=".{1}" required title="At Least 1 Character" style="resize:vertical;"><?php //the php start and end must come right after and before the text areas tags, respectively, because there will be spaces that go into the text area when the page loads causing the place holder to not be present
+        if( isset( $message ) && !$queryDone )
+        {
+            echo $message;
+        }
+        
+        else if( $queryDone )
+        {
+            echo "Message Sent!";
+        }
+        
+        else
+        {
+            echo "";
+        }
+    ?></textarea>
 
     <br><br>
-    <input class="btn btn-lg btn-primary btn-brown font-vollkorn font-small pull-right"
-    <?php echo ( isset( $queryError ) ) ? "value=\"Error with DB\" title=\"{$queryError}\"": "type=\"submit\" value=\"Submit Message\" title=\"Send Me The Message!\""; ?>
-    />
+    <input class="btn btn-lg btn-primary btn-brown font-vollkorn font-small pull-right" type="submit" value="Submit Message" title="Send Me The Message!"/>
+
 </form>
 
 <?php
