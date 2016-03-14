@@ -7,7 +7,7 @@
     $pageName = "Portfolio";
     $glyphiconName = "folder-open";
     include( "php_include_files/header.php" );
-    require( "php_include_files/portfolio-funcions.php" );
+    require( "php_include_files/portfolio-functions.php" );
     
     $portfolioDB = new mysqli( "localhost", "root", "jfelen62", "personal website" );
     if( $portfolioDB->connect_error )

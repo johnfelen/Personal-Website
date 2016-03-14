@@ -3,6 +3,7 @@
     $glyphiconName = "envelope";
     include( "php_include_files/header.php" );
     include( "php_include_files/start-row-10.php" );
+    require( "php_include_files/contact-functions.php" );
 
     $contactDB = new mysqli( "localhost", "root", "jfelen62", "personal website" );
     if( $contactDB->connect_error )
@@ -16,6 +17,7 @@
         if( !preg_match( "/^[a-zA-Z ]*$/", $name ) ) 
         {
             $nameError = "Only letters and white space allowed."; 
+            echo $nameError;
         }
         
         else
@@ -27,6 +29,7 @@
         if( !filter_var( $email, FILTER_VALIDATE_EMAIL) ) 
         {
             $emailError = "Invalid email format."; 
+            echo $emailError;
         }
         
         else
@@ -38,6 +41,7 @@
             if( mysqli_num_rows( $checkPK ) > 0 )
             {
                 $emailError = "Email is already in database.";
+                echo $emailError;
             }
         }
         
@@ -51,7 +55,6 @@
             {
                 $queryError = "Error with query.";
             }
-        
         }
     }
     
