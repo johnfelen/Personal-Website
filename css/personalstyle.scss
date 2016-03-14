@@ -3,7 +3,6 @@ $brown: #B34514;
 $cream: #FFE1B8;
 $grey: #808080;
 
-/*This will make the subtle pattern repeat as the background for all pages*/
 body 
 { 
     overflow-x:hidden;  /*gets rid of bottom horizontal bar*/
@@ -11,7 +10,7 @@ body
 
 .bg-map
 {
-        background: url("../images/old-map.png") repeat 0 0;
+        background: url("../images/old-map.png") repeat 0 0;    /*This will make the subtle pattern repeat as the background*/
 }
     
 .brown
@@ -20,6 +19,60 @@ body
     border-color: $brown;
 }
 
+.container-main /*for some reason I cannot make borders around images or tables so I am going to use container-main for the table border*/
+{
+	padding: 30px;
+	background-color: $cream;
+	border-radius: 10px;
+	border-color: $brown;
+	border-style: solid;
+}
+
+.colored-link > a
+{
+    color: $brown;
+}
+
+.colored-link > a:hover
+{
+    color: $grey;
+}
+
+/*START OF MISC HOME CSS*/
+.picture
+{
+    border-style: 2px solid;
+    border-radius: 10px;
+}
+
+.invisible
+{
+    visiblity: hidden;
+}
+
+.fill-n-center
+{
+    margin: 0px auto;
+    width: 100%;
+}
+
+.grey:hover
+{
+    background-color: $grey;
+}
+/*END OF MISC HOME CSS*/
+
+/*START OF MISC PORTFOLIO*/
+/*vertical-center is based off the second answer http://stackoverflow.com/questions/8865458/how-to-align-text-vertically-center-in-div-with-css */
+.vertical-center
+{
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+}
+/*END OF MISC PORTFOLIO*/
+
+/*START OF MISC CONTACT*/
 /*The rounded corners for the text area are based the accepted answer from http://stackoverflow.com/questions/26272350/rounded-corners-to-a-textarea */
 .rounded-textarea
 {
@@ -27,6 +80,12 @@ body
     border-radius:10px; 
     box-shadow: 0 0 0 3px $brown; 
     border: 3px solid transparent;
+}
+
+.rounded-textarea:focus
+{
+    background: $cream;
+    outline: none;
 }
 
 .btn-brown
@@ -57,57 +116,7 @@ body
 	color: $cream;
     border-color: $cream;
 }
-
-.container-main /*for some reason I cannot make borders around images or tables so I am going to use container-main for the table border*/
-{
-	padding: 30px;
-	background-color: $cream;
-	border-radius: 10px;
-	border-color: $brown;
-	border-style: solid;
-}
-
-.colored-link > a
-{
-    color: $brown;
-}
-
-.colored-link > a:hover
-{
-    color: $grey;
-}
-
-/*vertical-center is based off the second answer http://stackoverflow.com/questions/8865458/how-to-align-text-vertically-center-in-div-with-css */
-.vertical-center
-{
-    display: flex;
-    justify-content: center; /* align horizontal */
-    align-items: center; /* align vertical */
-}
-
-/*START OF MISC HOME CSS*/
-.picture
-{
-    border-style: 2px solid;
-    border-radius: 10px;
-}
-
-.invisible
-{
-    visiblity: hidden;
-}
-
-.fill-n-center
-{
-    margin: 0px auto;
-    width: 100%;
-}
-
-.grey:hover
-{
-    background-color: $grey;
-}
-/*END OF MISC HOME CSS*/
+/*END OF MISC CONTACT*/
     
 /*START OF FONTS*/
 .font-ubuntu
@@ -161,7 +170,7 @@ body
     font-size: 32px;    /*enlarges the glyphicon links*/
 }
 
-.nav > li.active  > a	/*Change color of active navbar*/
+.nav > li.active  > a	
 {
     margin-left: 15px;
     margin-right: 15px;
@@ -169,7 +178,7 @@ body
 	color: $brown;
 }
 
-.nav > li.active > a:hover	/*Change color of active navbar hover*/
+.nav > li.active > a:hover	
 {
     margin-left: 15px;
     margin-right: 15px;
@@ -177,7 +186,7 @@ body
 	color: $cream;
 }
 
-.nav > li > a	/*Change color of nonactive navbar*/
+.nav > li > a	
 {	
     margin-left: 15px;
     margin-right: 15px;
@@ -185,7 +194,7 @@ body
 	color: $cream;
 }
 
-.nav > li > a:hover	/*Change color of nonactive navbar hover*/
+.nav > li > a:hover	
 {	
     margin-left: 15px;
     margin-right: 15px;

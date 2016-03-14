@@ -9,7 +9,7 @@
     include( "php_include_files/header.php" );
     require( "php_include_files/portfolio-funcions.php" );
     
-    $portfolioDB = new mysqli( "localhost", "root", "jfelen62", "portfolio" );
+    $portfolioDB = new mysqli( "localhost", "root", "jfelen62", "personal website" );
     if( $portfolioDB->connect_error )
     {
         die( "Error connecting to database" );

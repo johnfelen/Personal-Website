@@ -32,26 +32,21 @@
 <form action="contact.php" method="post">
     <div class="row">
         <div class="col-xs-5">
-            <textarea rows="1" class="font-vollkorn font-small rounded-textarea bg-map" placeholder="Your Name" name="name" style="resize:none;"></textarea>
+            <textarea rows="1" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Name" name="name" style="resize:none;"></textarea>
         </div>
     </div>
     <br>
     <div class="row">
         <div class="col-xs-5">
-            <textarea rows="1" class="font-vollkorn font-small rounded-textarea bg-map" placeholder="Your Email" name="email" style="resize:none;"></textarea>
+            <textarea rows="1" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Email" name="email" style="resize:none;"></textarea>
         </div>    
     </div>
 
     <br>
-    <textarea rows="10" class="font-vollkorn font-small rounded-textarea bg-map" placeholder="Your Message" name="message" style="resize:vertical;"></textarea>
+    <textarea rows="10" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Message" name="message" style="resize:vertical;"></textarea>
 
     <br><br>
-    <div class="row">
-        <div class="col-xs-9"></div>
-        <div class="col-xs-3">
-            <input class="btn btn-lg btn-primary btn-block btn-brown font-vollkorn font-small" type="submit" value="Submit Message" title="Send Me The Message!"/>
-        </div>
-    </div>
+    <input class="btn btn-lg btn-primary btn-brown font-vollkorn font-small pull-right" type="submit" value="Submit Message" title="Send Me The Message!"/>
 </form>
 
 <?php

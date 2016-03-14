@@ -1,22 +1,66 @@
 /*Thanks to subtlepatterns.com for providing the background*/
-/*This will make the subtle pattern repeat as the background for all pages*/
 body {
   overflow-x: hidden;
   /*gets rid of bottom horizontal bar*/ }
 
 .bg-map {
-  background: url("../images/old-map.png") repeat 0 0; }
+  background: url("../images/old-map.png") repeat 0 0;
+  /*This will make the subtle pattern repeat as the background*/ }
 
 .brown {
   color: #B34514;
   border-color: #B34514; }
 
+.container-main {
+  padding: 30px;
+  background-color: #FFE1B8;
+  border-radius: 10px;
+  border-color: #B34514;
+  border-style: solid; }
+
+.colored-link > a {
+  color: #B34514; }
+
+.colored-link > a:hover {
+  color: #808080; }
+
+/*START OF MISC HOME CSS*/
+.picture {
+  border-style: 2px solid;
+  border-radius: 10px; }
+
+.invisible {
+  visiblity: hidden; }
+
+.fill-n-center {
+  margin: 0px auto;
+  width: 100%; }
+
+.grey:hover {
+  background-color: #808080; }
+
+/*END OF MISC HOME CSS*/
+/*START OF MISC PORTFOLIO*/
+/*vertical-center is based off the second answer http://stackoverflow.com/questions/8865458/how-to-align-text-vertically-center-in-div-with-css */
+.vertical-center {
+  display: flex;
+  justify-content: center;
+  /* align horizontal */
+  align-items: center;
+  /* align vertical */ }
+
+/*END OF MISC PORTFOLIO*/
+/*START OF MISC CONTACT*/
 /*The rounded corners for the text area are based the accepted answer from http://stackoverflow.com/questions/26272350/rounded-corners-to-a-textarea */
 .rounded-textarea {
   width: 100%;
   border-radius: 10px;
   box-shadow: 0 0 0 3px #B34514;
   border: 3px solid transparent; }
+
+.rounded-textarea:focus {
+  background: #FFE1B8;
+  outline: none; }
 
 .btn-brown {
   background-color: #B34514;
@@ -39,43 +83,7 @@ body {
   color: #FFE1B8;
   border-color: #FFE1B8; }
 
-.container-main {
-  padding: 30px;
-  background-color: #FFE1B8;
-  border-radius: 10px;
-  border-color: #B34514;
-  border-style: solid; }
-
-.colored-link > a {
-  color: #B34514; }
-
-.colored-link > a:hover {
-  color: #808080; }
-
-/*vertical-center is based off the second answer http://stackoverflow.com/questions/8865458/how-to-align-text-vertically-center-in-div-with-css */
-.vertical-center {
-  display: flex;
-  justify-content: center;
-  /* align horizontal */
-  align-items: center;
-  /* align vertical */ }
-
-/*START OF MISC HOME CSS*/
-.picture {
-  border-style: 2px solid;
-  border-radius: 10px; }
-
-.invisible {
-  visiblity: hidden; }
-
-.fill-n-center {
-  margin: 0px auto;
-  width: 100%; }
-
-.grey:hover {
-  background-color: #808080; }
-
-/*END OF MISC HOME CSS*/
+/*END OF MISC CONTACT*/
 /*START OF FONTS*/
 .font-ubuntu {
   font-family: 'Ubuntu', sans-serif; }
