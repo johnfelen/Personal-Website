@@ -1,0 +1,9 @@
+THIS IS THE PLAN CURRENTLY WILL BE UPDATED BEFORE SUBMISSION
+
+From part 1 I added some more sorting options to the Portfolio and also refactored the PHP code to be object oriented on the page also.  Furthermore, I added themes to my website and the last theme that the user was on would be saved as a cookie.  I also changed the contact form to use AJAX instead of reloading the page with PHP.  POSSIBLE: Added a Hobbies/Interests page that would use JavaScript and jQuery to branch out subsets of the main hobbies. (if not there then definitely add to next answer)
+
+I cannot currently think of anything large I would want to implement on my website.  However I think implementing some CSS3 animations too make the website look more alive and make it look less static.
+
+The main things I learned between project part 1 and part 2 were in the world of JavaScript.  Specifically I understood jQuery syntax and I know what JSON is an have a basic understanding of how to use it as an API.  Furthermore, I learned what AJAX was and how to use it in web development.
+
+The things I liked about the project was that it was very free form and it was very helpful in learning the topics that we covered in class.  Also, the since I created my personal website from it, it actually can be used outside the classroom not only as a coding sample but as a advertisement platform for myself.  I think if we had more time on the second part of the project it would be better since we got it at the beginning of the final project/final exam phase(which of course makes sense since this is the final part of the project).
