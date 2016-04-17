@@ -23,7 +23,7 @@
 <div class="row">
     <div class="col-xs-3"></div>
         <div class="col-xs-6">
-            <img src="./images/me.jpg" class="picture" alt="Picture of Me" width="100%"/>
+            <img src="images/me.jpg" class="picture" alt="Picture of Me" width="100%"/>
             <blink class="invisible">
                 <p class="font-vollkorn font-medium font-center brown" id="broken"></p>
                 <p class="font-ubuntu-mono font-medium font-center brown" id="continue">
