@@ -15,63 +15,63 @@
     {
         //name and email validity test is based on http://www.w3schools.com/php/php_form_url_email.asp
         $name = test_input( $_POST[ "name" ] );
-        if( !preg_match( "/^[a-zA-Z ]*$/", $name ) ) 
+        if( !preg_match( "/^[a-zA-Z ]*$/", $name ) )
         {
-            $name = "Only letters and white space allowed."; 
+            $name = "Only letters and white space allowed.";
         }
-        
+
         else
         {
             $name = mysqli_real_escape_string( $contactDB, $_POST[ "name" ] );
         }
-        
+
         $email = test_input( $_POST[ "email" ] );
-        if( !filter_var( $email, FILTER_VALIDATE_EMAIL) ) 
+        if( !filter_var( $email, FILTER_VALIDATE_EMAIL) )
         {
-            $email = "Invalid email format."; 
+            $email = "Invalid email format.";
         }
-        
+
         else
         {
             $email = mysqli_real_escape_string( $contactDB, $_POST[ "email" ] );
-            
-            //check if the email has already been in the database        
+
+            //check if the email has already been in the database
             $checkPK = $contactDB->query( "SELECT * FROM  `messages`  WHERE `Email` = '{$email}'" );
             if( mysqli_num_rows( $checkPK ) > 0 )
             {
                 $email = "Email is already in database.";
             }
         }
-        
+
         $message = mysqli_real_escape_string( $contactDB, $_POST[ "message" ] );
         //only insert into the query if there are no name or email errors I am using $name/$email instead of specific error variables so if there is an error in on input the other inputs that are correct do not get deleted and the code has less control statements in the text areas
-        if( $name !== "Only letters and white space allowed." && ( $email !== "Invalid email format." || $email !== "Email is already in database." ) ) 
+        if( $name !== "Only letters and white space allowed." && ( $email !== "Invalid email format." || $email !== "Email is already in database." ) )
         {
             $result = $contactDB->query( "INSERT INTO `messages` (`Name`, `Email`, `Message`) VALUES( '{$name}', '{$email}', '{$message}' );" );
-            
+
             if( !$result )
             {
                 $queryError = "Error with query.";
             }
-            
+
             else
             {
                 $queryDone = true;
             }
         }
     }
-    
+
     mysqli_close( $contactDB );
 ?>
 
 <p class="font-vollkorn font-small font-center brown" >
     I was born at a young age of zero months in Pittsburgh, Pennsylvania. &nbsp;
-    I am now 247 months old. &nbsp;
+    I am now 249 months old. &nbsp;
     In my trek for an education I went to the school district known as Mt. Lebanon. &nbsp;
     As a young lad, I  enjoyed learning, thinking while walking aimlessly, challenging myself, and technology. &nbsp;
     Growing up, I was always a chubby kid probably because when I was first introduced to the internet, I was hooked and a user for life. &nbsp;
     Well, I have not lived all of my life yet so I can not be so sure. &nbsp;
-    Let's skip a couple chapters to when I lost a good fifty pounds the summer after junior year of high school. &nbsp; 
+    Let's skip a couple chapters to when I lost a good fifty pounds the summer after junior year of high school. &nbsp;
     Oddly enough, I did not decide to become a computer science major until I was about to start my senior year. &nbsp;
     My family and friends in school would usually come to me with their technology woes. &nbsp;
     Throughout high school I spent many hours helping others in the community. &nbsp;
@@ -92,31 +92,31 @@
 <form action="contact.php" method="post">
     <div class="row">
         <div class="col-xs-5">
-            <textarea rows="1" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Name" name="name" 
+            <textarea rows="1" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Name" name="name"
             pattern=".{1,70}" required title="1 to 70 Characters" style="resize:none;"><?php echo ( isset( $name ) && !$queryDone ) ? $name: ""; ?></textarea>
         </div>
     </div>
     <br>
     <div class="row">
         <div class="col-xs-5">
-            <textarea rows="1" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Email" name="email" pattern=".{1,70}" 
+            <textarea rows="1" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Email" name="email" pattern=".{1,70}"
             required title="1 to 70 Characters" style="resize:none;"><?php echo ( isset( $email ) && !$queryDone ) ? $email: ""; ?></textarea>
-        </div>    
+        </div>
     </div>
 
     <br>
-    <textarea rows="10" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Message" name="message" 
+    <textarea rows="10" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Message" name="message"
     pattern=".{1}" required title="At Least 1 Character" style="resize:vertical;"><?php //the php start and end must come right after and before the text areas tags, respectively, because there will be spaces that go into the text area when the page loads causing the place holder to not be present
         if( isset( $message ) && !$queryDone )
         {
             echo $message;
         }
-        
+
         else if( $queryDone )
         {
             echo "Message Sent!";
         }
-        
+
         else
         {
             echo "";

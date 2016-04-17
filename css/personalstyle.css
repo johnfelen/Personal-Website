@@ -12,6 +12,7 @@ body {
   border-color: #B34514; }
 
 .container-main {
+  /*for some reason I cannot make borders around images or tables so I am going to use container-main for the table border*/
   padding: 30px;
   background-color: #FFE1B8;
   border-radius: 10px;
@@ -30,7 +31,7 @@ body {
   border-radius: 10px; }
 
 .invisible {
-  visiblity: hidden; }
+  visibility: hidden; }
 
 .fill-n-center {
   margin: 0px auto;
@@ -145,8 +146,7 @@ body {
   color: #B34514; }
 
 @media (min-width: 768px) {
-  /* These center the main navbar elements 
-  NOTE: I did grab this from stack overflow ages ago and I have tried to find where I got it to give credit for this project but I came up empty handed*/
+  /* These center the main navbar elements NOTE: I did grab this from stack overflow ages ago and I have tried to find where I got it to give credit for this project but I came up empty handed*/
   .nav.navbar-nav {
     float: left; }
 
