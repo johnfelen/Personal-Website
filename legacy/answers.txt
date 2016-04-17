@@ -1,6 +1,6 @@
 THIS IS THE PLAN CURRENTLY WILL BE UPDATED BEFORE SUBMISSION
 
-From part 1 I added some more sorting options to the Portfolio and also refactored the PHP code to be object oriented on the page also.  Furthermore, I added themes to my website and the last theme that the user was on would be saved as a cookie.  I also changed the contact form to use AJAX instead of reloading the page with PHP.  POSSIBLE: Added a Hobbies/Interests page that would use JavaScript and jQuery to branch out subsets of the main hobbies. (if not there then definitely add to next answer)
+From part 1 I added some more sorting options to the Portfolio and also refactored the PHP code to be object oriented on the page also.  Furthermore, I added themes to my website and the last theme that the user was on would be saved as a cookie.  I also changed the contact form to use AJAX instead of reloading the page with PHP.  Also, I added text rotation for the portfolio titles if the browser size becomes to small on x axis.  POSSIBLE: Added a Hobbies/Interests page that would use JavaScript and jQuery to branch out subsets of the main hobbies. (if not there then definitely add to next answer)
 
 I cannot currently think of anything large I would want to implement on my website.  However I think implementing some CSS3 animations too make the website look more alive and make it look less static.
 
