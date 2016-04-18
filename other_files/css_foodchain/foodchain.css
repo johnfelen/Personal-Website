@@ -19,11 +19,11 @@ body
 
 /*Footer fix is up to .container-login, it keeps at bottom and only showing up when at the bottom of the page*/
 /*The height other two commented lines in fix can be adjusted to increase/decrese size of footer*/
-/*Html shoud look like this: 
-<body> Navbar <div class="wrapper"> 
+/*Html shoud look like this:
+<body> Navbar <div class="wrapper">
 Main text for page and objects etc
 <div class="push"></div> </div>
-<div class="footer"> <div class="container"> Footer info </div> </div> 
+<div class="footer"> <div class="container"> Footer info </div> </div>
 NOTE: container div is just to make it not take up the whole bottom of the page, not part of fix*/
 
 html
@@ -39,7 +39,7 @@ html
           border-radius: 0 !important;*/
 }
 
-.wrapper 
+.wrapper
 {
     min-height: 100%;
     height: auto !important;
@@ -47,7 +47,7 @@ html
     margin: 0 auto -100px; /* the bottom margin is the negative value of the footer's height */
 }
 
-.footer, .push 
+.footer, .push
 {
     height: 100px; /* .push must be the same height as .footer */
 }
@@ -71,7 +71,7 @@ html
 	border-radius:10px;
 }
 
-.form-signin 
+.form-signin
 {
 	max-width: 330px;
 	padding: 15px;
@@ -85,17 +85,17 @@ html
 }
 
 .form-signin .form-signin-heading,
-.form-signin .checkbox 
+.form-signin .checkbox
 {
 	font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
-	color:#45B859;	
+	color:#45B859;
 	margin-bottom: 10px;
 }
-.form-signin .checkbox 
+.form-signin .checkbox
 {
 	font-weight: normal;
 }
-.form-signin .form-control 
+.form-signin .form-control
 {
 	position: relative;
 	height: auto;
@@ -114,7 +114,7 @@ html
 }
 
 /*rest of form green focus(highlight)*/
-.form-signin .form-control:focus 
+.form-signin .form-control:focus
 {
 	border-color:#45B859;
 	z-index: 2;
@@ -140,14 +140,14 @@ html
   padding-left:0;
 }
 
-.form-signin input[type="username"] 
+.form-signin input[type="username"]
 {
 	margin-bottom: -1px;
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
 }
 
-.form-signin input[type="password"] 
+.form-signin input[type="password"]
 {
 	margin-bottom: 10px;
 	border-top-left-radius: 0;
@@ -157,7 +157,7 @@ html
 .btn
 {
 	font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
-	background-color:#45B859;	
+	background-color:#45B859;
 	border-color:#45B859;
 }
 
@@ -224,9 +224,9 @@ p.oppositeFoot
 }
 
 /*fix the gray color that hapens when the dropdown menu happens*/
-.navbar-default .navbar-nav > .active > a, 
-.navbar-default .navbar-nav > .active > a:hover, 
-.navbar-default .navbar-nav > .active > a:focus 
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus
 {
 	background-color:#45B859;
 }
@@ -237,7 +237,7 @@ p.oppositeFoot
 }
 
 /*makes the gray highlight to match the background*/
-.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus 
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus
 {
     background-color:#FAFAEE;
 }
@@ -254,7 +254,7 @@ p.question
 
 .jumbotron
 {
-	background: url("../images/restaurant_icons_green.png") repeat 0 0;
+	background: url("images/restaurant_icons_green.png") repeat 0 0;
 	margin-top:-10px;	/*Makes the restaurant sign up page have no scroll bar*/
 	background-color:#45B859;
 	margin-bottom: -10px;	/*Centers the white part a bit*/
@@ -329,7 +329,7 @@ p.normal
 /*Tinker with the margins, but 15 looks pretty good
 if margins are 20 and width is 60, you can see broccoli*/
 .vertical-center
-{	
+{
 	border-radius: 10px;
 	border-color:#45B859;
 	border-style:solid;
@@ -342,13 +342,13 @@ if margins are 20 and width is 60, you can see broccoli*/
 	display: flex;	/*part 1 of vertical alignment*/
 }
 
-/*container-main makes the container only hold things in at 70% width*/ 
+/*container-main makes the container only hold things in at 70% width*/
 .container-main
 {
 	margin-top:auto;	/*margin top and bottom are second part of vertical alignment*/
 	margin-bottom:auto;
-	margin-left:10%;	
-	margin-right:10%;	
+	margin-left:10%;
+	margin-right:10%;
 	width: 80%;
 }
 
@@ -399,13 +399,13 @@ however, on smaller screens the difference is more noticable*/
 	background-color:#FAFAEE;
 }
 
-#top, #bottom, #left, #right 
+#top, #bottom, #left, #right
 {
 	background: #ECECE0;
 	position: fixed;
 }
 
-#left, #right 
+#left, #right
 {
 	top: 0; bottom: 0;
 	width: 3px;
@@ -413,8 +413,8 @@ however, on smaller screens the difference is more noticable*/
 
 #left { left: 0; }
 #right { right: 0; }
-		
-#top, #bottom 
+
+#top, #bottom
 {
 	left: 0; right: 0;
 	height: 3px;
