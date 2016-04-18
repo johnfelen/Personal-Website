@@ -25,6 +25,9 @@ body {
 .colored-link > a:hover {
   color: #808080; }
 
+.dropdown-menu > li:hover > a {
+  color: #B34514; }
+
 /*START OF MISC HOME CSS*/
 .picture {
   border-style: 2px solid;

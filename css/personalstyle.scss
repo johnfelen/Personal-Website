@@ -32,6 +32,10 @@ body {
     color: $grey;
 }
 
+.dropdown-menu > li:hover > a {
+    color: $brown;
+}
+
 /*START OF MISC HOME CSS*/
 .picture {
     border-style: 2px solid;
