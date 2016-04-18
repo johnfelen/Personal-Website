@@ -25,9 +25,6 @@ body {
 .colored-link > a:hover {
   color: #808080; }
 
-.dropdown-menu > li:hover > a {
-  color: #B34514; }
-
 /*START OF MISC HOME CSS*/
 .picture {
   border-style: 2px solid;
@@ -116,7 +113,7 @@ body {
   text-align: center; }
 
 /*END OF FONTS*/
-/*START OF NAVBAR ELEMENTS*/
+/*START OF NAVBAR, SORTING AND DROPDOWN ELEMENTS*/
 .navbar {
   background-color: #B34514;
   border-bottom-left-radius: 10px;
@@ -124,29 +121,31 @@ body {
   font-size: 32px;
   /*enlarges the glyphicon links*/ }
 
-.nav > li.active > a {
-  margin-left: 15px;
-  margin-right: 15px;
-  background-color: #FFE1B8;
-  color: #B34514; }
+.nav > li {
+  padding-left: 15px;
+  padding-right: 15px; }
 
-.nav > li.active > a:hover {
-  margin-left: 15px;
-  margin-right: 15px;
+.nav > li > a, .dropdown-menu > li > a {
   background-color: #B34514;
   color: #FFE1B8; }
 
-.nav > li > a {
-  margin-left: 15px;
-  margin-right: 15px;
+.nav > li > a:hover, .dropdown-menu > li > a:hover {
+  background-color: #FFE1B8;
+  color: #B34514; }
+
+.nav > li.active > a, .dropdown-menu > li.active > a {
+  background-color: #FFE1B8;
+  color: #B34514; }
+
+.nav > li.active > a:hover, .dropdown-menu > li.active > a:hover {
   background-color: #B34514;
   color: #FFE1B8; }
 
-.nav > li > a:hover {
-  margin-left: 15px;
-  margin-right: 15px;
-  background-color: #FFE1B8;
-  color: #B34514; }
+.dropdown-menu {
+  border-color: #B34514;
+  background-color: #B34514;
+  padding-left: 5px;
+  padding-right: 5px; }
 
 @media (min-width: 768px) {
   /* These center the main navbar elements NOTE: I did grab this from stack overflow ages ago and I have tried to find where I got it to give credit for this project but I came up empty handed*/
@@ -168,7 +167,7 @@ body {
 
   .nav.navbar-nav li {
     text-align: left; } }
-/*END OF NAVBAR ELEMENTS*/
+/*END OF NAVBAR, DROPDOWN AND SORTING ELEMENTS*/
 /*START OF FOOTER*/
 .footer {
   position: absolute; }

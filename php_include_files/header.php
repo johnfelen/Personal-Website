@@ -33,13 +33,6 @@
                         <a href="contact.php" title="Contact Me"><span class="glyphicon glyphicon-envelope"></a>
                     </li>
                 </ul>
-
-                <!--Dropdown-->
-                <!-- <ul class="nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdwon"><span class="glyphicon glyphicon-picture"></a>
-                    </li>
-                </ul> -->
             </div>
         </div>
         <?php include( "php_include_files/end-row-10.php" ); ?>
@@ -49,19 +42,17 @@
         <hr class="brown">
             <h1 class="font-ubuntu font-header brown">
                 <div class="dropdown colored-link">
+                    <!--the reason the whole anchor tag is on the same line is because it adds an extra space with underline if I don't-->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Change the Website Theme"><span class="glyphicon glyphicon-<?php echo "{$glyphiconName}";?>"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" id="color1">Color 1</a></li>
+                    <ul class="dropdown-menu" style="border-color: #B34514;">
+                        <li class="active"><a href="#" id="color1">Color 1</a></li>
                         <li><a href="#" id="color2">Color 2</a></li>
                         <li><a href="#" id="color3">Color 3</a></li>
                         <li><a href="#" id="color4">Color 4</a></li>
                         <li><a href="#" id="color5">Color 5</a></li>
                         <li><a href="#" id="color6">Color 6</a></li>
                     </ul>
-                    <?php
-                        // echo "<span class=\"glyphicon glyphicon-{$glyphiconName} brown\"></span>";
-                        echo ( $pageName === "Portfolio" ) ? "&nbsp;{$pageName}" : "{$pageName}";    //this if is just for formatting since the folder in Portfolio will cover part of the 'P' without a space
-                    ?>
+                    <?php echo ( $pageName === "Portfolio" ) ? "&nbsp;{$pageName}" : "{$pageName}";  //this is for formatting since the folder in Portfolio will cover part of the 'P' without a space ?>
                 </div>
             </h1>
         <hr class="brown">
