@@ -12,9 +12,10 @@
     }
 
     $_SESSION[ "lastStartTime" ] = time();  //fall through and set the time variable, the 15 minutes is so that the user won't have to continually go through the home page print outs wihtin a normal viewing of my website
-    //which I deem to be 15 minutes, and if they want to see it again, 15 minutes is a short amount of time to do something else and come back
+
     $pageName = "Home";
     $glyphiconName = "home";
+    $printLines = true; //this will tell body to have the print line functions
     include( "php_include_files/header.php" );
     include( "php_include_files/start-row-10.php" );
 ?>
@@ -26,9 +27,7 @@
             <img src="images/me.jpg" class="picture" alt="Picture of Me" width="100%"/>
             <blink class="invisible">
                 <p class="font-vollkorn font-medium font-center brown" id="broken"></p>
-                <p class="font-ubuntu-mono font-medium font-center brown" id="continue">
-                    Click to Continue
-                </p>
+                <p class="font-ubuntu-mono font-medium font-center brown" id="continue"> Click to Continue </p>
             </blink>
         </div>
     <div class="col-xs-3"></div>
