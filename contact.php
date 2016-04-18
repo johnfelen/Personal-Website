@@ -92,20 +92,20 @@
 <form action="contact.php" method="post">
     <div class="row">
         <div class="col-xs-5">
-            <textarea rows="1" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Name" name="name"
+            <textarea rows="1" class="font-vollkorn font-small brown rounded-textarea subtle-pattern" placeholder="Your Name" name="name"
             pattern=".{1,70}" required title="1 to 70 Characters" style="resize:none;"><?php echo ( isset( $name ) && !$queryDone ) ? $name: ""; ?></textarea>
         </div>
     </div>
     <br>
     <div class="row">
         <div class="col-xs-5">
-            <textarea rows="1" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Email" name="email" pattern=".{1,70}"
+            <textarea rows="1" class="font-vollkorn font-small brown rounded-textarea subtle-pattern" placeholder="Your Email" name="email" pattern=".{1,70}"
             required title="1 to 70 Characters" style="resize:none;"><?php echo ( isset( $email ) && !$queryDone ) ? $email: ""; ?></textarea>
         </div>
     </div>
 
     <br>
-    <textarea rows="10" class="font-vollkorn font-small brown rounded-textarea bg-map" placeholder="Your Message" name="message"
+    <textarea rows="10" class="font-vollkorn font-small brown rounded-textarea subtle-pattern" placeholder="Your Message" name="message"
     pattern=".{1}" required title="At Least 1 Character" style="resize:vertical;"><?php //the php start and end must come right after and before the text areas tags, respectively, because there will be spaces that go into the text area when the page loads causing the place holder to not be present
         if( isset( $message ) && !$queryDone )
         {

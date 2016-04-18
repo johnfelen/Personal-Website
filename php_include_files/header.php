@@ -16,7 +16,7 @@
         <?php echo "<link href=\"images/{$glyphiconName}.ico\" rel=\"shortcut icon\" type=\"image/x-icon\">\n"; ?>
     </head>
 
-    <body class="bg-map"<?php echo ( isset( $printLines ) ) ? " onload=\"printNextLine()\" onclick=\"printNextLine()\"" : "";?>>
+    <body class="subtle-pattern"<?php echo ( isset( $printLines ) ) ? " onload=\"printNextLine()\" onclick=\"printNextLine()\"" : "";?>>
 
         <!--top navigation bar-->
         <?php include( "php_include_files/start-row-10.php" ); ?>
@@ -42,15 +42,14 @@
         <hr class="brown">
             <h1 class="font-ubuntu font-header brown">
                 <div class="dropdown colored-link">
-                    <!--the reason the whole anchor tag is on the same line is because it adds an extra space with underline if I don't-->
+                    <!--the reason the whole anchor tag is on the same line is because it adds an extra space with underline if I don't, also the theme dropdown is sort of hidden/an easter egg-->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Change the Website Theme"><span class="glyphicon glyphicon-<?php echo "{$glyphiconName}";?>"></span></a>
                     <ul class="dropdown-menu" style="border-color: #B34514;">
-                        <li class="active"><a href="#" id="color1">Color 1</a></li>
-                        <li><a href="#" id="color2">Color 2</a></li>
-                        <li><a href="#" id="color3">Color 3</a></li>
-                        <li><a href="#" id="color4">Color 4</a></li>
-                        <li><a href="#" id="color5">Color 5</a></li>
-                        <li><a href="#" id="color6">Color 6</a></li>
+                        <li class="active"><a href="#" id="old-map">Old Map</a></li>
+                        <li><a href="#" id="billards-table">Billards Table</a></li>
+                        <li><a href="#" id="pink-rice">Pink Rice</a></li>
+                        <li><a href="#" id="picnic">Picnic</a></li>
+                        <li><a href="#" id="stardust">Stardust</a></li>
                     </ul>
                     <?php echo ( $pageName === "Portfolio" ) ? "&nbsp;{$pageName}" : "{$pageName}";  //this is for formatting since the folder in Portfolio will cover part of the 'P' without a space ?>
                 </div>

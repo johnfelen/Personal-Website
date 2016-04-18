@@ -3,7 +3,7 @@ body {
   overflow-x: hidden;
   /*gets rid of bottom horizontal bar*/ }
 
-.bg-map {
+.subtle-pattern {
   background: url("../images/old-map.png") repeat 0 0;
   /*This will make the subtle pattern repeat as the background*/ }
 
@@ -146,6 +146,9 @@ body {
   background-color: #B34514;
   padding-left: 5px;
   padding-right: 5px; }
+
+.dropdown-menu {
+  text-align: center; }
 
 @media (min-width: 768px) {
   /* These center the main navbar elements NOTE: I did grab this from stack overflow ages ago and I have tried to find where I got it to give credit for this project but I came up empty handed*/
