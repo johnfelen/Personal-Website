@@ -1,228 +1,229 @@
 /*Thanks to subtlepatterns.com for providing the background*/
-$brown: #B34514;
-$cream: #FFE1B8;
-$grey: #808080;
 
-body {
-    overflow-x:hidden;  /*gets rid of bottom horizontal bar*/
-}
+/*making html the nest instead of body becasue if its body then I would have to write the background: attribute in .subtle-pattern twice since .subtle-pattern applied to body and nested under body at the smae time does not work*/
+html.old-map {
+    $brown: #B34514;
+    $cream: #FFE1B8;
+    $grey: #808080;
+    overflow-x:hidden;
 
-.subtle-pattern {
-    background: url("../images/old-map.png") repeat 0 0;    /*This will make the subtle pattern repeat as the background*/
-}
-
-.brown {
-    color: $brown;
-    border-color: $brown;
-}
-
-.container-main { /*for some reason I cannot make borders around images or tables so I am going to use container-main for the table border*/
-    padding: 30px;
-    background-color: $cream;
-    border-radius: 10px;
-    border-color: $brown;
-    border-style: solid;
-}
-.colored-link > a {
-    color: $brown;
-}
-
-.colored-link > a:hover {
-    color: $grey;
-}
-
-/*START OF MISC HOME CSS*/
-.picture {
-    border-style: 2px solid;
-    border-radius: 10px;
-}
-
-.invisible {
-    visibility: hidden;
-}
-
-.fill-n-center {
-    margin: 0px auto;
-    width: 100%;
-}
-
-.grey:hover {
-    background-color: $grey;
-}
-/*END OF MISC HOME CSS*/
-
-/*START OF MISC PORTFOLIO*/
-/*vertical-center is based off the second answer http://stackoverflow.com/questions/8865458/how-to-align-text-vertically-center-in-div-with-css */
-.vertical-center {
-    display: flex;
-    justify-content: center; /* align horizontal */
-    align-items: center; /* align vertical */
-}
-/*END OF MISC PORTFOLIO*/
-
-/*START OF MISC CONTACT*/
-/*The rounded corners for the text area are based the accepted answer from http://stackoverflow.com/questions/26272350/rounded-corners-to-a-textarea */
-.rounded-textarea {
-    width:100%;
-    border-radius:10px;
-    box-shadow: 0 0 0 3px $brown;
-    border: 3px solid transparent;
-}
-
-.rounded-textarea:focus {
-    background: $cream;
-    outline: none;
-}
-
-.btn-brown {
-    background-color: $brown;
-    color: $cream;
-    border-color: $cream;
-}
-
-.btn-brown:hover {
-    background-color: $cream;
-    color: $brown;
-    border-color: $brown;
-}
-
-/* This is for when the input button is clicked in and held I found the correct pseudo selectors(for the :active:focus) at the verified answer for http://stackoverflow.com/questions/31379175/bootstrap-button-on-click-showing-default-colour */
-.btn-brown:active:focus {
-    background-color: $brown;
-    color: $cream;
-    border-color: $cream;
-}
-
-.btn-brown:focus {
-    background-color: $brown;
-    color: $cream;
-    border-color: $cream;
-}
-/*END OF MISC CONTACT*/
-
-/*START OF FONTS*/
-.font-ubuntu {
-    font-family: 'Ubuntu', sans-serif;
-}
-
-.font-ubuntu-mono {
-    font-family: 'Ubuntu Mono';
-}
-
-.font-vollkorn {
-    font-family: 'Vollkorn', Georgia, Times, serif;
-}
-
-.font-small {
-    font-size: 20px;
-}
-
-.font-medium {
-    font-size: 28px;
-}
-
-.font-large {
-    font-size: 44px;
-}
-
-.font-header {
-    font-weight: 700;   /*if this is not here ubuntu:bold will not work for some reason and just be normal ubuntu*/
-    font-size: 60px;
-}
-
-.font-center {
-    text-align: center;
-}
-/*END OF FONTS*/
-
-/*START OF NAVBAR, SORTING AND DROPDOWN ELEMENTS*/
-.navbar {
-    background-color: $brown;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    font-size: 32px;    /*enlarges the glyphicon links*/
-}
-
-.nav > li {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-.nav > li > a, .dropdown-menu > li > a {
-    background-color: $brown;
-    color: $cream;
-}
-
-.nav > li > a:hover, .dropdown-menu > li > a:hover {
-    background-color: $cream;
-    color: $brown;
-}
-
-.nav > li.active > a, .dropdown-menu > li.active > a {
-    background-color: $cream;
-    color: $brown;
-}
-
-.nav > li.active > a:hover, .dropdown-menu > li.active > a:hover {
-    background-color: $brown;
-    color: $cream;
-}
-
-.dropdown-menu {
-    border-color: $brown;
-    background-color: $brown;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-.dropdown-menu {
-    text-align: center;
-}
-
-@media (min-width:768px) {
-    /* These center the main navbar elements NOTE: I did grab this from stack overflow ages ago and I have tried to find where I got it to give credit for this project but I came up empty handed*/
-    .nav.navbar-nav {
-        float: left;
+    .subtle-pattern {
+        background: url("../images/old-map.png") repeat 0 0;
     }
 
-    .nav.navbar-nav {
-        clear: left;
-        float: left;
-        margin: 0;
-        padding: 0;
-        position: relative;
-        left: 50%;
+    .brown {
+        color: $brown;
+        border-color: $brown;
+    }
+
+    .container-main {
+        padding: 30px;
+        background-color: $cream;
+        border-radius: 10px;
+        border-color: $brown;
+        border-style: solid;
+    }
+    .colored-link > a {
+        color: $brown;
+    }
+
+    .colored-link > a:hover {
+        color: $grey;
+    }
+
+    /*START OF MISC HOME CSS*/
+    .picture {
+        border-style: 2px solid;
+        border-radius: 10px;
+    }
+
+    .invisible {
+        visibility: hidden;
+    }
+
+    .fill-n-center {
+        margin: 0px auto;
+        width: 100%;
+    }
+
+    .grey:hover {
+        background-color: $grey;
+    }
+    /*END OF MISC HOME CSS*/
+
+    /*START OF MISC PORTFOLIO*/
+    /*vertical-center is based off the second answer http://stackoverflow.com/questions/8865458/how-to-align-text-vertically-center-in-div-with-css */
+    .vertical-center {
+        display: flex;
+        justify-content: center; /* align horizontal */
+        align-items: center; /* align vertical */
+    }
+    /*END OF MISC PORTFOLIO*/
+
+    /*START OF MISC CONTACT*/
+    /*The rounded corners for the text area are based the accepted answer from http://stackoverflow.com/questions/26272350/rounded-corners-to-a-textarea */
+    .rounded-textarea {
+        width:100%;
+        border-radius:10px;
+        box-shadow: 0 0 0 3px $brown;
+        border: 3px solid transparent;
+    }
+
+    .rounded-textarea:focus {
+        background: $cream;
+        outline: none;
+    }
+
+    .btn-brown {
+        background-color: $brown;
+        color: $cream;
+        border-color: $cream;
+    }
+
+    .btn-brown:hover {
+        background-color: $cream;
+        color: $brown;
+        border-color: $brown;
+    }
+
+    /* This is for when the input button is clicked in and held I found the correct pseudo selectors(for the :active:focus) at the verified answer for http://stackoverflow.com/questions/31379175/bootstrap-button-on-click-showing-default-colour */
+    .btn-brown:active:focus {
+        background-color: $brown;
+        color: $cream;
+        border-color: $cream;
+    }
+
+    .btn-brown:focus {
+        background-color: $brown;
+        color: $cream;
+        border-color: $cream;
+    }
+    /*END OF MISC CONTACT*/
+
+    /*START OF FONTS*/
+    .font-ubuntu {
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    .font-ubuntu-mono {
+        font-family: 'Ubuntu Mono';
+    }
+
+    .font-vollkorn {
+        font-family: 'Vollkorn', Georgia, Times, serif;
+    }
+
+    .font-small {
+        font-size: 20px;
+    }
+
+    .font-medium {
+        font-size: 28px;
+    }
+
+    .font-large {
+        font-size: 44px;
+    }
+
+    .font-header {
+        font-weight: 700;   /*if this is not here ubuntu:bold will not work for some reason and just be normal ubuntu*/
+        font-size: 60px;
+    }
+
+    .font-center {
+        text-align: center;
+    }
+    /*END OF FONTS*/
+
+    /*START OF NAVBAR, SORTING AND DROPDOWN ELEMENTS*/
+    .navbar {
+        background-color: $brown;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        font-size: 32px;    /*enlarges the glyphicon links*/
+    }
+
+    .nav > li {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .nav > li > a, .dropdown-menu > li > a {
+        background-color: $brown;
+        color: $cream;
+    }
+
+    .nav > li > a:hover, .dropdown-menu > li > a:hover {
+        background-color: $cream;
+        color: $brown;
+    }
+
+    .nav > li.active > a, .dropdown-menu > li.active > a {
+        background-color: $cream;
+        color: $brown;
+    }
+
+    .nav > li.active > a:hover, .dropdown-menu > li.active > a:hover {
+        background-color: $brown;
+        color: $cream;
+    }
+
+    .dropdown-menu {
+        border-color: $brown;
+        background-color: $brown;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .dropdown-menu {
         text-align: center;
     }
 
-    .nav.navbar-nav > li {
-        position: relative;
-        right: 50%;
+    /* These center the main navbar elements NOTE: I did grab this from stack overflow ages ago and I have tried to find where I got it to give credit for this project but I came up empty handed*/
+    @media (min-width:768px) {
+        .nav.navbar-nav {
+            float: left;
+        }
+
+        .nav.navbar-nav {
+            clear: left;
+            float: left;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            left: 50%;
+            text-align: center;
+        }
+
+        .nav.navbar-nav > li {
+            position: relative;
+            right: 50%;
+        }
+
+        .nav.navbar-nav li {
+            text-align: left
+        }
+    }
+    /*END OF NAVBAR, DROPDOWN AND SORTING ELEMENTS*/
+
+    /*START OF FOOTER*/
+    .footer {
+        position:absolute;
     }
 
-    .nav.navbar-nav li {
-        text-align: left
+    .footer-left {
+        padding-top: 10px;   /*psuedo vertically centers the "John Felen's Personal Website" in the footer*/
+        color: $brown;
+        float: left;
+        text-align: left;
+        width: 66.66666%;
     }
-}
-/*END OF NAVBAR, DROPDOWN AND SORTING ELEMENTS*/
 
-/*START OF FOOTER*/
-.footer {
-    position:absolute;
+    .footer-right {
+        color: $brown;
+        float: left;
+        text-align: right;
+        width: 33.33333%;
+    }
+    /*END OF FOOTER*/
 }
-
-.footer-left {
-    padding-top: 10px;   /*psuedo vertically centers the "John Felen's Personal Website" in the footer*/
-    color: $brown;
-    float: left;
-    text-align: left;
-    width: 66.66666%;
-}
-
-.footer-right {
-    color: $brown;
-    float: left;
-    text-align: right;
-    width: 33.33333%;
-}
-/*END OF FOOTER*/
