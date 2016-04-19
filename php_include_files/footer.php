@@ -21,8 +21,9 @@
     </div>
     <?php include( "php_include_files/end-row-10.php" ); ?>
 
-    <?php echo "<script src=\"js/{$glyphiconName}.js\"></script>" ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <?php echo "<script src=\"js/{$glyphiconName}.js\"></script>" ?>
+    <script src="js/themes.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     </body>
 </html>

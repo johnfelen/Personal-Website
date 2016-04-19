@@ -44,8 +44,8 @@
                 <div class="dropdown colored-link">
                     <!--the reason the whole anchor tag is on the same line is because it adds an extra space with underline if I don't, also the theme dropdown is sort of hidden/an easter egg-->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Change the Website Theme"><span class="glyphicon glyphicon-<?php echo "{$glyphiconName}";?>"></span></a>
-                    <ul class="dropdown-menu" style="border-color: #B34514;">
-                        <li class="active"><a href="#" id="old-map">Old Map</a></li>
+                    <ul id="theme-menu" class="dropdown-menu">
+                        <li><a href="#" id="old-map">Old Map</a></li>
                         <li><a href="#" id="billards-table">Billards Table</a></li>
                         <li><a href="#" id="pink-rice">Pink Rice</a></li>
                         <li><a href="#" id="picnic">Picnic</a></li>
