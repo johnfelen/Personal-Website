@@ -5,12 +5,12 @@
         {
             return "fa-sort-asc";
         }
-        
+
         else if( $currHref === "fa-sort-asc" )
         {
             return "fa-sort-desc";
         }
-        
+
         else
         {
             return "fa-sort-asc";
@@ -23,17 +23,17 @@
         {
             $result = $portfolioDB->query( "SELECT * FROM `project descriptions` ORDER BY `{$orderAttribute}` ASC" );
         }
-        
+
         else if( $currSortChoice === "fa-sort-desc" )
         {
             $result = $portfolioDB->query( "SELECT * FROM `project descriptions` ORDER BY `{$orderAttribute}` DESC" );
         }
-        
+
         if( !$result )
         {
             die( "Error with query" );
         }
-        
+
         else
         {
             return $result;
@@ -45,15 +45,15 @@
         if( $sortType === "NAME" && $currComparator !== $row[ "Name" ][ 0 ] )
         {
             $currComparator = $row[ "Name" ][ 0 ];
-            echo "<p class=\"font-ubuntu-mono font-header font-center brown\">{$currComparator}</p>";
+            echo "<p class=\"font-title font-header font-center color\">{$currComparator}</p>";
         }
-        
+
         else if( $sortType === "YEAR" && $currComparator !== date( "Y", strtotime( $row[ "Month Finished" ] ) ) )
         {
             $currComparator = date( "Y", strtotime( $row[ "Month Finished" ] ) );
-            echo "<p class=\"font-ubuntu-mono font-header font-center brown\">{$currComparator}</p>";
+            echo "<p class=\"font-title font-header font-center color\">{$currComparator}</p>";
         }
-        
+
         return $currComparator;
     }
 ?>

@@ -11,7 +11,7 @@
 
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/personalstyle.css" rel="stylesheet">
+        <link href="css/themes.css" rel="stylesheet">
 
         <?php echo "<link href=\"images/{$glyphiconName}.ico\" rel=\"shortcut icon\" type=\"image/x-icon\">\n"; ?>
     </head>
@@ -39,8 +39,8 @@
 
         <!--header-->
         <?php include( "php_include_files/start-row-10.php" ); ?>
-        <hr class="brown">
-            <h1 class="font-ubuntu font-header brown">
+        <hr class="color-border">
+            <h1 class="font-title font-header color">
                 <div class="dropdown colored-link">
                     <!--the reason the whole anchor tag is on the same line is because it adds an extra space with underline if I don't, also the theme dropdown is sort of hidden/an easter egg-->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Change the Website Theme"><span class="glyphicon glyphicon-<?php echo "{$glyphiconName}";?>"></span></a>
@@ -54,7 +54,7 @@
                     <?php echo ( $pageName === "Portfolio" ) ? "&nbsp;{$pageName}" : "{$pageName}";  //this is for formatting since the folder in Portfolio will cover part of the 'P' without a space ?>
                 </div>
             </h1>
-        <hr class="brown">
+        <hr class="color-border">
         <?php include( "php_include_files/end-row-10.php" ); ?>
 
         <!--start the main container which is closed in footer.php-->

@@ -64,7 +64,7 @@
     mysqli_close( $contactDB );
 ?>
 
-<p class="font-vollkorn font-small font-center brown" >
+<p class="font-main font-small font-center color" >
     I was born at a young age of zero months in Pittsburgh, Pennsylvania. &nbsp;
     I am now 249 months old. &nbsp;
     In my trek for an education I went to the school district known as Mt. Lebanon. &nbsp;
@@ -81,7 +81,7 @@
     I am planning to graduate from the University of Pittsburgh in Spring 2016 and am currently looking for a job post-graduation.
 </p>
 
-<p class="font-vollkorn font-small font-center brown" >
+<p class="font-main font-small font-center color" >
     If you wish to contact me, you can send me a message through the form below or send an email to johnfelen@pitt.edu.  &nbsp;
     A link to my r&eacute;sum&eacute; is in the footer along with links to my GitHub and LinkedIn.
 </p>
@@ -92,20 +92,20 @@
 <form action="contact.php" method="post">
     <div class="row">
         <div class="col-xs-5">
-            <textarea rows="1" class="font-vollkorn font-small brown rounded-textarea subtle-pattern" placeholder="Your Name" name="name"
+            <textarea rows="1" class="font-main font-small color color-border rounded-textarea subtle-pattern" placeholder="Your Name" name="name"
             pattern=".{1,70}" required title="1 to 70 Characters" style="resize:none;"><?php echo ( isset( $name ) && !$queryDone ) ? $name: ""; ?></textarea>
         </div>
     </div>
     <br>
     <div class="row">
         <div class="col-xs-5">
-            <textarea rows="1" class="font-vollkorn font-small brown rounded-textarea subtle-pattern" placeholder="Your Email" name="email" pattern=".{1,70}"
+            <textarea rows="1" class="font-main font-small color color-border rounded-textarea subtle-pattern" placeholder="Your Email" name="email" pattern=".{1,70}"
             required title="1 to 70 Characters" style="resize:none;"><?php echo ( isset( $email ) && !$queryDone ) ? $email: ""; ?></textarea>
         </div>
     </div>
 
     <br>
-    <textarea rows="10" class="font-vollkorn font-small brown rounded-textarea subtle-pattern" placeholder="Your Message" name="message"
+    <textarea rows="10" class="font-main font-small color color-border rounded-textarea subtle-pattern" placeholder="Your Message" name="message"
     pattern=".{1}" required title="At Least 1 Character" style="resize:vertical;"><?php //the php start and end must come right after and before the text areas tags, respectively, because there will be spaces that go into the text area when the page loads causing the place holder to not be present
         if( isset( $message ) && !$queryDone )
         {
@@ -124,7 +124,7 @@
     ?></textarea>
 
     <br><br>
-    <input class="btn btn-lg btn-primary btn-brown font-vollkorn font-small pull-right" type="submit" value="Submit Message" title="Send Me The Message!"/>
+    <input class="btn btn-lg btn-primary btn-color color-border font-main font-small pull-right" type="submit" value="Submit Message" title="Send Me The Message!"/>
 
 </form>
 

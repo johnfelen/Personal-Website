@@ -26,14 +26,14 @@
         <div class="col-xs-6">
             <img src="images/me.jpg" class="picture" alt="Picture of Me" width="100%"/>
             <blink class="invisible">
-                <p class="font-vollkorn font-medium font-center brown" id="broken"></p>
-                <p class="font-ubuntu-mono font-medium font-center brown" id="continue"> Click to Continue </p>
+                <p class="font-main font-medium font-center color" id="broken"></p>
+                <p class="font-ubuntu-mono font-medium font-center color" id="continue"> Click to Continue </p>
             </blink>
         </div>
     <div class="col-xs-3"></div>
 </div>
 
-<p class="font-ubuntu-mono font-medium font-center brown" id="pokemon"></p>
+<p class="font-ubuntu-mono font-medium font-center color" id="pokemon"></p>
 
 <div class="row" id="names"></div>
 
@@ -70,7 +70,7 @@ NOTE: I also tried to move the javascript into the home.js file but it did not w
             }
         }
 
-        window.setTimeout(blink, 350);
+        window.setTimeout( blink, 350 );
     }
 
     //these for are from the stack overflow, it works so I'm not going to change it

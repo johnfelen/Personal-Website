@@ -17,20 +17,20 @@
         <div class="col-xs-6">
             <img src="images/me.jpg" class="picture" alt="Picture of Me" width="100%"/>
             <blink>
-                <p class="font-vollkorn font-medium font-center brown" id="broken">
+                <p class="font-main font-medium font-center color" id="broken">
                     It looks like the game froze.&nbsp;
                     Maybe try to blow into the cartridge and try again in 15 minutes. &nbsp;
                     While you are here, feel free to explore my personal website.
                 </p>
-                <p class="font-ubuntu-mono font-medium font-center brown" id="continue">
-                    <i class="fa fa-spinner fa-3x brown"></i>
+                <p class="font-ubuntu-mono font-medium font-center color" id="continue">
+                    <i class="fa fa-spinner fa-3x color"></i>
                 </p>
             </blink>
         </div>
     <div class="col-xs-3"></div>
 </div>
 
-<p class="font-ubuntu-mono font-medium font-center brown" id="pokemon">
+<p class="font-ubuntu-mono font-medium font-center color" id="pokemon">
     Hello there! Welcome to the world of Earth! <br>
     My name is John Felen! People call me John! <br>
     This world is inhabited by creatures called humans! <br>
@@ -43,7 +43,7 @@
 <div class="row" id="names">
     <div class="col-xs-3"></div>
     <div class="col-xs-6 container-main">
-        <table class="font-ubuntu-mono font-header brown font-center fill-n-center">
+        <table class="font-ubuntu-mono font-header color color-border font-center fill-n-center">
             <tr><td>NEW NAME</td></tr>
             <tr><td>RED</td></tr>
             <tr><td>ASH</td></tr>

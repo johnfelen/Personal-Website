@@ -47,26 +47,26 @@
     </ul>";
 
     //print out each project and its description
-    echo "<hr class=\"brown\">";
+    echo "<hr class=\"color-border\">";
     while( $row = $result->fetch_assoc() )
     {
         $currComparator = printTierChange( $currComparator, $sortType, $row );
         echo "
-        <hr class=\"brown\">
+        <hr class=\"color-border\">
         <div class=\"row vertical-center\">
             <div class=\"col-xs-3\">
-                <p class=\"font-ubuntu font-large font-center colored-link\">
+                <p class=\"font-title font-large font-center colored-link\">
                     <a href=\"{$row[ "Link" ]}\" title=\"{$row[ "Link" ]}\" target=\"_blank\">{$row[ "Name" ]}</a>
                 </p>
             </div>
 
             <div class=\"col-xs-9\">
-                <p class=\"font-vollkorn font-center font-small brown\">{$row[ "Description" ]}</p>
+                <p class=\"font-main font-center font-small color\">{$row[ "Description" ]}</p>
             </div>
         </div>
-        <hr class=\"brown\">";
+        <hr class=\"color-border\">";
     }
-    echo "<hr class=\"brown\">";
+    echo "<hr class=\"color-border\">";
 
     mysqli_close( $portfolioDB );
     include( "php_include_files/footer.php" );
