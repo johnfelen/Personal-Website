@@ -1,34 +1,30 @@
 /*Thanks to subtlepatterns.com for providing the background*/
 
-/*making html the nest instead of body becasue if its body then I would have to write the background: attribute in .subtle-pattern twice since .subtle-pattern applied to body and nested under body at the smae time does not work*/
-html.old-map {
-    $brown: #B34514;
-    $cream: #FFE1B8;
-    $grey: #808080;
+@mixin theme( $primary, $secondary, $accent, $image ) {
     overflow-x:hidden;
 
     .subtle-pattern {
-        background: url("../images/old-map.png") repeat 0 0;
+        background: url( $image ) repeat 0 0;
     }
 
     .brown {
-        color: $brown;
-        border-color: $brown;
+        color: $primary;
+        border-color: $primary;
     }
 
     .container-main {
         padding: 30px;
-        background-color: $cream;
+        background-color: $secondary;
         border-radius: 10px;
-        border-color: $brown;
+        border-color: $primary;
         border-style: solid;
     }
     .colored-link > a {
-        color: $brown;
+        color: $primary;
     }
 
     .colored-link > a:hover {
-        color: $grey;
+        color: $accent;
     }
 
     /*START OF MISC HOME CSS*/
@@ -47,7 +43,7 @@ html.old-map {
     }
 
     .grey:hover {
-        background-color: $grey;
+        background-color: $accent;
     }
     /*END OF MISC HOME CSS*/
 
@@ -65,38 +61,38 @@ html.old-map {
     .rounded-textarea {
         width:100%;
         border-radius:10px;
-        box-shadow: 0 0 0 3px $brown;
+        box-shadow: 0 0 0 3px $primary;
         border: 3px solid transparent;
     }
 
     .rounded-textarea:focus {
-        background: $cream;
+        background: $secondary;
         outline: none;
     }
 
     .btn-brown {
-        background-color: $brown;
-        color: $cream;
-        border-color: $cream;
+        background-color: $primary;
+        color: $secondary;
+        border-color: $secondary;
     }
 
     .btn-brown:hover {
-        background-color: $cream;
-        color: $brown;
-        border-color: $brown;
+        background-color: $secondary;
+        color: $primary;
+        border-color: $primary;
     }
 
     /* This is for when the input button is clicked in and held I found the correct pseudo selectors(for the :active:focus) at the verified answer for http://stackoverflow.com/questions/31379175/bootstrap-button-on-click-showing-default-colour */
     .btn-brown:active:focus {
-        background-color: $brown;
-        color: $cream;
-        border-color: $cream;
+        background-color: $primary;
+        color: $secondary;
+        border-color: $secondary;
     }
 
     .btn-brown:focus {
-        background-color: $brown;
-        color: $cream;
-        border-color: $cream;
+        background-color: $primary;
+        color: $secondary;
+        border-color: $secondary;
     }
     /*END OF MISC CONTACT*/
 
@@ -137,7 +133,7 @@ html.old-map {
 
     /*START OF NAVBAR, SORTING AND DROPDOWN ELEMENTS*/
     .navbar {
-        background-color: $brown;
+        background-color: $primary;
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
         font-size: 32px;    /*enlarges the glyphicon links*/
@@ -149,28 +145,28 @@ html.old-map {
     }
 
     .nav > li > a, .dropdown-menu > li > a {
-        background-color: $brown;
-        color: $cream;
+        background-color: $primary;
+        color: $secondary;
     }
 
     .nav > li > a:hover, .dropdown-menu > li > a:hover {
-        background-color: $cream;
-        color: $brown;
+        background-color: $secondary;
+        color: $primary;
     }
 
     .nav > li.active > a, .dropdown-menu > li.active > a {
-        background-color: $cream;
-        color: $brown;
+        background-color: $secondary;
+        color: $primary;
     }
 
     .nav > li.active > a:hover, .dropdown-menu > li.active > a:hover {
-        background-color: $brown;
-        color: $cream;
+        background-color: $primary;
+        color: $secondary;
     }
 
     .dropdown-menu {
-        border-color: $brown;
-        background-color: $brown;
+        border-color: $primary;
+        background-color: $primary;
         padding-left: 5px;
         padding-right: 5px;
     }
@@ -213,17 +209,25 @@ html.old-map {
 
     .footer-left {
         padding-top: 10px;   /*psuedo vertically centers the "John Felen's Personal Website" in the footer*/
-        color: $brown;
+        color: $primary;
         float: left;
         text-align: left;
         width: 66.66666%;
     }
 
     .footer-right {
-        color: $brown;
+        color: $primary;
         float: left;
         text-align: right;
         width: 33.33333%;
     }
     /*END OF FOOTER*/
+}
+
+html.old-map {
+    $brown: #B34514;
+    $cream: #FFE1B8;
+    $grey: #808080;
+
+    @include theme( $brown, $cream, $grey, "../images/old-map.png" );
 }
