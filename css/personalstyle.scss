@@ -49,16 +49,11 @@
     /*END OF MISC CONTACT*/
 
     /*START OF FONTS*/
-    .font-ubuntu {
-        font-family: 'Ubuntu', sans-serif;
-    }
+    /* pokemon font, it will not change when theme changes*/
+    @import url( https://fonts.googleapis.com/css?family=Ubuntu+Mono );
 
     .font-ubuntu-mono {
-        font-family: 'Ubuntu Mono';
-    }
-
-    .font-vollkorn {
-        font-family: 'Vollkorn', Georgia, Times, serif;
+        font-family: 'Ubuntu Mono', ;
     }
 
     .font-small {
@@ -150,11 +145,20 @@
     /*END OF FOOTER*/
 }
 
-/*mixin for the colors, they dont have the labels to where they go though*/
-@mixin theme-colors( $primary, $secondary, $accent, $image ) {
+/*mixin for the colors, fonts, and subtlepattern(background) */
+@mixin theme-specs( $primary, $secondary, $accent, $headerFont, $mainFont, $image ) {
     .subtle-pattern {
-        background: url( $image ) repeat 0 0;
+        background: url( "../images/old-map.png" ) repeat 0 0;
     }
+
+    .font-ubuntu {
+        font-family: $headerFont;
+    }
+
+    .font-vollkorn {
+        font-family: $mainFont;
+    }
+
 
     .brown {
         color: $primary;
@@ -254,6 +258,11 @@ html.old-map {
     $cream: #FFE1B8;
     $grey: #808080;
 
+    @import url( https://fonts.googleapis.com/css?family=Ubuntu );
+    $ubuntu: 'Ubuntu', sans-serif;
+    @import url( https://fonts.googleapis.com/css?family=Vollkorn );
+    $vollkorn: 'Vollkorn', Georgia, Times, serif;
+
     @extend %theme-structure;
-    @include theme-colors( $brown, $cream, $grey, "../images/old-map.png" );
+    @include theme-specs( $brown, $cream, $grey, $ubuntu, $vollkorn, "../images/old-map.png" );
 }
