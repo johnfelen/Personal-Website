@@ -1,7 +1,6 @@
 /*Thanks to subtlepatterns.com for providing the background*/
 @import "generalized-structure";
 
-//good
 html.old-map {
     $brown: #B34514;
     $cream: #FFE1B8;
@@ -16,11 +15,10 @@ html.old-map {
     @include theme-specs( $brown, $cream, $grey, $ubuntu, $vollkorn, "../images/old-map.png" );
 }
 
-//okay
 html.billards-table {
-    $lightGreen: #22CC77;
-    $aqua: #BBFFFF;
-    $articWhite: #FAFAFA;
+    $black: #222224;
+    $cueBallWhite: #F7E287;
+    $purple: #57439A;
 
     @import url( https://fonts.googleapis.com/css?family=Kaushan+Script );
     $kaushanScript: 'Kaushan Script', cursive;
@@ -28,14 +26,14 @@ html.billards-table {
     $specialElite: 'Special Elite', cursive;
 
     @extend %theme-structure;
-    @include theme-specs( $lightGreen, $aqua, $articWhite, $kaushanScript, $specialElite, "../images/billards-table.png" );
+    @include theme-specs( $black, $cueBallWhite, $purple, $kaushanScript, $specialElite, "../images/billards-table.png" );
 }
 
 //needs work
 html.pink-rice {
-    $flatPink: #EEBBBB;
-    $lightPink: #EEDDDD;
-    $smoothBlue: #88AABB;
+    $deepRed: #E2021D;
+    $darkerWhite: #FAFAFC;
+    $smoothBlue: #163C8D;
 
     @import url( https://fonts.googleapis.com/css?family=Lobster );
     $lobster: 'Lobster', cursive;
@@ -43,10 +41,9 @@ html.pink-rice {
     $droidSerif: 'Droid Serif', serif;
 
     @extend %theme-structure;
-    @include theme-specs( $flatPink, $lightPink, $smoothBlue, $lobster, $droidSerif, "../images/pink-rice.png" );
+    @include theme-specs( $deepRed, $darkerWhite, $smoothBlue, $lobster, $droidSerif, "../images/pink-rice.png" );
 }
 
-//good
 html.picnic {
     $deepBlue: #315481;
     $greyWhite: #DDDDDD;
@@ -61,10 +58,9 @@ html.picnic {
     @include theme-specs( $deepBlue, $greyWhite, $wildSalmon, $raleway, $openSans, "../images/picnic.png" );
 }
 
-//need work
 html.stardust {
-    $lessWhiteWhite: #FCFCF8;
-    $lightViolet: #C3D1FE;
+    $lightGrey: #A2A1A7;
+    $darkGrey: #444349;
     $goldenSun: #FCF308;
 
     @import url( https://fonts.googleapis.com/css?family=Montserrat );
@@ -73,5 +69,5 @@ html.stardust {
     $sourceSansPro: 'Source Sans Pro', sans-serif;
 
     @extend %theme-structure;
-    @include theme-specs( $lessWhiteWhite, $lightViolet, $goldenSun, $montserrat, $sourceSansPro, "../images/stardust.png" );
+    @include theme-specs( $lightGrey, $darkGrey, $goldenSun, $montserrat, $sourceSansPro, "../images/stardust.png" );
 }
