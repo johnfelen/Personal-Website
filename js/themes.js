@@ -1,4 +1,4 @@
-var themes = [ "old-map", "billards-table", "pink-rice", "picnic", "stardust" ];
+var themes = [ "picnic", "billards-table", "pink-rice", "old-map", "stardust" ];
 
 if( !document.cookie )
 {
@@ -25,7 +25,7 @@ function addListeners() //adds hover( preview new theme ) and click( cookie-sett
         function()
         {
             setTheme( selectedTheme, false );
-            setTheme( currentTheme, true ); 
+            setTheme( currentTheme, true );
         });
 
         $( "#" + selectedTheme ).click( function()

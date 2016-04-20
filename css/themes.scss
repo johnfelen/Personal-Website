@@ -1,7 +1,7 @@
-/*Thanks to subtlepatterns.com for providing the background*/
+/*!Thanks to subtlepatterns.com for providing the background*/
 @import "generalized-structure";
 
-html.old-map {
+.old-map {
     $brown: #B34514;
     $cream: #FFE1B8;
     $grey: #808080;
@@ -15,11 +15,11 @@ html.old-map {
     @include theme-specs( $brown, $cream, $grey, $ubuntu, $vollkorn, "../images/old-map.png" );
 }
 
-html.billards-table {
+.billards-table {
     $black: #222224;
     $cueBallWhite: #F7E287;
     $purple: #57439A;
-
+    
     @import url( https://fonts.googleapis.com/css?family=Kaushan+Script );
     $kaushanScript: 'Kaushan Script', cursive;
     @import url( https://fonts.googleapis.com/css?family=Special+Elite );
@@ -29,8 +29,7 @@ html.billards-table {
     @include theme-specs( $black, $cueBallWhite, $purple, $kaushanScript, $specialElite, "../images/billards-table.png" );
 }
 
-//needs work
-html.pink-rice {
+.pink-rice {
     $deepRed: #E2021D;
     $darkerWhite: #FAFAFC;
     $smoothBlue: #163C8D;
@@ -44,7 +43,7 @@ html.pink-rice {
     @include theme-specs( $deepRed, $darkerWhite, $smoothBlue, $lobster, $droidSerif, "../images/pink-rice.png" );
 }
 
-html.picnic {
+.picnic {
     $deepBlue: #315481;
     $greyWhite: #DDDDDD;
     $wildSalmon: #FF5016;
@@ -58,7 +57,7 @@ html.picnic {
     @include theme-specs( $deepBlue, $greyWhite, $wildSalmon, $raleway, $openSans, "../images/picnic.png" );
 }
 
-html.stardust {
+.stardust {
     $lightGrey: #A2A1A7;
     $darkGrey: #444349;
     $goldenSun: #FCF308;
