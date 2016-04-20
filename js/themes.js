@@ -1,27 +1,31 @@
 var themes = [ "old-map", "billards-table", "pink-rice", "picnic", "stardust" ];
 
-
+if( !document.cookie )
+{
     document.cookie = createGlobalCookie( "theme", themes[ 0 ], 7 );
+}
 
-console.log( document.cookie );
 var currentTheme = getCurrentTheme();
 setTheme( currentTheme, true );
 changeActive( currentTheme, true );
 addListeners();
 
-function addListeners() //adds hover(temporary theme change) and click(cookie-setting and permanent(until cookie expires or new selected) theme change)
+function addListeners() //adds hover( preview new theme ) and click( cookie-setting and set theme theme )
 {
     $( "#theme-menu" ).children( "li" ).each( function( i )
     {
         var selectedTheme = themes[ i ];
+
         $( "#" + selectedTheme ).hover( function()
         {
+            setTheme( currentTheme, false );
             setTheme( selectedTheme, true );
         },
 
         function()
         {
             setTheme( selectedTheme, false );
+            setTheme( currentTheme, true ); 
         });
 
         $( "#" + selectedTheme ).click( function()
@@ -31,8 +35,9 @@ function addListeners() //adds hover(temporary theme change) and click(cookie-se
 
             document.cookie = createGlobalCookie( "theme", selectedTheme, 7 );
             currentTheme = getCurrentTheme();
-            changeActive( selectedTheme, true );
+
             setTheme( selectedTheme, true );
+            changeActive( selectedTheme, true );
         });
     });
 }
@@ -41,12 +46,12 @@ function changeActive( theme, adding )  //change active of dropdown menu
 {
     if( adding )
     {
-        //$( $( "#" + theme ).parent() ).addClass( "active" );
+        $( $( "#" + theme ).parent() ).addClass( "active" );
     }
 
     else
     {
-        //$( $( "#" + theme ).parent() ).removeClass( "active" );
+        $( $( "#" + theme ).parent() ).removeClass( "active" );
     }
 }
 
