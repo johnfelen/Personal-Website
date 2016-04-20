@@ -15,26 +15,58 @@ html.old-map {
     @include theme-specs( $brown, $cream, $grey, $ubuntu, $vollkorn, "../images/old-map.png" );
 }
 
-// html.billards-table {
-//
-//     @extend %theme-structure;
-//     @include theme-specs( , , , , "../images/billards-table.png" );
-// }
-//
-// html.pink-rice {
-//
-//     @extend %theme-structure;
-//     @include theme-specs( , , , , "../images/pink-rice.png" );
-// }
-//
-// html.picnic {
-//
-//     @extend %theme-structure;
-//     @include theme-specs( , , , , "../images/picnic.png" );
-// }
-//
-// html.stardust {
-//
-//     @extend %theme-structure;
-//     @include theme-specs( , , , , "../images/stardust.png" );
-// }
+html.billards-table {
+    $lightGreen: #22CC77;
+    $articWhite: #FAFAFA;
+    $aqua: #BBFFFF;
+
+    @import url( https://fonts.googleapis.com/css?family=Kaushan+Script );
+    $kaushanScript: 'Kaushan Script', cursive;
+    @import url( https://fonts.googleapis.com/css?family=Special+Elite );
+    $specialElite: 'Special Elite', cursive;
+
+    @extend %theme-structure;
+    @include theme-specs( $lightGreen, $articWhite, $aqua, $kaushanScript, $specialElite, "../images/billards-table.png" );
+}
+
+html.pink-rice {
+    $flatPink: #EEBBBB;
+    $lightPink: #EEDDDD;
+    $smoothBlue: #88AABB;
+
+    @import url( https://fonts.googleapis.com/css?family=Lobster );
+    $lobster: 'Lobster', cursive;
+    @import url( https://fonts.googleapis.com/css?family=Droid+Serif );
+    $droidSerif: 'Droid Serif', serif;
+
+    @extend %theme-structure;
+    @include theme-specs( $flatPink, $lightPink, $smoothBlue, $lobster, $droidSerif, "../images/pink-rice.png" );
+}
+
+html.picnic {
+    $deepBlue: #315481;
+    $greyWhite: #DDDDDD;
+    $wildSalmon: #FF5016;
+
+    @import url( https://fonts.googleapis.com/css?family=Raleway );
+    $raleway: 'Raleway', sans-serif;
+    @import url( https://fonts.googleapis.com/css?family=Open+Sans );
+    $openSans: 'Open Sans', sans-serif;
+
+    @extend %theme-structure;
+    @include theme-specs( $deepBlue, $greyWhite, $wildSalmon, $raleway, $openSans, "../images/picnic.png" );
+}
+
+html.stardust {
+    $lessWhiteWhite: #FCFCF8;
+    $lightViolet: #C3D1FE;
+    $goldenSun: #FCF308;
+
+    @import url( https://fonts.googleapis.com/css?family=Montserrat );
+    $montserrat: 'Montserrat', sans-serif;
+    @import url( https://fonts.googleapis.com/css?family=Source+Sans+Pro );
+    $sourceSansPro: 'Source Sans Pro', sans-serif;
+
+    @extend %theme-structure;
+    @include theme-specs( $lessWhiteWhite, $lightViolet, $goldenSun, $montserrat, $sourceSansPro, "../images/stardust.png" );
+}
