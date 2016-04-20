@@ -1,62 +1,72 @@
 var themes = [ "old-map", "billards-table", "pink-rice", "picnic", "stardust" ];
 
-if( !document.cookie )  //set default theme as old-map and it lasts for 7 days long
-{
-    document.cookie = createGlobalCookie( "theme", themes[ 0 ], 7 );
-}
 
+    document.cookie = createGlobalCookie( "theme", themes[ 0 ], 7 );
+
+console.log( document.cookie );
 var currentTheme = getCurrentTheme();
-changeActive( true, currentTheme );
+setTheme( currentTheme, true );
+changeActive( currentTheme, true );
 addListeners();
 
-function addListeners() //adds hover(temporary theme change) and click(cookie-setting and permanent(until cookie expires or new selected) theme change
+function addListeners() //adds hover(temporary theme change) and click(cookie-setting and permanent(until cookie expires or new selected) theme change)
 {
     $( "#theme-menu" ).children( "li" ).each( function( i )
     {
         var selectedTheme = themes[ i ];
         $( "#" + selectedTheme ).hover( function()
         {
-            setTheme( selectedTheme );
+            setTheme( selectedTheme, true );
         },
 
         function()
         {
-            setTheme( currentTheme );
+            setTheme( selectedTheme, false );
         });
 
         $( "#" + selectedTheme ).click( function()
         {
-            setTheme( selectedTheme );
-            changeActive( false, currentTheme );
+            setTheme( currentTheme, false );
+            changeActive( currentTheme, false );
 
             document.cookie = createGlobalCookie( "theme", selectedTheme, 7 );
             currentTheme = getCurrentTheme();
-            changeActive( true, selectedTheme );
+            changeActive( selectedTheme, true );
+            setTheme( selectedTheme, true );
         });
     });
 }
 
-function changeActive( adding, theme )
+function changeActive( theme, adding )  //change active of dropdown menu
 {
     if( adding )
     {
-        $( $( "#" + theme ).parent() ).addClass( "active" );
+        //$( $( "#" + theme ).parent() ).addClass( "active" );
     }
 
     else
     {
-        $( $( "#" + theme ).parent() ).removeClass( "active" );
+        //$( $( "#" + theme ).parent() ).removeClass( "active" );
     }
 }
 
 function getCurrentTheme()  //parses theme from cookie
 {
-    return document.cookie.split( "=" )[ 1 ];
+    var keyVal = document.cookie.split( ";" )[ 0 ];
+    return keyVal.split( "=" )[ 1 ];
 }
 
-function setTheme() //change the body tag to update css
+function setTheme( theme, adding ) //change current theme on page
 {
+    if( adding )
+    {
+        $( "html" ).addClass( theme );
+    }
 
+    else
+    {
+        $( "html" ).removeClass( theme );
+    }
 }
 
 function createGlobalCookie( key, value, days )  //sets a cookie for a number var number of days and is access from the whole website, it is based on the answer here http://stackoverflow.com/questions/6561687/how-can-i-set-a-cookie-to-expire-after-x-days-with-this-code-i-have

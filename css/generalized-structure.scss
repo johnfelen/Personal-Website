@@ -49,7 +49,6 @@
     /*START OF FONTS*/
     /* pokemon font, it will not change when theme changes*/
     @import url( https://fonts.googleapis.com/css?family=Ubuntu+Mono );
-
     .font-ubuntu-mono {
         font-family: 'Ubuntu Mono', ;
     }
@@ -146,7 +145,7 @@
 /*mixin for the colors, fonts, and subtlepattern(background) */
 @mixin theme-specs( $primary, $secondary, $accent, $titleFont, $mainFont, $image ) {
     .subtle-pattern {
-        background: url( "../images/old-map.png" ) repeat 0 0;
+        background: url( $image ) repeat 0 0;
     }
 
     .font-title {

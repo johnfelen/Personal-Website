@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="old-map">
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <?php echo "<title>{$pageName}</title>"; ?>
