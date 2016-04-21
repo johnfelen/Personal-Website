@@ -1,4 +1,17 @@
 /*!Thanks to subtlepatterns.com for providing the background*/
+//NOTE: fonts must be imported at the top of the css file( Google Fonts does not tell you this and also you must put the @import url in quotes not in a function call like Google Fonts tells you to do )
+@import "https://fonts.googleapis.com/css?family=Ubuntu";
+@import "https://fonts.googleapis.com/css?family=Vollkorn";
+@import "https://fonts.googleapis.com/css?family=Kaushan+Script";
+@import "https://fonts.googleapis.com/css?family=Special+Elite";
+@import "https://fonts.googleapis.com/css?family=Lobster";
+@import "https://fonts.googleapis.com/css?family=Droid+Serif";
+@import "https://fonts.googleapis.com/css?family=Raleway";
+@import "https://fonts.googleapis.com/css?family=Open+Sans";
+@import "https://fonts.googleapis.com/css?family=Montserrat";
+@import "https://fonts.googleapis.com/css?family=Source+Sans+Pro";
+@import "https://fonts.googleapis.com/css?family=Ubuntu+Mono";
+
 @import "generalized-structure";
 
 .old-map {
@@ -6,9 +19,7 @@
     $cream: #FFE1B8;
     $grey: #808080;
 
-    @import url( https://fonts.googleapis.com/css?family=Ubuntu );
     $ubuntu: 'Ubuntu', sans-serif;
-    @import url( https://fonts.googleapis.com/css?family=Vollkorn );
     $vollkorn: 'Vollkorn', Georgia, Times, serif;
 
     @extend %theme-structure;
@@ -19,10 +30,8 @@
     $black: #222224;
     $cueBallWhite: #F7E287;
     $purple: #57439A;
-    
-    @import url( https://fonts.googleapis.com/css?family=Kaushan+Script );
+
     $kaushanScript: 'Kaushan Script', cursive;
-    @import url( https://fonts.googleapis.com/css?family=Special+Elite );
     $specialElite: 'Special Elite', cursive;
 
     @extend %theme-structure;
@@ -34,9 +43,7 @@
     $darkerWhite: #FAFAFC;
     $smoothBlue: #163C8D;
 
-    @import url( https://fonts.googleapis.com/css?family=Lobster );
     $lobster: 'Lobster', cursive;
-    @import url( https://fonts.googleapis.com/css?family=Droid+Serif );
     $droidSerif: 'Droid Serif', serif;
 
     @extend %theme-structure;
@@ -48,9 +55,7 @@
     $greyWhite: #DDDDDD;
     $wildSalmon: #FF5016;
 
-    @import url( https://fonts.googleapis.com/css?family=Raleway );
     $raleway: 'Raleway', sans-serif;
-    @import url( https://fonts.googleapis.com/css?family=Open+Sans );
     $openSans: 'Open Sans', sans-serif;
 
     @extend %theme-structure;
@@ -62,9 +67,7 @@
     $darkGrey: #444349;
     $goldenSun: #FCF308;
 
-    @import url( https://fonts.googleapis.com/css?family=Montserrat );
     $montserrat: 'Montserrat', sans-serif;
-    @import url( https://fonts.googleapis.com/css?family=Source+Sans+Pro );
     $sourceSansPro: 'Source Sans Pro', sans-serif;
 
     @extend %theme-structure;
