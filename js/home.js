@@ -131,33 +131,15 @@ function toggleVisibility() //wrapper class for visibility, since jquery toggle 
     }
 }
 
-//these for are from the stack overflow, it works so I'm not going to change it
-if ( document.addEventListener )
-{
-    document.addEventListener( "DOMContentLoaded", blink, false );
-}
-
-else if ( window.addEventListener )
-{
-    window.addEventListener( "load", blink, false );
-}
-
-else if ( window.attachEvent )
-{
-    window.attachEvent( "onload", blink );
-}
-
-else
-{
-    window.onload = blink;
-}
-
 $( document ).ready( function()
 {
     printNextLine();
+    blink();
 });
 
 $( "#main-container" ).click( function()
 {
     printNextLine();
 });
+// http://stackoverflow.com/questions/8823925/how-to-return-an-array-from-an-ajax-call
+// http://stackoverflow.com/questions/2410773/how-to-return-data-from-php-to-a-jquery-ajax-call
