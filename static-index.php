@@ -1,9 +1,9 @@
 <?php
-    // session_start();
-    // if( !isset( $_SESSION[ "lastStartTime" ] ) || ( isset( $_SESSION[ "lastStartTime" ] ) && time() - $_SESSION[ "lastStartTime" ] > 900 ) )  //its been 15 minutes so just send them back to the non-static home page
-    // {
-    //     header( "Location: index.php" );
-    // }
+    session_start();
+    if( !isset( $_SESSION[ "lastStartTime" ] ) || ( isset( $_SESSION[ "lastStartTime" ] ) && ( time() - $_SESSION[ "lastStartTime" ] ) > 900 ) )  //its been 15 minutes so just send them back to the non-static home page
+    {
+        header( "Location: index.php" );
+    }
 
     $pageName = "Home";
     $glyphiconName = "home";
@@ -15,7 +15,7 @@
 <div class="row">
     <div class="col-xs-3"></div>
         <div class="col-xs-6">
-            <img src="images/me.jpg" class="picture" alt="Picture of Me" width="100%"/>
+            <img src="images/me.jpg" id="picture-of-me" alt="Picture of Me" width="100%"/>
                 <p class="font-main font-medium font-center color" id="static-broken">
                     It looks like the game froze.&nbsp;
                     Maybe try to blow into the cartridge and try again in 15 minutes. &nbsp;
