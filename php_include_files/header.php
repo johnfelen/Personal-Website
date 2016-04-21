@@ -11,7 +11,7 @@
         <?php echo "<link href=\"images/{$glyphiconName}.ico\" rel=\"shortcut icon\" type=\"image/x-icon\">\n"; ?>
     </head>
 
-    <body class="subtle-pattern"<?php echo ( isset( $printLines ) ) ? " onload=\"printNextLine()\" onclick=\"printNextLine()\"" : "";?>>
+    <body class="subtle-pattern">
 
         <!--top navigation bar-->
         <?php include( "php_include_files/start-row-10.php" ); ?>
@@ -54,4 +54,4 @@
 
         <!--start the main container which is closed in footer.php-->
         <?php include( "php_include_files/start-row-10.php" ); ?>
-        <div class="container-main">
+        <div class="container-main" id="main-container">
