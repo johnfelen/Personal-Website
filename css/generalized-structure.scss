@@ -8,11 +8,19 @@
         border-style: solid;
     }
 
-    #picture-of-me {
+    %index-picture {
         border-style: 2px solid;
         border-radius: 10px;
-        opacity: 0;
         width: 100%;
+    }
+
+    #picture-of-me {
+        @extend %index-picture;
+        opacity: 0;
+    }
+
+    #static-picture-of-me {
+        @extend %index-picture;
     }
 
     blink {
