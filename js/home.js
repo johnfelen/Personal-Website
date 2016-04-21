@@ -1,27 +1,3 @@
-var lines = [ "Hello there! Welcome to the world of Earth!",
-"My name is John Felen! People call me John!",
-"This world is inhabited by creatures called humans!",
-"For some people, humans are pets. Other use them for fights.",
-"Myself...",
-"I study humans as profession.",
-"First, what is your name?" ];
-var nameTable = "\
-<div class=\"col-xs-3\"></div>\
-    <div class=\"col-xs-6 container-main\">\
-        <table class=\"font-ubuntu-mono font-header color color-border font-center fill-n-center\" id=\"choose-name\">\
-            <tr class=\"accent-hover\"><td>NEW NAME</td></tr>\
-            <tr class=\"accent-hover\"><td>RED</td></tr>\
-            <tr class=\"accent-hover\"><td>ASH</td></tr>\
-            <tr class=\"accent-hover\"><td>JACK</td></tr>\
-        </table>\
-    </div>\
-<div class=\"col-xs-3\"></div>";
-var movingSpinner = "<i class=\"fa fa-spinner fa-pulse fa-3x color\"></i>";
-var frozenSpinner = "<i class=\"fa fa-spinner fa-3x color\"></i>"
-var brokenMessage = "It looks like the game froze. &nbsp;\
-Maybe try to blow into the cartridge and try again in 15 minutes. &nbsp;\
-While you are here, feel free to explore my personal website. ";
-
 var count = 0;
 var currentlyTyping = false;    //used to stop repeat clicking which would cause gibberish to type out
 
@@ -131,10 +107,29 @@ function toggleVisibility() //wrapper class for visibility, since jquery toggle 
     }
 }
 
-$( document ).ready( function()
+function parseIntoVars( array )
 {
-    printNextLine();
-    blink();
+    lines = array.slice( 0, 7 );
+    nameTable = array[ 7 ];
+    movingSpinner = array[ 8 ];
+    frozenSpinner = array[ 9 ];
+    brokenMessage = array[ 10 ];
+}
+
+//use an ajax call to get the text that will be displayed, after we get that start the fade in and start displaying the text, NOTE: I took away the document.ready to speed up the start time of when the picture starts to fade in since the AJAX call already takes time and will finish after document is ready at normal speeds
+$.ajax({
+    url: "./php_include_files/pokemon-text.php",
+    type: "GET",
+    dataType: "json",
+    success: function( textToBeDisplayed )
+    {
+        parseIntoVars( textToBeDisplayed );
+        $( "#picture-of-me" ).fadeTo( 3000, 1, function()
+        {
+            printNextLine();
+            blink();
+        });
+    }
 });
 
 $( "#main-container" ).click( function()

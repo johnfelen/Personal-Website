@@ -8,9 +8,15 @@
         border-style: solid;
     }
 
-    .picture {
+    #picture-of-me {
         border-style: 2px solid;
         border-radius: 10px;
+        opacity: 0;
+        width: 100%;
+    }
+
+    blink {
+        visibility: hidden;
     }
 
     .fill-n-center {
