@@ -10,20 +10,20 @@
 @import "https://fonts.googleapis.com/css?family=Open+Sans";
 @import "https://fonts.googleapis.com/css?family=Montserrat";
 @import "https://fonts.googleapis.com/css?family=Source+Sans+Pro";
-@import "https://fonts.googleapis.com/css?family=Ubuntu+Mono";
+@import "https://fonts.googleapis.com/css?family=Ubuntu+Mono";  //pokemon font, so not used in this file
 
 @import "generalized-structure";
 
-.old-map {
-    $brown: #B34514;
-    $cream: #FFE1B8;
-    $grey: #808080;
+.picnic {
+    $deepBlue: #315481;
+    $greyWhite: #DDDDDD;
+    $wildSalmon: #FF5016;
 
-    $ubuntu: 'Ubuntu', sans-serif;
-    $vollkorn: 'Vollkorn', Georgia, Times, serif;
+    $raleway: 'Raleway', sans-serif;
+    $openSans: 'Open Sans', sans-serif;
 
     @extend %theme-structure;
-    @include theme-specs( $brown, $cream, $grey, $ubuntu, $vollkorn, "../images/old-map.png" );
+    @include theme-specs( $deepBlue, $greyWhite, $wildSalmon, $raleway, $openSans, "../images/picnic.png" );
 }
 
 .billards-table {
@@ -31,11 +31,11 @@
     $cueBallWhite: #F7E287;
     $purple: #57439A;
 
-    $kaushanScript: 'Kaushan Script', cursive;
-    $specialElite: 'Special Elite', cursive;
+    $ubuntu: 'Ubuntu', sans-serif;
+    $vollkorn: 'Vollkorn', Georgia, Times, serif;
 
     @extend %theme-structure;
-    @include theme-specs( $black, $cueBallWhite, $purple, $kaushanScript, $specialElite, "../images/billards-table.png" );
+    @include theme-specs( $black, $cueBallWhite, $purple, $ubuntu, $vollkorn, "../images/billards-table.png" );
 }
 
 .pink-rice {
@@ -50,16 +50,16 @@
     @include theme-specs( $deepRed, $darkerWhite, $smoothBlue, $lobster, $droidSerif, "../images/pink-rice.png" );
 }
 
-.picnic {
-    $deepBlue: #315481;
-    $greyWhite: #DDDDDD;
-    $wildSalmon: #FF5016;
+.old-map {
+    $brown: #B34514;
+    $cream: #FFE1B8;
+    $grey: #808080;
 
-    $raleway: 'Raleway', sans-serif;
-    $openSans: 'Open Sans', sans-serif;
+    $kaushanScript: 'Kaushan Script', cursive;
+    $specialElite: 'Special Elite', cursive;
 
     @extend %theme-structure;
-    @include theme-specs( $deepBlue, $greyWhite, $wildSalmon, $raleway, $openSans, "../images/picnic.png" );
+    @include theme-specs( $brown, $cream, $grey, $kaushanScript, $specialElite, "../images/old-map.png" );
 }
 
 .stardust {

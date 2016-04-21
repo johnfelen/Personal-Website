@@ -55,7 +55,7 @@
         <hr class=\"color-border\">
         <div class=\"row vertical-center\">
             <div class=\"col-xs-3\">
-                <p class=\"font-title font-large font-center colored-link\">
+                <p class=\"font-title font-large font-center colored-link rotate\">
                     <a href=\"{$row[ "Link" ]}\" title=\"{$row[ "Link" ]}\" target=\"_blank\">{$row[ "Name" ]}</a>
                 </p>
             </div>

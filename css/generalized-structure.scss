@@ -1,6 +1,6 @@
 /*Placeholder for the theme-structure, it is the general theme structure with the colors extracted into their own mixin*/
 %theme-structure {
-    overflow-x:hidden;
+    overflow-x: hidden;
 
     .container-main {
         padding: 30px;
@@ -86,7 +86,8 @@
         text-align: center;
     }
 
-    @media ( min-width:768px ) {
+    // These change the navbar( portfolio sort ) when the screen width is too small, NOTE: I did grab this from stack overflow ages ago and I have tried to find where I got it to give credit for this project but I came up empty handed
+    @media( min-width: 768px ) {
         .nav.navbar-nav {
             float: left;
         }
@@ -107,9 +108,21 @@
         }
 
         .nav.navbar-nav li {
-            text-align: left
+            text-align: left;
         }
     }
+
+//when 75% of 1080p rotate portfolio titles 90 degree rotate based on https://css-tricks.com/snippets/css/text-rotation/, when the screen is minimized a lot the longer titles( with more spaces ) will overflow but not noticeable to most people 
+@media( max-width: 1440px ) {
+    .rotate {
+        -webkit-transform: rotate( -90deg );
+        -moz-transform: rotate( -90deg );
+        -ms-transform: rotate( -90deg );
+        -o-transform: rotate( -90deg );
+        filter: progid:DXImageTransform.Microsoft.BasicImage( rotation=3 );
+    }
+}
+
 
     //this fixes the multiple break hacked in the footer( which left three dots visible on the right side of the footer )
     .footer-break {
