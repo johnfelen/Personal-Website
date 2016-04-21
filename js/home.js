@@ -37,13 +37,13 @@ function printNextLine()
         {
             if( currentCharIndex == chars.length )  //base case
             {
-                document.getElementById( "pokemon" ).innerHTML =  document.getElementById( "pokemon" ).innerHTML + "<br>";
+                $( "#pokemon" ).html( $( "#pokemon" ).html() + "<br>" );
                 count++;
                 currentlyTyping = false;
                 return;
             }
 
-            document.getElementById( "pokemon" ).innerHTML =  document.getElementById( "pokemon" ).innerHTML + chars[ currentCharIndex ];
+            $( "#pokemon" ).html( $( "#pokemon" ).html() + chars[ currentCharIndex ] );
             currentCharIndex++;
             setTimeout( printNextChar, 40 );
         }
@@ -54,23 +54,32 @@ function printNextLine()
 
     else if( count == lines.length )   //print out the name chosing table
     {
-        document.getElementById( "names" ).innerHTML =  nameTable + "<br>";
+        $( "#names" ).html( nameTable + "<br>" );
+        $( "#main-container" ).off( "click" );
+        $( "#choose-name" ).click( function()
+        {
+            printNextLine();
+        });
         count++;
     }
 
     else if( count == lines.length + 1 )    //print out spinner to simulate loading and stop the table from highlighting on hover
     {
-        $("tr").removeClass();
-        document.getElementById( "continue" ).innerHTML =  movingSpinner + "<br>";
-        count++;
+        $( "tr" ).removeClass();
+        $( "#continue" ).html( movingSpinner + "<br>" );
+        $( "#choose-name" ).off( "click" );
+        $( "#main-container" ).click( function()
+        {
+            printNextLine();
+            count++;    //count++ goes in here because for some reason printNextLine will be called again right away, this allows the user to see movingSpinner
+        });
     }
 
      else if( count == lines.length + 2 )    //"freeze" the spinner and print out that the game broken, set session, and stop the hover effect on the table
     {
-        document.getElementById( "continue" ).innerHTML =  frozenSpinner + "<br>";
-        document.getElementById( "broken" ).innerHTML =  brokenMessage + "<br>";
-        count++;
-
+        $( "#main-container" ).off( "click" );
+        $( "#continue" ).html( frozenSpinner + "<br>" );
+        $( "#broken" ).html( brokenMessage + "<br>" );
         //TODO: AJAX Call here to set the session variable to load static-index.php
     }
 }
@@ -85,35 +94,41 @@ function blink()
 
         if( currentlyTyping )   //this will make the keep continue stop blinking while typing out lines
         {
-            s.style.visibility = "hidden";
+            $( "blink" ).css( "visibility", "hidden" );
         }
 
         else if( count == lines.length + 1 )    //they now can "choose" their name so change "click to continue" to "choose your name", because of the below else if must have the s.style.visibility line
         {
-            document.getElementById( "continue" ).innerHTML =  "Choose Your Name<br>";
-            s.style.visibility = ( s.style.visibility === "visible" ) ? "hidden" : "visible";
-            $( "#main-container" ).off( "click" );
-            $( "#choose-name" ).click( function()
-            {
-                printNextLine();
-            });
+            $( "#continue" ).html( "Choose Your Name<br>" );
+            toggleVisibility();
         }
 
         else if( count == lines.length + 2 )    //we are done with blinking, make the text visible so the "loading" simulation will show
         {
-            $( "#choose-name" ).on( "click" );
-            $( "#main-container" ).on( "click" );
-            s.style.visibility = "visible";
+            $( "blink" ).css( "visibility", "visible" );
             return;
         }
 
         else if( count > 0 )    //the > 0 is to stop from having the short flash of click to continue when the page loads
         {
-            s.style.visibility = ( s.style.visibility === "visible" ) ? "hidden" : "visible";
+            toggleVisibility();
         }
     }
 
     window.setTimeout( blink, 350 );
+}
+
+function toggleVisibility() //wrapper class for visibility, since jquery toggle is display not visibility
+{
+    if( $( "blink" ).css( "visibility" ) == "visible" )
+    {
+        $( "blink" ).css( "visibility", "hidden" );
+    }
+
+    else
+    {
+        $( "blink" ).css( "visibility", "visible" );
+    }
 }
 
 //these for are from the stack overflow, it works so I'm not going to change it

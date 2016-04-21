@@ -25,7 +25,7 @@
     <div class="col-xs-3"></div>
         <div class="col-xs-6">
             <img src="images/me.jpg" class="picture" alt="Picture of Me" width="100%"/>
-            <blink class="invisible">
+            <blink>
                 <p class="font-main font-medium font-center color" id="broken"></p>
                 <p class="font-ubuntu-mono font-medium font-center color" id="continue"> Click to Continue </p>
             </blink>

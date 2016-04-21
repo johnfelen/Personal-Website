@@ -13,10 +13,6 @@
         border-radius: 10px;
     }
 
-    .invisible {
-        visibility: hidden;
-    }
-
     .fill-n-center {
         margin: 0px auto;
         width: 100%;
@@ -112,16 +108,16 @@
         }
     }
 
-//when 75% of 1080p rotate portfolio titles 90 degree rotate based on https://css-tricks.com/snippets/css/text-rotation/, when the screen is minimized a lot the longer titles( with more spaces ) will overflow but not noticeable to most people 
-@media( max-width: 1440px ) {
-    .rotate {
-        -webkit-transform: rotate( -90deg );
-        -moz-transform: rotate( -90deg );
-        -ms-transform: rotate( -90deg );
-        -o-transform: rotate( -90deg );
-        filter: progid:DXImageTransform.Microsoft.BasicImage( rotation=3 );
+    //when 75% of 1080p rotate portfolio titles 90 degree rotate based on https://css-tricks.com/snippets/css/text-rotation/, when the screen is minimized a lot the longer titles( with more spaces ) will overflow but not noticeable to most people
+    @media( max-width: 1440px ) {
+        .rotate {
+            -webkit-transform: rotate( -90deg );
+            -moz-transform: rotate( -90deg );
+            -ms-transform: rotate( -90deg );
+            -o-transform: rotate( -90deg );
+            filter: progid:DXImageTransform.Microsoft.BasicImage( rotation=3 );
+        }
     }
-}
 
 
     //this fixes the multiple break hacked in the footer( which left three dots visible on the right side of the footer )
