@@ -112,12 +112,13 @@
         }
     }
 
-    .footer {
-        position:absolute;
+    //this fixes the multiple break hacked in the footer( which left three dots visible on the right side of the footer )
+    .footer-break {
+        margin-top: 1%;
     }
 
+    //the vertical center class allows the footer text to be centered without the padding-top: 10px( which actually was very slightly off-centered if you measured it )
     .footer-left {
-        padding-top: 10px;   //psuedo vertically centers the "John Felen's Personal Website" in the footer
         float: left;
         text-align: left;
         width: 66.66666%;

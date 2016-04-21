@@ -66,7 +66,7 @@
 
 <p class="font-main font-small font-center color" >
     I was born at a young age of zero months in Pittsburgh, Pennsylvania. &nbsp;
-    I am now 249 months old. &nbsp;
+    I am now <?php echo ageInMonths( "1995-07-25", "EST" ) ?> months old. &nbsp;
     In my trek for an education I went to the school district known as Mt. Lebanon. &nbsp;
     As a young lad, I  enjoyed learning, thinking while walking aimlessly, challenging myself, and technology. &nbsp;
     Growing up, I was always a chubby kid probably because when I was first introduced to the internet, I was hooked and a user for life. &nbsp;
