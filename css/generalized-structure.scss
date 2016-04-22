@@ -192,6 +192,7 @@
 
     .colored-link > a {
         color: $primary;
+        text-decoration: none;
     }
 
     .colored-link > a:hover {
@@ -202,11 +203,7 @@
         background-color: $accent;
     }
 
-    .rounded-textarea {
-        box-shadow: $primary;
-    }
-
-    .rounded-textarea:focus {
+    %rounded-textarea:focus {   //placeholder here, is able to be extended from inside the theme-structure placeholder when .rounded-textarea-small and .rounded-textarea-large are defined
         background: $secondary;
     }
 
