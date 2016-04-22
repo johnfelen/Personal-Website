@@ -21,6 +21,7 @@
     <?php include( "php_include_files/end-row-10.php" ); ?>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <!-- <script src="js/personal-website.min.js"></script> -->
     <script src="js/themes.js"></script>

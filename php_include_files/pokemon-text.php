@@ -4,9 +4,6 @@
     if( isset( $_GET[ "getText" ] ) )
     {
         unset( $_GET[ "getText" ] );
-        $timeLeft = $_GET[ "timeLeft" ];
-        unset( $_GET[ "timeLeft" ] );
-
         $textToBeDisplayed = [ "Hello there! Welcome to the world of Earth!",
         "My name is John Felen! People call me John!",
         "This world is inhabited by creatures called humans!",
@@ -27,7 +24,7 @@
         "<i class=\"fa fa-spinner fa-pulse fa-3x color\"></i>",
         "<i class=\"fa fa-spinner fa-3x color\"></i>",
         "It looks like the game froze.&nbsp;
-        Maybe try to blow into the cartridge and try again in <span id=\"time-left\">{$timeLeft}</span>.&nbsp;
+        Maybe try to blow into the cartridge and try again in <span id=\"time-left\">15 minutes</span>.&nbsp;
         While you are here, feel free to explore my personal website." ];
         echo json_encode( $textToBeDisplayed );
     }

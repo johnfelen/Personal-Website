@@ -12,7 +12,7 @@ if( document.URL.split("/").pop() === "index.php" )
     $.ajax({
         url: "./php_include_files/pokemon-text.php",
         type: "GET",
-        data: { getText : true, timeLeft : "15 minutes" },
+        data: { getText : true },
         dataType: "json",
         success: function( textToBeDisplayed )
         {
@@ -106,7 +106,7 @@ if( document.URL.split("/").pop() === "index.php" )
         }
     }
 
-    function blink()        //based on second last response on http://stackoverflow.com/questions/18105152/alternative-for-blink since the actual <blink> tag is deprecated, I wonder why
+    function blink()    //based on second last response on http://stackoverflow.com/questions/18105152/alternative-for-blink since the actual <blink> tag is deprecated, I wonder why
     {
         var blinks = document.getElementsByTagName( "blink" );
         for ( var i = blinks.length - 1; i >= 0; i-- )
@@ -158,11 +158,11 @@ else if( document.URL.split( "/" ).pop() === "static-index.php" )   //for static
     $.ajax({
         url: "./php_include_files/pokemon-text.php",
         type: "GET",
-        data: { getText : true, timeLeft : formattedTimeLeft() },
+        data: { getText : true },
         dataType: "json",
         success: function( textToBeDisplayed )
         {
-                countDown();
+            countDown();
             var lines = textToBeDisplayed.slice( 0, 7 ).join( "<br>" );
             $( "#static-pokemon" ).html( lines );
 
@@ -176,6 +176,11 @@ else if( document.URL.split( "/" ).pop() === "static-index.php" )   //for static
             var brokenMessage = textToBeDisplayed[ 10 ] + "<br>";
             $( "#static-broken" ).html( brokenMessage );
 
+            if( typeof timeFinishedSec === "undefined" )   //they reloaded the page before the countdown was done, go back to where they were( this fixes the bug that 15 minutes would show up and then change to the correct time )
+            {
+                timeFinishedSec = $.cookie( "timeFinished" );
+                $( "#time-left" ).html( formattedTimeLeft( timeFinishedSec - getCurrTimeSec() ) );
+            }
         }
     });
 }
@@ -189,32 +194,34 @@ function countDown()    //will keep outputting how many minutes/seconds the user
         dataType: "text",
         success: function( stringRepTime )
         {
-            var timeFinishedSec = parseInt( stringRepTime ) + 120;
-            var currTimeSec = parseInt( new Date().getTime() / 1000 );
-
-            diff = timeFinishedSec - currTimeSec;
+            if( typeof timeFinishedSec === "undefined" )   //this is a new countdown
+            {
+                timeFinishedSec = parseInt( stringRepTime ) + 120;
+            }
+            var diff = timeFinishedSec - getCurrTimeSec();
 
             setInterval( function()
             {
-                $( "#time-left" ).html( formattedTimeLeft() );
-                diff--;
+                if( diff <= 0 )
+                {
+                    window.location = "index.php";
+                }
+
+                $( "#time-left" ).html( formattedTimeLeft( diff-- ) );
             },
             1000 );
         }
     });
 }
 
-function formattedTimeLeft()    //update text with minutes and seconds to be gramatically correct and concise
+function formattedTimeLeft( diff )    //update text with minutes and seconds to be gramatically correct and concise
 {
+console.log( diff );
+
     var pluralSec = ( ( diff % 60 ) === 1 ) ? "" : "s";
     var pluralMin = ( parseInt( diff / 60 ) === 1 ) ? "" : "s";
 
-    if( diff <= 0 )
-    {
-        window.location = "index.php";
-    }
-
-    else if( diff < 60 )
+    if( diff < 60 )
     {
         return ( ( diff % 60 ) + " second" + pluralSec );
     }
@@ -229,3 +236,17 @@ function formattedTimeLeft()    //update text with minutes and seconds to be gra
         return ( parseInt( diff / 60 ) + " minute" + pluralMin + " and " + ( diff % 60 ) + " second" + pluralSec );
     }
 }
+
+function getCurrTimeSec()
+{
+    return parseInt( new Date().getTime() / 1000 );
+}
+
+$( window ).unload( function()  //set a cookie with the time that the index.php will reload
+{
+    $.cookie( "timeFinished", timeFinishedSeconds,
+    {
+        expire: timeFinishedSeconds - getCurrTimeSec(),
+        path: '/static-index.php'
+    });
+});
