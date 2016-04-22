@@ -28,7 +28,6 @@
     A link to my r&eacute;sum&eacute; is in the footer along with links to my GitHub and LinkedIn.
 </p>
 
-<!--form for their message-->
 <!--Since I am using HTML5 I don't have to worry about using php to check if nothing has been imputed I am using pattern and required found at the accepted answer at http://stackoverflow.com/questions/10281962/is-there-a-minlength-validation-attribute-in-html5 -->
 <br>
 <form id="contact-me">
