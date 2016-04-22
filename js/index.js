@@ -1,4 +1,4 @@
-if( document.URL.split("/").pop() === "index.php" )
+if( document.URL.split("/").pop() === "index.php" ) //functionality for the animated pokemon text
 {
     var count = 0;
     var currentlyTyping = false;    //used to stop repeat clicking which would cause gibberish to type out
@@ -8,8 +8,7 @@ if( document.URL.split("/").pop() === "index.php" )
         printNextLine();
     });
 
-    //use an ajax call to get the text that will be displayed, after we get that start the fade in and start displaying the text, NOTE: I took away the document.ready to speed up the start time of when the picture starts to fade in since the AJAX call already takes time and will finish after document is ready at normal speeds
-    $.ajax({
+    $.ajax({        //use an ajax call to get the text that will be displayed, after we get that start the fade in and start displaying the text, NOTE: I took away the document.ready to speed up the start time of when the picture starts to fade in since the AJAX call already takes time and will finish after document is ready at normal speeds
         url: "./php_include_files/pokemon-text.php",
         type: "GET",
         data: { getText : true },
@@ -197,7 +196,7 @@ function countDown()    //will keep outputting how many minutes/seconds the user
         {
             if( typeof timeFinishedSec === "undefined" )   //this is a new countdown
             {
-                timeFinishedSec = parseInt( stringRepTime ) + 120;
+                timeFinishedSec = parseInt( stringRepTime ) + 900;
                 diff = timeFinishedSec - getCurrTimeSec();
             }
 

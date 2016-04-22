@@ -1,6 +1,6 @@
 <?php
     session_start();    //The time session is based off of the best answer from http://stackoverflow.com/questions/520237/how-do-i-expire-a-php-session-after-30-minutes because session.gc_maxlifetime is explained in the post to not be the best way because of the gabarge collection randomness
-    if( isset( $_SESSION[ "lastStartTime" ] ) && time() - $_SESSION[ "lastStartTime" ] <= 120 )  //it hasn't been 15 minutes so show the static page
+    if( isset( $_SESSION[ "lastStartTime" ] ) && time() - $_SESSION[ "lastStartTime" ] < 900 )  //it hasn't been 15 minutes so show the static page
     {
         header( "Location: static-index.php" );
     }

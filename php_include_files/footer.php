@@ -25,6 +25,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <!-- <script src="js/personal-website.min.js"></script> -->
     <script src="js/themes.js"></script>
-    <script src="js/index.js"></script>
+    <!-- <script src="js/index.js"></script> -->
+    <script src="js/contact.js"></script>
     </body>
 </html>

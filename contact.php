@@ -4,64 +4,6 @@
     include( "php_include_files/header.php" );
     include( "php_include_files/start-row-10.php" );
     require( "php_include_files/contact-functions.php" );
-
-    $queryDone = false;
-    $contactDB = new mysqli( "localhost", "root", "jfelen62", "personal website" );
-    if( $contactDB->connect_error )
-    {
-        $errorWithQuery = $contactDB->connect_error;    //used to print out later so they cannot submit anything, I want the page to load but not allow them to keep submitting if there is an error
-    }
-    else if( isset( $_POST[ "name" ] ) && isset( $_POST[ "name" ] ) && isset( $_POST[ "name" ] ) )  //technically I only have to check for one since I'm using pattern and required for the inputs, but this will check if they entered anything into the text areas
-    {
-        //name and email validity test is based on http://www.w3schools.com/php/php_form_url_email.asp
-        $name = test_input( $_POST[ "name" ] );
-        if( !preg_match( "/^[a-zA-Z ]*$/", $name ) )
-        {
-            $name = "Only letters and white space allowed.";
-        }
-
-        else
-        {
-            $name = mysqli_real_escape_string( $contactDB, $_POST[ "name" ] );
-        }
-
-        $email = test_input( $_POST[ "email" ] );
-        if( !filter_var( $email, FILTER_VALIDATE_EMAIL) )
-        {
-            $email = "Invalid email format.";
-        }
-
-        else
-        {
-            $email = mysqli_real_escape_string( $contactDB, $_POST[ "email" ] );
-
-            //check if the email has already been in the database
-            $checkPK = $contactDB->query( "SELECT * FROM  `messages`  WHERE `Email` = '{$email}'" );
-            if( mysqli_num_rows( $checkPK ) > 0 )
-            {
-                $email = "Email is already in database.";
-            }
-        }
-
-        $message = mysqli_real_escape_string( $contactDB, $_POST[ "message" ] );
-        //only insert into the query if there are no name or email errors I am using $name/$email instead of specific error variables so if there is an error in on input the other inputs that are correct do not get deleted and the code has less control statements in the text areas
-        if( $name !== "Only letters and white space allowed." && ( $email !== "Invalid email format." || $email !== "Email is already in database." ) )
-        {
-            $result = $contactDB->query( "INSERT INTO `messages` (`Name`, `Email`, `Message`) VALUES( '{$name}', '{$email}', '{$message}' );" );
-
-            if( !$result )
-            {
-                $queryError = "Error with query.";
-            }
-
-            else
-            {
-                $queryDone = true;
-            }
-        }
-    }
-
-    mysqli_close( $contactDB );
 ?>
 
 <p class="font-main font-small font-center color" >
@@ -89,43 +31,27 @@
 <!--form for their message-->
 <!--Since I am using HTML5 I don't have to worry about using php to check if nothing has been imputed I am using pattern and required found at the accepted answer at http://stackoverflow.com/questions/10281962/is-there-a-minlength-validation-attribute-in-html5 -->
 <br>
-<form action="contact.php" method="post">
+<form id="contact-me">
     <div class="row">
         <div class="col-xs-5">
-            <textarea rows="1" class="font-main font-small color color-border rounded-textarea subtle-pattern" placeholder="Your Name" name="name"
-            pattern=".{1,70}" required title="1 to 70 Characters" style="resize:none;"><?php echo ( isset( $name ) && !$queryDone ) ? $name: ""; ?></textarea>
+            <textarea rows="1" class="font-main font-small color color-border rounded-textarea subtle-pattern" id="name" placeholder="Your Name" name="name"
+            pattern=".{1,70}" required title="1 to 70 Characters" style="resize:none;"></textarea>
         </div>
     </div>
     <br>
     <div class="row">
         <div class="col-xs-5">
-            <textarea rows="1" class="font-main font-small color color-border rounded-textarea subtle-pattern" placeholder="Your Email" name="email" pattern=".{1,70}"
-            required title="1 to 70 Characters" style="resize:none;"><?php echo ( isset( $email ) && !$queryDone ) ? $email: ""; ?></textarea>
+            <textarea rows="1" class="font-main font-small color color-border rounded-textarea subtle-pattern" id="email" placeholder="Your Email" name="email" pattern=".{1,70}"
+            required title="1 to 70 Characters" style="resize:none;"></textarea>
         </div>
     </div>
 
     <br>
-    <textarea rows="10" class="font-main font-small color color-border rounded-textarea subtle-pattern" placeholder="Your Message" name="message"
-    pattern=".{1}" required title="At Least 1 Character" style="resize:vertical;"><?php //the php start and end must come right after and before the text areas tags, respectively, because there will be spaces that go into the text area when the page loads causing the place holder to not be present
-        if( isset( $message ) && !$queryDone )
-        {
-            echo $message;
-        }
-
-        else if( $queryDone )
-        {
-            echo "Message Sent!";
-        }
-
-        else
-        {
-            echo "";
-        }
-    ?></textarea>
+    <textarea rows="10" class="font-main font-small color color-border rounded-textarea subtle-pattern" id="message" placeholder="Your Message" name="message"
+    pattern=".{1}" required title="At Least 1 Character" style="resize:vertical;"></textarea>
 
     <br><br>
     <input class="btn btn-lg btn-primary btn-color color-border font-main font-small pull-right" type="submit" value="Submit Message" title="Send Me The Message!"/>
-
 </form>
 
 <?php
