@@ -176,10 +176,11 @@ else if( document.URL.split( "/" ).pop() === "static-index.php" )   //for static
             var brokenMessage = textToBeDisplayed[ 10 ] + "<br>";
             $( "#static-broken" ).html( brokenMessage );
 
-            if( typeof timeFinishedSec === "undefined" )   //they reloaded the page before the countdown was done, go back to where they were( this fixes the bug that 15 minutes would show up and then change to the correct time )
+            if( typeof $.cookie( "timeFinished" ) !== "undefined" )   //they reloaded the page before the countdown was done, go back to where they were( this fixes the bug that 15 minutes would show up and then change to the correct time )
             {
                 timeFinishedSec = $.cookie( "timeFinished" );
-                $( "#time-left" ).html( formattedTimeLeft( timeFinishedSec - getCurrTimeSec() ) );
+                diff = timeFinishedSec - getCurrTimeSec();
+                $( "#time-left" ).html( formattedTimeLeft() );
             }
         }
     });
@@ -197,26 +198,25 @@ function countDown()    //will keep outputting how many minutes/seconds the user
             if( typeof timeFinishedSec === "undefined" )   //this is a new countdown
             {
                 timeFinishedSec = parseInt( stringRepTime ) + 120;
+                diff = timeFinishedSec - getCurrTimeSec();
             }
-            var diff = timeFinishedSec - getCurrTimeSec();
 
             setInterval( function()
             {
-                if( diff <= 0 )
-                {
-                    window.location = "index.php";
-                }
-
-                $( "#time-left" ).html( formattedTimeLeft( diff-- ) );
+                diff--;
+                $( "#time-left" ).html( formattedTimeLeft() );
             },
             1000 );
         }
     });
 }
 
-function formattedTimeLeft( diff )    //update text with minutes and seconds to be gramatically correct and concise
+function formattedTimeLeft()    //update text with minutes and seconds to be gramatically correct and concise
 {
-console.log( diff );
+    if( diff <= 0 )
+    {
+        window.location = "index.php";
+    }
 
     var pluralSec = ( ( diff % 60 ) === 1 ) ? "" : "s";
     var pluralMin = ( parseInt( diff / 60 ) === 1 ) ? "" : "s";
@@ -244,9 +244,8 @@ function getCurrTimeSec()
 
 $( window ).unload( function()  //set a cookie with the time that the index.php will reload
 {
-    $.cookie( "timeFinished", timeFinishedSeconds,
+    $.cookie( "timeFinished", timeFinishedSec,
     {
-        expire: timeFinishedSeconds - getCurrTimeSec(),
-        path: '/static-index.php'
+        path: '/'
     });
 });
