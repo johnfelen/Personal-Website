@@ -1,6 +1,12 @@
 <?php
+    session_start();
+
     if( isset( $_GET[ "getText" ] ) )
     {
+        unset( $_GET[ "getText" ] );
+        $timeLeft = $_GET[ "timeLeft" ];
+        unset( $_GET[ "timeLeft" ] );
+
         $textToBeDisplayed = [ "Hello there! Welcome to the world of Earth!",
         "My name is John Felen! People call me John!",
         "This world is inhabited by creatures called humans!",
@@ -21,16 +27,20 @@
         "<i class=\"fa fa-spinner fa-pulse fa-3x color\"></i>",
         "<i class=\"fa fa-spinner fa-3x color\"></i>",
         "It looks like the game froze.&nbsp;
-        Maybe try to blow into the cartridge and try again in 15 minutes.&nbsp;
+        Maybe try to blow into the cartridge and try again in <span id=\"time-left\">{$timeLeft}</span>.&nbsp;
         While you are here, feel free to explore my personal website." ];
-        unset( $_GET[ "getText" ] );
         echo json_encode( $textToBeDisplayed );
     }
 
     else if( isset( $_POST[ "setTime" ] ) )
     {
-        session_start();
-        $_SESSION[ "lastStartTime" ] = time();  //for the next 15 minutes redirect to static-index.php
         unset( $_POST[ "setTime" ] );
+        $_SESSION[ "lastStartTime" ] = time();
+    }
+
+    else if( isset( $_GET[ "getTime" ] ) )
+    {
+        unset( $_GET[ "getTime" ] );
+        echo $_SESSION[ "lastStartTime" ];
     }
 ?>

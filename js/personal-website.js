@@ -2,6 +2,6 @@
 run command: browserify personal-website.js | uglifyjs > personal-
 website.min.js */
 require( "./themes.js" );
-require( "./home.js" );
+require( "./index.js" );
 // require( "./portfolio.js" );
 // require( "./contact.js" );

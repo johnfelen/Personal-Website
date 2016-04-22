@@ -25,6 +25,5 @@
     <!-- <script src="js/personal-website.min.js"></script> -->
     <script src="js/themes.js"></script>
     <script src="js/index.js"></script>
-    <script src="js/static-index.js"></script>
     </body>
 </html>
