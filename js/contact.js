@@ -17,13 +17,8 @@ $( "#contact-me" ).submit( function( form )
 
             else
             {
-                $( "#message" ).val( "Your message has successfully been sent" );
-                //TODO: send me an email
+                $( "#message" ).val( "Your message has successfully been sent." );
             }
-        },
-        error: function( name )
-        {
-            console.log( name.responseText );
         }
     });
 });
@@ -39,3 +34,8 @@ function getMessageInfo()
 
     return JSON.stringify( formInput );
 }
+
+//http://www.websitecodetutorials.com/code/jquery-plugins/jquery-validation.php
+//http://www.jqueryscript.net/form/Powerful-jQuery-Form-Validation-Plugin-Validation-Engine.html
+//https://github.com/posabsolute/jQuery-Validation-Engine
+//http://www.jsdelivr.com/projects/jquery.validationengine

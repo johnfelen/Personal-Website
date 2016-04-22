@@ -40,14 +40,24 @@
     }
 
     //the rounded corners for the text area are based the accepted answer from http://stackoverflow.com/questions/26272350/rounded-corners-to-a-textarea */
-    .rounded-textarea {
+    %rounded-textarea {
         width:100%;
         border-radius:10px;
         border: 3px solid transparent;
     }
 
-    .rounded-textarea:focus {
+    %rounded-textarea:focus {
         outline: none;
+    }
+
+    .rounded-textarea-small {
+        @extend %rounded-textarea;
+        resize: none;
+    }
+
+    .rounded-textarea-large {
+        @extend %rounded-textarea;
+        resize: vertical;
     }
 
     //pokemon part font, it will not change when theme changes

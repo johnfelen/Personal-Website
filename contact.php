@@ -29,25 +29,23 @@
 </p>
 
 <!--Since I am using HTML5 I don't have to worry about using php to check if nothing has been imputed I am using pattern and required found at the accepted answer at http://stackoverflow.com/questions/10281962/is-there-a-minlength-validation-attribute-in-html5 -->
-<br>
 <form id="contact-me">
-    <div class="row">
-        <div class="col-xs-5">
-            <textarea rows="1" class="font-main font-small color color-border rounded-textarea subtle-pattern" id="name" placeholder="Your Name" name="name"
-            pattern=".{1,70}" required title="1 to 70 Characters" style="resize:none;"></textarea>
-        </div>
-    </div>
     <br>
     <div class="row">
         <div class="col-xs-5">
-            <textarea rows="1" class="font-main font-small color color-border rounded-textarea subtle-pattern" id="email" placeholder="Your Email" name="email" pattern=".{1,70}"
-            required title="1 to 70 Characters" style="resize:none;"></textarea>
+            <textarea rows="1" class="font-main font-small color color-border rounded-textarea-small subtle-pattern" id="name" placeholder="Your Name" name="name" pattern=".{1,70}" required title="1 to 70 Characters"></textarea>
         </div>
     </div>
 
     <br>
-    <textarea rows="10" class="font-main font-small color color-border rounded-textarea subtle-pattern" id="message" placeholder="Your Message" name="message"
-    pattern=".{1}" required title="At Least 1 Character" style="resize:vertical;"></textarea>
+    <div class="row">
+        <div class="col-xs-5">
+            <textarea rows="1" class="font-main font-small color color-border rounded-textarea-small subtle-pattern" id="email" placeholder="Your Email" name="email" pattern=".{1,70}" required title="1 to 70 Characters"></textarea>
+        </div>
+    </div>
+
+    <br>
+    <textarea rows="10" class="font-main font-small color color-border rounded-textarea-large subtle-pattern" id="message" placeholder="Your Message" name="message" pattern=".{1}" required title="At Least 1 Character"></textarea>
 
     <br><br>
     <input class="btn btn-lg btn-primary btn-color color-border font-main font-small pull-right" type="submit" value="Submit Message" title="Send Me The Message!"/>

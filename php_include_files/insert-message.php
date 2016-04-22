@@ -58,10 +58,17 @@
         $response[ "error" ] = true;
     }
 
-    mysqli_close( $contactDB );
+    //FAILED ATTEMPT TO SEND EMAIL, DOES NOT WORK CURRENTLY
+    // if( !isset( $response[ "error" ] ) )    //no errors in their input so send me an email saying that there someone sent me a message
+    // {
+    //     $message = wordwrap( $message, 70 );
+    //     mail( "johnfelen@pitt.edu", "Message from {$name}, {$email}", $message, "From: {$email}" );
+    // }
+
     $response[ "name" ] = $name;
     $response[ "email" ] = $email;
     $response[ "message" ] = $message;
 
+    mysqli_close( $contactDB );
     echo json_encode( $response );
 ?>
