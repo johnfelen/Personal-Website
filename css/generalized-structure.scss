@@ -235,14 +235,22 @@
         background-color: $primary;
     }
 
+    %nav-border {   //used to add borders around the theme dropdown menu, the selected navbar items and the sorting buttons on the portfolio
+        border-style: solid;
+        border-width: thin;
+    }
+
     .nav > li > a, .dropdown-menu > li > a {
         background-color: $primary;
         color: $secondary;
+        @extend %nav-border;
+        border-color: $primary;
     }
 
     .nav > li > a:hover, .dropdown-menu > li > a:hover {
         background-color: $secondary;
         color: $primary;
+        @extend %nav-border;
     }
 
     .nav > li.active > a, .dropdown-menu > li.active > a {
@@ -253,6 +261,23 @@
     .nav > li.active > a:hover, .dropdown-menu > li.active > a:hover {
         background-color: $primary;
         color: $secondary;
+    }
+
+    //makes less of the $primary color around the main navbar less visible to make the active and hover look more flush
+    #main-nav > li > a {
+        border-color: $primary;
+    }
+
+    #main-nav > li > a:hover {
+        border-color: $secondary;
+    }
+
+    #main-nav > li.active > a {
+        border-color: $secondary;
+    }
+
+    #main-nav > li.active > a:hover {
+        border-color: $primary;
     }
 
     .dropdown-menu {

@@ -6,7 +6,6 @@
 
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/jquery.validationengine/2.6.4/css/validationEngine.jquery.css" rel"stylesheet">
         <link href="css/themes.min.css" rel="stylesheet">
 
         <?php echo "<link href=\"images/{$glyphiconName}.ico\" rel=\"shortcut icon\" type=\"image/x-icon\">\n"; ?>
@@ -18,7 +17,7 @@
         <?php include( "./format_files/start-row-10.php" ); ?>
         <div class="navbar">
             <div class="navbar-collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" id="main-nav">
                     <li<?php echo ( $pageName === "Home" ) ? " class=\"active\"" : ""; ?>>
                         <a href="index.php" title="Home"><span class="glyphicon glyphicon-home"></span></a>
                     </li>

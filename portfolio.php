@@ -1,6 +1,6 @@
 <?php
     session_start();
-    //saves the last chosen sort in a session variable so when the user comes back to the Portfolio page it shows that last chosen sort
+    //saves the previously chosen sort in a session variable so when the user comes back to the Portfolio page it shows that previously chosen sort
     if( !isset( $_GET[ "name" ] ) && !isset( $_GET[ "time" ] ) && !isset( $_GET[ "lang" ] ) )
     {
         if( !isset( $_SESSION[ "currPortfolioSort" ] ) )

@@ -21,13 +21,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validationengine/2.6.4/languages/jquery.validationEngine-en.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validationengine/2.6.4/js/jquery.validationEngine.min.js"></script>
-
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <!-- <script src="js/personal-website.min.js"></script> -->
-    <script src="js/themes.js"></script>
-    <script src="js/index.js"></script>
-    <script src="js/contact.js"></script>
+    <script src="js/personal-website.min.js"></script>
     </body>
 </html>

@@ -44,9 +44,9 @@
         {
             return "
             <ul class=\"nav nav-pills nav-justified\">
-                <li class=\"port-padding\"><a href=\"portfolio.php?name={$this->nextName}\">Name of Project <i class=\"fa {$this->name}\"></i></a></i>
-                <li class=\"port-padding\"><a href=\"portfolio.php?lang={$this->nextLang}\">Programming Languages <i class=\"fa {$this->lang}\"></i></a></li>
-                <li class=\"port-padding\"><a href=\"portfolio.php?time={$this->nextTime}\">Time Finished <i class=\"fa {$this->time}\"></i></a></li>
+                <li><a href=\"portfolio.php?name={$this->nextName}\">Name of Project <i class=\"fa {$this->name}\"></i></a></li>
+                <li><a href=\"portfolio.php?lang={$this->nextLang}\">Programming Languages <i class=\"fa {$this->lang}\"></i></a></li>
+                <li><a href=\"portfolio.php?time={$this->nextTime}\">Time Finished <i class=\"fa {$this->time}\"></i></a></li>
             </ul>";
         }
 
