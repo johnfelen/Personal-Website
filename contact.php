@@ -1,9 +1,9 @@
 <?php
     $pageName = "Contact Me";
     $glyphiconName = "envelope";
-    include( "php_include_files/header.php" );
-    include( "php_include_files/start-row-10.php" );
-    require( "php_include_files/contact-functions.php" );
+    include( "./format_files/header.php" );
+    include( "./format_files/start-row-10.php" );
+    require( "./server_functionality/contact-functions.php" );
 ?>
 
 <p class="font-main font-small font-center color" >
@@ -52,6 +52,6 @@
 </form>
 
 <?php
-    include( "php_include_files/end-row-10.php" );
-    include( "php_include_files/footer.php" );
+    include( "./format_files/end-row-10.php" );
+    include( "./format_files/footer.php" );
 ?>

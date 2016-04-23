@@ -6,8 +6,8 @@
 
     $pageName = "Portfolio";
     $glyphiconName = "folder-open";
-    include( "php_include_files/header.php" );
-    require( "php_include_files/portfolio-functions.php" );
+    include( "./format_files/header.php" );
+    require( "./server_functionality/portfolio-functions.php" );
 
     $portfolioDB = new mysqli( "localhost", "root", "jfelen62", "personal website" );
     if( $portfolioDB->connect_error )
@@ -69,5 +69,5 @@
     echo "<hr class=\"color-border\">";
 
     mysqli_close( $portfolioDB );
-    include( "php_include_files/footer.php" );
+    include( "./format_files/footer.php" );
 ?>

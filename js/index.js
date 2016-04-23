@@ -9,7 +9,7 @@ if( document.URL.split("/").pop() === "index.php" ) //functionality for the anim
     });
 
     $.ajax({        //use an ajax call to get the text that will be displayed, after we get that start the fade in and start displaying the text, NOTE: I took away the document.ready to speed up the start time of when the picture starts to fade in since the AJAX call already takes time and will finish after document is ready at normal speeds
-        url: "./php_include_files/pokemon-text.php",
+        url: "./server_functionality/pokemon-text.php",
         type: "GET",
         data: { getText : true },
         dataType: "json",
@@ -91,7 +91,7 @@ if( document.URL.split("/").pop() === "index.php" ) //functionality for the anim
          else if( count == lines.length + 2 )    //"freeze" the spinner and print out that the game broken, set session, and stop the hover effect on the table
         {
             $.ajax({
-                url: "./php_include_files/pokemon-text.php",
+                url: "./server_functionality/pokemon-text.php",
                 type: "POST",
                 data: { setTime : true },
                 success: function()
@@ -155,7 +155,7 @@ if( document.URL.split("/").pop() === "index.php" ) //functionality for the anim
 else if( document.URL.split( "/" ).pop() === "static-index.php" )   //for static-index.php, simplified, no animation, appending for when user is at static page
 {
     $.ajax({
-        url: "./php_include_files/pokemon-text.php",
+        url: "./server_functionality/pokemon-text.php",
         type: "GET",
         data: { getText : true },
         dataType: "json",
@@ -188,7 +188,7 @@ else if( document.URL.split( "/" ).pop() === "static-index.php" )   //for static
 function countDown()    //will keep outputting how many minutes/seconds the user has left until the "game" will work again, so when zero seconds left redirect to index.php
 {
     $.ajax({
-        url: "./php_include_files/pokemon-text.php",
+        url: "./server_functionality/pokemon-text.php",
         type: "GET",
         data: { getTime : true },
         dataType: "text",

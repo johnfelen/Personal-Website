@@ -13,8 +13,8 @@
 
     $pageName = "Home";
     $glyphiconName = "home";
-    include( "php_include_files/header.php" );
-    include( "php_include_files/start-row-10.php" );
+    include( "./format_files/header.php" );
+    include( "./format_files/start-row-10.php" );
 ?>
 
 <!--Pokemon reference for a little humour-->
@@ -35,6 +35,6 @@
 <div class="row" id="names"></div>
 
 <?php
-    include( "php_include_files/end-row-10.php" );
-    include( "php_include_files/footer.php" );
+    include( "./format_files/end-row-10.php" );
+    include( "./format_files/footer.php" );
 ?>

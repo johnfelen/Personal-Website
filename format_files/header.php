@@ -15,7 +15,7 @@
     <body class="subtle-pattern">
 
         <!--top navigation bar-->
-        <?php include( "php_include_files/start-row-10.php" ); ?>
+        <?php include( "./format_files/start-row-10.php" ); ?>
         <div class="navbar">
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -31,10 +31,10 @@
                 </ul>
             </div>
         </div>
-        <?php include( "php_include_files/end-row-10.php" ); ?>
+        <?php include( "./format_files/end-row-10.php" ); ?>
 
         <!--header-->
-        <?php include( "php_include_files/start-row-10.php" ); ?>
+        <?php include( "./format_files/start-row-10.php" ); ?>
         <hr class="color-border">
             <h1 class="font-title font-header color">
                 <div class="dropdown colored-link">
@@ -51,8 +51,8 @@
                 </div>
             </h1>
         <hr class="color-border">
-        <?php include( "php_include_files/end-row-10.php" ); ?>
+        <?php include( "./format_files/end-row-10.php" ); ?>
 
         <!--start the main container which is closed in footer.php-->
-        <?php include( "php_include_files/start-row-10.php" ); ?>
+        <?php include( "./format_files/start-row-10.php" ); ?>
         <div class="container-main" id="main-container">

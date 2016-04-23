@@ -1,5 +1,5 @@
 <?php
-    require( "./contact-functions.php" );
+    require( "../server_functionality/contact-functions.php" );
     $submittedMessage = json_decode( $_POST[ "messageInfo" ], true );
     $name = $submittedMessage[ "name" ];
     $email = $submittedMessage[ "email" ];

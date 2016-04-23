@@ -2,7 +2,7 @@ $( "#contact-me" ).submit( function( form )
 {
     form.preventDefault();
     $.ajax({
-        url: "./php_include_files/insert-message.php",
+        url: "./server_functionality/insert-message.php",
         type: "POST",
         dataType: "json",
         data: { messageInfo : getMessageInfo() },
