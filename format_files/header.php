@@ -9,6 +9,11 @@
         <link href="https://cdn.jsdelivr.net/jquery.validationengine/2.6.4/css/validationEngine.jquery.css" rel"stylesheet">
         <link href="css/themes.min.css" rel="stylesheet">
 
+
+
+        <link href="http://codegena.com/assets/css/image-preview-for-link.css" rel="stylesheet">
+
+
         <?php echo "<link href=\"images/{$glyphiconName}.ico\" rel=\"shortcut icon\" type=\"image/x-icon\">\n"; ?>
     </head>
 

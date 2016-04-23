@@ -11,38 +11,28 @@
                 die( "Error connecting to database" );
             }
 
-            if( $sortType === "NAME" )  //sort by NAME and set the variables for sorting buttons
+            if( $sortType === "NAME" )
             {
                 $this->name = $currSorter;
-                $this->result = $this->queryProjects( $this->name, "Name" );
-                $this->time = "fa-sort";
-                $this->nextTime = "fa-sort-asc";
-                $this->lang = "fa-sort";
-                $this->nextLang = "fa-sort-asc";
                 $this->nextName = $this->getNextHref( $this->name );
+                $this->result = $this->queryProjects( $this->name, "Name" );
             }
 
-            else if( $sortType === "TIME" ) //sort by TIME and set the variables for sorting buttons
+            else if( $sortType === "TIME" )
             {
                 $this->time = $currSorter;
-                $this->result = $this->queryProjects( $this->time, "Month Finished" );
-                $this->name = "fa-sort";
-                $this->nextName = "fa-sort-asc";
-                $this->lang = "fa-sort";
-                $this->nextLang = "fa-sort-asc";
                 $this->nextTime = $this->getNextHref( $this->time );
+                $this->result = $this->queryProjects( $this->time, "Month Finished" );
             }
 
             else if( $sortType === "LANG" )
             {
                 $this->lang = $currSorter;
-                $this->result = $this->queryProjects( $this->lang, "Programming Languages" );
-                $this->name = "fa-sort";
-                $this->nextName = "fa-sort-asc";
-                $this->time = "fa-sort";
-                $this->nextTime = "fa-sort-asc";
                 $this->nextLang = $this->getNextHref( $this->lang );
+                $this->result = $this->queryProjects( $this->lang, "Programming Languages" );
             }
+
+            $this->setOtherSortButtonVals( $sortType );
         }
 
         function __destruct()
@@ -50,22 +40,14 @@
             mysqli_close( $this->portfolioDB );
         }
 
-        public function getSortButtonVals( $type )  //returns data so that the sort buttons and links that pass information with GET are correct
+        public function getSortButtonVals()  //returns the sort buttons and links to be printed out so they pass the next sort information with GET correctly
         {
-            if( $type === "NAME" )
-            {
-                return [ $this->name, $this->nextName ];
-            }
-
-            else if( $type === "TIME" )
-            {
-                return [ $this->time, $this->nextTime ];
-            }
-
-            else if( $type === "LANG" )
-            {
-                return [ $this->lang, $this->nextLang ];
-            }
+            return "
+            <ul class=\"nav nav-pills nav-justified\">
+                <li class=\"port-padding\"><a href=\"portfolio.php?name={$this->nextName}\">Name of Project <i class=\"fa {$this->name}\"></i></a></i>
+                <li class=\"port-padding\"><a href=\"portfolio.php?lang={$this->nextLang}\">Programming Languages <i class=\"fa {$this->lang}\"></i></a></li>
+                <li class=\"port-padding\"><a href=\"portfolio.php?time={$this->nextTime}\">Time Finished <i class=\"fa {$this->time}\"></i></a></li>
+            </ul>";
         }
 
         public function getSortedProjects() //return all the projects and their descriptions formatted for the webpage
@@ -83,7 +65,7 @@
                 <hr class=\"color-border\">
                 <div class=\"row vertical-center\">
                     <div class=\"col-xs-3\">
-                        <p class=\"font-title font-large font-center colored-link rotate\">
+                        <p class=\"font-title font-large font-center colored-link rotate\" id=\"{$row[ "Name" ]}\">
                             <a href=\"{$row[ "Link" ]}\" title=\"{$row[ "Link" ]}\" target=\"_blank\">{$row[ "Name" ]}</a>
                         </p>
                     </div>
@@ -97,6 +79,33 @@
             $output .= "<hr class=\"color-border\">";
 
             return $output;
+        }
+
+        private function setOtherSortButtonVals( $sortType )    //will set the other variables for the sort buttons to be printed out
+        {
+            if( $sortType === "NAME" )
+            {
+                $this->time = "fa-sort";
+                $this->nextTime = "fa-sort-asc";
+                $this->lang = "fa-sort";
+                $this->nextLang = "fa-sort-asc";
+            }
+
+            else if( $sortType === "TIME" )
+            {
+                $this->name = "fa-sort";
+                $this->nextName = "fa-sort-asc";
+                $this->lang = "fa-sort";
+                $this->nextLang = "fa-sort-asc";
+            }
+
+            else if( $sortType === "LANG" )
+            {
+                $this->name = "fa-sort";
+                $this->nextName = "fa-sort-asc";
+                $this->time = "fa-sort";
+                $this->nextTime = "fa-sort-asc";
+            }
         }
 
         private function getTierChange( $row, $currComparator ) //returns a tier change (such as the programming language changes) with the currComparator so the object can keep track of it (witout making it an object variable since it is only used in this method and the method that calls it getSortedProjects())
