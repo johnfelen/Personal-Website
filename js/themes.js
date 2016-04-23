@@ -1,8 +1,6 @@
-var themes = [ "picnic", "billards-table", "pink-rice", "old-map", "stardust" ];
-
 if( typeof $.cookie( "theme" ) === "undefined" )
 {
-    createCookie( themes[ 0 ] );
+    createCookie( "picnic-blanket" );
 }
 
 var currentTheme = getCurrentTheme();
@@ -12,9 +10,9 @@ addListeners();
 
 function addListeners() //adds hover( preview new theme ) and click( cookie-setting and set theme theme )
 {
-    $( "#theme-menu" ).children( "li" ).each( function( i )
+    $( "#theme-menu" ).children( "li" ).each( function()
     {
-        var selectedTheme = themes[ i ];
+        var selectedTheme = $( this ).children().attr( "id" );
 
         $( "#" + selectedTheme ).hover( function()
         {

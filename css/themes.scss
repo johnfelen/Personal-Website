@@ -14,7 +14,7 @@
 
 @import "generalized-structure";
 
-.picnic {
+.picnic-blanket {
     $deepBlue: #315481;
     $greyWhite: #DDDDDD;
     $wildSalmon: #FF5016;
@@ -23,7 +23,7 @@
     $openSans: 'Open Sans', sans-serif;
 
     @extend %theme-structure;
-    @include theme-specs( $deepBlue, $greyWhite, $wildSalmon, $raleway, $openSans, "../images/picnic.png" );
+    @include theme-specs( $deepBlue, $greyWhite, $wildSalmon, $raleway, $openSans, "../images/picnic-blanket.png" );
 }
 
 .billards-table {
@@ -38,7 +38,7 @@
     @include theme-specs( $black, $cueBallWhite, $purple, $ubuntu, $vollkorn, "../images/billards-table.png" );
 }
 
-.pink-rice {
+.candy-cane {
     $deepRed: #E2021D;
     $darkerWhite: #FAFAFC;
     $smoothBlue: #163C8D;
@@ -47,10 +47,10 @@
     $droidSerif: 'Droid Serif', serif;
 
     @extend %theme-structure;
-    @include theme-specs( $deepRed, $darkerWhite, $smoothBlue, $lobster, $droidSerif, "../images/pink-rice.png" );
+    @include theme-specs( $deepRed, $darkerWhite, $smoothBlue, $lobster, $droidSerif, "../images/candy-cane.png" );
 }
 
-.old-map {
+.cartography {
     $brown: #B34514;
     $cream: #FFE1B8;
     $grey: #808080;
@@ -59,7 +59,7 @@
     $specialElite: 'Special Elite', cursive;
 
     @extend %theme-structure;
-    @include theme-specs( $brown, $cream, $grey, $kaushanScript, $specialElite, "../images/old-map.png" );
+    @include theme-specs( $brown, $cream, $grey, $kaushanScript, $specialElite, "../images/cartography.png" );
 }
 
 .stardust {
