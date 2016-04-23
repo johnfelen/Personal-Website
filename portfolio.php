@@ -9,11 +9,24 @@
     include( "./format_files/header.php" );
     require( "./server_functionality/portfolio-functions.php" );
 
-    $portfolioData = new PortfolioSort();
+    if( isset( $_GET[ "name" ] ) )  //sort by NAME and set the variables for sorting buttons
+    {
+        $portfolioData = new PortfolioSort( "NAME", $_GET[ "name" ] );
+    }
 
-    $nameVals = $portfolioData->getSortButtonVals( "name" );
-    $langVals = $portfolioData->getSortButtonVals( "lang" );
-    $timeVals = $portfolioData->getSortButtonVals( "time" );
+    else if( isset( $_GET[ "time" ] ) ) //sort by TIME and set the variables for sorting buttons
+    {
+        $portfolioData = new PortfolioSort( "TIME", $_GET[ "time" ] );
+    }
+
+    else if( isset( $_GET[ "lang" ] ) )
+    {
+        $portfolioData = new PortfolioSort( "LANG", $_GET[ "lang" ] );
+    }
+
+    $nameVals = $portfolioData->getSortButtonVals( "NAME" );
+    $langVals = $portfolioData->getSortButtonVals( "LANG" );
+    $timeVals = $portfolioData->getSortButtonVals( "TIME" );
 
     //print out sorting buttons with updated sort buttons
     echo "
