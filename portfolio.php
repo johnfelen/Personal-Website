@@ -1,7 +1,13 @@
 <?php
-    if( !isset( $_GET[ "name" ] ) && !isset( $_GET[ "time" ] ) && !isset( $_GET[ "lang" ] ) )    //redirect if they are going to portfolio wil nothing in get, so it will sort by name of project by default
+    session_start();
+    //saves the last chosen sort in a session variable so when the user comes back to the Portfolio page it shows that last chosen sort
+    if( !isset( $_GET[ "name" ] ) && !isset( $_GET[ "time" ] ) && !isset( $_GET[ "lang" ] ) )
     {
-        header( "Location: portfolio.php?name=fa-sort-asc");
+        if( !isset( $_SESSION[ "currPortfolioSort" ] ) )
+        {
+            $_SESSION[ "currPortfolioSort" ] = "name=fa-sort-asc";
+        }
+        header( "Location: portfolio.php?{$_SESSION[ "currPortfolioSort" ]}");
     }
 
     $pageName = "Portfolio";
@@ -9,18 +15,21 @@
     include( "./format_files/header.php" );
     require( "./server_functionality/portfolio-functions.php" );
 
-    if( isset( $_GET[ "name" ] ) )  //sort by NAME and set the variables for sorting buttons
+    if( isset( $_GET[ "name" ] ) )
     {
+        $_SESSION[ "currPortfolioSort" ] = "name={$_GET[ "name" ]}";
         $portfolioData = new PortfolioSort( "NAME", $_GET[ "name" ] );
     }
 
-    else if( isset( $_GET[ "time" ] ) ) //sort by TIME and set the variables for sorting buttons
+    else if( isset( $_GET[ "time" ] ) )
     {
+        $_SESSION[ "currPortfolioSort" ] = "time={$_GET[ "time" ]}";
         $portfolioData = new PortfolioSort( "TIME", $_GET[ "time" ] );
     }
 
     else if( isset( $_GET[ "lang" ] ) )
     {
+        $_SESSION[ "currPortfolioSort" ] = "lang={$_GET[ "lang" ]}";
         $portfolioData = new PortfolioSort( "LANG", $_GET[ "lang" ] );
     }
 

@@ -9,11 +9,6 @@
         <link href="https://cdn.jsdelivr.net/jquery.validationengine/2.6.4/css/validationEngine.jquery.css" rel"stylesheet">
         <link href="css/themes.min.css" rel="stylesheet">
 
-
-
-        <link href="http://codegena.com/assets/css/image-preview-for-link.css" rel="stylesheet">
-
-
         <?php echo "<link href=\"images/{$glyphiconName}.ico\" rel=\"shortcut icon\" type=\"image/x-icon\">\n"; ?>
     </head>
 
@@ -43,7 +38,6 @@
         <hr class="color-border">
             <h1 class="font-title font-header color">
                 <div class="dropdown colored-link">
-                    <!--the reason the whole anchor tag is on the same line is because it adds an extra space with underline if I don't, also the theme dropdown is sort of hidden/an easter egg-->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Change the Website Theme"><span class="glyphicon glyphicon-<?php echo "{$glyphiconName}";?>"></span></a>
                     <ul id="theme-menu" class="dropdown-menu">
                         <li><a href="#" id="picnic-blanket">Picnic Blanket</a></li>
