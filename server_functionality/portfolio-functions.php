@@ -10,27 +10,7 @@
                 die( "Error connecting to database" );
             }
 
-            if( isset( $_GET[ "name" ] ) )  //sort by NAME and set the variables for sorting buttons
-            {
-                $name = $_GET[ "name" ];
-                $this->result = $this->queryProjects( $name, "Name" );
-                $this->currComparator = "z";
-                $this->sortType = "NAME";
-                $nextName = $this->getNextHref( $name );
-                $time = "fa-sort";
-                $nextTime = "fa-sort-asc";
-            }
-
-            else if( isset( $_GET[ "time" ] ) ) //sort by TIME and set the variables for sorting buttons
-            {
-                $time = $_GET[ "time" ];
-                $this->result = $this->queryProjects( $time, "Month Finished" );
-                $this->currComparator = "0";
-                $this->sortType = "YEAR";
-                $name = "fa-sort";
-                $nextName = "fa-sort-asc";
-                $nextTime = $this->getNextHref( $time );
-            }
+            $this->updateSortingFunctions();
         }
 
         function __destruct()
@@ -41,6 +21,19 @@
         public function setFunction( $compare )
         {
             $this->currComparator = $compare;
+        }
+
+        public function getSortButtonVals( $type )
+        {
+            if( $type === "name" )
+            {
+                return [ $this->name, $this->nextName ];
+            }
+
+            else if( $type === "time" )
+            {
+                return [ $this->time, $this->nextTime ];
+            }
         }
 
         public function getSortedProjects() //return all the projects and their descriptions formatted for the webpage
@@ -127,6 +120,31 @@
             else
             {
                 return $result;
+            }
+        }
+
+        private function updateSortingFunctions()
+        {
+            if( isset( $_GET[ "name" ] ) )  //sort by NAME and set the variables for sorting buttons
+            {
+                $this->name = $_GET[ "name" ];
+                $this->result = $this->queryProjects( $this->name, "Name" );
+                $this->currComparator = "z";
+                $this->sortType = "NAME";
+                $this->nextName = $this->getNextHref( $this->name );
+                $this->time = "fa-sort";
+                $this->nextTime = "fa-sort-asc";
+            }
+
+            else if( isset( $_GET[ "time" ] ) ) //sort by TIME and set the variables for sorting buttons
+            {
+                $this->time = $_GET[ "time" ];
+                $this->result = $this->queryProjects( $this->time, "Month Finished" );
+                $this->currComparator = "0";
+                $this->sortType = "YEAR";
+                $this->name = "fa-sort";
+                $this->nextName = "fa-sort-asc";
+                $this->nextTime = $this->getNextHref( $this->time );
             }
         }
     }

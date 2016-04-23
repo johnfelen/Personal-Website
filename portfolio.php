@@ -11,11 +11,14 @@
 
     $portfolioData = new PortfolioSort();
 
+    $nameVals = $portfolioData->getSortButtonVals( "name" );
+    $timeVals = $portfolioData->getSortButtonVals( "time" );
+
     //print out sorting buttons
     echo "
     <ul class=\"nav nav-pills nav-justified\">
-        <li class=\"port-padding\"><a href=\"portfolio.php?name={$nextName}\">Name of Project <i class=\"fa {$name}\"></i></a></li>
-        <li class=\"port-padding\"><a href=\"portfolio.php?time={$nextTime}\">Time Finished <i class=\"fa {$time}\"></i></a></li>
+        <li class=\"port-padding\"><a href=\"portfolio.php?name={$nameVals[ 1 ]}\">Name of Project <i class=\"fa {$nameVals[ 0 ]}\"></i></a></li>
+        <li class=\"port-padding\"><a href=\"portfolio.php?time={$timeVals[ 1 ]}\">Time Finished <i class=\"fa {$timeVals[ 0 ]}\"></i></a></li>
     </ul>";
 
     echo $portfolioData->getSortedProjects();
