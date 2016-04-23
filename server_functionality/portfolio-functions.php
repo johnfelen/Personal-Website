@@ -23,7 +23,7 @@
             $this->currComparator = $compare;
         }
 
-        public function getSortButtonVals( $type )
+        public function getSortButtonVals( $type )  //returns data so that the sort buttons and GET links are correct for in the HTML
         {
             if( $type === "name" )
             {
@@ -33,6 +33,11 @@
             else if( $type === "time" )
             {
                 return [ $this->time, $this->nextTime ];
+            }
+
+            else if( $type === "lang" )
+            {
+                return [ $this->lang, $this->nextLang ];
             }
         }
 
@@ -62,17 +67,26 @@
             return $output;
         }
 
-        private function getTierChange( $row ) //checks if the next item would be in a different "tier" and prints it out if it is, such as when the year changes or the starting letter of the project changes print out the change
+        private function getTierChange( $row ) //checks if the next item would be in a different "tier" and prints it out if it is, such as when the year changes return a HTML string to be printed out to the screen
         {
+            $prevComparator = $this->currComparator;
             if( $this->sortType === "NAME" && $this->currComparator !== $row[ "Name" ][ 0 ] )
             {
                 $this->currComparator = $row[ "Name" ][ 0 ];
-                return "<p class=\"font-title font-header font-center color\">{$this->currComparator}</p>";
             }
 
             else if( $this->sortType === "YEAR" && $this->currComparator !== date( "Y", strtotime( $row[ "Month Finished" ] ) ) )
             {
                 $this->currComparator = date( "Y", strtotime( $row[ "Month Finished" ] ) );
+            }
+
+            else if( $this->sortType === "LANG" && $this->currComparator !== $row[ "Programming Languages" ] )
+            {
+                $this->currComparator = $row[ "Programming Languages" ];
+            }
+
+            if( $prevComparator !== $this->currComparator )
+            {
                 return "<p class=\"font-title font-header font-center color\">{$this->currComparator}</p>";
             }
 
@@ -82,7 +96,7 @@
             }
         }
 
-        private function getNextHref( $currHref )   //will figure out which attribute will be passed through $_GET[] for each sort button
+        private function getNextHref( $currHref )   //figures out which sorting button should be printed out
         {
             if( $currHref === "fa-sort" )
             {
@@ -129,22 +143,39 @@
             {
                 $this->name = $_GET[ "name" ];
                 $this->result = $this->queryProjects( $this->name, "Name" );
-                $this->currComparator = "z";
+                $this->currComparator = "";
                 $this->sortType = "NAME";
-                $this->nextName = $this->getNextHref( $this->name );
                 $this->time = "fa-sort";
                 $this->nextTime = "fa-sort-asc";
+                $this->lang = "fa-sort";
+                $this->nextLang = "fa-sort-asc";
+                $this->nextName = $this->getNextHref( $this->name );
             }
 
             else if( isset( $_GET[ "time" ] ) ) //sort by TIME and set the variables for sorting buttons
             {
                 $this->time = $_GET[ "time" ];
                 $this->result = $this->queryProjects( $this->time, "Month Finished" );
-                $this->currComparator = "0";
+                $this->currComparator = "";
                 $this->sortType = "YEAR";
                 $this->name = "fa-sort";
                 $this->nextName = "fa-sort-asc";
+                $this->lang = "fa-sort";
+                $this->nextLang = "fa-sort-asc";
                 $this->nextTime = $this->getNextHref( $this->time );
+            }
+
+            else if( isset( $_GET[ "lang" ] ) )
+            {
+                $this->lang = $_GET[ "lang" ];
+                $this->result = $this->queryProjects( $this->lang, "Programming Languages" );
+                $this->currComparator = "";
+                $this->sortType = "LANG";
+                $this->name = "fa-sort";
+                $this->nextName = "fa-sort-asc";
+                $this->time = "fa-sort";
+                $this->nextTime = "fa-sort-asc";
+                $this->nextLang = $this->getNextHref( $this->lang );
             }
         }
     }
