@@ -9,7 +9,7 @@ var tour = new Tour({
     {
         element: "#tour-theme-menu",
         title: "Theme Menu",
-        content: "On any page, hover over the page icon to dipslay the theme menu for the entire website.",
+        content: "On any page, hover over the icon here to dipslay the theme menu for the website.",
         placement: "right"
     },
     {
@@ -42,30 +42,7 @@ var tour = new Tour({
             <button class=\"btn btn-default btn-color\" data-role=\"end\">&nbsp;&nbsp;&nbsp;<i class=\"fa fa-fast-forward\"></i>&nbsp;&nbsp;&nbsp;</button> \
         </nav> \
     </div>",
-    backdrop: true,
-    onStart: function( tour )   //redirect to the tour.php which is a default page for the tour to show off the website
-    {
-        $.ajax({
-            url: "./server_functionality/tour-setup.php",
-            type: "POST",
-            data: { incomingTour : true },
-            success: function()
-            {
-                if( document.URL.split( "/" ).pop() !== "tour.php" )
-                {
-                    window.location = "./tour.php";
-                }
-            }
-        });
-    },
-    onEnd: function( tour )
-    {
-        window.history.back();
-    },
-    onHide: function( tour )
-    {
-        console.log( "SJFLKSDJLF" );
-    }
+    backdrop: true
 });
 
 $( "#start-tour" ).click( function()

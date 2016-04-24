@@ -3,9 +3,8 @@ $( "p" ).children( "a" ).each( function()
 {
     var currId = "#" + $( this ).attr( "id" );
 
-
     if( currId !== "#undefined" )
     {
-        $( currId ).miniPreview( { prefetch: "pageload" } );
+        $( currId ).miniPreview( { prefetch: "parenthover" } );
     }
 });

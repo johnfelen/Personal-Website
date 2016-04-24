@@ -243,8 +243,11 @@ function getCurrTimeSec()
 
 $( window ).unload( function()  //set a cookie with the time that the index.php will reload
 {
-    $.cookie( "timeFinished", timeFinishedSec,
+    if( document.URL.split( "/" ).pop() === "static-index.php" || document.URL.split( "/" ).pop() === "index.php" )
     {
-        path: '/'
-    });
+        $.cookie( "timeFinished", timeFinishedSec,
+        {
+            path: '/'
+        });
+    }
 });

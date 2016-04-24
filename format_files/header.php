@@ -21,13 +21,13 @@
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li id="home"<?php echo ( $pageName === "Home" ) ? " class=\"active\"" : ""; ?>>
-                        <a href="index.php" title="Home"><span class="glyphicon glyphicon-home"></span></a>
+                        <a href="index.php" title="Home"><i class="fa fa-home"></i></a>
                     </li>
                     <li id="portfolio"<?php echo ( $pageName === "Portfolio" ) ? " class=\"active\"" : ""; ?>>
-                        <a href="portfolio.php" title="Portfolio"><span class="glyphicon glyphicon-folder-open"></a>
+                        <a href="portfolio.php" title="Portfolio"><i class="fa fa-folder-open"></i></a>
                     </li>
                     <li id="contact"<?php echo ( $pageName === "Contact Me" ) ? " class=\"active\"" : ""; ?>>
-                        <a href="contact.php" title="Contact Me"><span class="glyphicon glyphicon-envelope"></a>
+                        <a href="contact.php" title="Contact Me"><i class="fa fa-envelope"></i></a>
                     </li>
                 </ul>
             </div>
@@ -39,7 +39,7 @@
         <hr class="color-border">
             <h1 class="font-title font-header color">
                 <div class="dropdown colored-link">
-                    <a href="#" id="tour-theme-menu" class="dropdown-toggle" data-toggle="dropdown" title="Change the Website Theme"><span class="glyphicon glyphicon-<?php echo "{$fontAwesome}";?>"></span></a>
+                    <a href="#" id="tour-theme-menu" class="dropdown-toggle" data-toggle="dropdown" title="Change the Website Theme"><i class="fa fa-<?php echo "{$fontAwesome}";?>"></i></a>
                     <ul class="dropdown-menu" id="theme-menu">
                         <li><a href="#" id="picnic-blanket">Picnic Blanket</a></li>
                         <li><a href="#" id="billards-table">Billards Table</a></li>
@@ -48,7 +48,7 @@
                         <li><a href="#" id="stardust">Stardust</a></li>
                     </ul>
                 </div>
-                <?php echo ( $pageName === "Portfolio" ) ? "&nbsp;{$pageName}" : "{$pageName}";  //this is for formatting since the folder in Portfolio will cover part of the 'P' without a space ?>
+                <?php echo $pageName; ?>
             </h1>
         <hr class="color-border">
         <?php include( "./format_files/end-row-10.php" ); ?>
