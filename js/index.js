@@ -1,4 +1,37 @@
-if( document.URL.split("/").pop() === "index.php" ) //functionality for the animated pokemon text
+if( document.URL.split( "/" ).pop() === "static-index.php" )   //for static-index.php, simplified, no animation, appending for when user is at static page
+{
+    $.ajax({
+        url: "./server_functionality/pokemon-text.php",
+        type: "GET",
+        data: { getText : true },
+        dataType: "json",
+        success: function( textToBeDisplayed )
+        {
+            countDown();
+            var lines = textToBeDisplayed.slice( 0, 7 ).join( "<br>" );
+            $( "#static-pokemon" ).html( lines );
+
+            var nameTable = textToBeDisplayed[ 7 ] + "<br>";
+            $( "#static-names" ).html( nameTable );
+            $( "tr" ).removeClass();
+
+            var frozenSpinner = textToBeDisplayed[ 9 ] + "<br>";
+            $( "#static-continue" ).html( frozenSpinner );
+
+            var brokenMessage = textToBeDisplayed[ 10 ] + "<br>";
+            $( "#static-broken" ).html( brokenMessage );
+
+            if( typeof $.cookie( "timeFinished" ) !== "undefined" )   //they reloaded the page before the countdown was done, go back to where they were( this fixes the bug that 15 minutes would show up and then change to the correct time )
+            {
+                timeFinishedSec = $.cookie( "timeFinished" );
+                diff = timeFinishedSec - getCurrTimeSec();
+                $( "#time-left" ).html( formattedTimeLeft() );
+            }
+        }
+    });
+}
+
+else    //functionality for the animated pokemon text
 {
     var count = 0;
     var currentlyTyping = false;    //used to stop repeat clicking which would cause gibberish to type out
@@ -152,39 +185,6 @@ if( document.URL.split("/").pop() === "index.php" ) //functionality for the anim
     }
 }
 
-else if( document.URL.split( "/" ).pop() === "static-index.php" )   //for static-index.php, simplified, no animation, appending for when user is at static page
-{
-    $.ajax({
-        url: "./server_functionality/pokemon-text.php",
-        type: "GET",
-        data: { getText : true },
-        dataType: "json",
-        success: function( textToBeDisplayed )
-        {
-            countDown();
-            var lines = textToBeDisplayed.slice( 0, 7 ).join( "<br>" );
-            $( "#static-pokemon" ).html( lines );
-
-            var nameTable = textToBeDisplayed[ 7 ] + "<br>";
-            $( "#static-names" ).html( nameTable );
-            $( "tr" ).removeClass();
-
-            var frozenSpinner = textToBeDisplayed[ 9 ] + "<br>";
-            $( "#static-continue" ).html( frozenSpinner );
-
-            var brokenMessage = textToBeDisplayed[ 10 ] + "<br>";
-            $( "#static-broken" ).html( brokenMessage );
-
-            if( typeof $.cookie( "timeFinished" ) !== "undefined" )   //they reloaded the page before the countdown was done, go back to where they were( this fixes the bug that 15 minutes would show up and then change to the correct time )
-            {
-                timeFinishedSec = $.cookie( "timeFinished" );
-                diff = timeFinishedSec - getCurrTimeSec();
-                $( "#time-left" ).html( formattedTimeLeft() );
-            }
-        }
-    });
-}
-
 function countDown()    //will keep outputting how many minutes/seconds the user has left until the "game" will work again, so when zero seconds left redirect to index.php
 {
     $.ajax({
@@ -214,7 +214,7 @@ function formattedTimeLeft()    //update text with minutes and seconds to be gra
 {
     if( diff <= 0 )
     {
-        window.location = "index.php";
+        window.location = "./index.php";
     }
 
     var pluralSec = ( ( diff % 60 ) === 1 ) ? "" : "s";
