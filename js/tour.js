@@ -24,6 +24,19 @@ var tour = new Tour({
         content: "If you want to go thorugh the tour again, click me.",
         placement: "top"
     }],
+    template: "\
+    <div class=\"popover tour color\"> \
+        <div class=\"arrow\"></div> \
+        <h3 class=\"popover-title color\"></h3> \
+        <div class=\"popover-content color-border\"></div> \
+        <nav class=\"popover-navigation\"> \
+            <div class=\"btn-group\"> \
+                <button class=\"btn btn-default btn-color\" data-role=\"prev\">« Prev</button> \
+                <button class=\"btn btn-default btn-color\" data-role=\"next\">Next »</button> \
+            </div> \
+            <button class=\"btn btn-default btn-color\" data-role=\"end\">End tour</button> \
+        </nav> \
+    </div>",
     backdrop: true
 });
 
