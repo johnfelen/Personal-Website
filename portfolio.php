@@ -11,7 +11,7 @@
     }
 
     $pageName = "Portfolio";
-    $glyphiconName = "folder-open";
+    $fontAwesome = "folder-open";
     include( "./format_files/header.php" );
     require( "./server_functionality/portfolio-functions.php" );
 

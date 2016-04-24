@@ -1,6 +1,6 @@
 <?php
     $pageName = "Contact Me";
-    $glyphiconName = "envelope";
+    $fontAwesome = "envelope";
     include( "./format_files/header.php" );
     include( "./format_files/start-row-10.php" );
     require( "./server_functionality/contact-functions.php" );

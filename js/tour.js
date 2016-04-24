@@ -30,7 +30,7 @@ var tour = new Tour({
         content: "If you want to go through the tour again, click here.",
         placement: "top"
     }],
-    //template based on http://knackforge.com/blog/sivaji/how-change-twitter-bootstraps-tour-template
+    //template based on the default template at http://bootstraptour.com/api/
     template: "\
     <div class=\"popover tour color-container\"> \
         <div class=\"arrow color\"></div> \
@@ -43,7 +43,7 @@ var tour = new Tour({
         </nav> \
     </div>",
     backdrop: true,
-    onStart: function( tour )
+    onStart: function( tour )   //redirect to the tour.php which is a default page for the tour to show off the website
     {
         $.ajax({
             url: "./server_functionality/tour-setup.php",
@@ -61,6 +61,10 @@ var tour = new Tour({
     onEnd: function( tour )
     {
         window.history.back();
+    },
+    onHide: function( tour )
+    {
+        console.log( "SJFLKSDJLF" );
     }
 });
 

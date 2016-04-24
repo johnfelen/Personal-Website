@@ -10,7 +10,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.10.3/css/bootstrap-tour.min.css" rel="stylesheet">
         <link href="css/themes.min.css" rel="stylesheet">
 
-        <?php echo "<link href=\"images/{$glyphiconName}.ico\" rel=\"shortcut icon\" type=\"image/x-icon\">\n"; ?>
+        <?php echo "<link id=\"favicon\" name=\"favicon-{$fontAwesome}.ico\" href=\"\" rel=\"shortcut icon\" type=\"image/x-icon\">\n"; ?>
     </head>
 
     <body class="subtle-pattern">
@@ -39,7 +39,7 @@
         <hr class="color-border">
             <h1 class="font-title font-header color">
                 <div class="dropdown colored-link">
-                    <a href="#" id="tour-theme-menu" class="dropdown-toggle" data-toggle="dropdown" title="Change the Website Theme"><span class="glyphicon glyphicon-<?php echo "{$glyphiconName}";?>"></span></a>
+                    <a href="#" id="tour-theme-menu" class="dropdown-toggle" data-toggle="dropdown" title="Change the Website Theme"><span class="glyphicon glyphicon-<?php echo "{$fontAwesome}";?>"></span></a>
                     <ul class="dropdown-menu" id="theme-menu">
                         <li><a href="#" id="picnic-blanket">Picnic Blanket</a></li>
                         <li><a href="#" id="billards-table">Billards Table</a></li>

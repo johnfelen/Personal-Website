@@ -12,7 +12,7 @@
     }
 
     $pageName = "Home";
-    $glyphiconName = "home";
+    $fontAwesome = "home";
     include( "./format_files/header.php" );
     include( "./format_files/start-row-10.php" );
 ?>
