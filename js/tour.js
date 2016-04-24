@@ -3,7 +3,7 @@ var tour = new Tour({
     {
         element: "#main-nav",
         title: "Main Navbar",
-        content: "Page Links to Home, Portfolio, and Contact Me.",
+        content: "Page links to Home, Portfolio, and Contact Me.",
         placement: "bottom"
     },
     {
@@ -25,16 +25,16 @@ var tour = new Tour({
         placement: "top"
     }],
     template: "\
-    <div class=\"popover tour color\"> \
-        <div class=\"arrow\"></div> \
-        <h3 class=\"popover-title color\"></h3> \
-        <div class=\"popover-content color-border\"></div> \
+    <div class=\"popover tour color-container\"> \
+        <div class=\"arrow color\"></div> \
+        <h3 class=\"popover-title color-reverse font-title\"></h3> \
+        <div class=\"popover-content color font-main font-center\"></div> \
         <nav class=\"popover-navigation\"> \
             <div class=\"btn-group\"> \
                 <button class=\"btn btn-default btn-color\" data-role=\"prev\">« Prev</button> \
                 <button class=\"btn btn-default btn-color\" data-role=\"next\">Next »</button> \
             </div> \
-            <button class=\"btn btn-default btn-color\" data-role=\"end\">End tour</button> \
+            <button class=\"btn btn-default btn-color\" data-role=\"end\">End Tour</button> \
         </nav> \
     </div>",
     backdrop: true

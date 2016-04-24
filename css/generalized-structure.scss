@@ -190,9 +190,14 @@
         border-color: $primary;
     }
 
-    .container-main {
+    .color-container {
         background-color: $secondary;
         border-color: $primary;
+    }
+
+    .color-reverse {
+        background-color: $primary;
+        color: $secondary;
     }
 
     .colored-link > a {
@@ -289,5 +294,22 @@
     .dropdown-menu {
         border-color: $primary;
         background-color: $primary;
+    }
+
+    //these four themes change the color of the arrow on the tour box, based on the first answer from http://stackoverflow.com/questions/25011758/how-can-we-change-the-color-of-arrow-in-the-popover-of-bootstrap
+    .popover.right .arrow:after {
+        border-right-color: $primary;
+    }
+
+    .popover.left .arrow:after {
+        border-left-color: $primary;
+    }
+
+    .popover.top .arrow:after {
+        border-top-color: $primary;
+    }
+
+    .popover.bottom .arrow:after {
+        border-bottom-color: $primary;
     }
 }

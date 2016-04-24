@@ -55,4 +55,4 @@
 
         <!--start the main container which is closed in footer.php-->
         <?php include( "./format_files/start-row-10.php" ); ?>
-        <div class="container-main" id="main-container">
+        <div class="container-main color-container" id="main-container">
