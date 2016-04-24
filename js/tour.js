@@ -1,53 +1,36 @@
 var tour = new Tour({
     steps: [
     {
-        element: "#home",
-        title: "Home Page",
-        content: "Content of my step",
-        placement: "bottom"
-    },
-    {
-        element: "#portfolio",
-        title: "Portfolio Page",
-        content: "Content of my step",
-        placement: "bottom"
-    },
-    {
-        element: "#contact",
-        title: "Contact Page",
-        content: "Content of my step",
+        element: "#main-nav",
+        title: "Main Navbar",
+        content: "Page Links to Home, Portfolio, and Contact Me.",
         placement: "bottom"
     },
     {
         element: "#tour-theme-menu",
         title: "Theme Menu",
-        content: "Content of my step",
-        placement: "right",
-        // onShow: function( tour )
-        // {
-        //     console.log( 'askdjfjasldkfjlaksd' );
-        // }
+        content: "On any page, hover over the icon here to dipslay the theme menu for the entire website.",
+        placement: "right"
     },
     {
         element: "#footer-links",
         title: "Footer Links",
-        content: "Content of my step",
-        placement: "top",
+        content: "Links to my Résumé, Github and LinkedIn.",
+        placement: "top"
+    },
+    {
+        element: "#start-tour",
+        title: "Tour Start",
+        content: "If you want to go thorugh the tour again, click me.",
+        placement: "top"
     }],
-    backdrop: true,
-    template: "<div class=\"popover tour\">" +
-    "<div class=\"arrow\"></div>" +
-    "<h3 class=\"popover-title\"></h3>" +
-    "<div class=\"popover-content\"></div>" +
-    "<div class=\"popover-navigation\">" +
-        "<button class=\"btn btn-default\" data-role=\"prev\">« Prev</button>" +
-        "<span data-role=\"separator\">|</span>" +
-        "<button class=\"btn btn-default\" data-role=\"next\">Next »</button>" +
-    "</div>" +
-    "<button class=\"btn btn-default\" data-role=\"end\">End tour</button>" +
-    "</nav>" +
-  "</div>"
+    backdrop: true
 });
 
-tour.init( true );
-tour.start( true );
+$( "#start-tour" ).click( function()
+{
+    tour.restart();
+});
+
+tour.init();
+tour.start();

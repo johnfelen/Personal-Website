@@ -6,7 +6,7 @@
     <?php include( "./format_files/start-row-10.php" ); ?>
     <hr class="color-border">
     <div class="vertical-center font-main font-small">
-        <p class="footer-left color">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;John Felen's Personal Website</p>
+        <p class="footer-left color" id="start-tour">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;John Felen's Personal Website</p>
         <p class="footer-right colored-link" id="footer-links">
             <a href="other_files/JohnFelenRésumé.pdf" title="Download my R&eacute;sum&eacute;" target="_blank"><i class="fa fa-file-text fa-2x"></i></a>
             &nbsp;&nbsp;&nbsp;

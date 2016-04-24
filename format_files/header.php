@@ -17,9 +17,9 @@
 
         <!--top navigation bar-->
         <?php include( "./format_files/start-row-10.php" ); ?>
-        <div class="navbar">
+        <div class="navbar" id="main-nav">
             <div class="navbar-collapse">
-                <ul class="nav navbar-nav" id="main-nav">
+                <ul class="nav navbar-nav">
                     <li id="home"<?php echo ( $pageName === "Home" ) ? " class=\"active\"" : ""; ?>>
                         <a href="index.php" title="Home"><span class="glyphicon glyphicon-home"></span></a>
                     </li>
