@@ -5,6 +5,14 @@
         {
             $this->portfolioDB = new mysqli( "localhost", "root", "jfelen62", "personal website" );
             $this->sortType = $sortType;
+            $this->sortButton = [
+                "name" => "",
+                "nextName" => "",
+                "time" => "",
+                "nextTime" => "",
+                "lang" => "",
+                "nextLang" => ""
+            ];
 
             if( $this->portfolioDB->connect_error )
             {
@@ -13,23 +21,23 @@
 
             if( $sortType === "NAME" )
             {
-                $this->name = $currSorter;
-                $this->nextName = $this->getNextHref( $this->name );
-                $this->result = $this->queryProjects( $this->name, "Name" );
+                $this->sortButton[ "name" ] = $currSorter;
+                $this->sortButton[ "nextName" ] = $this->getNextHref( $this->sortButton[ "name" ] );
+                $this->result = $this->queryProjects( $this->sortButton[ "name" ], "Name" );
             }
 
             else if( $sortType === "TIME" )
             {
-                $this->time = $currSorter;
-                $this->nextTime = $this->getNextHref( $this->time );
-                $this->result = $this->queryProjects( $this->time, "Month Finished" );
+                $this->sortButton[ "time" ] = $currSorter;
+                $this->sortButton[ "nextTime" ] = $this->getNextHref( $this->sortButton[ "time" ] );
+                $this->result = $this->queryProjects( $this->sortButton[ "time" ], "Month Finished" );
             }
 
             else if( $sortType === "LANG" )
             {
-                $this->lang = $currSorter;
-                $this->nextLang = $this->getNextHref( $this->lang );
-                $this->result = $this->queryProjects( $this->lang, "Programming Languages" );
+                $this->sortButton[ "lang" ] = $currSorter;
+                $this->sortButton[ "nextLang" ] = $this->getNextHref( $this->sortButton[ "lang" ] );
+                $this->result = $this->queryProjects( $this->sortButton[ "lang" ], "Programming Languages" );
             }
 
             $this->setOtherSortButtonVals( $sortType );
@@ -44,9 +52,9 @@
         {
             return "
             <ul class=\"nav nav-pills nav-justified\">
-                <li><a href=\"portfolio.php?name={$this->nextName}\">Name of Project <i class=\"fa {$this->name}\"></i></a></li>
-                <li><a href=\"portfolio.php?lang={$this->nextLang}\">Programming Languages <i class=\"fa {$this->lang}\"></i></a></li>
-                <li><a href=\"portfolio.php?time={$this->nextTime}\">Time Finished <i class=\"fa {$this->time}\"></i></a></li>
+                <li><a href=\"portfolio.php?name={$this->sortButton[ "nextName" ]}\">Name of Project <i class=\"fa {$this->sortButton[ "name" ]}\"></i></a></li>
+                <li><a href=\"portfolio.php?lang={$this->sortButton[ "nextLang" ]}\">Programming Languages <i class=\"fa {$this->sortButton[ "lang" ]}\"></i></a></li>
+                <li><a href=\"portfolio.php?time={$this->sortButton[ "nextTime" ]}\">Time Finished <i class=\"fa {$this->sortButton[ "time" ]}\"></i></a></li>
             </ul>";
         }
 
@@ -81,30 +89,20 @@
             return $output;
         }
 
-        private function setOtherSortButtonVals( $sortType )    //will set the other variables for the sort buttons to be printed out
+        private function setOtherSortButtonVals()    //will set the other variables for the sort buttons to be printed out
         {
-            if( $sortType === "NAME" )
+            foreach( $this->sortButton as $key => $value )
             {
-                $this->time = "fa-sort";
-                $this->nextTime = "fa-sort-asc";
-                $this->lang = "fa-sort";
-                $this->nextLang = "fa-sort-asc";
-            }
+                if( $key[ 0 ] !== "n" && $value === "" ) //doesn't have next in the key and is not the sortType passed into the constructor so the button will be the both up and down arrows
+                {
+                    $this->sortButton[ $key ] = "fa-sort";
+                }
 
-            else if( $sortType === "TIME" )
-            {
-                $this->name = "fa-sort";
-                $this->nextName = "fa-sort-asc";
-                $this->lang = "fa-sort";
-                $this->nextLang = "fa-sort-asc";
-            }
+                else if( $value === "" )
+                {
 
-            else if( $sortType === "LANG" )
-            {
-                $this->name = "fa-sort";
-                $this->nextName = "fa-sort-asc";
-                $this->time = "fa-sort";
-                $this->nextTime = "fa-sort-asc";
+                    $this->sortButton[ $key ] = "fa-sort-asc";
+                }
             }
         }
 
@@ -130,7 +128,7 @@
             {
                 if( $this->sortType !== "LANG" )
                 {
-                    return [ "<p class=\"font-title font-header font-center color colored-link\"><a id=\"{$currComparator}\" href=\"https://en.wikipedia.org/wiki/{$currComparator}\">{$currComparator}</a></p>", $currComparator ];
+                    return [ "<p class=\"font-title font-header font-center color colored-link\"><a id=\"{$currComparator}\" href=\"https://en.wikipedia.org/wiki/{$currComparator}\" target=\"_blank\">{$currComparator} </a></p>", $currComparator ];
                 }
 
                 else    //the language has some edge cases because of wikipedia disambiguation and there can be more than one programming language per project
@@ -139,7 +137,7 @@
                     $result = "<p class=\"font-title font-header font-center color colored-link\">";
                     for( $i = 0; $i < count( $languages ); $i++ )
                     {
-                        $result .= "<a id=\"{$languages[ $i ]}_{$i}\" href=\"https://en.wikipedia.org/wiki/{$languages[ $i ]}_(programming_language)\">{$languages[ $i ]}</a> ";
+                        $result .= "<a id=\"{$languages[ $i ]}_{$i}\" href=\"https://en.wikipedia.org/wiki/{$languages[ $i ]}_(programming_language)\" target=\"_blank\">{$languages[ $i ]}</a> ";
                     }
                     return [ "{$result}</p>", $currComparator ];
                 }
