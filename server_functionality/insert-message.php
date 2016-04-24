@@ -58,6 +58,12 @@
         $response[ "error" ] = true;
     }
 
+    if( !isset( $response[ "error" ] ) )    //send email when something is entered into the database( does not work with XAMPP but works with my web host )
+    {
+        $message = wordwrap( $message, 70 );
+        mail( "johnfelen@pitt.edu", "Message from {$name}, {$email}", $message, "From: {$email}" );
+    }
+
     $response[ "name" ] = $name;
     $response[ "email" ] = $email;
     $response[ "message" ] = $message;

@@ -128,7 +128,21 @@
 
             if( $prevComparator !== $currComparator )
             {
-                return [ "<p class=\"font-title font-header font-center color\">{$currComparator}</p>", $currComparator ];
+                if( $this->sortType !== "LANG" )
+                {
+                    return [ "<p class=\"font-title font-header font-center color colored-link\"><a id=\"{$currComparator}\" href=\"https://en.wikipedia.org/wiki/{$currComparator}\">{$currComparator}</a></p>", $currComparator ];
+                }
+
+                else    //the language has some edge cases because of wikipedia disambiguation and there can be more than one programming language per project
+                {
+                    $languages = explode( " ", $currComparator );
+                    $result = "<p class=\"font-title font-header font-center color colored-link\">";
+                    for( $i = 0; $i < count( $languages ); $i++ )
+                    {
+                        $result .= "<a id=\"{$languages[ $i ]}_{$i}\" href=\"https://en.wikipedia.org/wiki/{$languages[ $i ]}_(programming_language)\">{$languages[ $i ]}</a> ";
+                    }
+                    return [ "{$result}</p>", $currComparator ];
+                }
             }
 
             else
