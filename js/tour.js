@@ -42,7 +42,26 @@ var tour = new Tour({
             <button class=\"btn btn-default btn-color\" data-role=\"end\">&nbsp;&nbsp;&nbsp;<i class=\"fa fa-fast-forward\"></i>&nbsp;&nbsp;&nbsp;</button> \
         </nav> \
     </div>",
-    backdrop: true
+    backdrop: true,
+    onStart: function( tour )
+    {
+        $.ajax({
+            url: "./server_functionality/tour-setup.php",
+            type: "POST",
+            data: { incomingTour : true },
+            success: function()
+            {
+                if( document.URL.split( "/" ).pop() !== "tour.php" )
+                {
+                    window.location = "./tour.php";
+                }
+            }
+        });
+    },
+    onEnd: function( tour )
+    {
+        window.history.back();
+    }
 });
 
 $( "#start-tour" ).click( function()
@@ -50,5 +69,8 @@ $( "#start-tour" ).click( function()
     tour.restart();
 });
 
-tour.init();
-tour.start();
+if( !tour.ended() )
+{
+    tour.init();
+    tour.start();
+}
