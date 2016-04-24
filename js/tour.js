@@ -9,8 +9,14 @@ var tour = new Tour({
     {
         element: "#tour-theme-menu",
         title: "Theme Menu",
-        content: "On any page, hover over the icon here to dipslay the theme menu for the entire website.",
+        content: "On any page, hover over the page icon to dipslay the theme menu for the entire website.",
         placement: "right"
+    },
+    {
+        element: "#main-container",
+        title: "Main Container",
+        content: "The main information on each page is placed inside this container.",
+        placement: "top"
     },
     {
         element: "#footer-links",
@@ -21,20 +27,19 @@ var tour = new Tour({
     {
         element: "#start-tour",
         title: "Tour Start",
-        content: "If you want to go thorugh the tour again, click me.",
+        content: "If you want to go through the tour again, click here.",
         placement: "top"
     }],
+    //template based on http://knackforge.com/blog/sivaji/how-change-twitter-bootstraps-tour-template
     template: "\
     <div class=\"popover tour color-container\"> \
         <div class=\"arrow color\"></div> \
         <h3 class=\"popover-title color-reverse font-title\"></h3> \
         <div class=\"popover-content color font-main font-center\"></div> \
         <nav class=\"popover-navigation\"> \
-            <div class=\"btn-group\"> \
-                <button class=\"btn btn-default btn-color\" data-role=\"prev\">« Prev</button> \
-                <button class=\"btn btn-default btn-color\" data-role=\"next\">Next »</button> \
-            </div> \
-            <button class=\"btn btn-default btn-color\" data-role=\"end\">End Tour</button> \
+            <button class=\"btn btn-default btn-color\" data-role=\"prev\">&nbsp;&nbsp;<i class=\"fa fa-step-backward\"></i>&nbsp;&nbsp;</button> \
+            <button class=\"btn btn-default btn-color\" data-role=\"next\">&nbsp;&nbsp;<i class=\"fa fa-step-forward\"></i>&nbsp;&nbsp;</button> \
+            <button class=\"btn btn-default btn-color\" data-role=\"end\">&nbsp;&nbsp;&nbsp;<i class=\"fa fa-fast-forward\"></i>&nbsp;&nbsp;&nbsp;</button> \
         </nav> \
     </div>",
     backdrop: true
