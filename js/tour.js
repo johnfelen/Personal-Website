@@ -50,8 +50,5 @@ $( "#start-tour" ).click( function()
     tour.restart();
 });
 
-if( !tour.ended() )
-{
-    tour.init();
-    tour.start();
-}
+tour.init();
+tour.start();
