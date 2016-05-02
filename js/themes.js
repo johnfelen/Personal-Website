@@ -1,14 +1,14 @@
-if( typeof $.cookie( "theme" ) === "undefined" )
+if( localStorage.getItem( "current_theme" ) === null )
 {
-    createCookie( "picnic-blanket" );
+    localStorage.setItem( "current_theme", "picnic-blanket" );
 }
 
-var currentTheme = getCurrentTheme();
+var currentTheme = localStorage.getItem( "current_theme" );
 setTheme( currentTheme, true );
 changeActive( currentTheme, true );
 addListeners();
 
-function addListeners() //adds hover( preview new theme ) and click( cookie-setting and set theme theme )
+function addListeners() //adds hover( preview new theme ) and click( localStorage-setting and set theme theme )
 {
     $( "#theme-menu" ).children( "li" ).each( function()
     {
@@ -31,11 +31,11 @@ function addListeners() //adds hover( preview new theme ) and click( cookie-sett
             setTheme( currentTheme, false );
             changeActive( currentTheme, false );
 
-            createCookie( selectedTheme );
-            currentTheme = getCurrentTheme();
-
             setTheme( selectedTheme, true );
             changeActive( selectedTheme, true );
+
+            localStorage.setItem( "current_theme", selectedTheme );
+            currentTheme = selectedTheme;
         });
     });
 }
@@ -53,11 +53,6 @@ function changeActive( theme, adding )  //change active of dropdown menu
     }
 }
 
-function getCurrentTheme()  //parses theme from cookie
-{
-    return $.cookie( "theme" );
-}
-
 function setTheme( theme, adding ) //change current theme on page
 {
     if( adding )
@@ -70,13 +65,4 @@ function setTheme( theme, adding ) //change current theme on page
     {
         $( "html" ).removeClass( theme );
     }
-}
-
-function createCookie( theme )  //wrapper for cookie
-{
-    $.cookie( "theme", theme,
-    {
-        expires: 7,
-        path: '/'
-    });
 }

@@ -15,8 +15,8 @@
     <div class="col-xs-3"></div>
         <div class="col-xs-6">
             <img src="images/me.jpg" id="static-picture-of-me" alt="Picture of Me"/>
-                <p class="font-main font-medium font-center color" id="static-broken"></p>
-                <p class="font-ubuntu-mono font-medium font-center color" id="static-continue"></p>
+            <p class="font-main font-medium font-center color" id="static-broken"></p>
+            <p class="font-ubuntu-mono font-medium font-center color" id="static-continue"></p>
         </div>
     <div class="col-xs-3"></div>
 </div>

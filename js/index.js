@@ -21,9 +21,9 @@ if( document.URL.split( "/" ).pop() === "static-index.php" )   //for static-inde
             var brokenMessage = textToBeDisplayed[ 10 ] + "<br>";
             $( "#static-broken" ).html( brokenMessage );
 
-            if( typeof $.cookie( "timeFinished" ) !== "undefined" )   //they reloaded the page before the countdown was done, go back to where they were( this fixes the bug that 15 minutes would show up and then change to the correct time )
+            if( localStorage.getItem( "time_finished" ) )   //they reloaded the page before the countdown was done, go back to where they were( this fixes the bug that 15 minutes would show up and then change to the correct time )
             {
-                timeFinishedSec = $.cookie( "timeFinished" );
+                timeFinishedSec = parseInt( localStorage.getItem( "time_finished" ) );
                 diff = timeFinishedSec - getCurrTimeSec();
                 $( "#time-left" ).html( formattedTimeLeft() );
             }
@@ -31,7 +31,7 @@ if( document.URL.split( "/" ).pop() === "static-index.php" )   //for static-inde
     });
 }
 
-else    //functionality for the animated pokemon text
+else   //functionality for the animated pokemon text
 {
     var count = 0;
     var currentlyTyping = false;    //used to stop repeat clicking which would cause gibberish to type out
@@ -41,7 +41,7 @@ else    //functionality for the animated pokemon text
         printNextLine();
     });
 
-    $.ajax({        //use an ajax call to get the text that will be displayed, after we get that start the fade in and start displaying the text, NOTE: I took away the document.ready to speed up the start time of when the picture starts to fade in since the AJAX call already takes time and will finish after document is ready at normal speeds
+    $.ajax({    //use an ajax call to get the text that will be displayed, after we get that start the fade in and start displaying the text, NOTE: I took away the document.ready to speed up the start time of when the picture starts to fade in since the AJAX call already takes time and will finish after document is ready at normal speeds
         url: "./server_functionality/pokemon-text.php",
         type: "GET",
         data: { getText : true },
@@ -73,7 +73,7 @@ else    //functionality for the animated pokemon text
             {
                 if( currentCharIndex == chars.length )  //base case
                 {
-                    $( "#pokemon" ).html( $( "#pokemon" ).html() + "<br>" );
+                    $( "#pokemon" ).append( "<br>" );
                     count++;
                     currentlyTyping = false;
                     return;
@@ -81,13 +81,13 @@ else    //functionality for the animated pokemon text
 
                 else if( ( chars[ currentCharIndex ] === "." || chars[ currentCharIndex ] === "!" ) && chars[ currentCharIndex + 1 ] === " " )  //this is just to be uniform so I can have double spaces at the end of a sentence since nbsp; will be printed out if I have it in the chars array
                 {
-                    $( "#pokemon" ).html( $( "#pokemon" ).html() + chars[ currentCharIndex ] + " &nbsp;" );
+                    $( "#pokemon" ).append( chars[ currentCharIndex ] + " &nbsp;" );
                     currentCharIndex += 2;
                 }
 
                 else
                 {
-                    $( "#pokemon" ).html( $( "#pokemon" ).html() + chars[ currentCharIndex ] );
+                    $( "#pokemon" ).append( chars[ currentCharIndex ] );
                     currentCharIndex++;
                 }
 
@@ -98,7 +98,7 @@ else    //functionality for the animated pokemon text
             printNextChar();
         }
 
-        else if( count == lines.length )   //print out the name chosing table
+        else if( count === lines.length )   //print out the name chosing table
         {
             $( "#names" ).html( nameTable + "<br>" );
             $( "#main-container" ).off( "click" );
@@ -109,7 +109,7 @@ else    //functionality for the animated pokemon text
             count++;
         }
 
-        else if( count == lines.length + 1 )    //print out spinner to simulate loading and stop the table from highlighting on hover
+        else if( count === lines.length + 1 )    //print out spinner to simulate loading and stop the table from highlighting on hover
         {
             $( "tr" ).removeClass();
             $( "#continue" ).html( movingSpinner + "<br>" );
@@ -121,7 +121,7 @@ else    //functionality for the animated pokemon text
             });
         }
 
-         else if( count == lines.length + 2 )    //"freeze" the spinner and print out that the game broken, set session, and stop the hover effect on the table
+         else if( count === lines.length + 2 )    //"freeze" the spinner and print out that the game broken, set session, and stop the hover effect on the table
         {
             $.ajax({
                 url: "./server_functionality/pokemon-text.php",
@@ -150,13 +150,13 @@ else    //functionality for the animated pokemon text
                 $( "blink" ).css( "visibility", "hidden" );
             }
 
-            else if( count == lines.length + 1 )    //they now can "choose" their name so change "click to continue" to "choose your name", because of the below else if must have the s.style.visibility line
+            else if( count === lines.length + 1 )    //they now can "choose" their name so change "click to continue" to "choose your name", because of the below else if must have the s.style.visibility line
             {
                 $( "#continue" ).html( "Choose Your Name<br>" );
                 toggleVisibility();
             }
 
-            else if( count == lines.length + 2 )    //we are done with blinking, make the text visible so the "loading" simulation will show
+            else if( count === lines.length + 2 )    //we are done with blinking, make the text visible so the "loading" simulation will show
             {
                 $( "blink" ).css( "visibility", "visible" );
                 return;
@@ -173,7 +173,7 @@ else    //functionality for the animated pokemon text
 
     function toggleVisibility() //wrapper class for visibility, since jquery toggle is display not visibility
     {
-        if( $( "blink" ).css( "visibility" ) == "visible" )
+        if( $( "blink" ).css( "visibility" ) === "visible" )
         {
             $( "blink" ).css( "visibility", "hidden" );
         }
@@ -210,11 +210,12 @@ function countDown()    //will keep outputting how many minutes/seconds the user
     });
 }
 
-function formattedTimeLeft()    //update text with minutes and seconds to be gramatically correct and concise
+function formattedTimeLeft()    //update text with minutes and seconds to be gramatically correct and concise, removes localStorage and cookie when 15 minutes has been up
 {
     if( diff <= 0 )
     {
-        window.location = "./index.php";
+        localStorage.removeItem( "time_finished" );
+        window.location.href = "./index.php";
     }
 
     var pluralSec = ( ( diff % 60 ) === 1 ) ? "" : "s";
@@ -241,13 +242,10 @@ function getCurrTimeSec()
     return parseInt( new Date().getTime() / 1000 );
 }
 
-$( window ).unload( function()  //set a cookie with the time that the index.php will reload
+$( window ).unload( function()  //set local storage(since if they restart the browser they it counts as fixing the "game") with the time that the index.php will reload
 {
-    if( document.URL.split( "/" ).pop() === "static-index.php" || document.URL.split( "/" ).pop() === "index.php" )
+    if( typeof timeFinishedSec !== "undefined" )
     {
-        $.cookie( "timeFinished", timeFinishedSec,
-        {
-            path: '/'
-        });
+        localStorage.setItem( "time_finished", timeFinishedSec );
     }
 });

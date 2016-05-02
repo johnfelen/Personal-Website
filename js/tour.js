@@ -42,8 +42,30 @@ var tour = new Tour({
             <button class=\"btn btn-default btn-color\" data-role=\"end\">&nbsp;&nbsp;&nbsp;<i class=\"fa fa-fast-forward\"></i>&nbsp;&nbsp;&nbsp;</button> \
         </nav> \
     </div>",
-    backdrop: true
+    backdrop: true,
+    onStart: function( tour )
+    {
+        localStorage.setItem( "tour_start", document.URL.split( "/" ).pop() );
+        stayOnTourPage();
+    },
+    onEnd: function( tour )
+    {
+        var tourStart = localStorage.getItem( "tour_start" );
+        localStorage.removeItem( "tour_start" );
+        window.location.href = "./" + tourStart;
+    }
 });
+
+function stayOnTourPage()   //this function is used in the two handlers below to make sure that the only way the user can leave the tour page is to hit the end tour button
+{
+    if( !tour.ended() && document.URL.split( "/" ).pop() !== "contact.php" )
+    {
+        window.location.href = "./contact.php";
+    }
+}
+
+$( document ).click( stayOnTourPage() );
+$( window ).ready( stayOnTourPage() );
 
 $( "#start-tour" ).click( function()
 {

@@ -12,7 +12,7 @@
         "I study humans as profession.",
         "First, what is your name?",
         "<div class=\"col-xs-3\"></div>
-            <div class=\"col-xs-6 container-main\">
+            <div class=\"col-xs-6 container-main color\">
                 <table class=\"font-ubuntu-mono font-header color color-border font-center fill-n-center\" id=\"choose-name\">
                     <tr class=\"accent-hover\"><td>NEW NAME</td></tr>
                     <tr class=\"accent-hover\"><td>RED</td></tr>
@@ -24,7 +24,7 @@
         "<i class=\"fa fa-spinner fa-pulse fa-3x color\"></i>",
         "<i class=\"fa fa-spinner fa-3x color\"></i>",
         "It looks like the game froze.&nbsp;
-        Maybe try to blow into the cartridge and try again in <span id=\"time-left\">15 minutes</span>.&nbsp;
+        Maybe try to blow into the cartridge and restart the system or let the system cool down for <span id=\"time-left\">15 minutes</span>.&nbsp;
         While you are here, feel free to explore my personal website." ];
         echo json_encode( $textToBeDisplayed );
     }

@@ -93,15 +93,14 @@
         {
             foreach( $this->sortButton as $key => $value )
             {
-                if( $key[ 0 ] !== "n" && $value === "" ) //doesn't have next in the key and is not the sortType passed into the constructor so the button will be the both up and down arrows
+                if( strcmp( substr( $key, 0, 4 ), "next" ) === 0 && $value === "" ) //the button is not being sorted on so if the button is clicked it will do ascending sort
                 {
-                    $this->sortButton[ $key ] = "fa-sort";
+                    $this->sortButton[ $key ] = "fa-sort-asc";
                 }
 
                 else if( $value === "" )
                 {
-
-                    $this->sortButton[ $key ] = "fa-sort-asc";
+                    $this->sortButton[ $key ] = "fa-sort";
                 }
             }
         }
