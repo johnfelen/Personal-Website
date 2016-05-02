@@ -3,7 +3,7 @@
     {
         function __construct( $sortType, $currSorter )  //$sortType is either NAME, TIME, LANG and $currSorter is either fa-sort-asc or fa-sort-desc
         {
-            $this->portfolioDB = new mysqli( "localhost", "root", "jfelen62", "personal website" );
+            $this->portfolioDB = new mysqli( "localhost", "root", "jfelen62", "personal_website" );
             $this->sortType = $sortType;
             $this->sortButton = [
                 "name" => "",

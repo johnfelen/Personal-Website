@@ -58,9 +58,9 @@ var tour = new Tour({
 
 function stayOnTourPage()   //this function is used in the two handlers below to make sure that the only way the user can leave the tour page is to hit the end tour button
 {
-    if( !tour.ended() && document.URL.split( "/" ).pop() !== "contact.php" )
+    if( !tour.ended() && document.URL.split( "/" ).pop() !== "tour.php" )
     {
-        window.location.href = "./contact.php";
+        window.location.href = "./tour.php";
     }
 }
 

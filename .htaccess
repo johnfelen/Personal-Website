@@ -1,0 +1,4 @@
+#fixes a bug where non-naked website does not have access to the same cookies as the naked one and also a couple formatting issues, it is based on this blog: http://www.sitepoint.com/domain-www-or-no-www/
+RewriteEngine on
+RewriteCond %{HTTP_HOST} !^www.johnfelen.com [NC]
+RewriteRule ^/?(.*)$ http://www.johnfelen.com/$1 [L,R=301]
