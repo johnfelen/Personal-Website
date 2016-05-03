@@ -34,7 +34,7 @@
     <textarea rows="10" class="font-main font-small color color-border rounded-textarea-large subtle-pattern" id="message" placeholder="Your Message" name="message" pattern=".{1}" required title="At Least 1 Character"></textarea>
 
     <br><br>
-    <input class="btn btn-lg btn-primary btn-color color-border font-main font-small pull-right" type="submit" value="Submit Message" title="Send Me The Message!"/>
+    <input class="btn btn-lg btn-primary btn-color color-border font-main pull-right" type="submit" value="Submit Message" title="Send Me The Message!"/>
 </form>
 
 <?php

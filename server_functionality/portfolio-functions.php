@@ -51,7 +51,7 @@
         public function getSortButtonVals()  //returns the sort buttons and links to be printed out so they pass the next sort information with GET correctly
         {
             return "
-            <ul class=\"nav nav-pills nav-justified\">
+            <ul class=\"nav nav-pills nav-justified font-main\">
                 <li><a href=\"portfolio.php?name={$this->sortButton[ "nextName" ]}\">Name of Project <i class=\"fa {$this->sortButton[ "name" ]}\"></i></a></li>
                 <li><a href=\"portfolio.php?lang={$this->sortButton[ "nextLang" ]}\">Programming Languages <i class=\"fa {$this->sortButton[ "lang" ]}\"></i></a></li>
                 <li><a href=\"portfolio.php?time={$this->sortButton[ "nextTime" ]}\">Time Finished <i class=\"fa {$this->sortButton[ "time" ]}\"></i></a></li>
