@@ -1,4 +1,4 @@
-if( document.URL.split( "/" ).pop() === "static-index.php" )   //for static-index.php, simplified, no animation, appending for when user is at static page
+if( isFileInURL( "static-index.php" ) )   //for static-index.php, simplified, no animation, appending for when user is at static page
 {
     $.ajax({
         url: "./server_functionality/pokemon-text.php",

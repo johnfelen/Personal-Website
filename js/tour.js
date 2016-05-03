@@ -1,3 +1,8 @@
+if( localStorage.getItem( "tour_start" ) === null && isFileInURL( "tour.php" ) )   //go to previous page if the tour has not started and they tried to get to tour.php
+{
+    window.history.back();
+}
+
 var tour = new Tour({
     steps: [
     {
@@ -58,7 +63,7 @@ var tour = new Tour({
 
 function stayOnTourPage()   //this function is used in the two handlers below to make sure that the only way the user can leave the tour page is to hit the end tour button
 {
-    if( !tour.ended() && document.URL.split( "/" ).pop() !== "tour.php" )
+    if( !tour.ended() && !isFileInURL( "tour.php" ) )
     {
         window.location.href = "./tour.php";
     }
@@ -72,5 +77,8 @@ $( "#start-tour" ).click( function()
     tour.restart();
 });
 
-tour.init();
-tour.start();
+if( !tour.ended() )
+{
+    tour.init();
+    tour.start();
+}
