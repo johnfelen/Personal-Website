@@ -14,6 +14,7 @@ if( isFileInURL( "static-index.php" ) )   //for static-index.php, simplified, no
             var nameTable = textToBeDisplayed[ 7 ] + "<br>";
             $( "#static-names" ).html( nameTable );
             toggleVisibility( "#" + sessionStorage.getItem( "selected_name" ) );  //will put the name that they selected back for when the static page is loaded
+            $( window ).trigger( "resize" );
 
             var frozenSpinner = textToBeDisplayed[ 9 ] + "<br>";
             $( "#static-continue" ).html( frozenSpinner );
@@ -101,6 +102,7 @@ else   //functionality for the animated pokemon text
         else if( count === lines.length )   //print out the name chosing table
         {
             $( "#names" ).html( nameTable + "<br>" );
+            $( window ).trigger( "resize" );
 
             $( "#choose-name tr" ).each( function() //allows the to choose the name a la pokemon sideways triangle buttons
             {
@@ -134,28 +136,24 @@ else   //functionality for the animated pokemon text
             $( "#continue" ).html( movingSpinner + "<br>" );
             $( "#choose-name tr" ).unbind( "mouseenter mouseleave" );   //saves the name that the client choose
             $( "#choose-name tr" ).off( "click" );
-            $( "#main-container" ).click( function()
+            count++;
+
+            setTimeout( function()  //the timeout is to show the loading spinner for three seconds and then freeze the game
             {
-                printNextLine();
-                count++;    //count++ goes in here because for some reason printNextLine will be called again right away, this allows the user to see movingSpinner
-            });
+                $.ajax({
+                    url: "./server_functionality/pokemon-text.php",
+                    type: "POST",
+                    data: { setTime : true },
+                    success: function()
+                    {
+                        countDown();
+                        $( "#continue" ).html( frozenSpinner + "<br>" );
+                        $( "#broken" ).html( brokenMessage + "<br>" );
+                    }
+                });
+            }, 3000 );
         }
 
-         else if( count === lines.length + 2 )    //"freeze" the spinner and print out that the game broken, set session, and stop the hover effect on the table
-        {
-            $.ajax({
-                url: "./server_functionality/pokemon-text.php",
-                type: "POST",
-                data: { setTime : true },
-                success: function()
-                {
-                    countDown();
-                    $( "#main-container" ).off( "click" );
-                    $( "#continue" ).html( frozenSpinner + "<br>" );
-                    $( "#broken" ).html( brokenMessage + "<br>" );
-                }
-            });
-        }
     }
 
     function blink()    //based on second last response on http://stackoverflow.com/questions/18105152/alternative-for-blink since the actual <blink> tag is deprecated, I wonder why
@@ -224,8 +222,7 @@ function countDown()    //will keep outputting how many minutes/seconds the user
             {
                 diff--;
                 $( "#time-left" ).html( formattedTimeLeft() );
-            },
-            1000 );
+            }, 1000 );
         }
     });
 }
@@ -269,4 +266,40 @@ $( window ).unload( function()  //set local storage(since if they restart the br
     {
         localStorage.setItem( "time_finished", timeFinishedSec );
     }
+});
+
+$( window ).resize( function()  //is a resize handler so that the pick the name portion of the index.php page has all the names on the same line for normal screens
+{
+    $( "#names, #static-names" ).children( "div" ).each( function( i )
+    {
+        if( $( window ).width() <= 1440 )
+        {
+            if( i === 1 )
+            {
+                $( this ).removeClass( "col-xs-4" );
+                $( this ).addClass( "col-xs-6" );
+            }
+
+            else
+            {
+                $( this ).removeClass( "col-xs-4" );
+                $( this ).addClass( "col-xs-3" );
+            }
+        }
+
+        else
+        {
+            if( i === 1 )
+            {
+                $( this ).removeClass( "col-xs-6" );
+                $( this ).addClass( "col-xs-4" );
+            }
+
+            else
+            {
+                $( this ).removeClass( "col-xs-3" );
+                $( this ).addClass( "col-xs-4" );
+            }
+        }
+    });
 });
