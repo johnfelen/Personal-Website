@@ -82,6 +82,10 @@
         font-size: 60px;
     }
 
+    .font-footer {
+        font-size: 25px;
+    }
+
     .font-center {
         text-align: center;
     }
@@ -144,33 +148,23 @@
         }
     }
 
-    //this fixes the multiple break hacked in the footer( which left three dots visible on the right side of the footer ), the John Felen's Personal Website is mostly centered, a couple of themes make it slightly off center but not crazy noticeable
-    .footer-break {
-        margin-top: 0.5%;
-    }
-
-    @media( max-width: 960px ) {
-        .footer-break {
-            margin-top: 1%;
-        }
-    }
-
     //allows hover to enable drop downs, from http://www.joostrap.com/support/tutorials-videos/202-how-to-enable-hover-for-nav-dropdowns
     .dropdown:hover .dropdown-menu {
         display: block;
     }
 
-    //the vertical center class allows the footer text to be centered without the padding-top: 10px( which actually was very slightly off-centered if you measured it )
-    .footer-left {
-        float: left;
-        text-align: left;
-        width: 66.66666%;
+    .footer-right {
+        text-align: right;
     }
 
-    .footer-right {
-        float: left;
-        text-align: right;
-        width: 33.33333%;
+    .footer-padding-left {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    
+    .footer-padding-right {
+        padding-left: 10%;
+        padding-right: 10%;
     }
 }
 
