@@ -13,7 +13,7 @@ if( isFileInURL( "static-index.php" ) )   //for static-index.php, simplified, no
 
             var nameTable = textToBeDisplayed[ 7 ] + "<br>";
             $( "#static-names" ).html( nameTable );
-            $( "tr" ).removeClass();
+            toggleVisibility( "#" + sessionStorage.getItem( "selected_name" ) );  //will put the name that they selected back for when the static page is loaded
 
             var frozenSpinner = textToBeDisplayed[ 9 ] + "<br>";
             $( "#static-continue" ).html( frozenSpinner );
@@ -101,6 +101,25 @@ else   //functionality for the animated pokemon text
         else if( count === lines.length )   //print out the name chosing table
         {
             $( "#names" ).html( nameTable + "<br>" );
+
+            $( "#choose-name tr" ).each( function() //allows the to choose the name a la pokemon sideways triangle buttons
+            {
+                $( this ).hover( function()
+                {
+                    toggleVisibility( $( this ).find( "i" ) );
+                },
+
+                function()
+                {
+                    toggleVisibility( $( this ).find( "i" ) );
+                });
+
+                $( this ).click( function()
+                {
+                    sessionStorage.setItem( "selected_name", $( this ).find( "i" ).attr( "id" ) );
+                });
+            });
+
             $( "#main-container" ).off( "click" );
             $( "#choose-name" ).click( function()
             {
@@ -113,7 +132,8 @@ else   //functionality for the animated pokemon text
         {
             $( "tr" ).removeClass();
             $( "#continue" ).html( movingSpinner + "<br>" );
-            $( "#choose-name" ).off( "click" );
+            $( "#choose-name tr" ).unbind( "mouseenter mouseleave" );   //saves the name that the client choose
+            $( "#choose-name tr" ).off( "click" );
             $( "#main-container" ).click( function()
             {
                 printNextLine();
@@ -153,7 +173,7 @@ else   //functionality for the animated pokemon text
             else if( count === lines.length + 1 )    //they now can "choose" their name so change "click to continue" to "choose your name", because of the below else if must have the s.style.visibility line
             {
                 $( "#continue" ).html( "Choose Your Name<br>" );
-                toggleVisibility();
+                toggleVisibility( "blink" );
             }
 
             else if( count === lines.length + 2 )    //we are done with blinking, make the text visible so the "loading" simulation will show
@@ -164,24 +184,24 @@ else   //functionality for the animated pokemon text
 
             else if( count > 0 )    //the > 0 is to stop from having the short flash of click to continue when the page loads
             {
-                toggleVisibility();
+                toggleVisibility( "blink" );
             }
         }
 
         window.setTimeout( blink, 350 );
     }
+}
 
-    function toggleVisibility() //wrapper class for visibility, since jquery toggle is display not visibility
+function toggleVisibility( element ) //wrapper class for visibility, since jquery toggle is display not visibility
+{
+    if( $( element ).css( "visibility" ) === "visible" )
     {
-        if( $( "blink" ).css( "visibility" ) === "visible" )
-        {
-            $( "blink" ).css( "visibility", "hidden" );
-        }
+        $( element ).css( "visibility", "hidden" );
+    }
 
-        else
-        {
-            $( "blink" ).css( "visibility", "visible" );
-        }
+    else
+    {
+        $( element ).css( "visibility", "visible" );
     }
 }
 
@@ -215,6 +235,7 @@ function formattedTimeLeft()    //update text with minutes and seconds to be gra
     if( diff <= 0 )
     {
         localStorage.removeItem( "time_finished" );
+        sessionStorage.removeItem( "selected_name" )
         window.location.href = "./index.php";
     }
 

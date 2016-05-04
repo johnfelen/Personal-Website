@@ -23,7 +23,7 @@
         @extend %index-picture;
     }
 
-    blink {
+    blink, .select-name {
         visibility: hidden;
     }
 

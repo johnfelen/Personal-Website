@@ -1,9 +1,9 @@
 <?php
-    session_start();
-    if( !isset( $_SESSION[ "lastStartTime" ] ) || ( isset( $_SESSION[ "lastStartTime" ] ) && ( time() - $_SESSION[ "lastStartTime" ] ) > 900 ) )  //its been 15 minutes so just send them back to the non-static home page
-    {
-        header( "Location: index.php" );
-    }
+    // session_start();
+    // if( !isset( $_SESSION[ "lastStartTime" ] ) || ( isset( $_SESSION[ "lastStartTime" ] ) && ( time() - $_SESSION[ "lastStartTime" ] ) > 900 ) )  //its been 15 minutes so just send them back to the non-static home page
+    // {
+    //     header( "Location: index.php" );
+    // }
 
     $pageName = "Home";
     $fontAwesome = "home";
