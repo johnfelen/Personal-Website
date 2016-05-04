@@ -1,4 +1,22 @@
 <?php
+    if( isset( $_GET[ "name" ] ) )
+    {
+        $portfolioData = new PortfolioSort( "NAME", $_GET[ "name" ] );
+    }
+
+    else if( isset( $_GET[ "lang" ] ) )
+    {
+        $portfolioData = new PortfolioSort( "LANG", $_GET[ "lang" ] );
+    }
+
+    else if( isset( $_GET[ "time" ] ) )
+    {
+        $portfolioData = new PortfolioSort( "TIME", $_GET[ "time" ] );
+    }
+
+    $outputData = [ $portfolioData->getSortButtonVals(), $portfolioData->getSortedProjects() ];
+    echo json_encode( $outputData );
+
     class PortfolioSort
     {
         function __construct( $sortType, $currSorter )  //$sortType is either NAME, TIME, LANG and $currSorter is either fa-sort-asc or fa-sort-desc
