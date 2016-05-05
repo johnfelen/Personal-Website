@@ -28,16 +28,4 @@
         While you are here, feel free to explore my personal website." ];
         echo json_encode( $textToBeDisplayed );
     }
-
-    else if( isset( $_POST[ "setTime" ] ) )
-    {
-        unset( $_POST[ "setTime" ] );
-        $_SESSION[ "lastStartTime" ] = time();
-    }
-
-    else if( isset( $_GET[ "getTime" ] ) )
-    {
-        unset( $_GET[ "getTime" ] );
-        echo $_SESSION[ "lastStartTime" ];
-    }
 ?>

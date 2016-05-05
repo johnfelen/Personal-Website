@@ -8,19 +8,11 @@
         border-style: solid;
     }
 
-    %index-picture {
+    #picture-of-me {
         border-style: 2px solid;
         border-radius: 10px;
         width: 100%;
-    }
-
-    #picture-of-me {
-        @extend %index-picture;
         opacity: 0;
-    }
-
-    #static-picture-of-me {
-        @extend %index-picture;
     }
 
     blink, .select-name {
@@ -161,7 +153,7 @@
         padding-left: 5%;
         padding-right: 5%;
     }
-    
+
     .footer-padding-right {
         padding-left: 10%;
         padding-right: 10%;

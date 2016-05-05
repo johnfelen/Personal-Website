@@ -1,4 +1,4 @@
-if( isFileInURL( "static-index.php" ) )   //for static-index.php, simplified, no animation, appending for when user is at static page
+if( getCurrTimeSec() < sessionStorage.getItem( "time_finished" ) )   //for static-index.php, simplified, no animation, appending for when user is at static page
 {
     $.ajax({
         url: "./server_functionality/pokemon-text.php",
@@ -8,31 +8,32 @@ if( isFileInURL( "static-index.php" ) )   //for static-index.php, simplified, no
         success: function( textToBeDisplayed )
         {
             countDown();
+            //make the picture of me and count down immediately visible
+            toggleVisibility( "blink" );
+            $( "#picture-of-me" ).css( "opacity", 1 );
+
             var lines = textToBeDisplayed.slice( 0, 7 ).join( "<br>" );
-            $( "#static-pokemon" ).html( lines );
+            $( "#pokemon" ).html( lines );
 
             var nameTable = textToBeDisplayed[ 7 ] + "<br>";
-            $( "#static-names" ).html( nameTable );
+            $( "#names" ).html( nameTable );
             toggleVisibility( "#" + sessionStorage.getItem( "selected_name" ) );  //will put the name that they selected back for when the static page is loaded
             $( window ).trigger( "resize" );
 
             var frozenSpinner = textToBeDisplayed[ 9 ] + "<br>";
-            $( "#static-continue" ).html( frozenSpinner );
+            $( "#continue" ).html( frozenSpinner );
 
             var brokenMessage = textToBeDisplayed[ 10 ] + "<br>";
-            $( "#static-broken" ).html( brokenMessage );
+            $( "#broken" ).html( brokenMessage );
 
-            if( localStorage.getItem( "time_finished" ) )   //they reloaded the page before the countdown was done, go back to where they were( this fixes the bug that 15 minutes would show up and then change to the correct time )
-            {
-                timeFinishedSec = parseInt( localStorage.getItem( "time_finished" ) );
-                diff = timeFinishedSec - getCurrTimeSec();
-                $( "#time-left" ).html( formattedTimeLeft() );
-            }
+            timeFinishedSec = parseInt( sessionStorage.getItem( "time_finished" ) );
+            diff = timeFinishedSec - getCurrTimeSec();
+            $( "#time-left" ).html( formattedTimeLeft() );
         }
     });
 }
 
-else   //functionality for the animated pokemon text
+else  //functionality for the animated pokemon text
 {
     var count = 0;
     var currentlyTyping = false;    //used to stop repeat clicking which would cause gibberish to type out
@@ -140,17 +141,9 @@ else   //functionality for the animated pokemon text
 
             setTimeout( function()  //the timeout is to show the loading spinner for three seconds and then freeze the game
             {
-                $.ajax({
-                    url: "./server_functionality/pokemon-text.php",
-                    type: "POST",
-                    data: { setTime : true },
-                    success: function()
-                    {
-                        countDown();
-                        $( "#continue" ).html( frozenSpinner + "<br>" );
-                        $( "#broken" ).html( brokenMessage + "<br>" );
-                    }
-                });
+                countDown();
+                $( "#continue" ).html( frozenSpinner + "<br>" );
+                $( "#broken" ).html( brokenMessage + "<br>" );
             }, 3000 );
         }
 
@@ -205,34 +198,25 @@ function toggleVisibility( element ) //wrapper class for visibility, since jquer
 
 function countDown()    //will keep outputting how many minutes/seconds the user has left until the "game" will work again, so when zero seconds left redirect to index.php
 {
-    $.ajax({
-        url: "./server_functionality/pokemon-text.php",
-        type: "GET",
-        data: { getTime : true },
-        dataType: "text",
-        success: function( stringRepTime )
-        {
-            if( typeof timeFinishedSec === "undefined" )   //this is a new countdown
-            {
-                timeFinishedSec = parseInt( stringRepTime ) + 900;
-                diff = timeFinishedSec - getCurrTimeSec();
-            }
+    if( typeof timeFinishedSec === "undefined" )   //this is a new countdown
+    {
+        timeFinishedSec = getCurrTimeSec() + 900;
+        diff = timeFinishedSec - getCurrTimeSec();
+    }
 
-            setInterval( function()
-            {
-                diff--;
-                $( "#time-left" ).html( formattedTimeLeft() );
-            }, 1000 );
-        }
-    });
+    setInterval( function()
+    {
+        diff--;
+        $( "#time-left" ).html( formattedTimeLeft() );
+    }, 1000 );
 }
 
-function formattedTimeLeft()    //update text with minutes and seconds to be gramatically correct and concise, removes localStorage and cookie when 15 minutes has been up
+function formattedTimeLeft()    //update text with minutes and seconds to be gramatically correct and concise, removes sessionStorage and cookie when 15 minutes has been up
 {
     if( diff <= 0 )
     {
-        localStorage.removeItem( "time_finished" );
-        sessionStorage.removeItem( "selected_name" )
+        sessionStorage.removeItem( "time_finished" );
+        sessionStorage.removeItem( "selected_name" );
         window.location.href = "./index.php";
     }
 
@@ -260,17 +244,22 @@ function getCurrTimeSec()
     return parseInt( new Date().getTime() / 1000 );
 }
 
-$( window ).unload( function()  //set local storage(since if they restart the browser they it counts as fixing the "game") with the time that the index.php will reload
+$( window ).unload( function()  //set session storage(since if they restart the browser they it counts as fixing the "game") with the time that the index.php will reload
 {
-    if( typeof timeFinishedSec !== "undefined" )
+    if( typeof timeFinishedSec !== "undefined" && !( sessionStorage.getItem( "time_finished" ) >= getCurrTimeSec() ) )
     {
-        localStorage.setItem( "time_finished", timeFinishedSec );
+        sessionStorage.setItem( "time_finished", timeFinishedSec );
+    }
+
+    else
+    {
+        sessiongStorage.removeItem( "time_finished" );
     }
 });
 
 $( window ).resize( function()  //is a resize handler so that the pick the name portion of the index.php page has all the names on the same line for normal screens
 {
-    $( "#names, #static-names" ).children( "div" ).each( function( i )
+    $( "#names" ).children( "div" ).each( function( i )
     {
         if( $( window ).width() <= 1440 )
         {

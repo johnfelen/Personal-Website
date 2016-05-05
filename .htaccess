@@ -1,15 +1,12 @@
 RewriteEngine On
 
-#fixes a bug where non-naked website does not have access to the same cookies as the naked one and also a couple formatting issues, it is based on this blog: http://www.sitepoint.com/domain-www-or-no-www/
-RewriteCond %{HTTP_HOST} !^www.johnfelen.com [NC]
-RewriteRule ^/?(.*)$ http://www.johnfelen.com/$1 [L,R=301]
-
 #removes the /index ( or index.php ) if typed directly into the url, based on the verified answer http://stackoverflow.com/questions/9608366/remove-index-php-from-url-with-htaccess
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s(.*)/index [NC]
-RewriteRule ^ %1 [R=301,L]
+RewriteRule ^ %1 [L]
 
 #the next two rewrite conditions are to remove the .php, it is based on the verified answer on here http://stackoverflow.com/questions/15917258/remove-php-from-urls-with-htaccess
 # To externally redirect /dir/foo.php to /dir/foo
+RewriteCond %{REQUEST_METHOD} !POST [NC]  #this line of code protects $_POST variables, from verified answer on http://stackoverflow.com/questions/19796522/php-method-post-stopped-working-after-i-added-this-htaccess-why
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.php [NC]
 RewriteRule ^ %1 [R,L]
 
