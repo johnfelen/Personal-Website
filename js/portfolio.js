@@ -25,9 +25,9 @@ if( isFileInURL( "portfolio" ) )
 
                 $( "#sort-buttons li a" ).each( function()    //add the custom click listeners to sort the buttons without reloading the page
                 {
-                    $( this ).click( function( event )
+                    $( this ).click( function( link )
                     {
-                        event.preventDefault(); //removes the # from the url, probably could be done by taking it out of the href for the buttons in protfolio-functions.php 
+                        link.preventDefault(); //removes the # from the url, probably could be done by taking it out of the href for the buttons in protfolio-functions.php 
                         sessionStorage.setItem( "current_sort", $( this ).attr( "id" ) );
                         displayProjects();
                     });

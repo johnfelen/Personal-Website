@@ -246,14 +246,9 @@ function getCurrTimeSec()
 
 $( window ).unload( function()  //set session storage(since if they restart the browser they it counts as fixing the "game") with the time that the index.php will reload
 {
-    if( typeof timeFinishedSec !== "undefined" && !( sessionStorage.getItem( "time_finished" ) >= getCurrTimeSec() ) )
+    if( typeof timeFinishedSec !== "undefined" )
     {
         sessionStorage.setItem( "time_finished", timeFinishedSec );
-    }
-
-    else
-    {
-        sessionStorage.removeItem( "time_finished" );
     }
 });
 

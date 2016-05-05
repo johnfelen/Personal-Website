@@ -2,7 +2,7 @@ RewriteEngine On
 
 #removes the /index ( or index.php ) if typed directly into the url, based on the verified answer http://stackoverflow.com/questions/9608366/remove-index-php-from-url-with-htaccess
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s(.*)/index [NC]
-RewriteRule ^ %1 [L]
+RewriteRule ^ %1 [R=301,L]
 
 #the next two rewrite conditions are to remove the .php, it is based on the verified answer on here http://stackoverflow.com/questions/15917258/remove-php-from-urls-with-htaccess
 # To externally redirect /dir/foo.php to /dir/foo

@@ -8,6 +8,8 @@ $( "#contact-me" ).submit( function( form )
         data: { messageInfo : getMessageInfo() },
         success: function( databaseResponse )
         {
+            //console.log( "JSLFJSDLFJSFJIOERHEWOYRODSFQOPRJEW" );
+
             if( typeof databaseResponse[ "error" ] !== "undefined" )
             {
                 $( "#name" ).val( databaseResponse[ "name" ] );
@@ -19,6 +21,10 @@ $( "#contact-me" ).submit( function( form )
             {
                 $( "#message" ).val( "Your message has successfully been sent." );
             }
+        },
+        error: function()
+        {
+            //console.log( "JJJJJJJJ" );
         }
     });
 });
