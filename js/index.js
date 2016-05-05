@@ -253,7 +253,7 @@ $( window ).unload( function()  //set session storage(since if they restart the 
 
     else
     {
-        sessiongStorage.removeItem( "time_finished" );
+        sessionStorage.removeItem( "time_finished" );
     }
 });
 
