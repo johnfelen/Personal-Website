@@ -5,7 +5,7 @@
     $email = $submittedMessage[ "email" ];
     $message = $submittedMessage[ "message" ];
 
-    $contactDB = new mysqli( "localhost", "root", "jfelen62", "personal website" );
+    $contactDB = new mysqli( "localhost", "root", "jfelen62", "personal_website" );
     if( $contactDB->connect_error )
     {
         $response[ "error" ] = $contactDB->connect_error;    //used to print out later so they cannot submit anything, I want the page to load but not allow them to keep submitting if there is an error

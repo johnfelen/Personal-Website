@@ -31,6 +31,10 @@
         align-items: center; // align vertical
     }
 
+    .form-group {
+        margin-bottom: 0px;
+    }
+
     //the rounded corners for the text area are based the accepted answer from http://stackoverflow.com/questions/26272350/rounded-corners-to-a-textarea */
     %rounded-textarea {
         width:100%;
@@ -176,6 +180,16 @@
 
     .color {
         color: $primary;
+    }
+
+    .color-error {
+        color: $accent;
+    }
+
+    .form-control:focus {
+        // border-color: $accent !important;
+        box-shadow: 0 1px 1px $accent inset, 0 0 8px $accent !important;
+        outline: 0 none !important;
     }
 
     .color-border {

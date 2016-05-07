@@ -8,8 +8,6 @@ $( "#contact-me" ).submit( function( form )
         data: { messageInfo : getMessageInfo() },
         success: function( databaseResponse )
         {
-            //console.log( "JSLFJSDLFJSFJIOERHEWOYRODSFQOPRJEW" );
-
             if( typeof databaseResponse[ "error" ] !== "undefined" )
             {
                 $( "#name" ).val( databaseResponse[ "name" ] );
@@ -21,10 +19,6 @@ $( "#contact-me" ).submit( function( form )
             {
                 $( "#message" ).val( "Your message has successfully been sent." );
             }
-        },
-        error: function()
-        {
-            //console.log( "JJJJJJJJ" );
         }
     });
 });
@@ -40,8 +34,3 @@ function getMessageInfo()
 
     return JSON.stringify( formInput );
 }
-
-//http://www.websitecodetutorials.com/code/jquery-plugins/jquery-validation.php
-//http://www.jqueryscript.net/form/Powerful-jQuery-Form-Validation-Plugin-Validation-Engine.html
-//https://github.com/posabsolute/jQuery-Validation-Engine
-//http://www.jsdelivr.com/projects/jquery.validationengine
