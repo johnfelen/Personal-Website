@@ -31,6 +31,10 @@
         align-items: center; // align vertical
     }
 
+    .center-textarea-error {
+        margin-top: 12px;
+    }
+
     .form-group {
         margin-bottom: 0px;
     }
@@ -186,10 +190,10 @@
         color: $accent;
     }
 
-    .form-control:focus {
-        // border-color: $accent !important;
-        box-shadow: 0 1px 1px $accent inset, 0 0 8px $accent !important;
-        outline: 0 none !important;
+    .form-control:focus {   //this removes the bootstrap efault blue and red shadow and the green and red outline on the textareas in the contact forms
+        color: $accent;
+        border-color: $accent;
+        box-shadow: none;
     }
 
     .color-border {

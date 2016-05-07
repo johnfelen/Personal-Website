@@ -34,3 +34,24 @@ function getMessageInfo()
 
     return JSON.stringify( formInput );
 }
+
+$( "#contact-me" ).validator({
+    feedbackIcons: {
+		valid: 'glyphicon glyphicon-ok',
+		invalid: 'glyphicon glyphicon-remove',
+		validating: 'glyphicon glyphicon-refresh'
+	},
+    fields: {
+    		name: {
+    			validators: {
+    				notEmpty: {
+    					message: "You're required to fill in a first name!"
+    						  }, // notEmpty
+    				regexp: {
+    					regexp: /^[A-Za-z\s.'-]+$/,
+    					message: "Alphabetical characters, hyphens and spaces"
+    				}
+    						} // validators
+    				  }
+                  }
+});
