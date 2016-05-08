@@ -13,6 +13,7 @@
                     <a href="other_files/JohnFelenRésumé.pdf" class="footer-margin-left footer-margin-right" title="Download My R&eacute;sum&eacute;" target="_blank"><i class="fa fa-file-text fa-lg"></i></a>
                 </span>
             </div>
+            <!-- the spans for the left and right footer for the highlight to look even with the tour blackdrop -->
             <div class="col-xs-4 color font-center font-small" title="Yes, I Am Using My Initials">Designed and Written by J.T. Felen</div>
             <div class="col-xs-4 font-right font-footer">
                 <span class="colored-link" id="right-footer-links">
@@ -33,3 +34,7 @@
         <script src="js/personal-website.min.js"></script>
     </body>
 </html>
+
+<?php
+    ob_end_flush();
+?>

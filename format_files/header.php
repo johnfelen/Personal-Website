@@ -1,7 +1,16 @@
+<?php
+    function ob_html_minify( $buf )
+    {
+        return preg_replace( array( '/<!--(.*)-->/Uis', "/[[:blank:]]+/" ), array( '', ' ' ), str_replace( array( "\n", "\r", "\t" ), '', $buf ) );
+    }
+    ob_start( "ob_html_minify" );
+    //this block of php code will minify the html output, it also relies on a line of php code at the end of the footer, it is based on https://coderwall.com/p/fatjmw/compressing-html-output-with-php
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">   <!-- this line will tell devices how to scale the webpage, based on the verified answer here http://stackoverflow.com/questions/19156510/responsive-website-zoomed-out-to-full-width-on-mobile -->
         <?php echo "<title>{$pageName}</title>"; ?>
 
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -14,7 +23,6 @@
     </head>
 
     <body class="subtle-pattern">
-
         <!--top navigation bar-->
         <?php include( "./format_files/start-row-10.php" ); ?>
         <div class="navbar" id="main-nav">
