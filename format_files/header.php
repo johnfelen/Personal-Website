@@ -1,10 +1,10 @@
 <?php
-    function ob_html_minify( $buf )
+    //this block of php code will minify the html output, it also relies on a line of php code at the end of the footer, it is based on https://coderwall.com/p/fatjmw/compressing-html-output-with-php
+    function ob_html_minify( $buff )
     {
-        return preg_replace( array( '/<!--(.*)-->/Uis', "/[[:blank:]]+/" ), array( '', ' ' ), str_replace( array( "\n", "\r", "\t" ), '', $buf ) );
+        return preg_replace( array( "/<!--(.*)-->/Uis", "/[[:blank:]]+/" ), array( "", " " ), str_replace( array( "\n", "\r", "\t" ), "", $buff ) );
     }
     ob_start( "ob_html_minify" );
-    //this block of php code will minify the html output, it also relies on a line of php code at the end of the footer, it is based on https://coderwall.com/p/fatjmw/compressing-html-output-with-php
 ?>
 
 <!DOCTYPE html>

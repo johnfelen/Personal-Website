@@ -3,25 +3,10 @@
     $fontAwesome = "envelope";
     include( "./format_files/header.php" );
     include( "./format_files/start-row-10.php" );
-
-    //pulls my full linkedIn profile if as viewed by somebody who was not logged in
-    $linkedInProfile = fopen( "https://www.linkedin.com/in/johnfelen", "r" );
-    $content = stream_get_contents( $linkedInProfile );
-    fclose( $linkedInProfile );
-
-    //parse my summary from the linkedIn html
-    $content = strstr( $content, "</p></div></section><section id=\"experience\" class=\"profile-section\"><h3 class=\"title\">Experience</h3>", true );
-    $summary = explode( "<p>", $content );
-    $summary = $summary[ count( $summary ) - 1 ];
-
-    $formattedSummary = str_replace( ". ", ". &nbsp;", $summary );  //adds double space formatting between setences
 ?>
 
-<p class="font-main font-small font-center color" >
-    <?php echo $formattedSummary; ?>
-</p>
-
-<p class="font-main font-small font-center color" >
+<p class="font-main font-small font-center color" id="summary"></p>
+<p class="font-main font-small font-center color">
     If you wish to contact me, you can send me a message through the form below or send an email to johnfelen@pitt.edu.
 </p>
 
