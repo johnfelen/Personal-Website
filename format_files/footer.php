@@ -5,17 +5,20 @@
         <!--start of the actual footer part-->
         <?php include( "./format_files/start-row-10.php" ); ?>
         <hr class="color-border">
-        <div class="row vertical-center font-main font-footer">
-            <div class="col-xs-8 colored-link">
-                <a href="#" title="Start Tour"><span class="footer-padding-left" id="start-tour">John Felen's Personal Website</span></a>
+        <div class="row vertical-center font-main">
+            <div class="col-xs-4 font-left font-footer">
+                <span class="colored-link" id="left-footer-links">
+                    <a href="#" class="footer-margin-left" title="Start Website Tour" id="start-tour"><i class="fa fa-map fa-lg"></i></a>
+                    <a href="mailto:johnfelen@pitt.edu" class="footer-margin-left" title="Email Me at johnfelen@pitt.edu"><i class="fa fa-at fa-lg"></i></a>
+                    <a href="other_files/JohnFelenRésumé.pdf" class="footer-margin-left footer-margin-right" title="Download My R&eacute;sum&eacute;" target="_blank"><i class="fa fa-file-text fa-lg"></i></a>
+                </span>
             </div>
-            <div class="col-xs-4 footer-right">
-                <span class="colored-link footer-padding-right" id="footer-links">
-                    <a href="other_files/JohnFelenRésumé.pdf" title="Download my R&eacute;sum&eacute;" target="_blank"><i class="fa fa-file-text fa-lg"></i></a>
-                    &nbsp;&nbsp;&nbsp;
-                    <a href="https://github.com/johnfelen" title="Check out my Github" target="_blank"><i class="fa fa-github fa-lg"></i></a>
-                    &nbsp;&nbsp;&nbsp;
-                    <a href="https://www.linkedin.com/in/johnfelen" title="Connect with Me" target="_blank"><i class="fa fa-linkedin fa-lg"></i></a>
+            <div class="col-xs-4 color font-center font-small" title="Yes, I Am Using My Initials">Designed and Written by J.T. Felen</div>
+            <div class="col-xs-4 font-right font-footer">
+                <span class="colored-link" id="right-footer-links">
+                    <a href="https://github.com/johnfelen" class="footer-margin-left footer-margin-right" title="Check out My Github" target="_blank"><i class="fa fa-github fa-lg"></i></a>
+                    <a href="https://www.facebook.com/john.felen" class="footer-margin-right" title="Add Me on Facebook" target="_blank"><i class="fa fa-facebook fa-lg"></i></a>
+                    <a href="https://www.linkedin.com/in/johnfelen" class="footer-margin-right" title="Connect with Me on LinkedIn" target="_blank"><i class="fa fa-linkedin fa-lg"></i></a>
                 </span>
             </div>
         </div>

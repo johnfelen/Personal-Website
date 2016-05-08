@@ -24,16 +24,16 @@ var tour = new Tour({
         placement: "top"
     },
     {
-        element: "#footer-links",
-        title: "Footer Links",
-        content: "Links to my Résumé, Github and LinkedIn.",
-        placement: "top"
+        element: "#right-footer-links",
+        title: "Right Footer Links",
+        content: "Links to my Github, Facebook( if you still use it, I don't ), and LinkedIn.",
+        placement: "left"
     },
     {
-        element: "#start-tour",
-        title: "Tour Start",
-        content: "If you want to go through the tour again, click here.",
-        placement: "top"
+        element: "#left-footer-links",
+        title: "Left Footer Links",
+        content: "Click the Map to restart the tour, the &#64; to send me an email, and the File to view my Résumé.",
+        placement: "right"
     }],
     //template based on the default template at http://bootstraptour.com/api/
     template: "\
