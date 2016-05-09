@@ -56,11 +56,14 @@ else  //functionality for the animated pokemon text
             frozenSpinner = textToBeDisplayed[ 9 ];
             brokenMessage = textToBeDisplayed[ 10 ];
 
-            $( "#picture-of-me" ).fadeTo( 3000, 1, function()
+            setTimeout( function()
             {
-                printNextLine();
-                blink();
-            });
+                $( "#picture-of-me" ).fadeTo( 3000, 1, function()
+                {
+                    printNextLine();
+                    blink();
+                });
+            }, 600 );
         }
     });
 

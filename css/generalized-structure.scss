@@ -143,8 +143,6 @@
         .nav.navbar-nav li {
             text-align: left;
         }
-
-
     }
 
     //when 75% of 1080p rotate portfolio titles 90 degrees, when the screen is minimized a lot the longer titles( with more spaces ) will overflow but not noticeable to most people
@@ -261,19 +259,15 @@
         }
     }
 
-    .dropdown-menu {
-    transition: all 0.3s;
+    //dropdown css animation
+    .open > .dropdown-menu-animate {
+        opacity: 1;
+    }
 
-    max-height: 0;
-    display: block;
-    overflow: hidden;
-    opacity: 0;
-}
-
-.dropdown.open {
-    max-height: 300px;
-    opacity: 1;
-}
+    .dropdown-menu-animate {
+        opacity: 0;
+        transition: 0.5s linear;
+    }
 }
 
 /*mixin for the colors, fonts, and background image*/

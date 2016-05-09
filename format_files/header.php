@@ -29,16 +29,16 @@
         <div class="navbar" id="main-nav">
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-links">
-                    <li id="home" class="navbar-animation">
+                    <li id="home">
                         <a href="./index.php" title="Home"><i class="fa fa-home fa-fw navbar-colors"></i></a>
                     </li>
-                    <li id="portfolio" class="navbar-animation">
+                    <li id="portfolio">
                         <a href="./portfolio.php" title="Portfolio"><i class="fa fa-folder-open fa-fw navbar-colors"></i></a>
                     </li>
-                    <li id="blog" class="navbar-animation">
+                    <li id="blog">
                         <a href="./blog.php" title="Blog"><i class="fa fa-pencil fa-fw navbar-colors"></i></a>
                     </li>
-                    <li id="contact" class="navbar-animation">
+                    <li id="contact">
                         <a href="./contact.php" title="Contact Me"><i class="fa fa-envelope fa-fw navbar-colors"></i></a>
                     </li>
                 </ul>
@@ -53,7 +53,7 @@
                 <h1 class="font-title font-header color">
                     <div class="dropdown colored-link">
                         <a href="#" id="tour-theme-menu" class="dropdown-toggle" data-toggle="dropdown" title="Change the Website Theme"><i class="fa fa-<?php echo "{$fontAwesome}";?> fa-fw"></i></a>
-                        <ul class="dropdown-menu" id="theme-menu">
+                        <ul class="dropdown-menu dropdown-menu-animate" id="theme-menu">
                             <li><a href="#" id="picnic-blanket">Picnic Blanket</a></li>
                             <li><a href="#" id="billards-table">Billards Table</a></li>
                             <li><a href="#" id="candy-cane">Candy Cane</a></li>

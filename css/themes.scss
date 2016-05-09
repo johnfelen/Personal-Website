@@ -4,7 +4,7 @@
 @import "https://fonts.googleapis.com/css?family=Ubuntu";
 @import "https://fonts.googleapis.com/css?family=Vollkorn";
 @import "https://fonts.googleapis.com/css?family=Kaushan+Script";
-@import "https://fonts.googleapis.com/css?family=Special+Elite";
+@import "https://fonts.googleapis.com/css?family=Merriweather";
 @import "https://fonts.googleapis.com/css?family=Lobster";
 @import "https://fonts.googleapis.com/css?family=Droid+Serif";
 @import "https://fonts.googleapis.com/css?family=Raleway";
@@ -22,9 +22,9 @@
 
     $raleway: 'Raleway', sans-serif;
     $openSans: 'Open Sans', sans-serif;
-
-    @extend %theme-structure;
+    
     @include theme-specs( $deepBlue, $greyWhite, $wildSalmon, $raleway, $openSans, "../images/picnic-blanket.png" );
+    @extend %theme-structure;
 }
 
 .billards-table {
@@ -57,10 +57,10 @@
     $grey: #808080;
 
     $kaushanScript: 'Kaushan Script', cursive;
-    $specialElite: 'Special Elite', cursive;
+    $merriweather: 'Merriweather', serif;
 
     @extend %theme-structure;
-    @include theme-specs( $brown, $cream, $grey, $kaushanScript, $specialElite, "../images/cartography.png" );
+    @include theme-specs( $brown, $cream, $grey, $kaushanScript, $merriweather, "../images/cartography.png" );
 }
 
 .stardust {
