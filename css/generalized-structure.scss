@@ -184,10 +184,9 @@
         }
     }
 
-    //having the transtion in the non-hover state allows the animation to happen
     .navbar-animation > a {
         transition: 0.5s linear;
-        > i {
+        > i {   //this inner i child is so that the color changes only when the link is moving up/already up
             transition: 0.5s linear;
         }
     }
@@ -195,6 +194,86 @@
     .navbar-animation > a:hover {
         transform: translateY( -10px );
     }
+
+    //the next 4 animations are ones that happen on load, I used http://codepen.io/chrissp26/pen/szoyk?editors=1100 for help
+    #header {
+        animation-name: panRight;
+        animation-iteration-count: 1;
+        animation-timing-function: ease-in;
+        animation-duration: 600ms;
+    }
+
+    @keyframes panRight {
+        from {
+            transform: translateX( -1000px );
+        }
+        to {
+            transform: translateX( 0px );
+        }
+    }
+
+    #footer {
+        animation-name: panLeft;
+        animation-iteration-count: 1;
+        animation-timing-function: ease-in;
+        animation-duration: 600ms;
+    }
+
+    @keyframes panLeft {
+        from {
+            transform: translateX( 1000px );
+        }
+        to {
+            transform: translateX( 0px );
+        }
+    }
+
+    #main-nav {
+        animation-name: large-x-parasite;
+        animation-iteration-count: 1;
+        animation-timing-function: ease-in;
+        animation-duration: 600ms;
+    }
+
+    //im calling the next two x-parasite since it reminds of the x parasite animations in the beginning cutscence of metroid fustion
+    @keyframes large-x-parasite {
+        from {
+            transform: scale( 2, 2 );
+        }
+        to {
+            transform: scale( 1, 1 );
+        }
+    }
+
+    #main-container {
+        animation-name: small-x-parasite;
+        animation-iteration-count: 1;
+        animation-timing-function: ease-in;
+        animation-duration: 600ms;
+    }
+
+    @keyframes small-x-parasite {
+        from {
+            transform: scale( 0, 0 );
+        }
+        to {
+            transform: scale( 1, 1 );
+        }
+    }
+
+    .dropdown-menu {
+    transition: all 0.3s;
+
+    max-height: 0;
+    display: block;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.dropdown.open {
+    max-height: 300px;
+    opacity: 1;
+}
 }
 
 /*mixin for the colors, fonts, and background image*/
