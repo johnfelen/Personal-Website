@@ -39,6 +39,11 @@
     "509" => [ "Bandwidth Limit Exceeded", "This status code, while used by many servers, is not specified in any RFCs.This occurs when the bandwidth limit exceeds." ],
     "510" => [ "Not Extended", "Further extensions to the request are required for the server to fulfill it. &nbsp;A mandatory extension policy in the request is not accepted by the server for this resource." ] ];
 
+    if( !isset( $status ) || !array_key_exists( $status, $codes ) )
+    {
+        header( "Location: javascript://history.go( -1 )" );    //based on second answer here http://stackoverflow.com/questions/5285031/back-to-previous-page-with-header-location-in-php
+    }
+
     $pageName = "{$status} Error";
     $fontAwesome = "exclamation-triangle";
     include( "./format_files/header.php" );

@@ -10,3 +10,4 @@ require( "./tour.js" );
 require( "./index.js" );
 require( "./portfolio.js" );
 require( "./contact.js" );
+require( "./google-analytics.js" );

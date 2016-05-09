@@ -23,19 +23,20 @@
     </head>
 
     <body class="subtle-pattern">
+        <?php include_once( "./analyticstracking.php" ); ?>
         <!--top navigation bar-->
         <?php include( "./format_files/start-row-10.php" ); ?>
         <div class="navbar" id="main-nav">
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li id="home"<?php echo ( $pageName === "Home" ) ? " class=\"active\"" : ""; ?>>
-                        <a href="index.php" title="Home"><i class="fa fa-home"></i></a>
+                        <a href="./index.php" title="Home"><i class="fa fa-home"></i></a>
                     </li>
                     <li id="portfolio"<?php echo ( $pageName === "Portfolio" ) ? " class=\"active\"" : ""; ?>>
-                        <a href="portfolio.php" title="Portfolio"><i class="fa fa-folder-open"></i></a>
+                        <a href="./portfolio.php" title="Portfolio"><i class="fa fa-folder-open"></i></a>
                     </li>
                     <li id="contact"<?php echo ( $pageName === "Contact Me" ) ? " class=\"active\"" : ""; ?>>
-                        <a href="contact.php" title="Contact Me"><i class="fa fa-envelope"></i></a>
+                        <a href="./contact.php" title="Contact Me"><i class="fa fa-envelope"></i></a>
                     </li>
                 </ul>
             </div>
