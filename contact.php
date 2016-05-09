@@ -19,7 +19,7 @@
             <div class="help-block"></div>    <!-- this extra error block and the one for email is used to make the spacing consistant between the contact form textareas( specifically the message one compared to the name and email one) since the actual error printing is to the right for the name and email textareas-->
         </div>
         <div class="col-xs-7">
-            <div class="center-textarea-error color-error font-main help-block with-errors"></div>
+            <div class="center-textarea-error color-accent font-main help-block with-errors"></div>
         </div>
     </div>
 
@@ -30,14 +30,14 @@
             <div class="help-block"></div>
         </div>
         <div class="col-xs-7">
-            <div class="center-textarea-error color-error font-main help-block with-errors"></div>
+            <div class="center-textarea-error color-accent font-main help-block with-errors"></div>
         </div>
     </div>
 
     <br>
     <div class="form-group">
         <textarea rows="10" class="form-control font-main font-small color color-border rounded-textarea-large subtle-pattern" id="message" placeholder="Your Message" minlength="1" data-error="ERROR:  &nbsp;Enter at Least 1 Character!" required></textarea>
-        <div class="center-textarea-error color-error font-main help-block with-errors">&nbsp;</div>  <!--the &nbsp; causes no moving of DOM elements when there is an error-->
+        <div class="center-textarea-error color-accent font-main help-block with-errors">&nbsp;</div>  <!--the &nbsp; causes no moving of DOM elements when there is an error-->
     </div>
 
     <input class="btn btn-lg btn-primary btn-color color-border font-main pull-right" type="submit" value="Submit Message" title="Send Me The Message!"/>

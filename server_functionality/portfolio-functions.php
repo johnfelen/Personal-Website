@@ -70,9 +70,9 @@
         {
             return "
             <ul id=\"sort-buttons\" class=\"nav nav-pills nav-justified font-main\">
-                <li><a id=\"name={$this->sortButton[ "nextName" ]}\" href=\"#\">Name of Project <i class=\"fa {$this->sortButton[ "name" ]}\"></i></a></li>
-                <li><a id=\"lang={$this->sortButton[ "nextLang" ]}\" href=\"#\">Programming Languages <i class=\"fa {$this->sortButton[ "lang" ]}\"></i></a></li>
-                <li><a id=\"time={$this->sortButton[ "nextTime" ]}\" href=\"#\">Time Finished <i class=\"fa {$this->sortButton[ "time" ]}\"></i></a></li>
+                <li><a class=\"nav-btn\" id=\"name={$this->sortButton[ "nextName" ]}\" href=\"#\">Name of Project <i class=\"fa {$this->sortButton[ "name" ]}\"></i></a></li>
+                <li><a class=\"nav-btn\" id=\"lang={$this->sortButton[ "nextLang" ]}\" href=\"#\">Programming Languages <i class=\"fa {$this->sortButton[ "lang" ]}\"></i></a></li>
+                <li><a class=\"nav-btn\" id=\"time={$this->sortButton[ "nextTime" ]}\" href=\"#\">Time Finished <i class=\"fa {$this->sortButton[ "time" ]}\"></i></a></li>
             </ul>";
         }
 

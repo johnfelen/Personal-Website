@@ -143,16 +143,14 @@
         .nav.navbar-nav li {
             text-align: left;
         }
+
+
     }
 
-    //when 75% of 1080p rotate portfolio titles 90 degree rotate based on https://css-tricks.com/snippets/css/text-rotation/, when the screen is minimized a lot the longer titles( with more spaces ) will overflow but not noticeable to most people
+    //when 75% of 1080p rotate portfolio titles 90 degrees, when the screen is minimized a lot the longer titles( with more spaces ) will overflow but not noticeable to most people
     @media( max-width: 1440px ) {
         .rotate {
-            -webkit-transform: rotate( -90deg );
-            -moz-transform: rotate( -90deg );
-            -ms-transform: rotate( -90deg );
-            -o-transform: rotate( -90deg );
-            filter: progid:DXImageTransform.Microsoft.BasicImage( rotation=3 );
+            transform: rotate( -90deg );
         }
     }
 
@@ -169,7 +167,32 @@
         margin-right: 0.5em;
     }
 
-    .icon-pop:hover {
+    //the rotate for footer icon and video-game-collectable-spin is based from http://www.the-art-of-web.com/css/3d-transforms/
+    .footer-animation {
+        animation-name: video-game-collectable-spin;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-duration: 4s;
+    }
+
+    @keyframes video-game-collectable-spin {
+        from {
+            transform: rotateY( 0deg );
+        }
+        to {
+            transform: rotateY( -360deg );
+        }
+    }
+
+    //having the transtion in the non-hover state allows the animation to happen
+    .navbar-animation > a {
+        transition: 0.5s linear;
+        > i {
+            transition: 0.5s linear;
+        }
+    }
+
+    .navbar-animation > a:hover {
         transform: translateY( -10px );
     }
 }
@@ -262,49 +285,43 @@
         background-color: $primary;
     }
 
+    .navbar-colors {
+        color: $secondary;
+    }
+
+    .navbar-links > li > a:hover {
+        background-color: $primary;
+        > i {
+            color: $accent;
+        }
+    }
+
     %nav-border {   //used to add borders around the theme dropdown menu, the selected navbar items and the sorting buttons on the portfolio
         border-style: solid;
         border-width: thin;
     }
 
-    .nav > li > a, .dropdown-menu > li > a {
+    .nav-btn, .dropdown-menu > li > a {
         background-color: $primary;
         color: $secondary;
         @extend %nav-border;
         border-color: $primary;
     }
 
-    .nav > li > a:hover, .dropdown-menu > li > a:hover {
+    .nav-btn:hover, .dropdown-menu > li > a:hover {
         background-color: $secondary;
         color: $primary;
         @extend %nav-border;
     }
 
-    .nav > li.active > a, .dropdown-menu > li.active > a {
+    .dropdown-menu > li.active > a {
         background-color: $secondary;
         color: $primary;
     }
 
-    .nav > li.active > a:hover, .dropdown-menu > li.active > a:hover {
+    .dropdown-menu > li.active > a:hover {
         background-color: $primary;
         color: $secondary;
-    }
-
-    //makes less of the $primary color around the main navbar less visible to make the active and hover look more flush
-    #main-nav > li > a {
-        border-color: $primary;
-    }
-
-    #main-nav > li > a:hover {
-        border-color: $secondary;
-    }
-
-    #main-nav > li.active > a {
-        border-color: $secondary;
-    }
-
-    #main-nav > li.active > a:hover {
-        border-color: $primary;
     }
 
     .dropdown-menu {
