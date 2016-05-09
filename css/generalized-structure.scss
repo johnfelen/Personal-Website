@@ -162,11 +162,15 @@
     }
 
     .footer-margin-left {
-        margin-left: 1em;
+        margin-left: 0.5em;
     }
 
     .footer-margin-right {
-        margin-right: 1em;
+        margin-right: 0.5em;
+    }
+
+    .icon-pop:hover {
+        transform: translateY( -10px );
     }
 }
 

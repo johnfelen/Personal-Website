@@ -30,13 +30,16 @@
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li id="home"<?php echo ( $pageName === "Home" ) ? " class=\"active\"" : ""; ?>>
-                        <a href="./index.php" title="Home"><i class="fa fa-home"></i></a>
+                        <a href="./index.php" title="Home"><i class="fa fa-home fa-fw"></i></a>
                     </li>
                     <li id="portfolio"<?php echo ( $pageName === "Portfolio" ) ? " class=\"active\"" : ""; ?>>
-                        <a href="./portfolio.php" title="Portfolio"><i class="fa fa-folder-open"></i></a>
+                        <a href="./portfolio.php" title="Portfolio"><i class="fa fa-folder-open fa-fw"></i></a>
+                    </li>
+                    <li id="blog"<?php echo ( $pageName === "Blog" ) ? " class=\"active\"" : ""; ?>>
+                        <a href="./blog.php" title="Blog"><i class="fa fa-pencil fa-fw"></i></a>
                     </li>
                     <li id="contact"<?php echo ( $pageName === "Contact Me" ) ? " class=\"active\"" : ""; ?>>
-                        <a href="./contact.php" title="Contact Me"><i class="fa fa-envelope"></i></a>
+                        <a href="./contact.php" title="Contact Me"><i class="fa fa-envelope fa-fw"></i></a>
                     </li>
                 </ul>
             </div>
@@ -48,7 +51,7 @@
         <hr class="color-border">
             <h1 class="font-title font-header color">
                 <div class="dropdown colored-link">
-                    <a href="#" id="tour-theme-menu" class="dropdown-toggle" data-toggle="dropdown" title="Change the Website Theme"><i class="fa fa-<?php echo "{$fontAwesome}";?>"></i></a>
+                    <a href="#" id="tour-theme-menu" class="dropdown-toggle" data-toggle="dropdown" title="Change the Website Theme"><i class="fa fa-<?php echo "{$fontAwesome}";?> fa-fw"></i></a>
                     <ul class="dropdown-menu" id="theme-menu">
                         <li><a href="#" id="picnic-blanket">Picnic Blanket</a></li>
                         <li><a href="#" id="billards-table">Billards Table</a></li>
@@ -56,8 +59,7 @@
                         <li><a href="#" id="cartography">Cartography</a></li>
                         <li><a href="#" id="stardust">Stardust</a></li>
                     </ul>
-                </div>
-                <?php echo $pageName; ?>
+                </div><?php echo $pageName; //it is one the same line as the closing div to remove the space between the font-awesome icon and the page name?>  
             </h1>
         <hr class="color-border">
         <?php include( "./format_files/end-row-10.php" ); ?>
