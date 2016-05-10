@@ -22,7 +22,7 @@
 
     $raleway: 'Raleway', sans-serif;
     $openSans: 'Open Sans', sans-serif;
-    
+
     @include theme-specs( $deepBlue, $greyWhite, $wildSalmon, $raleway, $openSans, "../images/picnic-blanket.png" );
     @extend %theme-structure;
 }

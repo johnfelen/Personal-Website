@@ -28,18 +28,19 @@
         <?php include( "./format_files/start-row-10.php" ); ?>
         <div class="navbar fall-in" id="main-nav">
             <div class="navbar-collapse">
+                <!--javascript:; allows the link to be clickable but not processed and allows the end page animation to run, learned it from http://stackoverflow.com/questions/5637969/is-an-empty-href-valid-->
                 <ul class="nav navbar-nav navbar-links">
-                    <li id="home">
-                        <a href="./index.php" title="Home"><i class="fa fa-home fa-fw navbar-colors"></i></a>
+                    <li id="index">
+                        <a href="javascript:;" title="Home"><i class="fa fa-home fa-fw navbar-colors"></i></a>
                     </li>
                     <li id="portfolio">
-                        <a href="./portfolio.php" title="Portfolio"><i class="fa fa-folder-open fa-fw navbar-colors"></i></a>
+                        <a href="javascript:;" title="Portfolio"><i class="fa fa-folder-open fa-fw navbar-colors"></i></a>
                     </li>
                     <li id="blog">
-                        <a href="./blog.php" title="Blog"><i class="fa fa-pencil fa-fw navbar-colors"></i></a>
+                        <a href="javascript:;" title="Blog"><i class="fa fa-pencil fa-fw navbar-colors"></i></a>
                     </li>
                     <li id="contact">
-                        <a href="./contact.php" title="Contact Me"><i class="fa fa-envelope fa-fw navbar-colors"></i></a>
+                        <a href="javascript:;" title="Contact Me"><i class="fa fa-envelope fa-fw navbar-colors"></i></a>
                     </li>
                 </ul>
             </div>

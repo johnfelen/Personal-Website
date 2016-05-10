@@ -1,7 +1,5 @@
 /*Placeholder for the theme-structure, it is the general theme structure with the colors extracted into their own mixin*/
 %theme-structure {
-    overflow-x: hidden;
-
     .container-main {
         padding: 30px;
         border-radius: 10px;
@@ -104,9 +102,9 @@
         font-size: 32px;    //enlarges the glyphicon links
     }
 
-    .nav > li {
-        padding-left: 15px;
-        padding-right: 15px;
+    #main-nav > div > ul > li {
+        margin-left: 15px;
+        margin-right: 15px;
     }
 
     .dropdown-menu {
@@ -165,10 +163,9 @@
         margin-right: 0.5em;
     }
 
-    .stop-animations {
-        transition: none !important;
-        transform: none !important;
-        animation: none !important
+    #sort-buttons > li {
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     //the rotate for footer icon and video-game-collectable-spin is based from http://www.the-art-of-web.com/css/3d-transforms/
@@ -201,23 +198,10 @@
 
     %animation-constants {
         animation-iteration-count: 1;
-        animation-duration: 6s;
+        animation-duration: 600ms;
     }
 
     //falling is for the navbar transition between pages
-    .fall-in {
-        animation-name: falling;
-        animation-timing-function: ease-out;
-        @extend %animation-constants;
-    }
-
-    .fall-out {
-        animation-name: falling;
-        animation-timing-function: ease-in;
-        @extend %animation-constants;
-        animation-direction: reverse;
-    }
-
     @keyframes falling {
         from {
             transform: translateY( -250px );
@@ -227,20 +211,20 @@
         }
     }
 
-    //climbing is for the footer transitions between pages
-    .climb-up {
-        animation-name: climbing;
+    .fall-in {
+        animation-name: falling;
         animation-timing-function: ease-out;
         @extend %animation-constants;
     }
 
-    .climb-down {
-        animation-name: climbing;
+    .fall-out {
+        animation-name: falling;
         animation-timing-function: ease-in;
-        @extend %animation-constants;
         animation-direction: reverse;
+        @extend %animation-constants;
     }
 
+    //climbing is for the footer transitions between pages
     @keyframes climbing {
         from {
             transform: translateY( 250px );
@@ -250,35 +234,94 @@
         }
     }
 
-    //panning is for the header and the main container transitions between pages
-    .pan-on {
-        animation-name: pan-on;
+    .climb-up {
+        animation-name: climbing;
         animation-timing-function: ease-out;
         @extend %animation-constants;
     }
 
-    .pan-off {
-        animation-name: pan-off;
+    .climb-down {
+        animation-name: climbing;
+        animation-timing-function: ease-in;
+        animation-direction: reverse;
+        @extend %animation-constants;
+    }
+
+    //panning is for the header and the main container transitions between pages
+    @keyframes pan-left {
+        from {
+            transform: translateX( -1750px );
+        }
+        to {
+            transform: translateX( 0px );
+        }
+    }
+
+    .pan-from-left {
+        animation-name: pan-left;
+        animation-timing-function: ease-out;
+        @extend %animation-constants;
+    }
+
+    .pan-to-left {
+        animation-name: pan-left;
+        animation-timing-function: ease-in;
+        animation-direction: reverse;
+        @extend %animation-constants;
+    }
+
+    @keyframes pan-right {
+        from {
+            transform: translateX( 0px );
+        }
+        to {
+            transform: translateX( 1750px );
+        }
+    }
+
+    .pan-to-right {
+        animation-name: pan-right;
         animation-timing-function: ease-in;
         @extend %animation-constants;
     }
 
-    @keyframes pan-on {
-        from {
-            transform: translateX( -1000px );
+    .pan-from-right {
+        animation-name: pan-right;
+        animation-timing-function: ease-out;
+        animation-direction: reverse;
+        @extend %animation-constants;
+    }
+
+    //struggle is for when the click the link that is the same page as the current page
+    @keyframes struggling {
+        0% {
+            transform: translateX( 0px );
         }
-        to {
+        25% {
+            transform: translateX( -100px );
+        }
+        50% {
+            transform: translateX( 100px );
+        }
+        75% {
+            transform: translateX( -100px );
+        }
+        100% {
             transform: translateX( 0px );
         }
     }
 
-    @keyframes pan-off {
-        from {
-            transform: translateX( 0px );
-        }
-        to {
-            transform: translateX( 1000px );
-        }
+    .struggle-left {
+        animation-name: struggling;
+        animation-timing-function: ease-in-out;
+        @extend %animation-constants;
+    }
+
+    .struggle-right {
+        animation-name: struggling;
+        animation-timing-function: ease-in-out;
+        animation-directioin: reverse;
+        @extend %animation-constants;
     }
 
     //dropdown css animation
