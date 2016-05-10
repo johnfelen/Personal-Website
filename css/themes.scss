@@ -30,6 +30,19 @@
     @extend %animations;
 }
 
+.sunrise {
+    $paleBlue: #77A8AF;
+    $paleYellow: #FFFFCF;
+    $paleOrange: #FFAB3B;
+
+    $kaushanScript: 'Kaushan Script', cursive;
+    $merriweather: 'Merriweather', serif;
+
+    @extend %structure;
+    @include specifications( $paleBlue, $paleYellow, $paleOrange, $kaushanScript, $merriweather, "../images/sunrise/sunrise.png" );
+    @extend %animations;
+}
+
 .billards-table {
     $black: #222224;
     $cueBallWhite: #F7E287;
@@ -59,13 +72,52 @@
 .cartography {
     $brown: #B34514;
     $cream: #FFE1B8;
-    $grey: #808080;
+    $greyBlue: #92A997;
 
     $kaushanScript: 'Kaushan Script', cursive;
     $merriweather: 'Merriweather', serif;
 
     @extend %structure;
-    @include specifications( $brown, $cream, $grey, $kaushanScript, $merriweather, "../images/cartography/cartography.png" );
+    @include specifications( $brown, $cream, $greyBlue, $kaushanScript, $merriweather, "../images/cartography/cartography.png" );
+    @extend %animations;
+}
+
+.grandmas-house {
+    $almostWhite: #E6E6E6;
+    $darkPurple: #805ED5;
+    $palePink: #ED77CC;
+
+    $lobster: 'Lobster', cursive;
+    $droidSerif: 'Droid Serif', serif;
+
+    @extend %structure;
+    @include specifications( $almostWhite, $darkPurple, $palePink, $lobster, $droidSerif, "../images/grandmas_house/grandmas-house.png" );
+    @extend %animations;
+}
+
+.golf-argyle {
+    $blueIndigo: #171F67;
+    $paleGreen: #67D977;
+    $khaki: #F0E68C;
+
+    $ubuntu: 'Ubuntu', sans-serif;
+    $vollkorn: 'Vollkorn', Georgia, Times, serif;
+
+    @extend %structure;
+    @include specifications( $blueIndigo, $paleGreen, $khaki, $ubuntu, $vollkorn, "../images/golf_argyle/golf-argyle.png" );
+    @extend %animations;
+}
+
+.wheat-field {
+    $lightGrey: #AF5A0D;
+    $darkGrey: #FCD609;
+    $goldenSun: #64A456;
+
+    $montserrat: 'Montserrat', sans-serif;
+    $sourceSansPro: 'Source Sans Pro', sans-serif;
+
+    @extend %structure;
+    @include specifications( $lightGrey, $darkGrey, $goldenSun, $montserrat, $sourceSansPro, "../images/wheat_field/wheat-field.png" );
     @extend %animations;
 }
 
@@ -79,5 +131,18 @@
 
     @extend %structure;
     @include specifications( $lightGrey, $darkGrey, $goldenSun, $montserrat, $sourceSansPro, "../images/stardust/stardust.png" );
+    @extend %animations;
+}
+
+.chinese-new-year {
+    $moneyGreen: #1AA41A;
+    $royalYellow: #ffEE00;
+    $dragonRed: #E62B1A;
+
+    $raleway: 'Raleway', sans-serif;
+    $openSans: 'Open Sans', sans-serif;
+
+    @extend %structure;
+    @include specifications( $moneyGreen, $royalYellow, $dragonRed, $raleway, $openSans, "../images/chinese_new_year/chinese-new-year.png" );
     @extend %animations;
 }
