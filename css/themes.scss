@@ -13,7 +13,9 @@
 @import "https://fonts.googleapis.com/css?family=Source+Sans+Pro";
 @import "https://fonts.googleapis.com/css?family=Ubuntu+Mono";  //pokemon font, so not used in this file
 
-@import "generalized-structure";
+@import "structure";
+@import "specifications";
+@import "animations";
 
 .picnic-blanket {
     $deepBlue: #315481;
@@ -23,8 +25,9 @@
     $raleway: 'Raleway', sans-serif;
     $openSans: 'Open Sans', sans-serif;
 
-    @include theme-specs( $deepBlue, $greyWhite, $wildSalmon, $raleway, $openSans, "../images/picnic-blanket.png" );
-    @extend %theme-structure;
+    @extend %structure;
+    @include specifications( $deepBlue, $greyWhite, $wildSalmon, $raleway, $openSans, "../images/picnic-blanket.png" );
+    @extend %animations;
 }
 
 .billards-table {
@@ -35,8 +38,9 @@
     $ubuntu: 'Ubuntu', sans-serif;
     $vollkorn: 'Vollkorn', Georgia, Times, serif;
 
-    @extend %theme-structure;
-    @include theme-specs( $black, $cueBallWhite, $purple, $ubuntu, $vollkorn, "../images/billards-table.png" );
+    @extend %structure;
+    @include specifications( $black, $cueBallWhite, $purple, $ubuntu, $vollkorn, "../images/billards-table.png" );
+    @extend %animations;
 }
 
 .candy-cane {
@@ -47,8 +51,9 @@
     $lobster: 'Lobster', cursive;
     $droidSerif: 'Droid Serif', serif;
 
-    @extend %theme-structure;
-    @include theme-specs( $deepRed, $darkerWhite, $smoothBlue, $lobster, $droidSerif, "../images/candy-cane.png" );
+    @extend %structure;
+    @include specifications( $deepRed, $darkerWhite, $smoothBlue, $lobster, $droidSerif, "../images/candy-cane.png" );
+    @extend %animations;
 }
 
 .cartography {
@@ -59,8 +64,9 @@
     $kaushanScript: 'Kaushan Script', cursive;
     $merriweather: 'Merriweather', serif;
 
-    @extend %theme-structure;
-    @include theme-specs( $brown, $cream, $grey, $kaushanScript, $merriweather, "../images/cartography.png" );
+    @extend %structure;
+    @include specifications( $brown, $cream, $grey, $kaushanScript, $merriweather, "../images/cartography.png" );
+    @extend %animations;
 }
 
 .stardust {
@@ -71,6 +77,7 @@
     $montserrat: 'Montserrat', sans-serif;
     $sourceSansPro: 'Source Sans Pro', sans-serif;
 
-    @extend %theme-structure;
-    @include theme-specs( $lightGrey, $darkGrey, $goldenSun, $montserrat, $sourceSansPro, "../images/stardust.png" );
+    @extend %structure;
+    @include specifications( $lightGrey, $darkGrey, $goldenSun, $montserrat, $sourceSansPro, "../images/stardust.png" );
+    @extend %animations;
 }

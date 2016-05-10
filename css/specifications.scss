@@ -1,0 +1,149 @@
+/*mixin for the colors, fonts, and background image*/
+@mixin specifications( $primary, $secondary, $accent, $titleFont, $mainFont, $image ) {
+    .subtle-pattern {
+        background: url( $image ) repeat 0 0;
+    }
+
+    .font-title {
+        font-family: $titleFont;
+    }
+
+    .font-main {
+        font-family: $mainFont;
+    }
+
+    .color {
+        color: $primary;
+    }
+
+    .color-error {
+        color: $accent;
+    }
+
+    .form-control:focus {   //this removes the bootstrap efault blue and red shadow and the green and red outline on the textareas in the contact forms
+        color: $accent;
+        border-color: $accent;
+        box-shadow: none;
+    }
+
+    .color-border {
+        border-color: $primary;
+    }
+
+    .color-container {
+        background-color: $secondary;
+        border-color: $primary;
+    }
+
+    .color-reverse {
+        background-color: $primary;
+        color: $secondary;
+    }
+
+    .colored-link > a {
+        color: $primary;
+        text-decoration: none;
+    }
+
+    .colored-link > a:hover {
+        color: $accent;
+    }
+
+    .accent-hover:hover {
+        background-color: $accent;
+    }
+
+    %rounded-textarea:focus {   //placeholder here, is able to be extended from inside the theme-structure placeholder when .rounded-textarea-small and .rounded-textarea-large are defined
+        background: $secondary;
+    }
+
+    .btn-color {
+        background-color: $primary;
+        color: $secondary;
+        border-color: $secondary;
+    }
+
+    .btn-color:hover {
+        background-color: $secondary;
+        color: $primary;
+        border-color: $primary;
+    }
+
+    //this is for when the input button is clicked in and held I found the correct pseudo selectors(for the :active:focus) at the verified answer for http://stackoverflow.com/questions/31379175/bootstrap-button-on-click-showing-default-colour
+    .btn-color:active:focus {
+        background-color: $primary;
+        color: $secondary;
+        border-color: $secondary;
+    }
+
+    .btn-color:focus {
+        background-color: $primary;
+        color: $secondary;
+        border-color: $secondary;
+    }
+
+    .navbar {
+        background-color: $primary;
+    }
+
+    .navbar-colors {
+        color: $secondary;
+    }
+
+    .navbar-links > li > a:hover {
+        background-color: transparent;
+        > i {
+            color: $accent;
+        }
+    }
+
+    %nav-border {   //used to add borders around the theme dropdown menu, the selected navbar items and the sorting buttons on the portfolio
+        border-style: solid;
+        border-width: thin;
+    }
+
+    .nav-btn, .dropdown-menu > li > a {
+        background-color: $primary;
+        color: $secondary;
+        @extend %nav-border;
+        border-color: $primary;
+    }
+
+    .nav-btn:hover, .dropdown-menu > li > a:hover {
+        background-color: $secondary;
+        color: $primary;
+        @extend %nav-border;
+    }
+
+    .dropdown-menu > li.active > a {
+        background-color: $secondary;
+        color: $primary;
+    }
+
+    .dropdown-menu > li.active > a:hover {
+        background-color: $primary;
+        color: $secondary;
+    }
+
+    .dropdown-menu {
+        border-color: $primary;
+        background-color: $primary;
+    }
+
+    //these four themes change the color of the arrow on the tour box, based on the first answer from http://stackoverflow.com/questions/25011758/how-can-we-change-the-color-of-arrow-in-the-popover-of-bootstrap
+    .popover.right .arrow:after {
+        border-right-color: $primary;
+    }
+
+    .popover.left .arrow:after {
+        border-left-color: $primary;
+    }
+
+    .popover.top .arrow:after {
+        border-top-color: $primary;
+    }
+
+    .popover.bottom .arrow:after {
+        border-bottom-color: $primary;
+    }
+}

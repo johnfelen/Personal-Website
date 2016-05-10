@@ -1,4 +1,4 @@
-if( getCurrTimeSec() < sessionStorage.getItem( "time_finished" ) )   //for static-index.php, simplified, no animation, appending for when user is at static page
+if( getCurrTimeSec() < sessionStorage.getItem( "time_finished" ) )   //for after the game has frozen, simplified, no animation, appending for when user is at static page
 {
     $.ajax({
         url: "./server_functionality/pokemon-text.php",

@@ -48,7 +48,7 @@
         <?php include( "./format_files/end-row-10.php" ); ?>
 
         <!--header-->
-        <div id="header" class="pan-on">
+        <div id="header">
             <?php include( "./format_files/start-row-10.php" ); ?>
             <hr class="color-border">
                 <h1 class="font-title font-header color">
@@ -69,4 +69,4 @@
 
         <!--start the main container which is closed in footer.php-->
         <?php include( "./format_files/start-row-10.php" ); ?>
-        <div class="container-main color-container pan-on" id="main-container">
+        <div class="container-main color-container" id="main-container">

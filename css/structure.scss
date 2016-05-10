@@ -1,0 +1,172 @@
+/*Placeholder for the theme-structure, it is the general theme structure with the colors extracted into their own mixin*/
+%structure {
+    overflow-x: hidden;
+
+    .container-main {
+        padding: 30px;
+        border-radius: 10px;
+        border-style: solid;
+    }
+
+    #picture-of-me {
+        border-style: 2px solid;
+        border-radius: 10px;
+        width: 100%;
+        opacity: 0;
+    }
+
+    blink, .select-name {
+        visibility: hidden;
+    }
+
+    .fill-n-center {
+        margin: 0px auto;
+        width: 100%;
+    }
+
+    //vertical-center is based off the second answer http://stackoverflow.com/questions/8865458/how-to-align-text-vertically-center-in-div-with-css
+    .vertical-center {
+        display: flex;
+        justify-content: center; // align horizontal
+        align-items: center; // align vertical
+    }
+
+    .center-textarea-error {
+        margin-top: 12px;
+    }
+
+    .form-group {
+        margin-bottom: 0px;
+    }
+
+    //the rounded corners for the text area are based the accepted answer from http://stackoverflow.com/questions/26272350/rounded-corners-to-a-textarea */
+    %rounded-textarea {
+        width:100%;
+        border-radius:10px;
+        border: 3px solid transparent;
+    }
+
+    %rounded-textarea:focus {
+        outline: none;
+    }
+
+    .rounded-textarea-small {
+        @extend %rounded-textarea;
+        resize: none;
+    }
+
+    .rounded-textarea-large {
+        @extend %rounded-textarea;
+        resize: vertical;
+    }
+
+    //pokemon part font, it will not change when theme changes
+    .font-ubuntu-mono {
+        font-family: 'Ubuntu Mono', ;
+    }
+
+    .font-small {
+        font-size: 20px;
+    }
+
+    .font-medium {
+        font-size: 28px;
+    }
+
+    .font-large {
+        font-size: 44px;
+    }
+
+    .font-header {
+        font-weight: 700;
+        font-size: 60px;
+    }
+
+    .font-footer {
+        font-size: 25px;
+    }
+
+    .font-center {
+        text-align: center;
+    }
+
+    .font-left {
+        text-align: left;
+    }
+
+    .font-right {
+        text-align: right;
+    }
+
+    .navbar {
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        font-size: 32px;    //enlarges the glyphicon links
+    }
+
+    #main-nav > div > ul > li {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    .dropdown-menu {
+        text-align: center;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .dropdown {
+        display: inline-block;
+    }
+
+    // These change the navbar( portfolio sort ) when the screen width is too small, NOTE: I did grab this from stack overflow ages ago and I have tried to find where I got it to give credit for this project but I came up empty handed
+    @media( min-width: 768px ) {
+        .nav.navbar-nav {
+            float: left;
+        }
+
+        .nav.navbar-nav {
+            clear: left;
+            float: left;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            left: 50%;
+            text-align: center;
+        }
+
+        .nav.navbar-nav > li {
+            position: relative;
+            right: 50%;
+        }
+
+        .nav.navbar-nav li {
+            text-align: left;
+        }
+    }
+
+    //when 75% of 1080p rotate portfolio titles 90 degrees, when the screen is minimized a lot the longer titles( with more spaces ) will overflow but not noticeable to most people
+    @media( max-width: 1440px ) {
+        .rotate {
+            transform: rotate( -90deg );
+        }
+    }
+
+    //allows hover to enable drop downs, from http://www.joostrap.com/support/tutorials-videos/202-how-to-enable-hover-for-nav-dropdowns
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+    .footer-margin-left {
+        margin-left: 0.5em;
+    }
+
+    .footer-margin-right {
+        margin-right: 0.5em;
+    }
+
+    #sort-buttons > li {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}

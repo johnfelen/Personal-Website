@@ -1,0 +1,164 @@
+/*animiations for all the web page and transition between them*/
+%animations {
+    //the rotate for footer icon and video-game-collectable-spin is based from http://www.the-art-of-web.com/css/3d-transforms/
+    .footer-animation {
+        animation-name: video-game-collectable-spin;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-duration: 4s;
+    }
+
+    @keyframes video-game-collectable-spin {
+        from {
+            transform: rotateY( 0deg );
+        }
+        to {
+            transform: rotateY( -360deg );
+        }
+    }
+
+    .navbar-animation > a {
+        transition: 0.5s linear;
+        > i {   //this inner i child is so that the color changes only when the link is moving up/already up
+            transition: 0.5s linear;
+        }
+    }
+
+    .navbar-animation > a:hover {
+        transform: translateY( -10px );
+    }
+
+    %animation-constants {
+        animation-iteration-count: 1;
+        animation-duration: 1000ms;
+        animation-timing-function: ease-in-out;
+    }
+
+    //falling is for the navbar transition between pages
+    @keyframes falling {
+        from {
+            transform: translateY( -250px );
+        }
+        to {
+            transform: translateY( 0px );
+        }
+    }
+
+    .fall-in {
+        animation-name: falling;
+        @extend %animation-constants;
+    }
+
+    .fall-out {
+        animation-name: falling;
+        animation-direction: reverse;
+        @extend %animation-constants;
+    }
+
+    //climbing is for the footer transitions between pages
+    @keyframes climbing {
+        from {
+            transform: translateY( 250px );
+        }
+        to {
+            transform: translateY( 0px );
+        }
+    }
+
+    .climb-up {
+        animation-name: climbing;
+        @extend %animation-constants;
+    }
+
+    .climb-down {
+        animation-name: climbing;
+        animation-direction: reverse;
+        @extend %animation-constants;
+    }
+
+    //panning is for the header and the main container transitions between pages
+    @keyframes pan-left {
+        from {
+            transform: translateX( -1750px );
+        }
+        to {
+            transform: translateX( 0px );
+        }
+    }
+
+    .pan-from-left {
+        animation-name: pan-left;
+        @extend %animation-constants;
+    }
+
+    .pan-to-left {
+        animation-name: pan-left;
+        animation-direction: reverse;
+        @extend %animation-constants;
+    }
+
+    @keyframes pan-right {
+        from {
+            transform: translateX( 0px );
+        }
+        to {
+            transform: translateX( 1750px );
+        }
+    }
+
+    .pan-to-right {
+        animation-name: pan-right;
+        @extend %animation-constants;
+    }
+
+    .pan-from-right {
+        animation-name: pan-right;
+        animation-direction: reverse;
+        @extend %animation-constants;
+    }
+
+    //struggle is for when the click the link that is the same page as the current page
+    @keyframes struggling {
+        0% {
+            transform: translateX( 0px );
+        }
+        20% {
+            transform: translateX( -100px );
+        }
+        40% {
+            transform: translateX( 100px );
+        }
+        60% {
+            transform: translateX( -100px );
+        }
+        80% {
+            transform: translateX( 100px );
+        }
+        100% {
+            transform: translateX( 0px );
+        }
+    }
+
+    .struggle-left {
+        animation-name: struggling;
+        @extend %animation-constants;
+        animation-timing-function: ease-in;
+    }
+
+    .struggle-right {
+        animation-name: struggling;
+        animation-direction: reverse;
+        @extend %animation-constants;
+        animation-timing-function: ease-out;
+    }
+
+    //dropdown css fade in animation
+    .open > .dropdown-menu-animate {
+        opacity: 1;
+    }
+
+    .dropdown-menu-animate {
+        opacity: 0;
+        transition: 0.5s linear;
+    }
+}
