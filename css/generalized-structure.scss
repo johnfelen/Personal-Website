@@ -198,7 +198,7 @@
 
     %animation-constants {
         animation-iteration-count: 1;
-        animation-duration: 600ms;
+        animation-duration: 1000ms;
     }
 
     //falling is for the navbar transition between pages
@@ -213,13 +213,13 @@
 
     .fall-in {
         animation-name: falling;
-        animation-timing-function: ease-out;
+        animation-timing-function: ease-in-out;
         @extend %animation-constants;
     }
 
     .fall-out {
         animation-name: falling;
-        animation-timing-function: ease-in;
+        animation-timing-function: ease-in-out;
         animation-direction: reverse;
         @extend %animation-constants;
     }
@@ -236,13 +236,13 @@
 
     .climb-up {
         animation-name: climbing;
-        animation-timing-function: ease-out;
+        animation-timing-function: ease-in-out;
         @extend %animation-constants;
     }
 
     .climb-down {
         animation-name: climbing;
-        animation-timing-function: ease-in;
+        animation-timing-function: ease-in-out;
         animation-direction: reverse;
         @extend %animation-constants;
     }
@@ -259,13 +259,13 @@
 
     .pan-from-left {
         animation-name: pan-left;
-        animation-timing-function: ease-out;
+        animation-timing-function: ease-in-out;
         @extend %animation-constants;
     }
 
     .pan-to-left {
         animation-name: pan-left;
-        animation-timing-function: ease-in;
+        animation-timing-function: ease-in-out;
         animation-direction: reverse;
         @extend %animation-constants;
     }
@@ -281,13 +281,13 @@
 
     .pan-to-right {
         animation-name: pan-right;
-        animation-timing-function: ease-in;
+        animation-timing-function: ease-in-out;
         @extend %animation-constants;
     }
 
     .pan-from-right {
         animation-name: pan-right;
-        animation-timing-function: ease-out;
+        animation-timing-function: ease-in-out;
         animation-direction: reverse;
         @extend %animation-constants;
     }
@@ -297,14 +297,17 @@
         0% {
             transform: translateX( 0px );
         }
-        25% {
+        20% {
             transform: translateX( -100px );
         }
-        50% {
+        40% {
             transform: translateX( 100px );
         }
-        75% {
+        60% {
             transform: translateX( -100px );
+        }
+        80% {
+            transform: translateX( 100px );
         }
         100% {
             transform: translateX( 0px );
@@ -313,14 +316,14 @@
 
     .struggle-left {
         animation-name: struggling;
-        animation-timing-function: ease-in-out;
+        animation-timing-function: ease-in;
         @extend %animation-constants;
     }
 
     .struggle-right {
         animation-name: struggling;
-        animation-timing-function: ease-in-out;
-        animation-directioin: reverse;
+        animation-timing-function: ease-out;
+        animation-direction: reverse;
         @extend %animation-constants;
     }
 

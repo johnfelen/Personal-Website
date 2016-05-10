@@ -1,5 +1,9 @@
-//both "" and index point to 0 because there is no subfolder on the home page for index and the id of the li tag is "index"
-var pageToNum = { "" : 0,
+var headerTransition = sessionStorage.getItem( "header" );
+var mainContainerTransition = sessionStorage.getItem( "main_container" );
+$( "#header" ).addClass( headerTransition );
+$( "#main-container" ).addClass( mainContainerTransition );
+
+var pageToNum = { "" : 0,   //both "" and index point to 0 because there is no subfolder on the home page for index and the id of the li tag is "index"
 "index" : 0,
 "portfolio" : 1,
 "blog" : 2,
@@ -7,11 +11,11 @@ var pageToNum = { "" : 0,
 
 setTimeout( function()
 {
-    $( "#header" ).removeClass( "pan-on" );
+    $( "#header" ).removeClass( headerTransition );
+    $( "#main-container" ).removeClass( mainContainerTransition );
     $( "#main-nav" ).removeClass( "fall-in" );
-    $( "#main-container" ).removeClass( "pan-on" );
     $( "#footer" ).removeClass( "climb-up" );
-}, 600 );
+}, 1000 );
 
 $( "#main-nav" ).find( "li" ).each( function()
 {
@@ -21,12 +25,12 @@ $( "#main-nav" ).find( "li" ).each( function()
 
     $( this ).click( function()
     {
-        if( nextPageNum !== currPageNum )
+        if( nextPageNum !== currPageNum )   //allows the unload animations to run and if they hit the current page they are on, it does not change and the navbar and footer do not move
         {
             setTimeout( function()
             {
                 window.location.href = "./" + id + ".php";
-            }, 600 );
+            }, 1000 );
 
             $( "#main-nav" ).addClass( "fall-out" );
             $( "#footer" ).addClass( "climb-down" );
@@ -35,13 +39,17 @@ $( "#main-nav" ).find( "li" ).each( function()
         if( nextPageNum > currPageNum )
         {
             $( "#header" ).addClass( "pan-to-right" );
-            $( "#main-container" ).addClass( "pan-to-right" );
+            $( "#main-container" ).addClass( "pan-to-left" );
+            sessionStorage.setItem( "header", "pan-from-right" );
+            sessionStorage.setItem( "main_container", "pan-from-left" );
         }
 
         else if( nextPageNum < currPageNum )
         {
             $( "#header" ).addClass( "pan-to-left" );
-            $( "#main-container" ).addClass( "pan-to-left" );
+            $( "#main-container" ).addClass( "pan-to-right" );
+            sessionStorage.setItem( "header", "pan-from-left" );
+            sessionStorage.setItem( "main_container", "pan-from-right" );
         }
 
         else
@@ -49,11 +57,11 @@ $( "#main-nav" ).find( "li" ).each( function()
             setTimeout( function()  //allows multiple struggles to happen when they click the same link multiple times
             {
                 $( "#header" ).removeClass( "struggle-left" );
-                $( "#main-container" ).removeClass( "struggle-left" );;
-            }, 600 );
+                $( "#main-container" ).removeClass( "struggle-right" );
+            }, 1000 );
 
             $( "#header" ).addClass( "struggle-left" );
-            $( "#main-container" ).addClass( "struggle-left" );
+            $( "#main-container" ).addClass( "struggle-right" );
         }
     });
 });

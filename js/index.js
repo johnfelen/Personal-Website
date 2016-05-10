@@ -63,7 +63,7 @@ else  //functionality for the animated pokemon text
                     printNextLine();
                     blink();
                 });
-            }, 600 );
+            }, 1000 );
         }
     });
 
