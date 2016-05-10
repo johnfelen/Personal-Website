@@ -1,13 +1,37 @@
 /*animiations for all the web page and transition between them*/
 %animations {
-    //the rotate for footer icon and video-game-collectable-spin is based from http://www.the-art-of-web.com/css/3d-transforms/
-    .footer-animation {
-        animation-name: video-game-collectable-spin;
-        animation-timing-function: ease-in-out;
-        animation-iteration-count: infinite;
-        animation-duration: 4s;
+    //based off of https://davidwalsh.name/background-animation-css, sort of looks like the animation in the background of the sonic title screens
+    @keyframes sonic-title {
+        from {
+            background-position: 0 0;
+        }
+        to {
+            background-position: 100% 0;
+        }
     }
 
+    %background-constants {
+        animation-name: sonic-title;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    body.subtle-pattern {
+        @extend %background-constants;
+        animation-duration: 20000ms;
+    }
+
+    #name.subtle-pattern, #email.subtle-pattern {
+        @extend %background-constants;
+        animation-duration: ( 5 / 12 ) * ( 10 / 12 ) * 20000ms;
+    }
+
+    #message.subtle-pattern {
+        @extend %background-constants;
+        animation-duration: ( 10 / 12 ) * ( 10 / 12 ) * 20000ms;
+    }
+
+    //the rotate for footer icon and video-game-collectable-spin is based from http://www.the-art-of-web.com/css/3d-transforms/
     @keyframes video-game-collectable-spin {
         from {
             transform: rotateY( 0deg );
@@ -15,6 +39,13 @@
         to {
             transform: rotateY( -360deg );
         }
+    }
+
+    .footer-animation {
+        animation-name: video-game-collectable-spin;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-duration: 4s;
     }
 
     .navbar-animation > a {
