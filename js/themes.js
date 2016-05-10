@@ -64,7 +64,7 @@ function setTheme( theme, adding ) //change current theme on page
     if( adding )
     {
         $( "html" ).addClass( theme );
-        $( "#favicon" ).attr( "href", "./images/" + theme.replace( "-", "_" ) + "/" + $( "#favicon" ).attr( "name" ) );
+        $( "#favicon" ).attr( "href", "./images/" + theme.split( "-" ).join( "_" ) + "/" + $( "#favicon" ).attr( "name" ) );
     }
 
     else
