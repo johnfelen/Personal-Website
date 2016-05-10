@@ -26,7 +26,7 @@
     $openSans: 'Open Sans', sans-serif;
 
     @extend %structure;
-    @include specifications( $deepBlue, $greyWhite, $wildSalmon, $raleway, $openSans, "../images/picnic-blanket.png" );
+    @include specifications( $deepBlue, $greyWhite, $wildSalmon, $raleway, $openSans, "../images/picnic_blanket/picnic-blanket.png" );
     @extend %animations;
 }
 
@@ -39,7 +39,7 @@
     $vollkorn: 'Vollkorn', Georgia, Times, serif;
 
     @extend %structure;
-    @include specifications( $black, $cueBallWhite, $purple, $ubuntu, $vollkorn, "../images/billards-table.png" );
+    @include specifications( $black, $cueBallWhite, $purple, $ubuntu, $vollkorn, "../images/billards_table/billards-table.png" );
     @extend %animations;
 }
 
@@ -52,7 +52,7 @@
     $droidSerif: 'Droid Serif', serif;
 
     @extend %structure;
-    @include specifications( $deepRed, $darkerWhite, $smoothBlue, $lobster, $droidSerif, "../images/candy-cane.png" );
+    @include specifications( $deepRed, $darkerWhite, $smoothBlue, $lobster, $droidSerif, "../images/candy_cane/candy-cane.png" );
     @extend %animations;
 }
 
@@ -65,7 +65,7 @@
     $merriweather: 'Merriweather', serif;
 
     @extend %structure;
-    @include specifications( $brown, $cream, $grey, $kaushanScript, $merriweather, "../images/cartography.png" );
+    @include specifications( $brown, $cream, $grey, $kaushanScript, $merriweather, "../images/cartography/cartography.png" );
     @extend %animations;
 }
 
@@ -78,6 +78,6 @@
     $sourceSansPro: 'Source Sans Pro', sans-serif;
 
     @extend %structure;
-    @include specifications( $lightGrey, $darkGrey, $goldenSun, $montserrat, $sourceSansPro, "../images/stardust.png" );
+    @include specifications( $lightGrey, $darkGrey, $goldenSun, $montserrat, $sourceSansPro, "../images/stardust/stardust.png" );
     @extend %animations;
 }

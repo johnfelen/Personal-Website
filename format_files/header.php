@@ -28,7 +28,6 @@
         <?php include( "./format_files/start-row-10.php" ); ?>
         <div class="navbar fall-in" id="main-nav">
             <div class="navbar-collapse">
-                <!--javascript:; allows the link to be clickable but not processed and allows the end page animation to run, learned it from http://stackoverflow.com/questions/5637969/is-an-empty-href-valid-->
                 <ul class="nav navbar-nav navbar-links">
                     <li id="index">
                         <a href="javascript:;" title="Home"><i class="fa fa-home fa-fw navbar-colors"></i></a>
@@ -53,13 +52,13 @@
             <hr class="color-border">
                 <h1 class="font-title font-header color">
                     <div class="dropdown colored-link">
-                        <a href="#" id="tour-theme-menu" class="dropdown-toggle" data-toggle="dropdown" title="Change the Website Theme"><i class="fa fa-<?php echo "{$fontAwesome}";?> fa-fw"></i></a>
+                        <a href="javascript:;" id="tour-theme-menu" class="dropdown-toggle" data-toggle="dropdown" title="Change the Website Theme"><i class="fa fa-<?php echo "{$fontAwesome}";?> fa-fw"></i></a>
                         <ul class="dropdown-menu dropdown-menu-animate" id="theme-menu">
-                            <li><a href="#" id="picnic-blanket">Picnic Blanket</a></li>
-                            <li><a href="#" id="billards-table">Billards Table</a></li>
-                            <li><a href="#" id="candy-cane">Candy Cane</a></li>
-                            <li><a href="#" id="cartography">Cartography</a></li>
-                            <li><a href="#" id="stardust">Stardust</a></li>
+                            <li><a href="javascript:;" id="picnic-blanket">Picnic Blanket</a></li>
+                            <li><a href="javascript:;" id="billards-table">Billards Table</a></li>
+                            <li><a href="javascript:;" id="candy-cane">Candy Cane</a></li>
+                            <li><a href="javascript:;" id="cartography">Cartography</a></li>
+                            <li><a href="javascript:;" id="stardust">Stardust</a></li>
                         </ul>
                     </div><?php echo $pageName; //it is one the same line as the closing div to remove the space between the font-awesome icon and the page name?>
                 </h1>
