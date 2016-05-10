@@ -1,18 +1,28 @@
 /*!Thanks to subtlepatterns.com for providing the background*/
 //NOTE: fonts must be imported at the top of the css file( Google Fonts does not tell you this and also you must put the @import url in quotes not in a function call like Google Fonts tells you to do )
 //favicons are font-awesome icons transformed into favicons from http://paulferrett.com/fontawesome-favicon/
-@import "https://fonts.googleapis.com/css?family=Ubuntu";
-@import "https://fonts.googleapis.com/css?family=Vollkorn";
-@import "https://fonts.googleapis.com/css?family=Kaushan+Script";
-@import "https://fonts.googleapis.com/css?family=Merriweather";
-@import "https://fonts.googleapis.com/css?family=Lobster";
-@import "https://fonts.googleapis.com/css?family=Droid+Serif";
 @import "https://fonts.googleapis.com/css?family=Raleway";
 @import "https://fonts.googleapis.com/css?family=Open+Sans";
+@import "https://fonts.googleapis.com/css?family=Pacifico";
+@import "https://fonts.googleapis.com/css?family=Arimo";
+@import "https://fonts.googleapis.com/css?family=Ubuntu";
+@import "https://fonts.googleapis.com/css?family=Vollkorn";
+@import "https://fonts.googleapis.com/css?family=Lobster";
+@import "https://fonts.googleapis.com/css?family=Droid+Serif";
+@import "https://fonts.googleapis.com/css?family=Kaushan+Script";
+@import "https://fonts.googleapis.com/css?family=Merriweather";
+@import "https://fonts.googleapis.com/css?family=Amatic+SC";
+@import "https://fonts.googleapis.com/css?family=Andika";
+@import "https://fonts.googleapis.com/css?family=Josefin+Slab";
+@import "https://fonts.googleapis.com/css?family=Josefin+Sans";
+@import "https://fonts.googleapis.com/css?family=Sacramento";
+@import "https://fonts.googleapis.com/css?family=Alice";
 @import "https://fonts.googleapis.com/css?family=Montserrat";
 @import "https://fonts.googleapis.com/css?family=Source+Sans+Pro";
-@import "https://fonts.googleapis.com/css?family=Ubuntu+Mono";  //pokemon font, so not used in this file
+@import "https://fonts.googleapis.com/css?family=Rancho";
+@import "https://fonts.googleapis.com/css?family=Gudea";
 
+@import "https://fonts.googleapis.com/css?family=Ubuntu+Mono";  //pokemon font, so not used in this file
 @import "structure";
 @import "specifications";
 @import "animations";
@@ -35,11 +45,11 @@
     $paleYellow: #FFFFCF;
     $paleOrange: #FFAB3B;
 
-    $kaushanScript: 'Kaushan Script', cursive;
-    $merriweather: 'Merriweather', serif;
+    $pacifico: 'Pacifico', cursive;
+    $arimo: 'Arimo', sans-serif;
 
     @extend %structure;
-    @include specifications( $paleBlue, $paleYellow, $paleOrange, $kaushanScript, $merriweather, "../images/sunrise/sunrise.png" );
+    @include specifications( $paleBlue, $paleYellow, $paleOrange, $pacifico, $arimo, "../images/sunrise/sunrise.png" );
     @extend %animations;
 }
 
@@ -87,11 +97,11 @@
     $darkPurple: #805ED5;
     $palePink: #ED77CC;
 
-    $lobster: 'Lobster', cursive;
-    $droidSerif: 'Droid Serif', serif;
+    $amaticSC: 'Amatic SC', cursive;
+    $andika: 'Andika', sans-serif;
 
     @extend %structure;
-    @include specifications( $almostWhite, $darkPurple, $palePink, $lobster, $droidSerif, "../images/grandmas_house/grandmas-house.png" );
+    @include specifications( $almostWhite, $darkPurple, $palePink, $amaticSC, $andika, "../images/grandmas_house/grandmas-house.png" );
     @extend %animations;
 }
 
@@ -100,11 +110,11 @@
     $paleGreen: #67D977;
     $khaki: #F0E68C;
 
-    $ubuntu: 'Ubuntu', sans-serif;
-    $vollkorn: 'Vollkorn', Georgia, Times, serif;
+    $josefinSlab: 'Josefin Slab', serif;
+    $josefinSans: 'Josefin Sans', sans-serif;
 
     @extend %structure;
-    @include specifications( $blueIndigo, $paleGreen, $khaki, $ubuntu, $vollkorn, "../images/golf_argyle/golf-argyle.png" );
+    @include specifications( $blueIndigo, $paleGreen, $khaki, $josefinSlab, $josefinSans, "../images/golf_argyle/golf-argyle.png" );
     @extend %animations;
 }
 
@@ -113,11 +123,11 @@
     $darkGrey: #FCD609;
     $goldenSun: #64A456;
 
-    $montserrat: 'Montserrat', sans-serif;
-    $sourceSansPro: 'Source Sans Pro', sans-serif;
+    $sacramento: 'Sacramento', cursive;
+    $alice: 'Alice', serif;
 
     @extend %structure;
-    @include specifications( $lightGrey, $darkGrey, $goldenSun, $montserrat, $sourceSansPro, "../images/wheat_field/wheat-field.png" );
+    @include specifications( $lightGrey, $darkGrey, $goldenSun, $sacramento, $alice, "../images/wheat_field/wheat-field.png" );
     @extend %animations;
 }
 
@@ -139,10 +149,10 @@
     $royalYellow: #ffEE00;
     $dragonRed: #E62B1A;
 
-    $raleway: 'Raleway', sans-serif;
-    $openSans: 'Open Sans', sans-serif;
+    $rancho: 'Rancho', cursive;
+    $gudea: 'Gudea', sans-serif;
 
     @extend %structure;
-    @include specifications( $moneyGreen, $royalYellow, $dragonRed, $raleway, $openSans, "../images/chinese_new_year/chinese-new-year.png" );
+    @include specifications( $moneyGreen, $royalYellow, $dragonRed, $rancho, $gudea, "../images/chinese_new_year/chinese-new-year.png" );
     @extend %animations;
 }
