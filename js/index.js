@@ -56,7 +56,7 @@ else  //functionality for the animated pokemon text
             frozenSpinner = textToBeDisplayed[ 9 ];
             brokenMessage = textToBeDisplayed[ 10 ];
 
-            setTimeout( function()
+            setTimeout( function()  //this timeout has the fadeIn happen after the starting page animations finish
             {
                 $( "#picture-of-me" ).fadeTo( 3000, 1, function()
                 {

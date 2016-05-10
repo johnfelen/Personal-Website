@@ -165,6 +165,12 @@
         margin-right: 0.5em;
     }
 
+    .stop-animations {
+        transition: none !important;
+        transform: none !important;
+        animation: none !important
+    }
+
     //the rotate for footer icon and video-game-collectable-spin is based from http://www.the-art-of-web.com/css/3d-transforms/
     .footer-animation {
         animation-name: video-game-collectable-spin;
@@ -193,15 +199,71 @@
         transform: translateY( -10px );
     }
 
-    //the next 4 animations are ones that happen on load, I used http://codepen.io/chrissp26/pen/szoyk?editors=1100 for help
-    #header {
-        animation-name: panRight;
+    %animation-constants {
         animation-iteration-count: 1;
-        animation-timing-function: ease-in;
-        animation-duration: 600ms;
+        animation-duration: 6s;
     }
 
-    @keyframes panRight {
+    //falling is for the navbar transition between pages
+    .fall-in {
+        animation-name: falling;
+        animation-timing-function: ease-out;
+        @extend %animation-constants;
+    }
+
+    .fall-out {
+        animation-name: falling;
+        animation-timing-function: ease-in;
+        @extend %animation-constants;
+        animation-direction: reverse;
+    }
+
+    @keyframes falling {
+        from {
+            transform: translateY( -250px );
+        }
+        to {
+            transform: translateY( 0px );
+        }
+    }
+
+    //climbing is for the footer transitions between pages
+    .climb-up {
+        animation-name: climbing;
+        animation-timing-function: ease-out;
+        @extend %animation-constants;
+    }
+
+    .climb-down {
+        animation-name: climbing;
+        animation-timing-function: ease-in;
+        @extend %animation-constants;
+        animation-direction: reverse;
+    }
+
+    @keyframes climbing {
+        from {
+            transform: translateY( 250px );
+        }
+        to {
+            transform: translateY( 0px );
+        }
+    }
+
+    //panning is for the header and the main container transitions between pages
+    .pan-on {
+        animation-name: pan-on;
+        animation-timing-function: ease-out;
+        @extend %animation-constants;
+    }
+
+    .pan-off {
+        animation-name: pan-off;
+        animation-timing-function: ease-in;
+        @extend %animation-constants;
+    }
+
+    @keyframes pan-on {
         from {
             transform: translateX( -1000px );
         }
@@ -210,52 +272,12 @@
         }
     }
 
-    #footer {
-        animation-name: panLeft;
-        animation-iteration-count: 1;
-        animation-timing-function: ease-in;
-        animation-duration: 600ms;
-    }
-
-    @keyframes panLeft {
+    @keyframes pan-off {
         from {
-            transform: translateX( 1000px );
-        }
-        to {
             transform: translateX( 0px );
         }
-    }
-
-    #main-nav {
-        animation-name: large-x-parasite;
-        animation-iteration-count: 1;
-        animation-timing-function: ease-in;
-        animation-duration: 600ms;
-    }
-
-    //im calling the next two x-parasite since it reminds of the x parasite animations in the beginning cutscence of metroid fustion
-    @keyframes large-x-parasite {
-        from {
-            transform: scale( 2, 2 );
-        }
         to {
-            transform: scale( 1, 1 );
-        }
-    }
-
-    #main-container {
-        animation-name: small-x-parasite;
-        animation-iteration-count: 1;
-        animation-timing-function: ease-in;
-        animation-duration: 600ms;
-    }
-
-    @keyframes small-x-parasite {
-        from {
-            transform: scale( 0, 0 );
-        }
-        to {
-            transform: scale( 1, 1 );
+            transform: translateX( 1000px );
         }
     }
 
@@ -363,7 +385,7 @@
     }
 
     .navbar-links > li > a:hover {
-        background-color: $primary;
+        background-color: transparent;
         > i {
             color: $accent;
         }

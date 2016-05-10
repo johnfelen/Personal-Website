@@ -26,7 +26,7 @@
         <?php include_once( "./analyticstracking.php" ); ?>
         <!--top navigation bar-->
         <?php include( "./format_files/start-row-10.php" ); ?>
-        <div class="navbar" id="main-nav">
+        <div class="navbar fall-in" id="main-nav">
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-links">
                     <li id="home">
@@ -47,7 +47,7 @@
         <?php include( "./format_files/end-row-10.php" ); ?>
 
         <!--header-->
-        <div id="header">
+        <div id="header" class="pan-on">
             <?php include( "./format_files/start-row-10.php" ); ?>
             <hr class="color-border">
                 <h1 class="font-title font-header color">
@@ -68,4 +68,4 @@
 
         <!--start the main container which is closed in footer.php-->
         <?php include( "./format_files/start-row-10.php" ); ?>
-        <div class="container-main color-container" id="main-container">
+        <div class="container-main color-container pan-on" id="main-container">

@@ -5,8 +5,9 @@ global.isFileInURL = function( file )   //will figure out if file, ie "tour.php"
     return document.URL.split( "/" ).pop().indexOf( file ) === 0;
 }
 
-require( "./themes.js" );
+require( "./animations.js" );
 require( "./tour.js" );
+require( "./themes.js" );
 require( "./index.js" );
 require( "./portfolio.js" );
 require( "./contact.js" );
