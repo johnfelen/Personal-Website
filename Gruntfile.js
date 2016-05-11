@@ -1,3 +1,12 @@
+//this function and code will allow me to copy the files from the xampp htdocs to my git repo, based from https://github.com/gruntjs/grunt-contrib-copy/issues/47
+var path = require( "path" );
+function getHomeDir() {
+    var dirpath = path.join.apply( path, arguments );
+    var homepath = process.env[ process.platform === "win32" ? "USERPROFILE" : "HOME" ];
+    dirpath = path.resolve( homepath, dirpath );
+    return dirpath;
+}
+
 module.exports = function( grunt )
 {
     grunt.initConfig({
@@ -55,6 +64,14 @@ module.exports = function( grunt )
                     src: [ "**", "!**/*.{scss,css,js}" ],
                     dest: "./dist/"
                 }]
+            },
+            git: {
+                files: [{
+                    expand: true,
+                    cwd: "./",
+                    src: [ "**", "!dist/**", "!node_modules/**", "!.htaccess" ],
+                    dest: getHomeDir( "C:/Users/jtfel/Documents/GitHub/Personal-Website/" )
+                }]
             }
         },
         clean: {
@@ -72,6 +89,7 @@ module.exports = function( grunt )
     grunt.loadNpmTasks( "grunt-contrib-copy" );
     grunt.loadNpmTasks( "grunt-contrib-clean" );
 
-    grunt.registerTask( "release", [ "sass", "concat", "uglify", "copy", "clean", "processhtml" ] );
+    grunt.registerTask( "release", [ "sass", "concat", "uglify", "copy:dist", "clean", "processhtml" ] );
     grunt.registerTask( "default", [ "sass", "concat", "uglify", "copy", "clean", "watch" ] );
+    grunt.registerTask( "git", [ "copy:git" ] );
 };

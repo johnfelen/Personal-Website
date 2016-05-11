@@ -1,16 +1,61 @@
 RewriteEngine On
 
+#fixes a bug where non-naked website does not have access to the same cookies as the naked one and also a couple formatting issues, it is based on this blog: http://www.sitepoint.com/domain-www-or-no-www/
+RewriteCond %{HTTP_HOST} !^www.johnfelen.com [NC]
+RewriteRule ^/?(.*)$ http://www.johnfelen.com/$1 [L,R=301]
+
 #removes the /index ( or index.php ) if typed directly into the url, based on the verified answer http://stackoverflow.com/questions/9608366/remove-index-php-from-url-with-htaccess
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s(.*)/index [NC]
 RewriteRule ^ %1 [R=301,L]
 
 #the next two rewrite conditions are to remove the .php, it is based on the verified answer on here http://stackoverflow.com/questions/15917258/remove-php-from-urls-with-htaccess
-#to externally redirect /dir/foo.php to /dir/foo
+# To externally redirect /dir/foo.php to /dir/foo
 RewriteCond %{REQUEST_METHOD} !POST [NC]  #this line of code protects $_POST variables, from verified answer on http://stackoverflow.com/questions/19796522/php-method-post-stopped-working-after-i-added-this-htaccess-why
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.php [NC]
 RewriteRule ^ %1 [R,L]
 
-#to internally forward /dir/foo to /dir/foo.php
+# To internally forward /dir/foo to /dir/foo.php
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.php -f
 RewriteRule ^(.*?)/?$ $1.php [L]
+
+#these errors are based on https://css-tricks.com/snippets/php/error-page-to-handle-all-errors/ to pass it into the $_SERVER array
+#client side errors
+ErrorDocument 400 /error.php
+ErrorDocument 401 /error.php
+ErrorDocument 402 /error.php
+ErrorDocument 403 /error.php
+ErrorDocument 404 /error.php
+ErrorDocument 405 /error.php
+ErrorDocument 406 /error.php
+ErrorDocument 407 /error.php
+ErrorDocument 408 /error.php
+ErrorDocument 409 /error.php
+ErrorDocument 410 /error.php
+ErrorDocument 411 /error.php
+ErrorDocument 412 /error.php
+ErrorDocument 413 /error.php
+ErrorDocument 414 /error.php
+ErrorDocument 415 /error.php
+ErrorDocument 416 /error.php
+ErrorDocument 417 /error.php
+ErrorDocument 418 /error.php
+ErrorDocument 422 /error.php
+ErrorDocument 423 /error.php
+ErrorDocument 424 /error.php
+ErrorDocument 425 /error.php
+ErrorDocument 426 /error.php
+ErrorDocument 449 /error.php
+ErrorDocument 450 /error.php
+
+#server side errors
+ErrorDocument 500 /error.php
+ErrorDocument 501 /error.php
+ErrorDocument 502 /error.php
+ErrorDocument 503 /error.php
+ErrorDocument 504 /error.php
+ErrorDocument 505 /error.php
+ErrorDocument 506 /error.php
+ErrorDocument 507 /error.php
+ErrorDocument 509 /error.php
+ErrorDocument 510 /error.php
