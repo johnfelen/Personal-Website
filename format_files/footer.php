@@ -33,6 +33,7 @@
         <script src="http://codegena.com/assets/js/image-preview-for-link.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.10.3/js/bootstrap-tour.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.10.2/validator.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/bootstrap.autohidingnavbar/1.0.5/jquery.bootstrap-autohidingnavbar.min.js"></script>
         <script src="js/personal-website.min.js"></script>
     </body>
 </html>

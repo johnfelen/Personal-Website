@@ -26,8 +26,7 @@
     <body class="subtle-pattern">
         <?php include_once( "./analyticstracking.php" ); ?>
         <!--top navigation bar-->
-        <?php include( "./format_files/start-row-10.php" ); ?>
-        <div class="navbar fall-in" id="main-nav">
+        <div class="navbar navbar-fixed-top fall-in" id="main-nav">
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-links">
                     <li id="index">
@@ -45,7 +44,6 @@
                 </ul>
             </div>
         </div>
-        <?php include( "./format_files/end-row-10.php" ); ?>
 
         <!--header-->
         <div id="header">

@@ -25,6 +25,7 @@ else
     setTimeout( function()
     {
         removeStartAnimations();
+        $( ".navbar-fixed-top" ).autoHidingNavbar();
     }, 1000 );
 
     $( "#main-nav" ).find( "li" ).each( function()
