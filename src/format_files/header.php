@@ -19,7 +19,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.10.3/css/bootstrap-tour.min.css" rel="stylesheet">
         <?php include( "./format_files/fonts.php" ) ?>
         <!-- build:css inline -->
-        <link href="css/themes.min.css" rel="stylesheet">
+        <link href="../../dist/css/themes.min.css" rel="stylesheet">
         <!-- /build -->
 
         <?php echo "<link id=\"favicon\" name=\"favicon-{$fontAwesome}.ico\" href=\"\" rel=\"shortcut icon\" type=\"image/x-icon\">\n"; ?>
