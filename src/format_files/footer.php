@@ -35,8 +35,14 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.10.3/js/bootstrap-tour.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.10.2/validator.min.js"></script>
         <script src="https://cdn.jsdelivr.net/bootstrap.autohidingnavbar/1.0.5/jquery.bootstrap-autohidingnavbar.min.js"></script>
-        <!-- build:js inline -->
-        <script src="../../dist/js/personal-website.min.js"></script>
+        <!-- build:js inline ../../dist/js/personal-website.min.js-->
+        <script src="./js/animations.js"></script>
+        <script src="./js/themes.js"></script>
+        <script src="./js/tour.js"></script>
+        <script src="./js/index.js"></script>
+        <script src="./js/portfolio.js"></script>
+        <script src="./js/contact.js"></script>
+        <script src="./js/google-analytics.js"></script>
         <!-- /build -->
     </body>
 </html>

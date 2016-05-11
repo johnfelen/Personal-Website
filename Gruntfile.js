@@ -12,7 +12,7 @@ module.exports = function( grunt )
     grunt.initConfig({
         pkg: grunt.file.readJSON( "package.json" ),
         sass: {
-            dist: {
+            dev: {
                 options: {
                     style: "compressed"
                 },
@@ -22,7 +22,7 @@ module.exports = function( grunt )
             }
         },
         concat: {
-            dist: {
+            dev: {
                 src: "./src/js/*.js",
                 dest: "./dist/js/personal-website.js"
             }
@@ -33,35 +33,26 @@ module.exports = function( grunt )
                 mangle: true,
                 sourceMap: true
             },
-            dist: {
+            dev: {
                 src: "./dist/js/personal-website.js",
                 dest: "./dist/js/personal-website.min.js"
             }
         },
-        processhtml: {  //http://stackoverflow.com/questions/33666203/grunt-compile-external-js-into-inline-html
-            dist: {
-                files: {
-                    "./dist/format_files/header.php" : "./src/format_files/header.php",
-                    "./dist/format_files/footer.php" : "./src/format_files/footer.php"
-                }
-            }
-        },
-        watch: {
-            sass: {
-                files: [ "./src/css/*.scss" ],
-                tasks: [ "sass", "processhtml" ]
-            },
-            js: {
-                files: [ "./src/js/*.js" ],
-                tasks: [ "concat", "uglify", "processhtml" ]
-            }
-        },
         copy: {
-            dist: {
+            release: {
                 files: [{
                     expand: true,
                     cwd: "./src/",
                     src: [ "**", "!**/*.{scss,css,js}" ],
+                    dest: "./dist/"
+                }]
+            },
+            dev:
+            {
+                files: [{
+                    expand: true,
+                    cwd: "./src/",
+                    src: [ "**", "!**/*.scss" ],
                     dest: "./dist/"
                 }]
             },
@@ -74,22 +65,40 @@ module.exports = function( grunt )
                 }]
             }
         },
+        processhtml: {  //processhtml is to make external css and js to be inline, possible faster loading and it looks cooler when the source is looked at, based from http://stackoverflow.com/questions/33666203/grunt-compile-external-js-into-inline-html
+            dev: {
+                files: {
+                    "./dist/format_files/header.php" : "./src/format_files/header.php",
+                    "./dist/format_files/footer.php" : "./src/format_files/footer.php"
+                }
+            }
+        },
         clean: {
-            dist: {
-                src: [ "./dist/js/*.js", "!./dist/js/*.min.js" ]
+            release: {
+                src: [ "./dist/js/**", "./dist/css/**" ]
+            }
+        },
+        watch: {
+            sass: {
+                files: [ "./src/css/*.scss" ],
+                tasks: [ "sass" ]
+            },
+            rest: {
+                files: [ "./src/**" ],
+                tasks: [ "copy:dev" ]
             }
         }
     });
 
-    grunt.loadNpmTasks( "grunt-contrib-uglify" );
-    grunt.loadNpmTasks( "grunt-contrib-watch" );
-    grunt.loadNpmTasks( "grunt-contrib-concat" );
-    grunt.loadNpmTasks( "grunt-processhtml" );
     grunt.loadNpmTasks( "grunt-contrib-sass" );
+    grunt.loadNpmTasks( "grunt-contrib-concat" );
+    grunt.loadNpmTasks( "grunt-contrib-uglify" );
     grunt.loadNpmTasks( "grunt-contrib-copy" );
+    grunt.loadNpmTasks( "grunt-processhtml" );
     grunt.loadNpmTasks( "grunt-contrib-clean" );
+    grunt.loadNpmTasks( "grunt-contrib-watch" );
 
-    grunt.registerTask( "release", [ "sass", "concat", "uglify", "copy:dist", "clean", "processhtml" ] );
-    grunt.registerTask( "default", [ "sass", "concat", "uglify", "copy", "clean", "watch" ] );
+    grunt.registerTask( "release", [ "sass", "concat", "uglify", "copy:release", "processhtml", "clean" ] );
+    grunt.registerTask( "default", [ "sass", "copy:dev", "watch" ] );
     grunt.registerTask( "git", [ "copy:git" ] );
 };

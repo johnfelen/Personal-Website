@@ -1,8 +1,3 @@
-function isFileInURL( file )   //will figure out if file, ie "tour.php" is in the url, it is used in more than just tour.js
-{
-    return document.URL.split( "/" ).pop().indexOf( file ) === 0;
-}
-
 if( localStorage.getItem( "tour_start" ) === null && isFileInURL( "tour" ) )   //go to previous page if the tour has not started and they tried to get to tour.php
 {
     window.history.back();

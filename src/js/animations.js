@@ -1,3 +1,8 @@
+function isFileInURL( file )   //will figure out if file, ie "tour.php" is in the url, it is used in more than just tour.js
+{
+    return document.URL.split( "/" ).pop().indexOf( file ) === 0;
+}
+
 if( isFileInURL( "tour" ) ) //don't show start animations when he tour is shown
 {
     removeStartAnimations();

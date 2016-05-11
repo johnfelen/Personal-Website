@@ -18,8 +18,8 @@
         <link href="http://codegena.com/assets/css/image-preview-for-link.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.10.3/css/bootstrap-tour.min.css" rel="stylesheet">
         <?php include( "./format_files/fonts.php" ) ?>
-        <!-- build:css inline -->
-        <link href="../../dist/css/themes.min.css" rel="stylesheet">
+        <!-- build:css inline ../../dist/css/themes.min.css-->
+        <link href="./css/themes.min.css" rel="stylesheet">
         <!-- /build -->
 
         <?php echo "<link id=\"favicon\" name=\"favicon-{$fontAwesome}.ico\" href=\"\" rel=\"shortcut icon\" type=\"image/x-icon\">\n"; ?>
@@ -71,7 +71,7 @@
             <hr class="color-border">
             <?php include( "./format_files/end-row-10.php" ); ?>
         </div>
-
+        
         <!--start the main container which is closed in footer.php-->
         <?php include( "./format_files/start-row-10.php" ); ?>
         <div class="container-main color-container" id="main-container">
