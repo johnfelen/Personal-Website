@@ -71,7 +71,7 @@
             <hr class="color-border">
             <?php include( "./format_files/end-row-10.php" ); ?>
         </div>
-        
+
         <!--start the main container which is closed in footer.php-->
         <?php include( "./format_files/start-row-10.php" ); ?>
         <div class="container-main color-container" id="main-container">
