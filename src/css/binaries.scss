@@ -1,0 +1,15 @@
+//normal binary representation of the file, these are just links to the file locations
+$picnic-blanket: url( "../images/picnic_blanket/picnic-blanket.png" );
+$sunrise: url( "../images/sunrise/sunrise.png" );
+$billards-table: url( "../images/billards_table/billards-table.png" );
+$candy-cane: url( "../images/candy_cane/candy-cane.png" );
+$cartography: url( "../images/cartography/cartography.png" );
+$grandmas-house: url( "../images/grandmas_house/grandmas-house.png" );
+$golf-argyle: url( "../images/golf_argyle/golf-argyle.png" );
+$wheat-field: url( "../images/wheat_field/wheat-field.png" );
+$stardust: url( "../images/stardust/stardust.png" );
+$chinese-new-year: url( "../images/chinese_new_year/chinese-new-year.png" );
+@import "structure";
+@import "specifications";
+@import "animations";
+@import "themes";

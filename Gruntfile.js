@@ -12,13 +12,23 @@ module.exports = function( grunt )
     grunt.initConfig({
         pkg: grunt.file.readJSON( "package.json" ),
         sass: {
+            release: {
+                options: {
+                    style: "compressed"
+                },
+                files: {
+                    "./dist/css/themes.min.css" : "./src/css/base64.scss"
+                },
+                update: true
+            },
             dev: {
                 options: {
                     style: "compressed"
                 },
                 files: {
-                    "./dist/css/themes.min.css" : "./src/css/themes.scss"
-                }
+                    "./dist/css/themes.min.css" : "./src/css/binaries.scss"
+                },
+                update: true
             }
         },
         jshint: {
@@ -28,7 +38,7 @@ module.exports = function( grunt )
             all: [ "Gruntfile.js", "./dist/js/*.js", "!./dist/js/google-analytics.js" ]
         },
         concat: {
-            dev: {
+            release: {
                 src: "./src/js/*.js",
                 dest: "./dist/js/personal-website.js"
             }
@@ -123,9 +133,10 @@ module.exports = function( grunt )
     grunt.loadNpmTasks( "grunt-contrib-clean" );
     grunt.loadNpmTasks( "grunt-contrib-watch" );
 
-    grunt.registerTask( "release", [ "clean:dist", "sass", "concat", "uglify", "copy:release", "processhtml", "clean:releaseBefore" ] );    //do not need to clean the dist directory beforehand because the src is all that matters
-    grunt.registerTask( "finish", [ "clean:releaseAfter" ] );
-    grunt.registerTask( "default", [ "sass", "sync:dev", "jshint", "watch" ] );
-    grunt.registerTask( "dev", [ "clean:dist", "sass", "sync:dev", "jshint", "watch" ] );   //just copy of default but will clean dist first, call this after created release and going back into development
+    grunt.registerTask( "release", [ "clean:dist", "sass:release", "concat", "uglify", "copy:release", "processhtml", "clean:releaseBefore" ] );
+    grunt.registerTask( "finish", [ "clean:releaseAfter" ] );   //call finish after a quick run through of website to make sure that the release build works properly
+
+    grunt.registerTask( "default", [ "sass:dev", "sync:dev", "jshint", "watch" ] );
+    grunt.registerTask( "dev", [ "clean:dist", "sass:dev", "sync:dev", "jshint", "watch" ] );   //just copy of default but will clean dist first, call this after created release and going back into development
     grunt.registerTask( "git", [ "clean:git", "copy:git" ] );
 };

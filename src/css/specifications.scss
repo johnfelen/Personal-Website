@@ -1,7 +1,7 @@
 /*mixin for the colors, fonts, and background image*/
 @mixin specifications( $primary, $secondary, $accent, $titleFont, $mainFont, $image ) {
     .subtle-pattern {
-        background: url( $image ) repeat 0 0;
+        background: $image repeat 0 0;
     }
 
     .font-title {
