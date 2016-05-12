@@ -36,17 +36,17 @@ var tour = new Tour({
         placement: "right"
     }],
     //template based on the default template at http://bootstraptour.com/api/
-    template: "\
-    <div class=\"popover tour color-container\"> \
-        <div class=\"arrow color\"></div> \
-        <h3 class=\"popover-title color-reverse font-title\"></h3> \
-        <div class=\"popover-content color font-main font-center\"></div> \
-        <nav class=\"popover-navigation\"> \
-            <button class=\"btn btn-default btn-color\" data-role=\"prev\">&nbsp;&nbsp;<i class=\"fa fa-step-backward\"></i>&nbsp;&nbsp;</button> \
-            <button class=\"btn btn-default btn-color\" data-role=\"next\">&nbsp;&nbsp;<i class=\"fa fa-step-forward\"></i>&nbsp;&nbsp;</button> \
-            <button class=\"btn btn-default btn-color\" data-role=\"end\">&nbsp;&nbsp;&nbsp;<i class=\"fa fa-fast-forward\"></i>&nbsp;&nbsp;&nbsp;</button> \
-        </nav> \
-    </div>",
+    template: ""+
+    "<div class=\"popover tour color-container\">" +
+        "<div class=\"arrow color\"></div>" +
+        "<h3 class=\"popover-title color-reverse font-title\"></h3>" +
+        "<div class=\"popover-content color font-main font-center\"></div>" +
+        "<nav class=\"popover-navigation\">" +
+            "<button class=\"btn btn-default btn-color\" data-role=\"prev\">&nbsp;&nbsp;<i class=\"fa fa-step-backward\"></i>&nbsp;&nbsp;</button>" +
+            "<button class=\"btn btn-default btn-color\" data-role=\"next\">&nbsp;&nbsp;<i class=\"fa fa-step-forward\"></i>&nbsp;&nbsp;</button>" +
+            "<button class=\"btn btn-default btn-color\" data-role=\"end\">&nbsp;&nbsp;&nbsp;<i class=\"fa fa-fast-forward\"></i>&nbsp;&nbsp;&nbsp;</button>" +
+        "</nav>" +
+    "</div>",
     backdrop: true,
     onStart: function( tour )
     {

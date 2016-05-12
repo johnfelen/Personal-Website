@@ -22,11 +22,11 @@ $( "#contact-me" ).submit( function( form )
         data: { messageInfo : getMessageInfo() },
         success: function( databaseResponse )
         {
-            if( typeof databaseResponse[ "error" ] !== "undefined" )
+            if( typeof databaseResponse.error !== "undefined" )
             {
-                $( "#name" ).val( databaseResponse[ "name" ] );
-                $( "#email" ).val( databaseResponse[ "email" ] );
-                $( "#message" ).val( databaseResponse[ "message" ] );
+                $( "#name" ).val( databaseResponse.name );
+                $( "#email" ).val( databaseResponse.email );
+                $( "#message" ).val( databaseResponse.message );
             }
 
             else

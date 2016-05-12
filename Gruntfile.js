@@ -21,6 +21,12 @@ module.exports = function( grunt )
                 }
             }
         },
+        jshint: {
+            options: {
+                force: true
+            },
+            all: [ "Gruntfile.js", "./dist/js/*.js", "!./dist/js/google-analytics.js" ]
+        },
         concat: {
             dev: {
                 src: "./src/js/*.js",
@@ -63,8 +69,7 @@ module.exports = function( grunt )
                     cwd: "./src/",
                     src: [ "**", "!**/*.scss" ],
                     dest: "./dist/"
-                }],
-                updateAndDelete: false
+                }]
             }
         },
         processhtml: {  //processhtml is to make external css and js to be inline, possible faster loading and it looks cooler when the source is looked at, based from http://stackoverflow.com/questions/33666203/grunt-compile-external-js-into-inline-html
@@ -86,6 +91,9 @@ module.exports = function( grunt )
                 src: [ "./dist/js/**", "./dist/css/**" ]
             },
             git: {
+                options: {
+                    force: true    //allows cleaning of different directories
+                },
                 src: [ getHomeDir( "C:/Users/jtfel/Documents/GitHub/Personal-Website/src/" ) ]
             }
         },
@@ -97,11 +105,16 @@ module.exports = function( grunt )
             rest: {
                 files: [ "./src/**" ],
                 tasks: [ "sync:dev" ]
+            },
+            js: {
+                files: [ "./dest/css/*.js" ],
+                tasks: [ "jshint" ]
             }
         }
     });
 
     grunt.loadNpmTasks( "grunt-contrib-sass" );
+    grunt.loadNpmTasks( "grunt-contrib-jshint" );
     grunt.loadNpmTasks( "grunt-contrib-concat" );
     grunt.loadNpmTasks( "grunt-contrib-uglify" );
     grunt.loadNpmTasks( "grunt-contrib-copy" );
@@ -112,7 +125,7 @@ module.exports = function( grunt )
 
     grunt.registerTask( "release", [ "clean:dist", "sass", "concat", "uglify", "copy:release", "processhtml", "clean:releaseBefore" ] );    //do not need to clean the dist directory beforehand because the src is all that matters
     grunt.registerTask( "finish", [ "clean:releaseAfter" ] );
-    grunt.registerTask( "default", [ "sass", "sync:dev", "watch" ] );
-    grunt.registerTask( "dev", [ "clean:dist", "sass", "sync:dev", "watch" ] );   //just copy of default but will clean dist first, call this after created release and going back into development
+    grunt.registerTask( "default", [ "sass", "sync:dev", "jshint", "watch" ] );
+    grunt.registerTask( "dev", [ "clean:dist", "sass", "sync:dev", "jshint", "watch" ] );   //just copy of default but will clean dist first, call this after created release and going back into development
     grunt.registerTask( "git", [ "clean:git", "copy:git" ] );
 };
