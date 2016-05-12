@@ -13,7 +13,7 @@
     $openSans: 'Open Sans', sans-serif;
 
     @extend %structure;
-    @include specifications( $deepBlue, $greyWhite, $wildSalmon, $raleway, $openSans, "./images/picnic_blanket/picnic-blanket.png" );
+    @include specifications( $deepBlue, $greyWhite, $wildSalmon, $raleway, $openSans, "../images/picnic_blanket/picnic-blanket.png" );
     @extend %animations;
 }
 
@@ -26,7 +26,7 @@
     $arimo: 'Arimo', sans-serif;
 
     @extend %structure;
-    @include specifications( $paleBlue, $paleYellow, $paleOrange, $pacifico, $arimo, "./images/sunrise/sunrise.png" );
+    @include specifications( $paleBlue, $paleYellow, $paleOrange, $pacifico, $arimo, "../images/sunrise/sunrise.png" );
     @extend %animations;
 }
 
@@ -39,7 +39,7 @@
     $vollkorn: 'Vollkorn', Georgia, Times, serif;
 
     @extend %structure;
-    @include specifications( $black, $cueBallWhite, $purple, $ubuntu, $vollkorn, "./images/billards_table/billards-table.png" );
+    @include specifications( $black, $cueBallWhite, $purple, $ubuntu, $vollkorn, "../images/billards_table/billards-table.png" );
     @extend %animations;
 }
 
@@ -52,7 +52,7 @@
     $droidSerif: 'Droid Serif', serif;
 
     @extend %structure;
-    @include specifications( $deepRed, $darkerWhite, $smoothBlue, $lobster, $droidSerif, "./images/candy_cane/candy-cane.png" );
+    @include specifications( $deepRed, $darkerWhite, $smoothBlue, $lobster, $droidSerif, "../images/candy_cane/candy-cane.png" );
     @extend %animations;
 }
 
@@ -65,7 +65,7 @@
     $merriweather: 'Merriweather', serif;
 
     @extend %structure;
-    @include specifications( $brown, $cream, $greyBlue, $kaushanScript, $merriweather, "./images/cartography/cartography.png" );
+    @include specifications( $brown, $cream, $greyBlue, $kaushanScript, $merriweather, "../images/cartography/cartography.png" );
     @extend %animations;
 }
 
@@ -78,7 +78,7 @@
     $andika: 'Andika', sans-serif;
 
     @extend %structure;
-    @include specifications( $almostWhite, $darkPurple, $palePink, $amaticSC, $andika, "./images/grandmas_house/grandmas-house.png" );
+    @include specifications( $almostWhite, $darkPurple, $palePink, $amaticSC, $andika, "../images/grandmas_house/grandmas-house.png" );
     @extend %animations;
 }
 
@@ -91,7 +91,7 @@
     $josefinSans: 'Josefin Sans', sans-serif;
 
     @extend %structure;
-    @include specifications( $blueIndigo, $paleGreen, $khaki, $josefinSlab, $josefinSans, "./images/golf_argyle/golf-argyle.png" );
+    @include specifications( $blueIndigo, $paleGreen, $khaki, $josefinSlab, $josefinSans, "../images/golf_argyle/golf-argyle.png" );
     @extend %animations;
 }
 
@@ -104,7 +104,7 @@
     $alice: 'Alice', serif;
 
     @extend %structure;
-    @include specifications( $lightGrey, $darkGrey, $goldenSun, $sacramento, $alice, "./images/wheat_field/wheat-field.png" );
+    @include specifications( $lightGrey, $darkGrey, $goldenSun, $sacramento, $alice, "../images/wheat_field/wheat-field.png" );
     @extend %animations;
 }
 
@@ -117,7 +117,7 @@
     $sourceSansPro: 'Source Sans Pro', sans-serif;
 
     @extend %structure;
-    @include specifications( $lightGrey, $darkGrey, $goldenSun, $montserrat, $sourceSansPro, "./images/stardust/stardust.png" );
+    @include specifications( $lightGrey, $darkGrey, $goldenSun, $montserrat, $sourceSansPro, "../images/stardust/stardust.png" );
     @extend %animations;
 }
 
@@ -130,6 +130,6 @@
     $gudea: 'Gudea', sans-serif;
 
     @extend %structure;
-    @include specifications( $moneyGreen, $royalYellow, $dragonRed, $rancho, $gudea, "./images/chinese_new_year/chinese-new-year.png" );
+    @include specifications( $moneyGreen, $royalYellow, $dragonRed, $rancho, $gudea, "../images/chinese_new_year/chinese-new-year.png" );
     @extend %animations;
 }

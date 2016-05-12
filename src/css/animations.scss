@@ -6,29 +6,16 @@
             background-position: 0 0;
         }
         to {
-            background-position: 100% 0;
+            background-position: 500000px 0;
         }
     }
 
-    %background-constants {
+    //the 500000px and 20000000ms were educated guessed but it looks like a smooth animation, it runs for 333 minutes and 20 seconds, however the iteration-count is already infinite so that runtime does not matter, futhermore it will take 333.33 minutes to see a possible stuttering when the animation restarts and the pixels( not percentage ) and duration allow the form and background to have the smae speed of animation and look clean
+    #name, #email, #message, body {
         animation-name: sonic-title;
         animation-timing-function: linear;
         animation-iteration-count: infinite;
-    }
-
-    body.subtle-pattern {
-        @extend %background-constants;
-        animation-duration: 20000ms;
-    }
-
-    #name.subtle-pattern, #email.subtle-pattern {
-        @extend %background-constants;
-        animation-duration: ( 5 / 12 ) * ( 10 / 12 ) * 20000ms;
-    }
-
-    #message.subtle-pattern {
-        @extend %background-constants;
-        animation-duration: ( 10 / 12 ) * ( 10 / 12 ) * 20000ms;
+        animation-duration: 20000000ms;
     }
 
     //the rotate for footer icon and video-game-collectable-spin is based from http://www.the-art-of-web.com/css/3d-transforms/

@@ -57,30 +57,14 @@ module.exports = function( grunt )
             }
         },
         sync: {
-            dev:
-            {
+            dev: {
                 files: [{
                     expand: true,
                     cwd: "./src/",
                     src: [ "**", "!**/*.scss" ],
                     dest: "./dist/"
-                }]
-            }
-        },
-        "string-replace": {
-            dev: {
-                files: [{
-                    expand: true,
-                    cwd: "./src/",
-                    src: [ "**" ],
-                    dest: "./dist/"
                 }],
-                options: {
-                    replacements: [{
-                    pattern: "./images/",
-                    replace: "../images/"
-                    }]
-                }
+                updateAndDelete: false
             }
         },
         processhtml: {  //processhtml is to make external css and js to be inline, possible faster loading and it looks cooler when the source is looked at, based from http://stackoverflow.com/questions/33666203/grunt-compile-external-js-into-inline-html
@@ -112,7 +96,7 @@ module.exports = function( grunt )
             },
             rest: {
                 files: [ "./src/**" ],
-                tasks: [ "sync:dev", "string-replace" ]
+                tasks: [ "sync:dev" ]
             }
         }
     });
@@ -122,14 +106,13 @@ module.exports = function( grunt )
     grunt.loadNpmTasks( "grunt-contrib-uglify" );
     grunt.loadNpmTasks( "grunt-contrib-copy" );
     grunt.loadNpmTasks( "grunt-sync" );
-    grunt.loadNpmTasks( "grunt-string-replace" );
     grunt.loadNpmTasks( "grunt-processhtml" );
     grunt.loadNpmTasks( "grunt-contrib-clean" );
     grunt.loadNpmTasks( "grunt-contrib-watch" );
 
     grunt.registerTask( "release", [ "clean:dist", "sass", "concat", "uglify", "copy:release", "processhtml", "clean:releaseBefore" ] );    //do not need to clean the dist directory beforehand because the src is all that matters
     grunt.registerTask( "finish", [ "clean:releaseAfter" ] );
-    grunt.registerTask( "default", [ "sass", "sync:dev", "string-replace", "watch" ] );
-    grunt.registerTask( "dev", [ "clean:dist", "sass", "sync:dev", "string-replace", "watch" ] );   //just copy of default but will clean dist first, call this after created release and going back into development
+    grunt.registerTask( "default", [ "sass", "sync:dev", "watch" ] );
+    grunt.registerTask( "dev", [ "clean:dist", "sass", "sync:dev", "watch" ] );   //just copy of default but will clean dist first, call this after created release and going back into development
     grunt.registerTask( "git", [ "clean:git", "copy:git" ] );
 };
