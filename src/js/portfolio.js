@@ -49,6 +49,10 @@ function getProjects()  //display the projects and the current sorting buttons o
                     $( currId ).miniPreview( { prefetch: "parenthover" } );
                 }
             });
+        },
+        error: function( e )
+        {
+            console.log( e.responseText );
         }
     });
 }

@@ -104,6 +104,7 @@
             }
             $output .= "<hr class=\"color-border\">";
 
+
             return $output;
         }
 

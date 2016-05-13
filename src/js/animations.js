@@ -34,72 +34,59 @@ else
         var currPageNum = pageToNum[ getPath() ];
         var nextPageNum = pageToNum[ id ];
 
-        console.log( "next " + nextPageNum );
-
         $( this ).click( function( event )
         {
             event.preventDefault();
             if( nextPageNum !== currPageNum )   //allows the unload animations to run and if they hit the current page they are on, it does not change and the navbar and footer do not move
             {
-                var startTime = new Date().getTime();
+                setTimeout( function()
+                {
+                    window.location.href = "./" + id + ".php";
+                }, 1000 );
 
-                $.ajax({
-                    url: "./" + id + ".php",
-                    type: "GET",
-                    data: { AJAX : true },
-                    dataType: "json",
-                    success: function( pageData )
-                    {
-                        var requestTime = new Date().getTime() - startTime; //gets the ajax request time to make the data not load for atleast 1 second so that the new webapge is not shown to the user until the new data has been loaded, based on http://stackoverflow.com/questions/3498503/find-out-how-long-an-ajax-request-took-to-complete
+                //TODO: make the AJAX transitions correct
+                // var startTime = new Date().getTime();
+                //
+                // $.ajax({
+                //     url: "./" + id + ".php",
+                //     type: "GET",
+                //     data: { AJAX : true },
+                //     dataType: "json",
+                //     success: function( pageData )
+                //     {
+                //         var requestTime = new Date().getTime() - startTime; //gets the ajax request time to make the data not load for atleast 1 second so that the new webapge is not shown to the user until the new data has been loaded, based on http://stackoverflow.com/questions/3498503/find-out-how-long-an-ajax-request-took-to-complete
+                //         setTimeout( function()
+                //         {
+                //             $( "#page-name" ).html( pageData.pageName );
+                //
+                //             $( "#font-awesome" ).removeClass();
+                //             $( "#font-awesome" ).addClass( "fa fa-" + pageData.fontAwesome + " fa-fw" );
+                //
+                //             console.log( pageData.mainContainer );
+                //
+                //             $( "#main-container" ).html( pageData.mainContainer );
+                //
+                //             history.pushState( null, null, id );
+                //             callStartFunction( getPath() );
+                //         }, 1000 - requestTime );
+                //     }
+                // });
+            }
 
-                        setTimeout( function()
-                        {
-                            $( "#page-name" ).html( pageData.pageName );
+            if( nextPageNum > currPageNum )
+            {
+                $( "#header" ).addClass( "pan-to-right" );
+                $( "#main-container" ).addClass( "pan-to-left" );
+                sessionStorage.setItem( "header", "pan-from-right" );
+                sessionStorage.setItem( "main_container", "pan-from-left" );
+            }
 
-                            $( "#font-awesome" ).removeClass();
-                            $( "#font-awesome" ).addClass( "fa fa-" + pageData.fontAwesome + " fa-fw" );
-
-                            $( "#main-container" ).html( pageData.mainContainer );
-
-                            history.pushState( null, null, id );
-                            callStartFunction( getPath() );
-
-                            headerTransition = sessionStorage.getItem( "header" );
-                            mainContainerTransition = sessionStorage.getItem( "main_container" );
-                            $( "#header" ).addClass( headerTransition );
-                            $( "#main-container" ).addClass( mainContainerTransition );
-
-                            setTimeout( function()
-                            {
-                                removeStartAnimations();
-                                $( ".navbar-fixed-top" ).autoHidingNavbar();
-                            }, 1000 );
-
-                            currPageNum = pageToNum[ getPath() ];
-
-                        }, 1000 - requestTime );
-
-
-                        if( nextPageNum > currPageNum )
-                        {
-                            $( "#header" ).addClass( "pan-to-right" );
-                            $( "#main-container" ).addClass( "pan-to-left" );
-                            sessionStorage.setItem( "header", "pan-from-right" );
-                            sessionStorage.setItem( "main_container", "pan-from-left" );
-                        }
-
-                        else if( nextPageNum < currPageNum )
-                        {
-                            $( "#header" ).addClass( "pan-to-left" );
-                            $( "#main-container" ).addClass( "pan-to-right" );
-                            sessionStorage.setItem( "header", "pan-from-left" );
-                            sessionStorage.setItem( "main_container", "pan-from-right" );
-                        }
-
-                        $( "#main-nav" ).addClass( "fall-out" );
-                        $( "#footer" ).addClass( "climb-down" );
-                    }
-                });
+            else if( nextPageNum < currPageNum )
+            {
+                $( "#header" ).addClass( "pan-to-left" );
+                $( "#main-container" ).addClass( "pan-to-right" );
+                sessionStorage.setItem( "header", "pan-from-left" );
+                sessionStorage.setItem( "main_container", "pan-from-right" );
             }
 
             else
@@ -113,6 +100,9 @@ else
                 $( "#header" ).addClass( "struggle-left" );
                 $( "#main-container" ).addClass( "struggle-right" );
             }
+
+            $( "#main-nav" ).addClass( "fall-out" );
+            $( "#footer" ).addClass( "climb-down" );
         });
     });
 }
