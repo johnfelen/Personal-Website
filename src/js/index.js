@@ -1,120 +1,122 @@
-var chars;
-var currentCharIndex;
-
-if( getCurrTimeSec() < sessionStorage.getItem( "time_finished" ) )   //for after the game has frozen, simplified, no animation, appending for when user is at static page
+if( isFileInURL( "index" ) )
 {
-    $.ajax({
-        url: "./server_functionality/pokemon-text.php",
-        type: "GET",
-        data: { getText : true },
-        dataType: "json",
-        success: function( textToBeDisplayed )
-        {
-            countDown();
-            //make the picture of me and count down immediately visible
-            toggleVisibility( "blink" );
-            $( "#picture-of-me" ).css( "opacity", 1 );
+    var chars;
+    var currentCharIndex;
 
-            var lines = textToBeDisplayed.slice( 0, 7 ).join( "<br>" );
-            $( "#pokemon" ).html( lines );
-
-            var nameTable = textToBeDisplayed[ 7 ] + "<br>";
-            $( "#names" ).html( nameTable );
-            toggleVisibility( "#" + sessionStorage.getItem( "selected_name" ) );  //will put the name that they selected back for when the static page is loaded
-            $( window ).trigger( "resize" );
-
-            var frozenSpinner = textToBeDisplayed[ 9 ] + "<br>";
-            $( "#continue" ).html( frozenSpinner );
-
-            var brokenMessage = textToBeDisplayed[ 10 ] + "<br>";
-            $( "#broken" ).html( brokenMessage );
-
-            timeFinishedSec = parseInt( sessionStorage.getItem( "time_finished" ) );
-            diff = timeFinishedSec - getCurrTimeSec();
-            $( "#time-left" ).html( formattedTimeLeft() );
-        }
-    });
-}
-
-else  //functionality for the animated pokemon text
-{
-    var count = 0;
-    var currentlyTyping = false;    //used to stop repeat clicking which would cause gibberish to type out
-
-    $( "#main-container" ).click( function()
+    if( getCurrTimeSec() < sessionStorage.getItem( "time_finished" ) )   //for after the game has frozen, simplified, no animation, appending for when user is at static page
     {
-        printNextLine();
-    });
-
-    $.ajax({    //use an ajax call to get the text that will be displayed, after we get that start the fade in and start displaying the text, NOTE: I took away the document.ready to speed up the start time of when the picture starts to fade in since the AJAX call already takes time and will finish after document is ready at normal speeds
-        url: "./server_functionality/pokemon-text.php",
-        type: "GET",
-        data: { getText : true },
-        dataType: "json",
-        success: function( textToBeDisplayed )
-        {
-            lines = textToBeDisplayed.slice( 0, 7 );
-            nameTable = textToBeDisplayed[ 7 ];
-            movingSpinner = textToBeDisplayed[ 8 ];
-            frozenSpinner = textToBeDisplayed[ 9 ];
-            brokenMessage = textToBeDisplayed[ 10 ];
-
-            setTimeout( function()  //this timeout has the fadeIn happen after the starting page animations finish
+        $.ajax({
+            url: "./server_functionality/pokemon-text.php",
+            type: "GET",
+            data: { getText : true },
+            dataType: "json",
+            success: function( textToBeDisplayed )
             {
-                $( "#picture-of-me" ).fadeTo( 3000, 1, function()
-                {
-                    printNextLine();
-                    blink();
-                });
-            }, 1000 );
-        }
-    });
-}
+                countDown();
+                //make the picture of me and count down immediately visible
+                toggleVisibility( "blink" );
+                $( "#picture-of-me" ).css( "opacity", 1 );
 
+                var lines = textToBeDisplayed.slice( 0, 7 ).join( "<br>" );
+                $( "#pokemon" ).html( lines );
 
-$( window ).unload( function()  //set session storage(since if they restart the browser they it counts as fixing the "game") with the time that the index.php will reload
-{
-    if( typeof timeFinishedSec !== "undefined" )
-    {
-        sessionStorage.setItem( "time_finished", timeFinishedSec );
+                var nameTable = textToBeDisplayed[ 7 ] + "<br>";
+                $( "#names" ).html( nameTable );
+                toggleVisibility( "#" + sessionStorage.getItem( "selected_name" ) );  //will put the name that they selected back for when the static page is loaded
+                $( window ).trigger( "resize" );
+
+                var frozenSpinner = textToBeDisplayed[ 9 ] + "<br>";
+                $( "#continue" ).html( frozenSpinner );
+
+                var brokenMessage = textToBeDisplayed[ 10 ] + "<br>";
+                $( "#broken" ).html( brokenMessage );
+
+                timeFinishedSec = parseInt( sessionStorage.getItem( "time_finished" ) );
+                diff = timeFinishedSec - getCurrTimeSec();
+                $( "#time-left" ).html( formattedTimeLeft() );
+            }
+        });
     }
-});
 
-$( window ).resize( function()  //is a resize handler so that the pick the name portion of the index.php page has all the names on the same line for normal screens
-{
-    $( "#names" ).children( "div" ).each( function( i )
+    else  //functionality for the animated pokemon text
     {
-        if( $( window ).width() <= 1440 )
+        var count = 0;
+        var currentlyTyping = false;    //used to stop repeat clicking which would cause gibberish to type out
+
+        $( "#main-container" ).click( function()
         {
-            if( i === 1 )
-            {
-                $( this ).removeClass( "col-xs-4" );
-                $( this ).addClass( "col-xs-6" );
-            }
+            printNextLine();
+        });
 
-            else
+        $.ajax({    //use an ajax call to get the text that will be displayed, after we get that start the fade in and start displaying the text, NOTE: I took away the document.ready to speed up the start time of when the picture starts to fade in since the AJAX call already takes time and will finish after document is ready at normal speeds
+            url: "./server_functionality/pokemon-text.php",
+            type: "GET",
+            data: { getText : true },
+            dataType: "json",
+            success: function( textToBeDisplayed )
             {
-                $( this ).removeClass( "col-xs-4" );
-                $( this ).addClass( "col-xs-3" );
-            }
-        }
+                lines = textToBeDisplayed.slice( 0, 7 );
+                nameTable = textToBeDisplayed[ 7 ];
+                movingSpinner = textToBeDisplayed[ 8 ];
+                frozenSpinner = textToBeDisplayed[ 9 ];
+                brokenMessage = textToBeDisplayed[ 10 ];
 
-        else
+                setTimeout( function()  //this timeout has the fadeIn happen after the starting page animations finish
+                {
+                    $( "#picture-of-me" ).fadeTo( 3000, 1, function()
+                    {
+                        printNextLine();
+                        blink();
+                    });
+                }, 1000 );
+            }
+        });
+    }
+
+    $( window ).unload( function()  //set session storage(since if they restart the browser they it counts as fixing the "game") with the time that the index.php will reload
+    {
+        if( typeof timeFinishedSec !== "undefined" )
         {
-            if( i === 1 )
-            {
-                $( this ).removeClass( "col-xs-6" );
-                $( this ).addClass( "col-xs-4" );
-            }
-
-            else
-            {
-                $( this ).removeClass( "col-xs-3" );
-                $( this ).addClass( "col-xs-4" );
-            }
+            sessionStorage.setItem( "time_finished", timeFinishedSec );
         }
     });
-});
+
+    $( window ).resize( function()  //is a resize handler so that the pick the name portion of the index.php page has all the names on the same line for normal screens
+    {
+        $( "#names" ).children( "div" ).each( function( i )
+        {
+            if( $( window ).width() <= 1440 )
+            {
+                if( i === 1 )
+                {
+                    $( this ).removeClass( "col-xs-4" );
+                    $( this ).addClass( "col-xs-6" );
+                }
+
+                else
+                {
+                    $( this ).removeClass( "col-xs-4" );
+                    $( this ).addClass( "col-xs-3" );
+                }
+            }
+
+            else
+            {
+                if( i === 1 )
+                {
+                    $( this ).removeClass( "col-xs-6" );
+                    $( this ).addClass( "col-xs-4" );
+                }
+
+                else
+                {
+                    $( this ).removeClass( "col-xs-3" );
+                    $( this ).addClass( "col-xs-4" );
+                }
+            }
+        });
+    });
+}
 
 function toggleVisibility( element ) //wrapper class for visibility, since jquery toggle is display not visibility
 {

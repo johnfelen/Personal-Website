@@ -51,6 +51,8 @@
 
     $title = $codes[ $status ][ 0 ];
     $description = $codes[ $status ][ 1 ];
+
+    include( "./server_functionality/page-data-start.php" );
 ?>
 
 <hr class="color-border">
@@ -69,6 +71,8 @@
 <br><br><br>
 
 <?php
+    include( "./server_functionality/page-data-end.php" );
+
     include( "./format_files/end-row-10.php" );
     include( "./format_files/footer.php" );
 ?>

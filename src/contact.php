@@ -3,6 +3,8 @@
     $fontAwesome = "envelope";
     include( "./format_files/header.php" );
     include( "./format_files/start-row-10.php" );
+
+    include( "./server_functionality/page-data-start.php" );
 ?>
 
 <p class="font-main font-small font-center color" id="summary"></p>
@@ -44,6 +46,8 @@
 </form>
 
 <?php
+    include( "./server_functionality/page-data-end.php" );
+
     include( "./format_files/end-row-10.php" );
     include( "./format_files/footer.php" );
 ?>

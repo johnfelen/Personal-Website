@@ -3,6 +3,8 @@
     $fontAwesome = "home";
     include( "./format_files/header.php" );
     include( "./format_files/start-row-10.php" );
+
+    include( "./server_functionality/page-data-start.php" );
 ?>
 
 <div class="row">
@@ -22,6 +24,8 @@
 <div class="row" id="names"></div>
 
 <?php
+    include( "./server_functionality/page-data-end.php" );
+
     include( "./format_files/end-row-10.php" );
     include( "./format_files/footer.php" );
 ?>
