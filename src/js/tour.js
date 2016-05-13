@@ -61,12 +61,10 @@ var tour = new Tour({
     }
 });
 
-function stayOnTourPage()   //this function is used in the two handlers below to make sure that the only way the user can leave the tour page is to hit the end tour button
+if( !tour.ended() )
 {
-    if( !tour.ended() && !isFileInURL( "tour" ) )
-    {
-        window.location.href = "./tour.php";
-    }
+    tour.init();
+    tour.start();
 }
 
 $( document ).click( stayOnTourPage() );
@@ -77,8 +75,10 @@ $( "#start-tour" ).click( function()
     tour.restart();
 });
 
-if( !tour.ended() )
+function stayOnTourPage()   //this function is used in the two handlers below to make sure that the only way the user can leave the tour page is to hit the end tour button
 {
-    tour.init();
-    tour.start();
+    if( !tour.ended() && !isFileInURL( "tour" ) )
+    {
+        window.location.href = "./tour.php";
+    }
 }

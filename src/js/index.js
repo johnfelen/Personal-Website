@@ -1,3 +1,6 @@
+var chars;
+var currentCharIndex;
+
 if( getCurrTimeSec() < sessionStorage.getItem( "time_finished" ) )   //for after the game has frozen, simplified, no animation, appending for when user is at static page
 {
     $.ajax({
@@ -43,8 +46,6 @@ else  //functionality for the animated pokemon text
         printNextLine();
     });
 
-    console.log( "JLSFJDSK" );
-
     $.ajax({    //use an ajax call to get the text that will be displayed, after we get that start the fade in and start displaying the text, NOTE: I took away the document.ready to speed up the start time of when the picture starts to fade in since the AJAX call already takes time and will finish after document is ready at normal speeds
         url: "./server_functionality/pokemon-text.php",
         type: "GET",
@@ -69,6 +70,51 @@ else  //functionality for the animated pokemon text
         }
     });
 }
+
+
+$( window ).unload( function()  //set session storage(since if they restart the browser they it counts as fixing the "game") with the time that the index.php will reload
+{
+    if( typeof timeFinishedSec !== "undefined" )
+    {
+        sessionStorage.setItem( "time_finished", timeFinishedSec );
+    }
+});
+
+$( window ).resize( function()  //is a resize handler so that the pick the name portion of the index.php page has all the names on the same line for normal screens
+{
+    $( "#names" ).children( "div" ).each( function( i )
+    {
+        if( $( window ).width() <= 1440 )
+        {
+            if( i === 1 )
+            {
+                $( this ).removeClass( "col-xs-4" );
+                $( this ).addClass( "col-xs-6" );
+            }
+
+            else
+            {
+                $( this ).removeClass( "col-xs-4" );
+                $( this ).addClass( "col-xs-3" );
+            }
+        }
+
+        else
+        {
+            if( i === 1 )
+            {
+                $( this ).removeClass( "col-xs-6" );
+                $( this ).addClass( "col-xs-4" );
+            }
+
+            else
+            {
+                $( this ).removeClass( "col-xs-3" );
+                $( this ).addClass( "col-xs-4" );
+            }
+        }
+    });
+});
 
 function toggleVisibility( element ) //wrapper class for visibility, since jquery toggle is display not visibility
 {
@@ -131,57 +177,13 @@ function getCurrTimeSec()
     return parseInt( new Date().getTime() / 1000 );
 }
 
-$( window ).unload( function()  //set session storage(since if they restart the browser they it counts as fixing the "game") with the time that the index.php will reload
-{
-    if( typeof timeFinishedSec !== "undefined" )
-    {
-        sessionStorage.setItem( "time_finished", timeFinishedSec );
-    }
-});
-
-$( window ).resize( function()  //is a resize handler so that the pick the name portion of the index.php page has all the names on the same line for normal screens
-{
-    $( "#names" ).children( "div" ).each( function( i )
-    {
-        if( $( window ).width() <= 1440 )
-        {
-            if( i === 1 )
-            {
-                $( this ).removeClass( "col-xs-4" );
-                $( this ).addClass( "col-xs-6" );
-            }
-
-            else
-            {
-                $( this ).removeClass( "col-xs-4" );
-                $( this ).addClass( "col-xs-3" );
-            }
-        }
-
-        else
-        {
-            if( i === 1 )
-            {
-                $( this ).removeClass( "col-xs-6" );
-                $( this ).addClass( "col-xs-4" );
-            }
-
-            else
-            {
-                $( this ).removeClass( "col-xs-3" );
-                $( this ).addClass( "col-xs-4" );
-            }
-        }
-    });
-});
-
 function printNextLine()    //animates the typing characters, based on the last response in http://stackoverflow.com/questions/23688149/simulate-the-look-of-typing-not-the-actual-keypresses-in-javascript
 {
     if( count < lines.length && !currentlyTyping )
     {
-        var chars = lines[ count ].split( "" );
+        chars = lines[ count ].split( "" );
 
-        var currentCharIndex = 0;
+        currentCharIndex = 0;
 
         currentlyTyping = true;
         printNextChar();

@@ -97,6 +97,10 @@
         }
     }
 
+    .nav > li > a:focus {   //fixes the bug where clicking the same link of the current page makes the background color grey-white
+        background-color: $primary;
+    }
+
     %nav-border {   //used to add borders around the theme dropdown menu, the selected navbar items and the sorting buttons on the portfolio
         border-style: solid;
         border-width: thin;

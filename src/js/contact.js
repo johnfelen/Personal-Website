@@ -37,18 +37,6 @@ $( "#contact-me" ).submit( function( form )
     });
 });
 
-function getMessageInfo()
-{
-    var formInput =
-    {
-        "name" : $( "#name" ).val(),
-        "email" : $( "#email" ).val(),
-        "message" : $( "#message" ).val()
-    };
-
-    return JSON.stringify( formInput );
-}
-
 $( "#contact-me" ).validator({
     feedbackIcons: {
 		valid: 'glyphicon glyphicon-ok',
@@ -69,3 +57,15 @@ $( "#contact-me" ).validator({
     				  }
                   }
 });
+
+function getMessageInfo()
+{
+    var formInput =
+    {
+        "name" : $( "#name" ).val(),
+        "email" : $( "#email" ).val(),
+        "message" : $( "#message" ).val()
+    };
+
+    return JSON.stringify( formInput );
+}

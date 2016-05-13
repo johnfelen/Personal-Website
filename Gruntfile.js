@@ -19,7 +19,6 @@ module.exports = function( grunt )
                 files: {
                     "./dist/css/themes.min.css" : "./src/css/base64.scss"
                 },
-                update: true
             },
             dev: {
                 options: {
@@ -29,7 +28,7 @@ module.exports = function( grunt )
                     "./dist/css/themes.min.css" : "./src/css/binaries.scss"
                 },
                 update: true
-            }
+            },
         },
         jshint: {
             options: {
@@ -68,7 +67,7 @@ module.exports = function( grunt )
                     expand: true,
                     cwd: "./",
                     src: [ "**", "!dist/**", "!node_modules/**", "!.htaccess" ],
-                    dest: getHomeDir( "C:/Users/jtfel/Documents/GitHub/Personal-Website/" )
+                    dest: getHomeDir( "C:/Users/John/Documents/GitHub/Personal-Website/" )
                 }]
             }
         },
@@ -95,7 +94,7 @@ module.exports = function( grunt )
                 src: [ "./dist/**" ]
             },
             releaseBefore: {    //release before keeps map files for final round testing
-                src: [ "./dist/js/*.js", "./dist/css/*.css", "!**/*.map" ]
+                src: [ "./dist/js/*.js", "./dist/css/*.css", "!**/*.map", "./dist/images/**/*.png" ]
             },
             releaseAfter: { //deletes rest of external js and css because testing is complete and can be copied to actual webserver
                 src: [ "./dist/js/**", "./dist/css/**" ]
@@ -104,7 +103,7 @@ module.exports = function( grunt )
                 options: {
                     force: true    //allows cleaning of different directories
                 },
-                src: [ getHomeDir( "C:/Users/jtfel/Documents/GitHub/Personal-Website/src/" ) ]
+                src: [ getHomeDir( "C:/Users/John/Documents/GitHub/Personal-Website/src/" ) ]
             }
         },
         watch: {

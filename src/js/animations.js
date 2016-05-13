@@ -1,13 +1,3 @@
-function getPath()  //returns the path, "" if index
-{
-    return document.URL.split( "/" ).pop();
-}
-
-function isFileInURL( file )   //will figure out if file, ie "tour.php" is in the url, it is used in more than just tour.js
-{
-    return getPath().indexOf( file ) === 0;
-}
-
 if( isFileInURL( "tour" ) ) //don't show start animations when he tour is shown
 {
     removeStartAnimations();
@@ -44,13 +34,15 @@ else
         var currPageNum = pageToNum[ getPath() ];
         var nextPageNum = pageToNum[ id ];
 
-        $( this ).click( function()
+        $( this ).click( function( event )
         {
+            event.preventDefault();
             if( nextPageNum !== currPageNum )   //allows the unload animations to run and if they hit the current page they are on, it does not change and the navbar and footer do not move
             {
                 setTimeout( function()
                 {
                     window.location.href = "./" + id + ".php";
+                    //window.pushState( null, null, id );
                 }, 1000 );
 
                 $( "#main-nav" ).addClass( "fall-out" );
@@ -94,4 +86,14 @@ function removeStartAnimations()
     $( "#main-container" ).removeClass( mainContainerTransition );
     $( "#main-nav" ).removeClass( "fall-in" );
     $( "#footer" ).removeClass( "climb-up" );
+}
+
+function getPath()  //returns the path, "" if index
+{
+    return document.URL.split( "/" ).pop();
+}
+
+function isFileInURL( file )   //will figure out if file, ie "tour.php" is in the url, it is used in more than just tour.js
+{
+    return getPath().indexOf( file ) === 0;
 }

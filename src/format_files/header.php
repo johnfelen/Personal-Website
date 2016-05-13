@@ -32,16 +32,16 @@
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-links">
                     <li id="index">
-                        <a href="javascript:;" title="Home"><i class="fa fa-home fa-fw navbar-colors"></i></a>
+                        <a href="./index.php" title="Home"><i class="fa fa-home fa-fw navbar-colors"></i></a>
                     </li>
                     <li id="portfolio">
-                        <a href="javascript:;" title="Portfolio"><i class="fa fa-folder-open fa-fw navbar-colors"></i></a>
+                        <a href="./portfolio.php" title="Portfolio"><i class="fa fa-folder-open fa-fw navbar-colors"></i></a>
                     </li>
                     <li id="blog">
-                        <a href="javascript:;" title="Blog"><i class="fa fa-pencil fa-fw navbar-colors"></i></a>
+                        <a href="./blog.php" title="Blog"><i class="fa fa-pencil fa-fw navbar-colors"></i></a>
                     </li>
                     <li id="contact">
-                        <a href="javascript:;" title="Contact Me"><i class="fa fa-envelope fa-fw navbar-colors"></i></a>
+                        <a href="./contact.php" title="Contact Me"><i class="fa fa-envelope fa-fw navbar-colors"></i></a>
                     </li>
                 </ul>
             </div>
