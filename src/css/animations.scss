@@ -18,21 +18,35 @@
         animation-duration: 20000000ms;
     }
 
-    //the rotate for footer icon and video-game-collectable-spin is based from http://www.the-art-of-web.com/css/3d-transforms/
-    @keyframes video-game-collectable-spin {
-        from {
-            transform: rotateY( 0deg );
-        }
-        to {
-            transform: rotateY( -360deg );
-        }
+    .fa-3d-icon {
+        animation-name: video-game-collectable;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        animation-duration: 4s;
     }
 
-    .footer-animation {
-        animation-name: video-game-collectable-spin;
-        animation-timing-function: ease-in-out;
-        animation-iteration-count: infinite;
-        animation-duration: 4s;
+    //the video game collectable is based off of http://codepen.io/PageOnline/pen/EvGrl?editors=1100
+    @keyframes video-game-collectable {
+     	0% {
+    		 text-shadow: 0px 1px;
+    		 transform: rotateY( 0deg );
+    	}
+    	25% {
+            text-shadow: -1px 1px 1px, -2px 1px 1px, -3px 1px 1px, -4px 1px 1px;
+    		transform: rotateY( -50deg );
+    	}
+    	50% {
+    		 text-shadow: 0px 1px;
+    		 transform: rotateY( 0deg );
+    	}
+    	75% {
+    		 text-shadow: 1px 1px 1px, 2px 1px 1px, 3px 1px 1px, 4px 1px 1px;
+    		 transform: rotateY( 50deg );
+    	}
+    	100% {
+    		 text-shadow: 0px 1px;
+    		 transform: rotateY( 0deg );
+    	}
     }
 
     .navbar-animation > a {

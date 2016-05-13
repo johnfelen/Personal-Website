@@ -109,7 +109,7 @@ module.exports = function( grunt )
         watch: {
             sass: {
                 files: [ "./src/css/*.scss" ],
-                tasks: [ "sass" ]
+                tasks: [ "sass:dev" ]
             },
             rest: {
                 files: [ "./src/**" ],
