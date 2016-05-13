@@ -34,6 +34,8 @@ else
         var currPageNum = pageToNum[ getPath() ];
         var nextPageNum = pageToNum[ id ];
 
+        console.log( "next " + nextPageNum );
+
         $( this ).click( function( event )
         {
             event.preventDefault();
@@ -50,8 +52,6 @@ else
                     {
                         var requestTime = new Date().getTime() - startTime; //gets the ajax request time to make the data not load for atleast 1 second so that the new webapge is not shown to the user until the new data has been loaded, based on http://stackoverflow.com/questions/3498503/find-out-how-long-an-ajax-request-took-to-complete
 
-
-                        console.log( requestTime );
                         setTimeout( function()
                         {
                             $( "#page-name" ).html( pageData.pageName );
@@ -60,29 +60,46 @@ else
                             $( "#font-awesome" ).addClass( "fa fa-" + pageData.fontAwesome + " fa-fw" );
 
                             $( "#main-container" ).html( pageData.mainContainer );
+
                             history.pushState( null, null, id );
+                            callStartFunction( getPath() );
+
+                            headerTransition = sessionStorage.getItem( "header" );
+                            mainContainerTransition = sessionStorage.getItem( "main_container" );
+                            $( "#header" ).addClass( headerTransition );
+                            $( "#main-container" ).addClass( mainContainerTransition );
+
+                            setTimeout( function()
+                            {
+                                removeStartAnimations();
+                                $( ".navbar-fixed-top" ).autoHidingNavbar();
+                            }, 1000 );
+
+                            currPageNum = pageToNum[ getPath() ];
+
                         }, 1000 - requestTime );
+
+
+                        if( nextPageNum > currPageNum )
+                        {
+                            $( "#header" ).addClass( "pan-to-right" );
+                            $( "#main-container" ).addClass( "pan-to-left" );
+                            sessionStorage.setItem( "header", "pan-from-right" );
+                            sessionStorage.setItem( "main_container", "pan-from-left" );
+                        }
+
+                        else if( nextPageNum < currPageNum )
+                        {
+                            $( "#header" ).addClass( "pan-to-left" );
+                            $( "#main-container" ).addClass( "pan-to-right" );
+                            sessionStorage.setItem( "header", "pan-from-left" );
+                            sessionStorage.setItem( "main_container", "pan-from-right" );
+                        }
+
+                        $( "#main-nav" ).addClass( "fall-out" );
+                        $( "#footer" ).addClass( "climb-down" );
                     }
                 });
-
-                $( "#main-nav" ).addClass( "fall-out" );
-                $( "#footer" ).addClass( "climb-down" );
-            }
-
-            if( nextPageNum > currPageNum )
-            {
-                $( "#header" ).addClass( "pan-to-right" );
-                $( "#main-container" ).addClass( "pan-to-left" );
-                sessionStorage.setItem( "header", "pan-from-right" );
-                sessionStorage.setItem( "main_container", "pan-from-left" );
-            }
-
-            else if( nextPageNum < currPageNum )
-            {
-                $( "#header" ).addClass( "pan-to-left" );
-                $( "#main-container" ).addClass( "pan-to-right" );
-                sessionStorage.setItem( "header", "pan-from-left" );
-                sessionStorage.setItem( "main_container", "pan-from-right" );
             }
 
             else
@@ -116,4 +133,25 @@ function getPath()  //returns the path, "" if index
 function isFileInURL( file )   //will figure out if file, ie "tour.php" is in the url, it is used in more than just tour.js
 {
     return getPath().indexOf( file ) === 0;
+}
+
+function callStartFunction( pageName )
+{
+    switch( pageName )
+    {
+        case "index":
+            displayIndex();
+            break;
+        case "portfolio":
+            displayPortfolio();
+            break;
+        case "blog":
+            //displayBlog();
+            break;
+        case "contact":
+            displayContact();
+            break;
+        default:
+            break;
+    }
 }

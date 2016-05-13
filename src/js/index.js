@@ -1,9 +1,9 @@
 if( isFileInURL( "index" ) )
 {
-    indexDisplay();
+    displayIndex();
 }
 
-function indexDisplay()
+function displayIndex()
 {
     var chars;
     var currentCharIndex;
