@@ -1,18 +1,18 @@
 /*animiations for all the web page and transition between them*/
 %animations {
-    //based off of https://davidwalsh.name/background-animation-css, sort of looks like the animation in the background of the sonic title screens
-    @keyframes sonic-title {
+    //based off of https://davidwalsh.name/background-animation-css, sort of looks like the animation in the background of a video game title/selection screen
+    @keyframes title-screen {
         from {
             background-position: 0 0;
         }
         to {
-            background-position: 500000px 0;
+            background-position: 500000px 500000px;
         }
     }
 
     //the 500000px and 20000000ms were educated guessed but it looks like a smooth animation, it runs for 333 minutes and 20 seconds, however the iteration-count is already infinite so that runtime does not matter, futhermore it will take 333.33 minutes to see a possible stuttering when the animation restarts and the pixels( not percentage ) and duration allow the form and background to have the smae speed of animation and look clean
     #name, #email, #message, body {
-        animation-name: sonic-title;
+        animation-name: title-screen;
         animation-timing-function: linear;
         animation-iteration-count: infinite;
         animation-duration: 20000000ms;

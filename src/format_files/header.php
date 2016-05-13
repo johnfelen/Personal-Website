@@ -53,7 +53,7 @@
             <hr class="color-border">
                 <h1 class="font-title font-header color">
                     <div class="dropdown colored-link">
-                        <a href="javascript:;" id="tour-theme-menu" class="dropdown-toggle" data-toggle="dropdown" title="Change the Website Theme"><i class="fa fa-<?php echo "{$fontAwesome}";?> fa-fw"></i></a>
+                        <a href="javascript:;" id="tour-theme-menu" class="dropdown-toggle" data-toggle="dropdown" title="Change the Website Theme"><i id="font-awesome" class="fa fa-<?php echo "{$fontAwesome}";?> fa-fw"></i></a>
                         <ul class="dropdown-menu dropdown-menu-animate" id="theme-menu">
                             <li><a href="javascript:;" id="picnic-blanket">Picnic Blanket</a></li>
                             <li><a href="javascript:;" id="sunrise">Sunrise</a></li>
@@ -66,7 +66,7 @@
                             <li><a href="javascript:;" id="stardust">Stardust</a></li>
                             <li><a href="javascript:;" id="chinese-new-year">Chinese New Year</a></li>
                         </ul>
-                    </div><?php echo $pageName; //it is one the same line as the closing div to remove the space between the font-awesome icon and the page name?>
+                    </div><span id="page-name"><?php echo $pageName; //it is one the same line as the closing div to remove the space between the font-awesome icon and the page name?></span>
                 </h1>
             <hr class="color-border">
             <?php include( "./format_files/end-row-10.php" ); ?>

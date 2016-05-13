@@ -1,13 +1,18 @@
 if( isFileInURL( "portfolio" ) )
 {
+    displayPortfolio();
+}
+
+function displayPortfolio()
+{
     if( sessionStorage.getItem( "current_sort" ) === null )
     {
         sessionStorage.setItem( "current_sort", "lang=fa-sort-asc" );
     }
-    displayProjects();
+    getProjects();
 }
 
-function displayProjects()  //display the projects and the current sorting buttons on protfolio.php
+function getProjects()  //display the projects and the current sorting buttons on protfolio.php
 {
     var getPair = sessionStorage.getItem( "current_sort" ).split( "=" );
 

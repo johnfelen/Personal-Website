@@ -1,5 +1,10 @@
 if( isFileInURL( "contact" ) )
 {
+    contactDisplay();
+}
+
+function contactDisplay()
+{
     //this ajax call will get the summary of my profile from LinkedIn, must use jsonp because it is cross domain
     $.ajax({
         url: "https://api.linkedin.com//v1/people/~:(summary)",

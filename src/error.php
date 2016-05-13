@@ -46,13 +46,17 @@
 
     $pageName = "{$status} Error";
     $fontAwesome = "exclamation-triangle";
+
+    include( "./server_functionality/page-data-start.php" );
+
     include( "./format_files/header.php" );
     include( "./format_files/start-row-10.php" );
+    }
 
     $title = $codes[ $status ][ 0 ];
     $description = $codes[ $status ][ 1 ];
 
-    include( "./server_functionality/page-data-start.php" );
+
 ?>
 
 <hr class="color-border">
@@ -75,4 +79,5 @@
 
     include( "./format_files/end-row-10.php" );
     include( "./format_files/footer.php" );
+    }
 ?>

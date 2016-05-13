@@ -39,11 +39,31 @@ else
             event.preventDefault();
             if( nextPageNum !== currPageNum )   //allows the unload animations to run and if they hit the current page they are on, it does not change and the navbar and footer do not move
             {
-                setTimeout( function()
-                {
-                    window.location.href = "./" + id + ".php";
-                    //window.pushState( null, null, id );
-                }, 1000 );
+                var startTime = new Date().getTime();
+
+                $.ajax({
+                    url: "./" + id + ".php",
+                    type: "GET",
+                    data: { AJAX : true },
+                    dataType: "json",
+                    success: function( pageData )
+                    {
+                        var requestTime = new Date().getTime() - startTime; //gets the ajax request time to make the data not load for atleast 1 second so that the new webapge is not shown to the user until the new data has been loaded, based on http://stackoverflow.com/questions/3498503/find-out-how-long-an-ajax-request-took-to-complete
+
+
+                        console.log( requestTime );
+                        setTimeout( function()
+                        {
+                            $( "#page-name" ).html( pageData.pageName );
+
+                            $( "#font-awesome" ).removeClass();
+                            $( "#font-awesome" ).addClass( "fa fa-" + pageData.fontAwesome + " fa-fw" );
+
+                            $( "#main-container" ).html( pageData.mainContainer );
+                            history.pushState( null, null, id );
+                        }, 1000 - requestTime );
+                    }
+                });
 
                 $( "#main-nav" ).addClass( "fall-out" );
                 $( "#footer" ).addClass( "climb-down" );
