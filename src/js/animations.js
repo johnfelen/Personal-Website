@@ -36,29 +36,39 @@ else
             {
                 if( event.attributeName === "style" && event.newValue.search( /inline/i ) === -1 )
                 {
-                    var oldVal = parseFloat( event.oldValue.split( "top: " )[ 1 ].split( "px;" )[ 0 ] );
+                    if( event.oldValue !== null )   //just so it doesn't print out cannot split a null value
+                    {
+                        var oldVal = parseFloat( event.oldValue.split( "top: " )[ 1 ].split( "px;" )[ 0 ] );
+                    }
+
+                    else
+                    {
+                        var oldVal = 0;
+                    }
                     var newVal = parseFloat( event.newValue.split( "top: " )[ 1 ].split( "px;" )[ 0 ] );
 
-                    if( newVal < oldVal && !started )
+                    if( newVal < oldVal && !started )   //hides the navbr
                     {
                         setTimeout( function()
                         {
-                            $( "#main-nav" ).addClass( "shadow" );
+                            $( "#main-nav" ).addClass( "shadow-hidden" );
                             $( "#main-nav" ).removeClass( "shadow-start" );
                             started = true;
                         }, 200 );
                         $( "#main-nav" ).addClass( "shadow-start" );
+                        $( "#main-nav" ).removeClass( "shadow-shown" );
                     }
 
-                    else if( started )
+                    else if( started )  //shows the navbar
                     {
                         setTimeout( function()
                         {
+                            $( "#main-nav" ).addClass( "shadow-shown" );
                             $( "#main-nav" ).removeClass( "shadow-end" );
                             started = false;
                         }, 200 );
                         $( "#main-nav" ).addClass( "shadow-end" );
-                        $( "#main-nav" ).removeClass( "shadow" );
+                        $( "#main-nav" ).removeClass( "shadow-hidden" );
                     }
                 }
             }

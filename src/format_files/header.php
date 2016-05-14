@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">   <!-- this line will tell devices how to scale the webpage, based on the verified answer here http://stackoverflow.com/questions/19156510/responsive-website-zoomed-out-to-full-width-on-mobile -->
+        <!-- NOTE: I commented this line out because I think the website is very usuable on mobile with it looking full screen and when it sizes to mobile there are some formatting glitches <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> this line will tell devices how to scale the webpage, based on the verified answer here http://stackoverflow.com/questions/19156510/responsive-website-zoomed-out-to-full-width-on-mobile -->
         <?php echo "<title>{$pageName}</title>"; ?>
 
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -28,7 +28,7 @@
     <body class="subtle-pattern <?php echo ( $pageName !== "Tour" ) ? "fixed-navbar-padding": ""; ?>">
         <?php include_once( "./analyticstracking.php" ); ?>
         <!--top navigation bar-->
-        <div class="navbar <?php echo ( $pageName !== "Tour" ) ? "navbar-fixed-top": ""; ?> auto-show-navbar fall-in" id="main-nav">
+        <div class="navbar <?php echo ( $pageName !== "Tour" ) ? "navbar-fixed-top": ""; ?> auto-show-navbar shadow-shown fall-in" id="main-nav">
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-links">
                     <li id="index">
