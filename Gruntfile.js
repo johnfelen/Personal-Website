@@ -1,6 +1,7 @@
 //this function and code will allow me to copy the files from the xampp htdocs to my git repo, based from https://github.com/gruntjs/grunt-contrib-copy/issues/47
 var path = require( "path" );
-function getHomeDir() {
+function getHomeDir()
+{
     var dirpath = path.join.apply( path, arguments );
     var homepath = process.env[ process.platform === "win32" ? "USERPROFILE" : "HOME" ];
     dirpath = path.resolve( homepath, dirpath );
@@ -11,6 +12,11 @@ module.exports = function( grunt )
 {
     grunt.initConfig({
         pkg: grunt.file.readJSON( "package.json" ),
+        autoprefixer: {
+            dist: {
+                src: "./dist/css/*.css"
+            }
+        },
         sass: {
             release: {
                 options: {
@@ -122,6 +128,7 @@ module.exports = function( grunt )
         }
     });
 
+    grunt.loadNpmTasks( "grunt-autoprefixer" ); //although depricated, postcss was not working, and --save-dev would not work( probablly because it is deprecated )
     grunt.loadNpmTasks( "grunt-contrib-sass" );
     grunt.loadNpmTasks( "grunt-contrib-jshint" );
     grunt.loadNpmTasks( "grunt-contrib-concat" );
@@ -132,10 +139,10 @@ module.exports = function( grunt )
     grunt.loadNpmTasks( "grunt-contrib-clean" );
     grunt.loadNpmTasks( "grunt-contrib-watch" );
 
-    grunt.registerTask( "release", [ "clean:dist", "sass:release", "concat", "uglify", "copy:release", "processhtml", "clean:releaseBefore" ] );
+    grunt.registerTask( "release", [ "clean:dist", "sass:release", "autoprefixer", "concat", "uglify", "copy:release", "processhtml", "clean:releaseBefore" ] );
     grunt.registerTask( "finish", [ "clean:releaseAfter" ] );   //call finish after a quick run through of website to make sure that the release build works properly
 
-    grunt.registerTask( "default", [ "sass:dev", "sync:dev", "jshint", "watch" ] );
-    grunt.registerTask( "dev", [ "clean:dist", "sass:dev", "sync:dev", "jshint", "watch" ] );   //just copy of default but will clean dist first, call this after created release and going back into development
+    grunt.registerTask( "default", [ "sass:dev", "autoprefixer", "sync:dev", "jshint", "watch" ] );
+    grunt.registerTask( "dev", [ "clean:dist", "sass:dev", "autoprefixer", "sync:dev", "jshint", "watch" ] );   //just copy of default but will clean dist first, call this after created release and going back into development
     grunt.registerTask( "git", [ "clean:git", "copy:git" ] );
 };

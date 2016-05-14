@@ -5,7 +5,7 @@
         <!--start of the actual footer part-->
         <div id="footer" class="climb-up">
             <?php include( "./format_files/start-row-10.php" ); ?>
-            <hr class="">
+            <hr class="header-footer">
             <div class="row vertical-center font-main">
                 <div class="col-xs-4 font-left font-footer">
                     <span class="colored-link" id="left-footer-links">
@@ -24,7 +24,7 @@
                     </span>
                 </div>
             </div>
-            <hr class="">
+            <hr class="header-footer">
             <?php include( "./format_files/end-row-10.php" ); ?>
         </div>
 
