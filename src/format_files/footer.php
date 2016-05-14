@@ -9,7 +9,7 @@
                 <div class="row vertical-center font-main">
                     <div class="col-xs-4 font-left font-footer">
                         <span class="colored-link" id="left-footer-links">
-                            <a href="#" class="footer-margin-left" title="Start Website Tour" id="start-tour"><i class="fa fa-map fa-fw fa-lg fa-3d-icon"></i></a>
+                            <a href="javascript:;" class="footer-margin-left" title="Start Website Tour" id="start-tour"><i class="fa fa-map-signs fa-fw fa-lg fa-3d-icon"></i></a>
                             <a href="mailto:johnfelen@pitt.edu" class="footer-margin-left" title="Email Me at johnfelen@pitt.edu"><i class="fa fa-at fa-fw fa-lg fa-3d-icon"></i></a>
                             <a href="other_files/JohnFelenRésumé.pdf" class="footer-margin-left footer-margin-right" title="Download My R&eacute;sum&eacute;" target="_blank"><i class="fa fa-file-text fa-fw fa-lg fa-3d-icon"></i></a>
                         </span>

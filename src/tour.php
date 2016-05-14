@@ -1,6 +1,6 @@
 <?php
     $pageName = "Tour";
-    $fontAwesome = "map";
+    $fontAwesome = "map-signs";
 
     include( "./server_functionality/page-data-start.php" );
 ?>

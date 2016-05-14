@@ -14,7 +14,7 @@
         width: 100%;
         opacity: 0;
     }
-    
+
     blink, .select-name {
         visibility: hidden;
     }
@@ -120,7 +120,7 @@
     }
 
     //this class allows the navbar to be the same width as the rest of the main items on the page, the navbar-fixed-top ignores the grid based system of bootstrap so I have to give it a numerical width, it is based off off of http://stackoverflow.com/questions/17533106/bootstrap-div-class-navbar-navbar-fixed-top
-    .navbar-fixed-top {
+    .auto-show-navbar {
         width: ( 10 / 12 ) * 100%;
         margin: 0 auto;
     }
@@ -150,13 +150,12 @@
     }
 
     //the padding is so that the navbar-fixed-top does not cover the header, based on the second answer here http://stackoverflow.com/questions/11124777/twitter-bootstrap-navbar-fixed-top-overlapping-site
-    body {
+    body.fixed-navbar-padding {
         padding-top: 62px;
     }
 
-    @media( max-width: 768px )
-    {
-        body {
+    @media( max-width: 768px ) {
+        body.fixed-navbar-padding {
             padding-top: 224px;
         }
     }

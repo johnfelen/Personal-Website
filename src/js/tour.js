@@ -32,7 +32,7 @@ var tour = new Tour({
     {
         element: "#left-footer-links",
         title: "Left Footer Links",
-        content: "Click the Map to restart the tour, the &#64; to send me an email, and the File to view my Résumé.",
+        content: "Click the Signpost to restart the tour, the @ to send me an email, and the File to view my Résumé.",
         placement: "right"
     }],
     //template based on the default template at http://bootstraptour.com/api/

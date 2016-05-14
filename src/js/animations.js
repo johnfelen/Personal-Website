@@ -107,6 +107,14 @@ else
     });
 }
 
+$( "a" ).click( function( link )    //will not allow links to be clicked on the Tour
+{
+    if( isFileInURL( "tour" ) )
+    {
+        link.preventDefault();
+    }
+});
+
 function removeStartAnimations()
 {
     $( "#header" ).removeClass( headerTransition );

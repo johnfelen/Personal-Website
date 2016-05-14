@@ -1,6 +1,6 @@
 <?php
     $pageName = "Portfolio";
-    $fontAwesome = "folder-open";
+    $fontAwesome = "code";
 
     include( "./server_functionality/page-data-start.php" );
     include( "./server_functionality/page-data-end.php" );
