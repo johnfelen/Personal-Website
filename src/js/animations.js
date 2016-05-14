@@ -26,54 +26,7 @@ else
     {
         removeStartAnimations();
         $( ".navbar-fixed-top" ).autoHidingNavbar();
-
-        //using the attrchange plugin to add a shadow and css3 transition to that shadow when the navbar goes off the page, based off of second answer here http://stackoverflow.com/questions/1397251/event-detect-when-css-property-changed-using-jquery
-        var started = false;
-        $( "#main-nav" ).attrchange(
-        {
-            trackValues: true,
-            callback: function( event )
-            {
-                if( event.attributeName === "style" && event.newValue.search( /inline/i ) === -1 )
-                {
-                    if( event.oldValue !== null )   //just so it doesn't print out cannot split a null value
-                    {
-                        var oldVal = parseFloat( event.oldValue.split( "top: " )[ 1 ].split( "px;" )[ 0 ] );
-                    }
-
-                    else
-                    {
-                        var oldVal = 0;
-                    }
-                    var newVal = parseFloat( event.newValue.split( "top: " )[ 1 ].split( "px;" )[ 0 ] );
-
-                    if( newVal < oldVal && !started )   //hides the navbr
-                    {
-                        setTimeout( function()
-                        {
-                            $( "#main-nav" ).addClass( "shadow-hidden" );
-                            $( "#main-nav" ).removeClass( "shadow-start" );
-                            started = true;
-                        }, 200 );
-                        $( "#main-nav" ).addClass( "shadow-start" );
-                        $( "#main-nav" ).removeClass( "shadow-shown" );
-                    }
-
-                    else if( started )  //shows the navbar
-                    {
-                        setTimeout( function()
-                        {
-                            $( "#main-nav" ).addClass( "shadow-shown" );
-                            $( "#main-nav" ).removeClass( "shadow-end" );
-                            started = false;
-                        }, 200 );
-                        $( "#main-nav" ).addClass( "shadow-end" );
-                        $( "#main-nav" ).removeClass( "shadow-hidden" );
-                    }
-                }
-            }
-        });
-
+        shadowNavbar();
     }, 1000 );
 
     $( "#main-nav" ).find( "li" ).each( function()
@@ -106,6 +59,7 @@ else
                 //         setTimeout( function()
                 //         {
                 //             $( "#page-name" ).html( pageData.pageName );
+                //             $( "title" ).html( pageData.pageName );
                 //
                 //             $( "#font-awesome" ).removeClass();
                 //             $( "#font-awesome" ).addClass( "fa fa-" + pageData.fontAwesome + " fa-fw" );
@@ -176,7 +130,7 @@ function getPath()  //returns the path, "" if index
     return document.URL.split( "/" ).pop();
 }
 
-function isFileInURL( file )   //will figure out if file, ie "tour.php" is in the url, it is used in more than just tour.js
+function isFileInURL( file )    //will figure out if file, ie "tour.php" is in the url, it is used in more than just tour.js
 {
     return getPath().indexOf( file ) === 0;
 }
@@ -200,4 +154,49 @@ function callStartFunction( pageName )
         default:
             break;
     }
+}
+
+function shadowNavbar() //using the attrchange plugin to add a shadow( depending if the navbar is hidden or not) and a css3 shadow transition to the navbar being hidden or shown, based off of second answer here http://stackoverflow.com/questions/1397251/event-detect-when-css-property-changed-using-jquery
+{
+    var started = false;
+    $( "#main-nav" ).attrchange(
+    {
+        trackValues: true,
+        callback: function( event )
+        {
+            if( event.attributeName === "style" && event.newValue.search( /inline/i ) === -1 )
+            {
+                var oldVal = 0;
+                if( event.oldValue !== null )   //just so it doesn't print out cannot split a null value
+                {
+                    oldVal = parseFloat( event.oldValue.split( "top: " )[ 1 ].split( "px;" )[ 0 ] );
+                }
+                var newVal = parseFloat( event.newValue.split( "top: " )[ 1 ].split( "px;" )[ 0 ] );
+
+                if( newVal < oldVal && !started )   //hides the navbr
+                {
+                    setTimeout( function()
+                    {
+                        $( "#main-nav" ).addClass( "shadow-hidden" );
+                        $( "#main-nav" ).removeClass( "shadow-start" );
+                        started = true;
+                    }, 200 );
+                    $( "#main-nav" ).addClass( "shadow-start" );
+                    $( "#main-nav" ).removeClass( "shadow-shown" );
+                }
+
+                else if( started )  //shows the navbar
+                {
+                    setTimeout( function()
+                    {
+                        $( "#main-nav" ).addClass( "shadow-shown" );
+                        $( "#main-nav" ).removeClass( "shadow-end" );
+                        started = false;
+                    }, 200 );
+                    $( "#main-nav" ).addClass( "shadow-end" );
+                    $( "#main-nav" ).removeClass( "shadow-hidden" );
+                }
+            }
+        }
+    });
 }
