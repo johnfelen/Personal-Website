@@ -40,7 +40,7 @@
 }
 
 .candy-cane {
-    $deepRed: #E2021D;
+    $candyAppleRed: #E2021D;
     $darkerWhite: #FAFAFC;
     $smoothBlue: #163C8D;
 
@@ -48,7 +48,7 @@
     $droidSerif: 'Droid Serif', serif;
 
     @extend %structure;
-    @include specifications( $deepRed, $darkerWhite, $smoothBlue, $lobster, $droidSerif, $candy-cane );
+    @include specifications( $candyAppleRed, $darkerWhite, $smoothBlue, $lobster, $droidSerif, $candy-cane );
     @extend %animations;
 }
 

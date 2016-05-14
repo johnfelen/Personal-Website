@@ -35,7 +35,7 @@ function getProjects()  //display the projects and the current sorting buttons o
                 {
                     link.preventDefault(); //removes the # from the url, probably could be done by taking it out of the href for the buttons in protfolio-functions.php
                     sessionStorage.setItem( "current_sort", $( this ).attr( "id" ) );
-                    displayProjects();
+                    displayPortfolio();
                 });
             });
 
