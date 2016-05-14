@@ -59,18 +59,18 @@
 
 ?>
 
+<br><br><br>
 <hr class="color-border">
     <p class="font-title font-header font-center color colored-link">
         <?php echo $title; ?>
     </p>
 <hr class="color-border">
-<br><br><br>
 
+<br><br><br>
 <p class="font-main font-small font-center color" >
     <?php echo $description; ?>
 </p>
 
-<br><br><br>
 <br><br><br>
 <br><br><br>
 

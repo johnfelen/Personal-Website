@@ -1,4 +1,7 @@
-if( isFileInURL( "index" ) )
+var count = 0;
+var currentlyTyping = false;    //used to stop repeat clicking which would cause gibberish to type out
+
+if( isFileInURL( "index" ) || getPath() === "" )
 {
     displayIndex();
 }
@@ -45,9 +48,6 @@ function displayIndex()
 
     else  //functionality for the animated pokemon text
     {
-        var count = 0;
-        var currentlyTyping = false;    //used to stop repeat clicking which would cause gibberish to type out
-
         $( "#main-container" ).click( function()
         {
             printNextLine();
@@ -74,6 +74,10 @@ function displayIndex()
                         blink();
                     });
                 }, 1000 );
+            },
+            error: function( e )
+            {
+                console.log( e.responseText );
             }
         });
     }

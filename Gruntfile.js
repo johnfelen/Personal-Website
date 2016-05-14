@@ -44,19 +44,23 @@ module.exports = function( grunt )
         },
         concat: {
             release: {
-                src: "./src/js/*.js",
-                dest: "./dist/js/personal-website.js"
+                src: [ "./src/js/*.js", "!./src/js/animations.js" ],
+                dest: "./dist/js/personal-website.min.js"   //NOTE: it is not minimized yet, just concatted, but it will be at the end
             }
         },
         uglify: {
-            options: {
-                compress: true,
-                mangle: true,
-                sourceMap: true
-            },
             dev: {
-                src: "./dist/js/personal-website.js",
-                dest: "./dist/js/personal-website.min.js"
+                options: {
+                    compress: true,
+                    mangle: true,
+                    sourceMap: true
+                },
+                files: [{   //minifies all javascript files seperatly( it is only animations.js and personal-website.min.js which remember is not minimized until after this step, based on accepted answer here http://stackoverflow.com/questions/13358680/how-to-config-grunt-js-to-minify-files-separately
+                    expand: true,
+                    cwd: "./dist/js/",
+                    src: "./**/*.js",
+                    dest: "./dist/js/"
+                }]
             }
         },
         copy: {
@@ -64,7 +68,7 @@ module.exports = function( grunt )
                 files: [{
                     expand: true,
                     cwd: "./src/",
-                    src: [ "**", "!**/*.{scss,css,js}" ],
+                    src: [ "**", "./js/animations.js", "!**/*.{scss,css,js}" ],
                     dest: "./dist/"
                 }]
             },
@@ -99,11 +103,11 @@ module.exports = function( grunt )
             dist: {
                 src: [ "./dist/**" ]
             },
-            releaseBefore: {    //release before keeps map files for final round testing
-                src: [ "./dist/js/*.js", "./dist/css/*.css", "!**/*.map", "./dist/images/**/*.png" ]
+            releaseBefore: {    //release before keeps map files for final round testing, deletes the javascript that goes inline and also deltes the images, but saves the maps
+                src: [ "./dist/js/personal-website.min.js", "!**/*.map", "./dist/images/**/*.png" ]
             },
-            releaseAfter: { //deletes rest of external js and css because testing is complete and can be copied to actual webserver
-                src: [ "./dist/js/**", "./dist/css/**" ]
+            releaseAfter: { //deletes the maps
+                src: [ "./dist/**/*.map" ]
             },
             git: {
                 options: {
