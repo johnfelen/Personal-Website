@@ -40,55 +40,62 @@ else
             event.preventDefault();
             if( nextPageNum !== currPageNum )   //allows the unload animations to run and if they hit the current page they are on, it does not change and the navbar and footer do not move
             {
-                setTimeout( function()
+                // setTimeout( function()
+                // {
+                //     window.location.href = "./" + id + ".php";
+                // }, 1000 );
+
+                if( nextPageNum > currPageNum )
                 {
-                    window.location.href = "./" + id + ".php";
-                }, 1000 );
+                    $( "#header" ).addClass( "pan-to-right" );
+                    $( "#main-container" ).addClass( "pan-to-left" );
+                    sessionStorage.setItem( "header", "pan-from-right" );
+                    sessionStorage.setItem( "main_container", "pan-from-left" );
+                }
 
-                //TODO: make the AJAX transitions correct
-                // var startTime = new Date().getTime();
-                //
-                // $.ajax({
-                //     url: "./" + id + ".php",
-                //     type: "GET",
-                //     data: { AJAX : true },
-                //     dataType: "json",
-                //     success: function( pageData )
-                //     {
-                //         var requestTime = new Date().getTime() - startTime; //gets the ajax request time to make the data not load for atleast 1 second so that the new webapge is not shown to the user until the new data has been loaded, based on http://stackoverflow.com/questions/3498503/find-out-how-long-an-ajax-request-took-to-complete
-                //         setTimeout( function()
-                //         {
-                //             $( "#page-name" ).html( pageData.pageName );
-                //             $( "title" ).html( pageData.pageName );
-                //
-                //             $( "#font-awesome" ).removeClass();
-                //             $( "#font-awesome" ).addClass( "fa fa-" + pageData.fontAwesome + " fa-fw" );
-                //
-                //             console.log( pageData.mainContainer );
-                //
-                //             $( "#main-container" ).html( pageData.mainContainer );
-                //
-                //             history.pushState( null, null, id );
-                //             callStartFunction( getPath() );
-                //         }, 1000 - requestTime );
-                //     }
-                // });
-            }
+                else if( nextPageNum < currPageNum )
+                {
+                    $( "#header" ).addClass( "pan-to-left" );
+                    $( "#main-container" ).addClass( "pan-to-right" );
+                    sessionStorage.setItem( "header", "pan-from-left" );
+                    sessionStorage.setItem( "main_container", "pan-from-right" );
+                }
 
-            if( nextPageNum > currPageNum )
-            {
-                $( "#header" ).addClass( "pan-to-right" );
-                $( "#main-container" ).addClass( "pan-to-left" );
-                sessionStorage.setItem( "header", "pan-from-right" );
-                sessionStorage.setItem( "main_container", "pan-from-left" );
-            }
+                var startTime = new Date().getTime();
 
-            else if( nextPageNum < currPageNum )
-            {
-                $( "#header" ).addClass( "pan-to-left" );
-                $( "#main-container" ).addClass( "pan-to-right" );
-                sessionStorage.setItem( "header", "pan-from-left" );
-                sessionStorage.setItem( "main_container", "pan-from-right" );
+                $.ajax({
+                    url: "./" + id + ".php",
+                    type: "GET",
+                    data: { AJAX : true },
+                    dataType: "json",
+                    success: function( pageData )
+                    {
+                        var requestTime = new Date().getTime() - startTime; //gets the ajax request time to make the data not load for atleast 1 second so that the new webapge is not shown to the user until the new data has been loaded
+                        setTimeout( function()
+                        {
+                            $( "#page-name" ).html( pageData.pageName );
+                            $( "title" ).html( pageData.pageName );
+
+                            $( "#font-awesome" ).removeClass();
+                            $( "#font-awesome" ).addClass( "fa fa-" + pageData.fontAwesome + " fa-fw" );
+
+                            $( "#main-container" ).html( pageData.mainContainer );
+
+                            if( id === "index" )
+                            {
+                                id = "./";  //gives empty url for home
+                            }
+                            history.pushState( null, null, id );
+                            $( "#main-nav" ).find( "li" ).each( function()
+                            {
+                                $( this ).off( "click" );
+                            });
+
+                            reloadJS( "./js/animations.js" );
+                            callStartFunction( getPath() );
+                        }, 1000 - requestTime );
+                    }
+                });
             }
 
             else
@@ -133,6 +140,12 @@ function getPath()  //returns the path, "" if index
 function isFileInURL( file )    //will figure out if file, ie "tour.php" is in the url, it is used in more than just tour.js
 {
     return getPath().indexOf( file ) === 0;
+}
+
+function reloadJS( src )    //reloads the javascript file, specifically will be used with animations.js, based on the second answer http://stackoverflow.com/questions/9642205/how-to-force-a-script-reload-and-re-execute
+{
+    $( "script[ src=\"" + src + "\" ]" ).remove();
+    $( "<script>" ).attr( "src", src ).appendTo( "head" );
 }
 
 function callStartFunction( pageName )
