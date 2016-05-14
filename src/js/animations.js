@@ -26,6 +26,44 @@ else
     {
         removeStartAnimations();
         $( ".navbar-fixed-top" ).autoHidingNavbar();
+
+        //using the attrchange plugin to add a shadow and css3 transition to that shadow when the navbar goes off the page, based off of second answer here http://stackoverflow.com/questions/1397251/event-detect-when-css-property-changed-using-jquery
+        var started = false;
+        $( "#main-nav" ).attrchange(
+        {
+            trackValues: true,
+            callback: function( event )
+            {
+                if( event.attributeName === "style" && event.newValue.search( /inline/i ) === -1 )
+                {
+                    var oldVal = parseFloat( event.oldValue.split( "top: " )[ 1 ].split( "px;" )[ 0 ] );
+                    var newVal = parseFloat( event.newValue.split( "top: " )[ 1 ].split( "px;" )[ 0 ] );
+
+                    if( newVal < oldVal && !started )
+                    {
+                        setTimeout( function()
+                        {
+                            $( "#main-nav" ).addClass( "shadow" );
+                            $( "#main-nav" ).removeClass( "shadow-start" );
+                            started = true;
+                        }, 200 );
+                        $( "#main-nav" ).addClass( "shadow-start" );
+                    }
+
+                    else if( started )
+                    {
+                        setTimeout( function()
+                        {
+                            $( "#main-nav" ).removeClass( "shadow-end" );
+                            started = false;
+                        }, 200 );
+                        $( "#main-nav" ).addClass( "shadow-end" );
+                        $( "#main-nav" ).removeClass( "shadow" );
+                    }
+                }
+            }
+        });
+
     }, 1000 );
 
     $( "#main-nav" ).find( "li" ).each( function()

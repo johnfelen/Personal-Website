@@ -4,6 +4,11 @@
         background: $image repeat 0 0;
     }
 
+    hr {
+        background: $secondary;
+        border-color: $primary;
+    }
+
     .font-title {
         font-family: $titleFont;
     }

@@ -1,5 +1,30 @@
 /*animiations for all the web page and transition between them*/
 %animations {
+    %shadow-animation {
+        animation-name: shadow;
+        animation-timing-function: linear;
+        animation-duration: 200ms;
+    }
+
+    .shadow-start {
+        @extend %shadow-animation;
+    }
+
+    .shadow-end {
+        @extend %shadow-animation;
+        animation-direction: reverse;
+    }
+
+    @keyframes shadow {
+        from {
+            box-shadow: 0px 0px 35px 15px rgba( 0, 0, 0, 0.25 );
+        }
+        to {
+            box-shadow: 0px 25px 35px 15px rgba( 0, 0, 0, 0.25 );
+        }
+    }
+
+
     //based off of https://davidwalsh.name/background-animation-css, sort of looks like the animation in the background of a video game title/selection screen
     @keyframes title-screen {
         from {
