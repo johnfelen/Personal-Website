@@ -64,7 +64,7 @@ function setTheme( theme, adding ) //change current theme on page
     if( adding )
     {
         $( "html" ).addClass( theme );
-        $( "#favicon" ).attr( "href", faviconFilePath( theme, $( "#favicon" ).attr( "name" ) ) );
+        changeFavicon( theme, $( "#favicon" ).attr( "name" ) );
 
         //copys the current theme favicon for the PDF to the root so it shows when you click my resume
         $.ajax({
@@ -78,11 +78,6 @@ function setTheme( theme, adding ) //change current theme on page
     {
         $( "html" ).removeClass( theme );
     }
-}
-
-function faviconFilePath( theme, faviconName ) //returns the file path to the favicon
-{
-    return "./images/" + theme.split( "-" ).join( "_" ) + "/" + faviconName;
 }
 
 function setNavAnimation( adding )  //add or remove the navbar animation

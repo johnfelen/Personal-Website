@@ -43,7 +43,7 @@ else
         $( this ).click( function( event )
         {
             event.preventDefault();
-            if( currPageNum === 0 ) //since the page does not reload anymore, must clear global variables for index.php
+            if( currPageNum === 0 && nextPageNum !== 0 ) //since the page does not reload anymore, must clear global variables for index.php
             {
                 indexUnload();
             }
@@ -63,6 +63,10 @@ else
                         {
                             $( "#page-name" ).html( pageData.pageName );
                             $( "title" ).html( pageData.pageName );
+
+                            //updates favicons so the theme changes and links update the current favicon accordingly
+                            $( "#favicon" ).attr( "name", "favicon-" + pageData.fontAwesome + ".ico" );
+                            changeFavicon( $( "html" ).attr( "class" ), "favicon-" + pageData.fontAwesome + ".ico" );
 
                             $( "#font-awesome" ).removeClass();
                             $( "#font-awesome" ).addClass( "fa fa-" + pageData.fontAwesome + " fa-fw" );
@@ -256,4 +260,14 @@ function shadowNavbar() //using the attrchange plugin to add a shadow( depending
             }
         }
     });
+}
+
+function changeFavicon( theme, faviconName )
+{
+    $( "#favicon" ).attr( "href", faviconFilePath( theme, faviconName ) );
+}
+
+function faviconFilePath( theme, faviconName ) //returns the file path to the favicon
+{
+    return "./images/" + theme.split( "-" ).join( "_" ) + "/" + faviconName;
 }
