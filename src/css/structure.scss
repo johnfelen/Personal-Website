@@ -38,16 +38,11 @@
         border-style: 2px solid;
         border-radius: 10px;
         width: 100%;
-        opacity: 0;
     }
 
 
-    #header, #main-container, #main-nav, #footer {
-        opacity: 0; //for some reason visibility would not work, it would not set the visibility of these ids as hidden and I could not use my toggleVisibility method, however opacity of 0 to 1 and 1 to 0 change in 0ms is the same experience for the user
-    }
-
-    blink, .select-name {
-        visibility: hidden;
+    #header, #main-container, #main-nav, #footer, #picture-of-me, #blink, .select-name {
+        opacity: 0; //for some reason visibility would not work for the first 4, it would not set the visibility css attribute, however opacity of 0 to 1 and 1 to 0 change in 0ms using fadeTo is the same experience for the user
     }
 
     .fill-n-center {

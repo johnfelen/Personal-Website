@@ -2,6 +2,7 @@ if( localStorage.getItem( "tour_start" ) === null && isFileInURL( "tour" ) )   /
 {
     window.history.back();
 }
+toggleMainParts();
 
 var tour = new Tour({
     steps: [

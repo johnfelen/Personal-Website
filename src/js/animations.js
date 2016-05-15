@@ -20,15 +20,12 @@ else
     var headerTransition = sessionStorage.getItem( "header" );
     var mainContainerTransition = sessionStorage.getItem( "main_container" );
 
-    $( "#header" ).fadeTo( 0, 1 );
-    $( "#main-container" ).fadeTo( 0, 1 );
-    $( "#main-nav" ).fadeTo( 0, 1 );
-    $( "#footer" ).fadeTo( 0, 1 );
-
     $( "#header" ).addClass( headerTransition );
     $( "#main-container" ).addClass( mainContainerTransition );
     $( "#main-nav" ).addClass( "fall-in" );
     $( "#footer" ).addClass( "climb-up" );
+
+    toggleMainParts();
 
     setTimeout( function()
     {
@@ -46,6 +43,11 @@ else
         $( this ).click( function( event )
         {
             event.preventDefault();
+            if( currPageNum === 0 ) //since the page does not reload anymore, must clear global variables for index.php
+            {
+                indexUnload();
+            }
+
             if( nextPageNum !== currPageNum )   //allows the unload animations to run and if they hit the current page they are on, it does not change and the navbar and footer do not move
             {
                 var startTime = new Date().getTime();
@@ -85,18 +87,14 @@ else
 
                 setTimeout( function()
                 {
+                    toggleMainParts();
+
                     $( "#header" ).removeClass( "pan-to-right" );
                     $( "#header" ).removeClass( "pan-to-left" );
                     $( "#main-container" ).removeClass( "pan-to-left" );
                     $( "#main-container" ).removeClass( "pan-to-right" );
                     $( "#main-nav" ).removeClass( "fall-out" );
                     $( "#footer" ).removeClass( "climb-down" );
-
-                    $( "#header" ).fadeTo( 0, 0 );
-                    $( "#main-container" ).fadeTo( 0, 0 );
-                    $( "#main-nav" ).fadeTo( 0, 0 );
-                    $( "#footer" ).fadeTo( 0, 0 );
-
                 }, 950 );
 
                 if( nextPageNum > currPageNum )
@@ -160,6 +158,27 @@ function isFileInURL( file )    //will figure out if file, ie "tour.php" is in t
     return getPath().indexOf( file ) === 0;
 }
 
+function toggleVisibility( element ) //uses an immediate fadeTo toggle if an object is shown( opacity is used instead of visibility since it is sort of glichy )
+{
+    if( $( element ).css( "opacity" ) == 1 )    //no typecheck, it is technically a string check
+    {
+        $( element ).fadeTo( 0, 0 );
+    }
+
+    else
+    {
+        $( element ).fadeTo( 0, 1 );
+    }
+}
+
+function toggleMainParts()  //wrapper class for the visibility toggles that happen when a link is clicked
+{
+    toggleVisibility( "#main-nav" );
+    toggleVisibility( "#header" );
+    toggleVisibility( "#main-container" );
+    toggleVisibility( "#footer" );
+}
+
 function reloadJS( source )    //reloads the javascript file, specifically will be used with animations.js, based on the second answer http://stackoverflow.com/questions/9642205/how-to-force-a-script-reload-and-re-execute
 {
     $( "script[ src=\"" + source + "\" ]" ).remove();
@@ -171,6 +190,7 @@ function callStartFunction( pageName )
     switch( pageName )
     {
         case "index":
+        case "":
             displayIndex();
             break;
         case "portfolio":
@@ -198,11 +218,17 @@ function shadowNavbar() //using the attrchange plugin to add a shadow( depending
             if( event.attributeName === "style" && event.newValue.search( /inline/i ) === -1 )
             {
                 var oldVal = 0;
+                var newVal = 0;
+                //console.log( event.oldValue.indexOf( "top: " ) );
                 if( event.oldValue.indexOf( "top: " ) > -1 )   //just so there is not a print out of cannot read property 'split' of undefined
                 {
                     oldVal = parseFloat( event.oldValue.split( "top: " )[ 1 ].split( "px;" )[ 0 ] );
                 }
-                var newVal = parseFloat( event.newValue.split( "top: " )[ 1 ].split( "px;" )[ 0 ] );
+
+                if( event.newValue.indexOf( "top: " ) > -1 )    //DITTO of above
+                {
+                    newVal = parseFloat( event.newValue.split( "top: " )[ 1 ].split( "px;" )[ 0 ] );
+                }
 
                 if( newVal < oldVal && !started )   //hides the navbr
                 {

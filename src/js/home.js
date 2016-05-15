@@ -1,5 +1,7 @@
+//NOTE: for some reason, naming this file gives an "Uncaught SyntaxError: Unexpected token < (index):1" error, but changing the name removes the error
 var count = 0;
 var currentlyTyping = false;    //used to stop repeat clicking which would cause gibberish to type out
+var blinkingTime = null;    //variable that holds the timeout on the blink funciton
 
 if( isFileInURL( "index" ) || getPath() === "" )
 {
@@ -20,10 +22,10 @@ function displayIndex()
             dataType: "json",
             success: function( textToBeDisplayed )
             {
-                countDown();
                 //make the picture of me and count down immediately visible
-                toggleVisibility( "blink" );
-                $( "#picture-of-me" ).css( "opacity", 1 );
+                countDown();
+                toggleVisibility( "#blink" );
+                toggleVisibility( "#picture-of-me" );
 
                 var lines = textToBeDisplayed.slice( 0, 7 ).join( "<br>" );
                 $( "#pokemon" ).html( lines );
@@ -74,57 +76,61 @@ function displayIndex()
                         blink();
                     });
                 }, 1000 );
-            },
-            error: function( e )
-            {
-                console.log( e.responseText );
             }
         });
     }
+}
 
-    $( window ).unload( function()  //set session storage(since if they restart the browser they it counts as fixing the "game") with the time that the index.php will reload
+$( window ).resize( function()  //is a resize handler so that the pick the name portion of the index.php page has all the names on the same line for normal screens
+{
+    $( "#names" ).children( "div" ).each( function( i )
     {
-        if( typeof timeFinishedSec !== "undefined" )
+        if( $( window ).width() <= 1440 )
         {
-            sessionStorage.setItem( "time_finished", timeFinishedSec );
-        }
-    });
-
-    $( window ).resize( function()  //is a resize handler so that the pick the name portion of the index.php page has all the names on the same line for normal screens
-    {
-        $( "#names" ).children( "div" ).each( function( i )
-        {
-            if( $( window ).width() <= 1440 )
+            if( i === 1 )
             {
-                if( i === 1 )
-                {
-                    $( this ).removeClass( "col-xs-4" );
-                    $( this ).addClass( "col-xs-6" );
-                }
-
-                else
-                {
-                    $( this ).removeClass( "col-xs-4" );
-                    $( this ).addClass( "col-xs-3" );
-                }
+                $( this ).removeClass( "col-xs-4" );
+                $( this ).addClass( "col-xs-6" );
             }
 
             else
             {
-                if( i === 1 )
-                {
-                    $( this ).removeClass( "col-xs-6" );
-                    $( this ).addClass( "col-xs-4" );
-                }
-
-                else
-                {
-                    $( this ).removeClass( "col-xs-3" );
-                    $( this ).addClass( "col-xs-4" );
-                }
+                $( this ).removeClass( "col-xs-4" );
+                $( this ).addClass( "col-xs-3" );
             }
-        });
+        }
+
+        else
+        {
+            if( i === 1 )
+            {
+                $( this ).removeClass( "col-xs-6" );
+                $( this ).addClass( "col-xs-4" );
+            }
+
+            else
+            {
+                $( this ).removeClass( "col-xs-3" );
+                $( this ).addClass( "col-xs-4" );
+            }
+        }
     });
+});
+
+$( window ).unload( function()  //backup incase they do a traditional unload by refreshing or hitting on of the direcitonal buttons
+{
+    indexUnload();
+});
+
+function indexUnload()  //set session storage( since if they restart the browser they it counts as fixing the "game" ) with the time that the page will reload, also reset the global variables so when AJAX linking back to the page it starts as normal
+{
+    count = 0;
+    currentlyTyping = false;
+    clearTimeout( blinkingTime );
+    if( typeof timeFinishedSec !== "undefined" )
+    {
+        sessionStorage.setItem( "time_finished", timeFinishedSec );
+    }
 }
 
 function countDown()    //will keep outputting how many minutes/seconds the user has left until the "game" will work again, so when zero seconds left redirect to index.php
@@ -175,30 +181,13 @@ function getCurrTimeSec()
     return parseInt( new Date().getTime() / 1000 );
 }
 
-function toggleVisibility( element ) //wrapper class for visibility, since jquery toggle is display not visibility
-{
-    if( $( element ).css( "visibility" ) === "visible" )
-    {
-                console.log( "INVISIBLE" );
-        $( element ).css( "visibility", "hidden" );
-    }
-
-    else
-    {
-        console.log( "VISIBLE" );
-        $( element ).css( "visibility", "visible" );
-    }
-}
-
 function printNextLine()    //animates the typing characters, based on the last response in http://stackoverflow.com/questions/23688149/simulate-the-look-of-typing-not-the-actual-keypresses-in-javascript
 {
-    if( count < lines.length && !currentlyTyping )
+    if( count < lines.length && !currentlyTyping )  //get the chars in an array and send them to be printed out, setting currenlyTyping to true will stop the blinking
     {
-        chars = lines[ count ].split( "" );
-
-        currentCharIndex = 0;
-
         currentlyTyping = true;
+        chars = lines[ count ].split( "" );
+        currentCharIndex = 0;
         printNextChar();
     }
 
@@ -212,9 +201,7 @@ function printNextLine()    //animates the typing characters, based on the last 
             $( this ).hover( function()
             {
                 toggleVisibility( $( this ).find( "i" ) );
-            },
-
-            function()
+            }, function()
             {
                 toggleVisibility( $( this ).find( "i" ) );
             });
@@ -237,7 +224,7 @@ function printNextLine()    //animates the typing characters, based on the last 
     {
         $( "tr" ).removeClass();
         $( "#continue" ).html( movingSpinner + "<br>" );
-        $( "#choose-name tr" ).unbind( "mouseenter mouseleave" );   //saves the name that the client choose
+        $( "#choose-name tr" ).unbind( "mouseenter mouseleave" );   //saves the name that the client chose on the table
         $( "#choose-name tr" ).off( "click" );
         count++;
 
@@ -277,33 +264,33 @@ function printNextChar()
 
 function blink()    //based on second last response on http://stackoverflow.com/questions/18105152/alternative-for-blink since the actual <blink> tag is deprecated, I wonder why
 {
-    var blinks = document.getElementsByTagName( "blink" );
+    var blinks = $( "#blink" );
     for ( var i = blinks.length - 1; i >= 0; i-- )
     {
         var s = blinks[ i ];
 
         if( currentlyTyping )
         {
-            $( "blink" ).css( "visibility", "hidden" );
+            $( "#blink" ).fadeTo( 0, 0 );
         }
 
         else if( count === lines.length + 1 )    //they now can "choose" their name so change "click to continue" to "choose your name", because of the below else if must have the s.style.visibility line
         {
             $( "#continue" ).html( "Choose Your Name<br>" );
-            toggleVisibility( "blink" );
+            toggleVisibility( "#blink" );
         }
 
         else if( count === lines.length + 2 )    //we are done with blinking, make the text visible so the "loading" simulation will show
         {
-            $( "blink" ).css( "visibility", "visible" );
+            $( "#blink" ).fadeTo( 0, 1 );
             return;
         }
 
         else if( count > 0 )    //the > 0 is to stop from having the short flash of click to continue when the page loads
         {
-            toggleVisibility( "blink" );
+            toggleVisibility( "#blink" );
         }
     }
 
-    window.setTimeout( blink, 350 );
+    blinkingTime = setTimeout( blink, 350 );
 }

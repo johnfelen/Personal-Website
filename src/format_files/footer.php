@@ -39,7 +39,7 @@
         <!-- build:js inline ../../dist/js/personal-website.min.js-->
         <script src="./js/themes.js"></script>
         <script src="./js/tour.js"></script>
-        <script src="./js/index.js"></script>
+        <script src="./js/home.js"></script>
         <script src="./js/portfolio.js"></script>
         <script src="./js/contact.js"></script>
         <script src="./js/google-analytics.js"></script>
