@@ -1,7 +1,8 @@
 //NOTE: for some reason, naming this file gives an "Uncaught SyntaxError: Unexpected token < (index):1" error, but changing the name removes the error
 var count = 0;
 var currentlyTyping = false;    //used to stop repeat clicking which would cause gibberish to type out
-var blinkingTime = null;    //variable that holds the timeout on the blink funciton
+var blinkingTime = null;    //holds the timeout on the blink funciton
+var countingTime = null;    //holds the interval on the countDown/formattedTimeLeft function(s)
 
 if( isFileInURL( "index" ) || getPath() === "" )
 {
@@ -127,6 +128,7 @@ function indexUnload()  //set session storage( since if they restart the browser
     count = 0;
     currentlyTyping = false;
     clearTimeout( blinkingTime );
+    clearInterval( countingTime );
     if( typeof timeFinishedSec !== "undefined" )
     {
         sessionStorage.setItem( "time_finished", timeFinishedSec );
@@ -141,7 +143,7 @@ function countDown()    //will keep outputting how many minutes/seconds the user
         diff = timeFinishedSec - getCurrTimeSec();
     }
 
-    setInterval( function()
+    countingTime = setInterval( function()
     {
         diff--;
         $( "#time-left" ).html( formattedTimeLeft() );

@@ -25,14 +25,14 @@ else
     $( "#main-nav" ).addClass( "fall-in" );
     $( "#footer" ).addClass( "climb-up" );
 
-    toggleMainParts();
-
     setTimeout( function()
     {
         removeStartAnimations();
         $( ".navbar-fixed-top" ).autoHidingNavbar();
         shadowNavbar();
     }, 1000 );
+
+    toggleMainParts();
 
     $( "#main-nav" ).find( "li" ).each( function()
     {

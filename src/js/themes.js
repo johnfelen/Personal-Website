@@ -64,13 +64,25 @@ function setTheme( theme, adding ) //change current theme on page
     if( adding )
     {
         $( "html" ).addClass( theme );
-        $( "#favicon" ).attr( "href", "./images/" + theme.split( "-" ).join( "_" ) + "/" + $( "#favicon" ).attr( "name" ) );
+        $( "#favicon" ).attr( "href", faviconFilePath( theme, $( "#favicon" ).attr( "name" ) ) );
+
+        //copys the current theme favicon for the PDF to the root so it shows when you click my resume
+        $.ajax({
+            url: "./server_functionality/change-base-favicon.php",
+            type: "POST",
+            data: { faviconPath : faviconFilePath( theme, "favicon-file-text.ico" ) }
+        });
     }
 
     else
     {
         $( "html" ).removeClass( theme );
     }
+}
+
+function faviconFilePath( theme, faviconName ) //returns the file path to the favicon
+{
+    return "./images/" + theme.split( "-" ).join( "_" ) + "/" + faviconName;
 }
 
 function setNavAnimation( adding )  //add or remove the navbar animation
