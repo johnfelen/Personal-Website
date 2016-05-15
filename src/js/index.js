@@ -127,19 +127,6 @@ function displayIndex()
     });
 }
 
-function toggleVisibility( element ) //wrapper class for visibility, since jquery toggle is display not visibility
-{
-    if( $( element ).css( "visibility" ) === "visible" )
-    {
-        $( element ).css( "visibility", "hidden" );
-    }
-
-    else
-    {
-        $( element ).css( "visibility", "visible" );
-    }
-}
-
 function countDown()    //will keep outputting how many minutes/seconds the user has left until the "game" will work again, so when zero seconds left redirect to index.php
 {
     if( typeof timeFinishedSec === "undefined" )   //this is a new countdown
@@ -186,6 +173,21 @@ function formattedTimeLeft()    //update text with minutes and seconds to be gra
 function getCurrTimeSec()
 {
     return parseInt( new Date().getTime() / 1000 );
+}
+
+function toggleVisibility( element ) //wrapper class for visibility, since jquery toggle is display not visibility
+{
+    if( $( element ).css( "visibility" ) === "visible" )
+    {
+                console.log( "INVISIBLE" );
+        $( element ).css( "visibility", "hidden" );
+    }
+
+    else
+    {
+        console.log( "VISIBLE" );
+        $( element ).css( "visibility", "visible" );
+    }
 }
 
 function printNextLine()    //animates the typing characters, based on the last response in http://stackoverflow.com/questions/23688149/simulate-the-look-of-typing-not-the-actual-keypresses-in-javascript

@@ -19,8 +19,16 @@ else
 
     var headerTransition = sessionStorage.getItem( "header" );
     var mainContainerTransition = sessionStorage.getItem( "main_container" );
+
+    $( "#header" ).fadeTo( 0, 1 );
+    $( "#main-container" ).fadeTo( 0, 1 );
+    $( "#main-nav" ).fadeTo( 0, 1 );
+    $( "#footer" ).fadeTo( 0, 1 );
+
     $( "#header" ).addClass( headerTransition );
     $( "#main-container" ).addClass( mainContainerTransition );
+    $( "#main-nav" ).addClass( "fall-in" );
+    $( "#footer" ).addClass( "climb-up" );
 
     setTimeout( function()
     {
@@ -40,29 +48,7 @@ else
             event.preventDefault();
             if( nextPageNum !== currPageNum )   //allows the unload animations to run and if they hit the current page they are on, it does not change and the navbar and footer do not move
             {
-                // setTimeout( function()
-                // {
-                //     window.location.href = "./" + id + ".php";
-                // }, 1000 );
-
-                if( nextPageNum > currPageNum )
-                {
-                    $( "#header" ).addClass( "pan-to-right" );
-                    $( "#main-container" ).addClass( "pan-to-left" );
-                    sessionStorage.setItem( "header", "pan-from-right" );
-                    sessionStorage.setItem( "main_container", "pan-from-left" );
-                }
-
-                else if( nextPageNum < currPageNum )
-                {
-                    $( "#header" ).addClass( "pan-to-left" );
-                    $( "#main-container" ).addClass( "pan-to-right" );
-                    sessionStorage.setItem( "header", "pan-from-left" );
-                    sessionStorage.setItem( "main_container", "pan-from-right" );
-                }
-
                 var startTime = new Date().getTime();
-
                 $.ajax({
                     url: "./" + id + ".php",
                     type: "GET",
@@ -70,7 +56,7 @@ else
                     dataType: "json",
                     success: function( pageData )
                     {
-                        var requestTime = new Date().getTime() - startTime; //gets the ajax request time to make the data not load for atleast 1 second so that the new webapge is not shown to the user until the new data has been loaded
+                        requestTime = new Date().getTime() - startTime; //gets the ajax request time to make the data not load for atleast 1 second so that the new webapge is not shown to the user until the new data has been loaded
                         setTimeout( function()
                         {
                             $( "#page-name" ).html( pageData.pageName );
@@ -96,6 +82,41 @@ else
                         }, 1000 - requestTime );
                     }
                 });
+
+                setTimeout( function()
+                {
+                    $( "#header" ).removeClass( "pan-to-right" );
+                    $( "#header" ).removeClass( "pan-to-left" );
+                    $( "#main-container" ).removeClass( "pan-to-left" );
+                    $( "#main-container" ).removeClass( "pan-to-right" );
+                    $( "#main-nav" ).removeClass( "fall-out" );
+                    $( "#footer" ).removeClass( "climb-down" );
+
+                    $( "#header" ).fadeTo( 0, 0 );
+                    $( "#main-container" ).fadeTo( 0, 0 );
+                    $( "#main-nav" ).fadeTo( 0, 0 );
+                    $( "#footer" ).fadeTo( 0, 0 );
+
+                }, 950 );
+
+                if( nextPageNum > currPageNum )
+                {
+                    $( "#header" ).addClass( "pan-to-right" );
+                    $( "#main-container" ).addClass( "pan-to-left" );
+                    sessionStorage.setItem( "header", "pan-from-right" );
+                    sessionStorage.setItem( "main_container", "pan-from-left" );
+                }
+
+                else
+                {
+                    $( "#header" ).addClass( "pan-to-left" );
+                    $( "#main-container" ).addClass( "pan-to-right" );
+                    sessionStorage.setItem( "header", "pan-from-left" );
+                    sessionStorage.setItem( "main_container", "pan-from-right" );
+                }
+
+                $( "#main-nav" ).addClass( "fall-out" );
+                $( "#footer" ).addClass( "climb-down" );
             }
 
             else
@@ -109,9 +130,6 @@ else
                 $( "#header" ).addClass( "struggle-left" );
                 $( "#main-container" ).addClass( "struggle-right" );
             }
-
-            $( "#main-nav" ).addClass( "fall-out" );
-            $( "#footer" ).addClass( "climb-down" );
         });
     });
 }
@@ -142,10 +160,10 @@ function isFileInURL( file )    //will figure out if file, ie "tour.php" is in t
     return getPath().indexOf( file ) === 0;
 }
 
-function reloadJS( src )    //reloads the javascript file, specifically will be used with animations.js, based on the second answer http://stackoverflow.com/questions/9642205/how-to-force-a-script-reload-and-re-execute
+function reloadJS( source )    //reloads the javascript file, specifically will be used with animations.js, based on the second answer http://stackoverflow.com/questions/9642205/how-to-force-a-script-reload-and-re-execute
 {
-    $( "script[ src=\"" + src + "\" ]" ).remove();
-    $( "<script>" ).attr( "src", src ).appendTo( "head" );
+    $( "script[ src=\"" + source + "\" ]" ).remove();
+    $( "<script>" ).attr( "src", source ).appendTo( "head" );
 }
 
 function callStartFunction( pageName )
@@ -180,7 +198,7 @@ function shadowNavbar() //using the attrchange plugin to add a shadow( depending
             if( event.attributeName === "style" && event.newValue.search( /inline/i ) === -1 )
             {
                 var oldVal = 0;
-                if( event.oldValue !== null )   //just so it doesn't print out cannot split a null value
+                if( event.oldValue.indexOf( "top: " ) > -1 )   //just so there is not a print out of cannot read property 'split' of undefined
                 {
                     oldVal = parseFloat( event.oldValue.split( "top: " )[ 1 ].split( "px;" )[ 0 ] );
                 }

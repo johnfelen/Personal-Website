@@ -26,7 +26,7 @@
     <body class="subtle-pattern <?php echo ( $pageName !== "Tour" ) ? "fixed-navbar-padding": ""; ?>">
         <?php include_once( "./analyticstracking.php" ); ?>
         <!--top navigation bar-->
-        <div class="navbar <?php echo ( $pageName !== "Tour" ) ? "navbar-fixed-top": ""; ?> auto-show-navbar shadow-shown fall-in" id="main-nav">
+        <div class="navbar <?php echo ( $pageName !== "Tour" ) ? "navbar-fixed-top": ""; ?> auto-show-navbar shadow-shown" id="main-nav">
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-links">
                     <li id="index">

@@ -3,7 +3,7 @@
         <?php include( "./format_files/end-row-10.php" ); ?>
 
         <!--start of the actual footer part-->
-        <div id="footer" class="climb-up">
+        <div id="footer">
             <?php include( "./format_files/start-row-10.php" ); ?>
             <hr class="header-footer">
             <div class="row vertical-center font-main">
@@ -35,7 +35,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.10.2/validator.min.js"></script>
         <script src="https://cdn.jsdelivr.net/bootstrap.autohidingnavbar/1.0.5/jquery.bootstrap-autohidingnavbar.min.js"></script>
         <script src="https://cdn.rawgit.com/meetselva/attrchange/master/js/attrchange.js"></script>
-        <script src="./js/animations.js"></script>            
+        <script src="./js/animations.js"></script>
         <!-- build:js inline ../../dist/js/personal-website.min.js-->
         <script src="./js/themes.js"></script>
         <script src="./js/tour.js"></script>
