@@ -11,7 +11,7 @@ else
     "blog" : 2,
     "contact" : 3 };
 
-    if( sessionStorage.getItem( "header" ) === null && sessionStorage.getItem( "main_container" ) === null )
+    if( sessionStorage.getItem( "header" ) === null && sessionStorage.getItem( "main_container" ) === null )    //default start transitions
     {
         sessionStorage.setItem( "header", "pan-from-right" );
         sessionStorage.setItem( "main_container", "pan-from-left" );
@@ -20,15 +20,10 @@ else
     var headerTransition = sessionStorage.getItem( "header" );
     var mainContainerTransition = sessionStorage.getItem( "main_container" );
 
-    $( "#header" ).addClass( headerTransition );
-    $( "#main-container" ).addClass( mainContainerTransition );
-    $( "#main-nav" ).addClass( "fall-in" );
-    $( "#footer" ).addClass( "climb-up" );
-
+    transitionIn( headerTransition, mainContainerTransition );
     setTimeout( function()
     {
-        removeStartAnimations();
-        $( ".navbar-fixed-top" ).autoHidingNavbar();
+        transitionIn( headerTransition, mainContainerTransition );
         shadowNavbar();
     }, 1000 );
 
@@ -61,64 +56,36 @@ else
                         requestTime = new Date().getTime() - startTime; //gets the ajax request time to make the data not load for atleast 1 second so that the new webapge is not shown to the user until the new data has been loaded
                         setTimeout( function()
                         {
-                            $( "#page-name" ).html( pageData.pageName );
-                            $( "title" ).html( pageData.pageName );
-
-                            //updates favicons so the theme changes and links update the current favicon accordingly
-                            $( "#favicon" ).attr( "name", "favicon-" + pageData.fontAwesome + ".ico" );
-                            changeFavicon( $( "html" ).attr( "class" ), "favicon-" + pageData.fontAwesome + ".ico" );
-
-                            $( "#font-awesome" ).removeClass();
-                            $( "#font-awesome" ).addClass( "fa fa-" + pageData.fontAwesome + " fa-fw" );
-
-                            $( "#main-container" ).html( pageData.mainContainer );
-
-                            if( id === "index" )
-                            {
-                                id = "./";  //gives empty url for home
-                            }
-                            history.pushState( null, null, id );
-                            $( "#main-nav" ).find( "li" ).each( function()
-                            {
-                                $( this ).off( "click" );
-                            });
-
-                            reloadJS( "./js/animations.js" );
-                            callStartFunction( getPath() );
+                            setNewData( pageData.pageName, pageData.fontAwesome, pageData.mainContainer, id );
                         }, 1000 - requestTime );
                     }
                 });
 
-                setTimeout( function()
-                {
-                    toggleMainParts();
-
-                    $( "#header" ).removeClass( "pan-to-right" );
-                    $( "#header" ).removeClass( "pan-to-left" );
-                    $( "#main-container" ).removeClass( "pan-to-left" );
-                    $( "#main-container" ).removeClass( "pan-to-right" );
-                    $( "#main-nav" ).removeClass( "fall-out" );
-                    $( "#footer" ).removeClass( "climb-down" );
-                }, 950 );
+                var headerTransition = "";
+                var mainContainerTransition = "";
 
                 if( nextPageNum > currPageNum )
                 {
-                    $( "#header" ).addClass( "pan-to-right" );
-                    $( "#main-container" ).addClass( "pan-to-left" );
-                    sessionStorage.setItem( "header", "pan-from-right" );
-                    sessionStorage.setItem( "main_container", "pan-from-left" );
+                    headerTransition = "pan-to-right";
+                    mainContainerTransition = "pan-to-left";
+                    transitionOut( headerTransition, mainContainerTransition );
                 }
 
                 else
                 {
-                    $( "#header" ).addClass( "pan-to-left" );
-                    $( "#main-container" ).addClass( "pan-to-right" );
-                    sessionStorage.setItem( "header", "pan-from-left" );
-                    sessionStorage.setItem( "main_container", "pan-from-right" );
+                    headerTransition = "pan-to-left";
+                    mainContainerTransition = "pan-to-right";
+                    transitionOut( headerTransition, mainContainerTransition );
                 }
 
-                $( "#main-nav" ).addClass( "fall-out" );
-                $( "#footer" ).addClass( "climb-down" );
+                sessionStorage.setItem( "header", headerTransition.split( "to" ).join( "from" ) );
+                sessionStorage.setItem( "main_container", mainContainerTransition.split( "to" ).join( "from" ) );
+
+                setTimeout( function()
+                {
+                    toggleMainParts();
+                    transitionOut( headerTransition, mainContainerTransition );
+                }, 950 );
             }
 
             else
@@ -144,12 +111,48 @@ $( "a" ).click( function( link )    //will not allow links to be clicked on the 
     }
 });
 
-function removeStartAnimations()
+function transitionIn( headerTransition, mainContainerTransition )
 {
-    $( "#header" ).removeClass( headerTransition );
-    $( "#main-container" ).removeClass( mainContainerTransition );
-    $( "#main-nav" ).removeClass( "fall-in" );
-    $( "#footer" ).removeClass( "climb-up" );
+    $( "#header" ).toggleClass( headerTransition );
+    $( "#main-container" ).toggleClass( mainContainerTransition );
+    $( "#main-nav" ).toggleClass( "fall-in" );
+    $( "#footer" ).toggleClass( "climb-up" );
+}
+
+function transitionOut( headerTransition, mainContainerTransition ) //header and container are directions( left or right ) to tell which way to go and set the session
+{
+    $( "#header" ).toggleClass( headerTransition );
+    $( "#main-container" ).toggleClass( mainContainerTransition );
+    $( "#main-nav" ).toggleClass( "fall-out" );
+    $( "#footer" ).toggleClass( "climb-down" );
+}
+
+function setNewData( pageName, fontAwesome, mainContainer, id ) //sets the new data on the page link that the user selected and updates the url
+{
+    $( "#page-name" ).html( pageName );
+    $( "title" ).html( pageName );
+
+    //updates favicons so the theme changes and links update the current favicon accordingly
+    $( "#favicon" ).attr( "name", "favicon-" + fontAwesome + ".ico" );
+    changeFavicon( $( "html" ).attr( "class" ), "favicon-" + fontAwesome + ".ico" );
+
+    $( "#font-awesome" ).removeClass();
+    $( "#font-awesome" ).addClass( "fa fa-" + fontAwesome + " fa-fw" );
+
+    $( "#main-container" ).html( mainContainer );
+
+    if( id === "index" )
+    {
+        id = "./";  //gives empty url for home
+    }
+    history.pushState( null, null, id );
+    $( "#main-nav" ).find( "li" ).each( function()
+    {
+        $( this ).off( "click" );
+    });
+
+    reloadJS( "./js/animations.js" );
+    callStartFunction( getPath() );
 }
 
 function getPath()  //returns the path, "" if index
@@ -213,6 +216,7 @@ function callStartFunction( pageName )
 
 function shadowNavbar() //using the attrchange plugin to add a shadow( depending if the navbar is hidden or not) and a css3 shadow transition to the navbar being hidden or shown, based off of second answer here http://stackoverflow.com/questions/1397251/event-detect-when-css-property-changed-using-jquery
 {
+    $( ".navbar-fixed-top" ).autoHidingNavbar();
     var started = false;
     $( "#main-nav" ).attrchange(
     {
