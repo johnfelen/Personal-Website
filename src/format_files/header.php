@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <!-- NOTE: I commented this line out because I think the website is very usuable on mobile with it looking full screen and when it sizes to mobile there are some formatting glitches <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> this line will tell devices how to scale the webpage, based on the verified answer here http://stackoverflow.com/questions/19156510/responsive-website-zoomed-out-to-full-width-on-mobile -->
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> <!-- this line will tell devices how to scale the webpage, based on the verified answer here http://stackoverflow.com/questions/19156510/responsive-website-zoomed-out-to-full-width-on-mobile -->
         <?php echo "<title>{$pageName}</title>"; ?>
 
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -46,8 +46,8 @@
         </div>
 
         <!--header-->
+        <?php include( "./format_files/start-row-10.php" ); ?>
         <div id="header">
-            <?php include( "./format_files/start-row-10.php" ); ?>
             <hr class="header-footer">
             <h1 class="font-title font-header color">
                 <div class="dropdown colored-link">
@@ -67,8 +67,8 @@
                 </div><span id="page-name" class="header-footer"><?php echo $pageName; //it is one the same line as the closing div to remove the space between the font-awesome icon and the page name?></span>
             </h1>
             <hr class="header-footer">
-            <?php include( "./format_files/end-row-10.php" ); ?>
         </div>
+        <?php include( "./format_files/end-row-10.php" ); ?>        
 
         <!--start the main container which is closed in footer.php-->
         <?php include( "./format_files/start-row-10.php" ); ?>

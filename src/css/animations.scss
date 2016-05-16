@@ -91,43 +91,44 @@
         animation-timing-function: ease-in-out;
     }
 
-    //falling is for the navbar transition between pages
+    //falling is for the navbar transition between pages, it also has the shadow animation so the shadow is shown when the navbar is not on the page a la the autohiding navbar
     @keyframes falling {
         from {
-            transform: translateY( -250px );
+            transform: translateY( -100% );
         }
         to {
-            transform: translateY( 0px );
+            transform: translateY( 0% );
         }
     }
 
     .fall-in {
-        animation-name: falling;
+        animation-name: shadow, falling;
+        animation-direction: reverse, normal;
         @extend %animation-constants;
     }
 
     .fall-out {
-        animation-name: falling;
-        animation-direction: reverse;
+        animation-name: shadow, falling;
+        animation-direction: normal, reverse;
         @extend %animation-constants;
     }
 
     //climbing is for the footer transitions between pages
     @keyframes climbing {
         from {
-            transform: translateY( 250px );
+            transform: translateY( 0% );
         }
         to {
-            transform: translateY( 0px );
+            transform: translateY( 100% );
         }
     }
-
-    .climb-up {
+    
+    .climb-down {
         animation-name: climbing;
         @extend %animation-constants;
     }
 
-    .climb-down {
+    .climb-up {
         animation-name: climbing;
         animation-direction: reverse;
         @extend %animation-constants;
@@ -136,10 +137,10 @@
     //panning is for the header and the main container transitions between pages
     @keyframes pan-left {
         from {
-            transform: translateX( -1750px );
+            transform: translateX( calc( -100% * 13/12 ) );
         }
         to {
-            transform: translateX( 0px );
+            transform: translateX( 0% );
         }
     }
 
@@ -156,10 +157,10 @@
 
     @keyframes pan-right {
         from {
-            transform: translateX( 0px );
+            transform: translateX( 0% );
         }
         to {
-            transform: translateX( 1750px );
+            transform: translateX( calc( 100% * 13/12 ) );
         }
     }
 
@@ -177,22 +178,22 @@
     //struggle is for when the click the link that is the same page as the current page
     @keyframes struggling {
         0% {
-            transform: translateX( 0px );
+            transform: translateX( 0% );
         }
         20% {
-            transform: translateX( -100px );
+            transform: translateX( -10% );
         }
         40% {
-            transform: translateX( 100px );
+            transform: translateX( 10% );
         }
         60% {
-            transform: translateX( -100px );
+            transform: translateX( -10% );
         }
         80% {
-            transform: translateX( 100px );
+            transform: translateX( 10% );
         }
         100% {
-            transform: translateX( 0px );
+            transform: translateX( 0% );
         }
     }
 

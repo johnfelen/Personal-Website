@@ -1,5 +1,6 @@
 <!--moved fonts from @imports in css to link href html5, from http://stackoverflow.com/questions/10036977/best-way-to-include-css-why-use-import and on the 4th answer it says it will fix the bug of flash of unstyled content since links can be run in parallel unlike @imports-->
-<?php echo ( $pageName === "Home" ) ? "<link href=\"https://fonts.googleapis.com/css?family=Ubuntu+Mono\" rel=\"stylesheet\">" : ""; ?>
+<!--Pokemon Font-->
+<link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
 <!--Picnic Blanket-->
 <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
