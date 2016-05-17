@@ -87,91 +87,79 @@
 
     %animation-constants {
         animation-iteration-count: 1;
-        animation-duration: 1000ms;
+        animation-duration: 2000ms;
         animation-timing-function: ease-in-out;
     }
 
     //falling is for the navbar transition between pages, it also has the shadow animation so the shadow is shown when the navbar is not on the page a la the autohiding navbar
     @keyframes falling {
-        from {
+        0% {
+            transform: translateY( 0% );
+        }
+        50% {
             transform: translateY( -100% );
         }
-        to {
+        100% {
             transform: translateY( 0% );
         }
     }
 
-    .fall-in {
-        animation-name: shadow, falling;
-        animation-direction: reverse, normal;
-        @extend %animation-constants;
-    }
-
-    .fall-out {
-        animation-name: shadow, falling;
-        animation-direction: normal, reverse;
+    .falling {
+        animation-name: shadow, shadow, falling;
+        animation-direction: reverse, normal, normal;
         @extend %animation-constants;
     }
 
     //climbing is for the footer transitions between pages
     @keyframes climbing {
-        from {
+        0% {
             transform: translateY( 0% );
         }
-        to {
+        50% {
             transform: translateY( 100% );
+        }
+        100% {
+            transform: translateY( 0% );
         }
     }
 
-    .climb-down {
+    .climbing {
         animation-name: climbing;
-        @extend %animation-constants;
-    }
-
-    .climb-up {
-        animation-name: climbing;
-        animation-direction: reverse;
         @extend %animation-constants;
     }
 
     //panning is for the header and the main container transitions between pages
     @keyframes pan-left {
-        from {
+        0% {
+            transform: translateX( 0% );
+        }
+        50% {
             transform: translateX( calc( -100% * 13/12 ) );
         }
-        to {
+        100% {
             transform: translateX( 0% );
         }
     }
 
-    .pan-from-left {
+    .pan-left {
         animation-name: pan-left;
-        @extend %animation-constants;
-    }
-
-    .pan-to-left {
-        animation-name: pan-left;
-        animation-direction: reverse;
         @extend %animation-constants;
     }
 
     @keyframes pan-right {
-        from {
+        0% {
             transform: translateX( 0% );
         }
-        to {
+        50% {
             transform: translateX( calc( 100% * 13/12 ) );
+        }
+        100% {
+            transform: translateX( 0% );
         }
     }
 
-    .pan-to-right {
+    .pan-right {
         animation-name: pan-right;
-        @extend %animation-constants;
-    }
-
-    .pan-from-right {
-        animation-name: pan-right;
-        animation-direction: reverse;
         @extend %animation-constants;
     }
 
@@ -197,16 +185,20 @@
         }
     }
 
-    .struggle-left {
+    %struggle-constants {
         animation-name: struggling;
-        @extend %animation-constants;
+        animation-iteration-count: 1;
+        animation-duration: 1000ms;
+    }
+
+    .struggle-left {
+        @extend %struggle-constants;
         animation-timing-function: ease-in;
     }
 
     .struggle-right {
-        animation-name: struggling;
+        @extend %struggle-constants;
         animation-direction: reverse;
-        @extend %animation-constants;
         animation-timing-function: ease-out;
     }
 

@@ -11,24 +11,11 @@ else
     "blog" : 2,
     "contact" : 3 };
 
-    if( sessionStorage.getItem( "header" ) === null && sessionStorage.getItem( "main_container" ) === null )    //default start transitions
-    {
-        sessionStorage.setItem( "header", "pan-from-right" );
-        sessionStorage.setItem( "main_container", "pan-from-left" );
-    }
-
-    var headerTransition = "pan-from-right";
-    var mainContainerTransition = "pan-from-left";
-
     if( $( "#animations" ).length === 0 )   //checks if an id exists, if the id exists this is not the page that the user first loaded on and they got here from an AJAX link, based on the accepted answer here http://stackoverflow.com/questions/3373763/jquery-how-to-find-if-div-with-specific-id-exists
     {
-        transitionIn( headerTransition, mainContainerTransition );
-        setTimeout( function()
-        {
-            transitionIn( headerTransition, mainContainerTransition );
-        }, 1000 );
     }
 
+    shadowNavbar();
     $( "#main-nav" ).find( "li" ).each( function()
     {
         var id = $( this ).attr( "id" );
@@ -66,29 +53,20 @@ else
 
                 if( nextPageNum > currPageNum )
                 {
-                    headerTransition = "pan-to-right";
-                    mainContainerTransition = "pan-to-left";
-                    transitionOut( headerTransition, mainContainerTransition );
+                    headerTransition = "pan-right";
+                    mainContainerTransition = "pan-left";
                 }
 
                 else
                 {
-                    headerTransition = "pan-to-left";
-                    mainContainerTransition = "pan-to-right";
-                    transitionOut( headerTransition, mainContainerTransition );
+                    headerTransition = "pan-left";
+                    mainContainerTransition = "pan-right";
                 }
 
-
-                $( "#main-container" ).one( "animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function( animationEnd )
+                togglePageTransitions( headerTransition, mainContainerTransition );
+                $( "#main-container" ).one( "animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function()
                 {
-                    console.log( "HELL" );
-                    transitionOut( headerTransition, mainContainerTransition );
-                    toggleVisibility();
-                    setTimeout( function()
-                    {
-                        transitionIn( headerTransition.split( "to" ).join( "from" ), mainContainerTransition.split( "to" ).join( "from" ) );
-                    }, 1 );
-                    toggleVisibility();
+                    togglePageTransitions( headerTransition, mainContainerTransition );
                 });
             }
 
@@ -115,20 +93,12 @@ $( "a" ).click( function( link )    //will not allow links to be clicked on the 
     }
 });
 
-function transitionIn( headerTransition, mainContainerTransition )
+function togglePageTransitions( headerTransition, mainContainerTransition ) //header and container are panning( left or right ) to tell which way to go and the falling and climbing are constand between pages
 {
     $( "#header" ).toggleClass( headerTransition );
     $( "#main-container" ).toggleClass( mainContainerTransition );
-    $( "#main-nav" ).toggleClass( "fall-in" );
-    $( "#footer" ).toggleClass( "climb-up" );
-}
-
-function transitionOut( headerTransition, mainContainerTransition ) //header and container are directions( left or right ) to tell which way to go and set the session
-{
-    $( "#header" ).toggleClass( headerTransition );
-    $( "#main-container" ).toggleClass( mainContainerTransition );
-    $( "#main-nav" ).toggleClass( "fall-out" );
-    $( "#footer" ).toggleClass( "climb-down" );
+    $( "#main-nav" ).toggleClass( "falling" );
+    $( "#footer" ).toggleClass( "climbing" );
 }
 
 function setNewData( pageName, fontAwesome, mainContainer, id ) //sets the new data on the page link that the user selected and updates the url
