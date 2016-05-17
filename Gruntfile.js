@@ -40,27 +40,23 @@ module.exports = function( grunt )
             options: {
                 force: true
             },
-            all: [ "Gruntfile.js", "./dist/js/*.js", "!./dist/js/google-analytics.js" ]
+            dev: [ "Gruntfile.js", "./dist/js/*.js", "!./dist/js/google-analytics.js" ]
         },
         concat: {
             release: {
-                src: [ "./src/js/*.js", "!./src/js/animations.js" ],
-                dest: "./dist/js/personal-website.min.js"   //NOTE: it is not minimized yet, just concatted, but it will be at the end
+                src: "./src/js/*.js",
+                dest: "./dist/js/personal-website.js"
             }
         },
         uglify: {
-            dev: {
-                options: {
-                    compress: true,
-                    mangle: true,
-                    sourceMap: true
-                },
-                files: [{   //minifies all javascript files seperatly( it is only animations.js and personal-website.min.js which remember is not minimized until after this step, based on accepted answer here http://stackoverflow.com/questions/13358680/how-to-config-grunt-js-to-minify-files-separately
-                    expand: true,
-                    cwd: "./dist/js/",
-                    src: "./**/*.js",
-                    dest: "./dist/js/"
-                }]
+            options: {
+                compress: true,
+                mangle: true,
+                sourceMap: true
+            },
+            release: {
+                src: "./dist/js/personal-website.js",
+                dest: "./dist/js/personal-website.min.js"
             }
         },
         copy: {
@@ -68,7 +64,7 @@ module.exports = function( grunt )
                 files: [{
                     expand: true,
                     cwd: "./src/",
-                    src: [ "**", "./js/animations.js", "!**/*.{scss,css,js}" ],
+                    src: [ "**", "!**/*.{scss,css,js}" ],
                     dest: "./dist/"
                 }]
             },
@@ -91,10 +87,9 @@ module.exports = function( grunt )
                 }]
             }
         },
-        processhtml: {  //processhtml is to make external css and js to be inline, possible faster loading and it looks cooler when the source is looked at, based from http://stackoverflow.com/questions/33666203/grunt-compile-external-js-into-inline-html
-            dev: {
+        processhtml: {  //processhtml is to make external js to be inline, possible faster loading and it looks cooler when the source is looked at, based from http://stackoverflow.com/questions/33666203/grunt-compile-external-js-into-inline-html
+            release: {
                 files: {
-                    "./dist/format_files/header.php" : "./src/format_files/header.php",
                     "./dist/format_files/footer.php" : "./src/format_files/footer.php"
                 }
             }
@@ -104,10 +99,10 @@ module.exports = function( grunt )
                 src: [ "./dist/**" ]
             },
             releaseBefore: {    //release before keeps map files for final round testing, deletes the javascript that goes inline and also deltes the images, but saves the maps
-                src: [ "./dist/js/personal-website.min.js", "!**/*.map", "./dist/images/**/*.png" ]
+                src: [ "./dist/js/*.js", "!**/*.map", "./dist/images/**/*.png" ]
             },
             releaseAfter: { //deletes the maps
-                src: [ "./dist/**/*.map" ]
+                src: [ "./dist/js/**", "./dist/**/*.map" ]
             },
             git: {
                 options: {

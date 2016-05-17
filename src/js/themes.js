@@ -105,3 +105,20 @@ function setNavAnimation( adding )  //add or remove the navbar animation
         $( "#theme-menu" ).removeClass( "dropdown-menu-animate" );
     }
 }
+
+$( ".dropdown, .dropdown-menu" ).click( function( dropdown )   //this prevents the dropdown menu from opening and closing on click or closing when something is slected, based on http://stackoverflow.com/questions/11617048/stop-just-one-dropdown-toggle-from-closing-on-click
+{
+    dropdown.stopPropagation();
+});
+
+//http://bootsnipp.com/snippets/nPlX7
+$(".dropdown").hover( function()
+{
+    $('.dropdown-menu', this).stop( true, true ).fadeIn("fast");
+    $(this).toggleClass('open');
+},
+function()
+{
+    $('.dropdown-menu', this).stop( true, true ).fadeOut("fast");
+    $(this).toggleClass('open');
+});

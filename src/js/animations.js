@@ -39,7 +39,7 @@ function addAJAXLinks()
 
         $( this ).click( function( event )
         {
-            clearAJAXLinks();            
+            clearAJAXLinks();
             nonAJAXLink = false;
             if( nextPageNum !== currPageNum )   //allows the unload animations to run and if they hit the current page they are on, it does not change and the navbar and footer do not move
             {

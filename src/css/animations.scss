@@ -229,13 +229,27 @@
         animation-timing-function: ease-out;
     }
 
-    //dropdown css fade in animation
-    .open > .dropdown-menu-animate {
-        opacity: 1;
+    @keyframes dropdown-in {
+        from {
+            transform: translateX( -10px ) translateY( -10px );
+        }
+        to {
+            transform: translateX( 0px ) translateY( 0px );
+        }
     }
 
-    .dropdown-menu-animate {
-        opacity: 0;
-        transition: 0.5s linear;
+    .open > .dropdown-menu {
+        animation-name: dropdown-in;
+        animation-iteration-count: 1;
+        animation-timing-function: linear;
+        animation-duration: 1s;
+    }
+
+    .dropdown > a > i:hover {
+        opacity:.3;
+        transform-origin: top;
+        animation-fill-mode: forwards;
+        transform: scale( 1, 0 );
+        transition: all 1s linear;
     }
 }

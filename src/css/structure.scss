@@ -2,6 +2,27 @@
 %structure {
     overflow-x: hidden;
 
+    // .open > .dropdown-menu {
+    //     transform: scale(1, 1);
+    //     opacity:1;
+    // }
+
+    .dropdown-menu {
+        // opacity:.3;
+        // transform-origin: top;
+        // animation-fill-mode: forwards;
+        // transform: scale(1, 0);
+        // transition: all 0.3s linear;
+
+        text-align: center;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .dropdown {
+        display: inline-block;
+    }
+
     h1 {    //allows the header text to look center
         margin-top: 10px;
     }
@@ -135,16 +156,6 @@
         margin-right: 15px;
     }
 
-    .dropdown-menu {
-        text-align: center;
-        padding-left: 5px;
-        padding-right: 5px;
-    }
-
-    .dropdown {
-        display: inline-block;
-    }
-
     //this class allows the navbar to be the same width as the rest of the main items on the page, the navbar-fixed-top ignores the grid based system of bootstrap so I have to give it a numerical width, it is based off off of http://stackoverflow.com/questions/17533106/bootstrap-div-class-navbar-navbar-fixed-top
     .auto-show-navbar {
         width: ( 10 / 12 ) * 100%;
@@ -191,11 +202,6 @@
         .rotate {
             transform: rotate( -90deg );
         }
-    }
-
-    //allows hover to enable drop downs, from http://www.joostrap.com/support/tutorials-videos/202-how-to-enable-hover-for-nav-dropdowns
-    .dropdown:hover .dropdown-menu {
-        display: block;
     }
 
     .footer-margin-left {
