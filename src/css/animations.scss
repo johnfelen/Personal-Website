@@ -149,7 +149,7 @@
             transform: translateX( 0% );
         }
         50% {
-            transform: translateX( calc( -100% * 13/12 ) );
+            transform: translateX( calc( -100% * 12/10 * 11/12 ) );
         }
         100% {
             transform: translateX( 0% );
@@ -172,7 +172,7 @@
             transform: translateX( 0% );
         }
         50% {
-            transform: translateX( calc( 100% * 13/12 ) );
+            transform: translateX( calc( 100% * 12/10 * 11/12 ) );
         }
         100% {
             transform: translateX( 0% );

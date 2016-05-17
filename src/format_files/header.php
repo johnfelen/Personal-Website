@@ -15,7 +15,6 @@
 
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="http://codegena.com/assets/css/image-preview-for-link.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.10.3/css/bootstrap-tour.min.css" rel="stylesheet">
         <?php include( "./format_files/fonts.php" ) ?>
         <link href="./css/themes.min.css" rel="stylesheet">

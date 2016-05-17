@@ -1,3 +1,5 @@
+var nonAJAXLink = true;
+
 if( isFileInURL( "tour" ) ) //don't show start animations when he tour is shown
 {
     removeStartAnimations();
@@ -11,7 +13,7 @@ else
     "blog" : 2,
     "contact" : 3 };
 
-    if( $( "#animations" ).length === 0 )   //checks if an id exists, if the id exists this is not the page that the user first loaded on and they got here from an AJAX link, based on the accepted answer here http://stackoverflow.com/questions/3373763/jquery-how-to-find-if-div-with-specific-id-exists
+    if( nonAJAXLink )   //the user got here by not clicking the ajax links so must show them the page parts comming together
     {
         $( "#main-container" ).one( "animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function()  //listener that runs only once when the starting animations finish, based off accepted answer here http://stackoverflow.com/questions/9255279/callback-when-css3-transition-finishes
         {
@@ -20,6 +22,19 @@ else
     }
 
     shadowNavbar();
+    addAJAXLinks();
+}
+
+$( "a" ).click( function( link )    //will not allow links to be clicked on the Tour
+{
+    if( isFileInURL( "tour" ) )
+    {
+        link.preventDefault();
+    }
+});
+
+function addAJAXLinks()
+{
     $( "#main-nav" ).find( "li" ).each( function()
     {
         var id = $( this ).attr( "id" );
@@ -48,6 +63,13 @@ else
                         setTimeout( function()
                         {
                             setNewData( pageData.pageName, pageData.fontAwesome, pageData.mainContainer, id );
+
+                            $( "#main-nav" ).find( "li" ).each( function()  //removes ajax links
+                            {
+                                $( this ).off( "click" );
+                            });
+                            nonAJAXLink = false;
+                            addAJAXLinks();
                         }, 1000 - requestTime );
                     }
                 });
@@ -89,14 +111,6 @@ else
     });
 }
 
-$( "a" ).click( function( link )    //will not allow links to be clicked on the Tour
-{
-    if( isFileInURL( "tour" ) )
-    {
-        link.preventDefault();
-    }
-});
-
 function togglePageTransitions( headerTransition, mainContainerTransition, onLoad ) //header and container are panning( left or right ) to tell which way to go and the falling and climbing are constand between pages, onLoad is run when somebody gets to a page not using AJAX links, such as typing in the URL
 {
     if( onLoad )
@@ -118,6 +132,14 @@ function togglePageTransitions( headerTransition, mainContainerTransition, onLoa
 
 function setNewData( pageName, fontAwesome, mainContainer, id ) //sets the new data on the page link that the user selected and updates the url
 {
+    if( id === "index" )
+    {
+        id = "./";  //gives empty url for home
+    }
+
+    history.pushState( null, null, id );
+    callStartFunction( getPath() );
+
     $( "#page-name" ).html( pageName );
     $( "title" ).html( pageName );
 
@@ -129,19 +151,6 @@ function setNewData( pageName, fontAwesome, mainContainer, id ) //sets the new d
     $( "#font-awesome" ).addClass( "fa fa-" + fontAwesome + " fa-fw" );
 
     $( "#main-container" ).html( mainContainer );
-
-    if( id === "index" )
-    {
-        id = "./";  //gives empty url for home
-    }
-    history.pushState( null, null, id );
-    $( "#main-nav" ).find( "li" ).each( function()
-    {
-        $( this ).off( "click" );
-    });
-
-    reloadJS( "./js/animations.js" );
-    callStartFunction( getPath() );
 }
 
 function getPath()  //returns the path, "" if index
@@ -152,12 +161,6 @@ function getPath()  //returns the path, "" if index
 function isFileInURL( file )    //will figure out if file, ie "tour.php" is in the url, it is used in more than just tour.js
 {
     return getPath().indexOf( file ) === 0;
-}
-
-function reloadJS( source )    //reloads the javascript file, specifically will be used with animations.js, based on the second answer http://stackoverflow.com/questions/9642205/how-to-force-a-script-reload-and-re-execute
-{
-    $( "script[ src=\"" + source + "\" ]" ).remove();
-    $( "<script>" ).attr( "src", source ).attr( "id", "animations" ).appendTo( "head" );
 }
 
 function callStartFunction( pageName )

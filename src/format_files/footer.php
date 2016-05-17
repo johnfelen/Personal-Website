@@ -1,6 +1,6 @@
         <!--close of the main container-->
-        </div>
         <?php include( "./format_files/end-row-10.php" ); ?>
+        </div>
 
         <!--start of the actual footer part-->
         <div id="footer" class="climbing-start">
@@ -30,7 +30,6 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <script src="http://codegena.com/assets/js/image-preview-for-link.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.10.3/js/bootstrap-tour.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.10.2/validator.min.js"></script>
         <script src="https://cdn.jsdelivr.net/bootstrap.autohidingnavbar/1.0.5/jquery.bootstrap-autohidingnavbar.min.js"></script>

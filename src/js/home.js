@@ -4,6 +4,11 @@ var currentlyTyping = false;    //used to stop repeat clicking which would cause
 var blinkingTime = null;    //holds the timeout on the blink funciton
 var countingTime = null;    //holds the interval on the countDown/formattedTimeLeft function(s)
 
+if( blinkingTime || countingTime )
+{
+    console.log( "HELLO ");
+}
+
 if( isFileInURL( "index" ) || getPath() === "" )
 {
     displayIndex();
