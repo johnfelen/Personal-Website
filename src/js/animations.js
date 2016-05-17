@@ -1,28 +1,24 @@
 var nonAJAXLink = true;
+var pageToNum = { "" : 0,   //both "" and index point to 0 because there is no subfolder on the home page for index and the id of the li tag is "index"
+"index" : 0,
+"portfolio" : 1,
+"blog" : 2,
+"contact" : 3 };
 
 if( isFileInURL( "tour" ) ) //don't show start animations when he tour is shown
 {
     removeStartAnimations();
 }
 
-else
+else if( nonAJAXLink )   //the user got here by not clicking the ajax links so must show them the page parts comming together
 {
-    var pageToNum = { "" : 0,   //both "" and index point to 0 because there is no subfolder on the home page for index and the id of the li tag is "index"
-    "index" : 0,
-    "portfolio" : 1,
-    "blog" : 2,
-    "contact" : 3 };
-
-    if( nonAJAXLink )   //the user got here by not clicking the ajax links so must show them the page parts comming together
+    clearAJAXLinks();
+    $( "#main-container" ).one( "animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function()  //listener that runs only once when the starting animations finish, based off accepted answer here http://stackoverflow.com/questions/9255279/callback-when-css3-transition-finishes
     {
-        $( "#main-container" ).one( "animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function()  //listener that runs only once when the starting animations finish, based off accepted answer here http://stackoverflow.com/questions/9255279/callback-when-css3-transition-finishes
-        {
-            togglePageTransitions( "pan-left-start", "pan-right-start", true );
-        });
-    }
-
-    shadowNavbar();
-    addAJAXLinks();
+        togglePageTransitions( "pan-left-start", "pan-right-start", true );
+        shadowNavbar();
+        addAJAXLinks();
+    });
 }
 
 $( "a" ).click( function( link )    //will not allow links to be clicked on the Tour
@@ -43,14 +39,15 @@ function addAJAXLinks()
 
         $( this ).click( function( event )
         {
-            event.preventDefault();
-            if( currPageNum === 0 && nextPageNum !== 0 ) //since the page does not reload anymore, must clear global variables for index.php
-            {
-                indexUnload();
-            }
-
+            clearAJAXLinks();            
+            nonAJAXLink = false;
             if( nextPageNum !== currPageNum )   //allows the unload animations to run and if they hit the current page they are on, it does not change and the navbar and footer do not move
             {
+                if( currPageNum === 0 && nextPageNum !== 0 ) //since the page does not reload anymore, must clear global variables for index.php
+                {
+                    indexUnload();
+                }
+
                 var startTime = new Date().getTime();
                 $.ajax({
                     url: "./" + id + ".php",
@@ -63,13 +60,6 @@ function addAJAXLinks()
                         setTimeout( function()
                         {
                             setNewData( pageData.pageName, pageData.fontAwesome, pageData.mainContainer, id );
-
-                            $( "#main-nav" ).find( "li" ).each( function()  //removes ajax links
-                            {
-                                $( this ).off( "click" );
-                            });
-                            nonAJAXLink = false;
-                            addAJAXLinks();
                         }, 1000 - requestTime );
                     }
                 });
@@ -90,23 +80,42 @@ function addAJAXLinks()
                 }
 
                 togglePageTransitions( headerTransition, mainContainerTransition, false );
+
                 $( "#main-container" ).one( "animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function()
                 {
                     togglePageTransitions( headerTransition, mainContainerTransition, false );
+                    addAJAXLinks();
                 });
             }
 
             else
             {
-                setTimeout( function()  //allows multiple struggles to happen when they click the same link multiple times
+                setTimeout( function()  //allows multiple struggles to happen when they click the same link multiple times after the animation ends, using a timeout because it does not interfere with the other end of animation listeners
                 {
                     $( "#header" ).removeClass( "struggle-left" );
                     $( "#main-container" ).removeClass( "struggle-right" );
+                    addAJAXLinks();
                 }, 1000 );
 
                 $( "#header" ).addClass( "struggle-left" );
                 $( "#main-container" ).addClass( "struggle-right" );
             }
+        });
+    });
+}
+
+function clearAJAXLinks()   //clears the AJAX links and prevents the links from being clicked, it helps fix the bugs where if someone was clicking two quickly after any of the navbar links were clicked and unintended transitions happened
+{
+    $( "#main-nav" ).find( "li" ).each( function()
+    {
+        $( this ).off( "click" );
+    });
+
+    $( "#main-nav" ).find( "li" ).each( function()
+    {
+        $( this ).click( function( event )
+        {
+            event.preventDefault();
         });
     });
 }

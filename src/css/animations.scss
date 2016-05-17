@@ -196,16 +196,16 @@
             transform: translateX( 0% );
         }
         20% {
-            transform: translateX( calc( -100% * 1/12 ) );
+            transform: translateX( calc( -100% * 12/10 * 1/12 ) );
         }
         40% {
-            transform: translateX( calc( 100% * 1/12 ) );
+            transform: translateX( calc( 100% * 12/10 * 1/12 ) );
         }
         60% {
-            transform: translateX( calc( -100% * 1/12 ) );
+            transform: translateX( calc( -100% * 12/10 * 1/12 ) );
         }
         80% {
-            transform: translateX( calc( 100% * 1/12 ));
+            transform: translateX( calc( 100% * 12/10 * 1/12 ));
         }
         100% {
             transform: translateX( 0% );
