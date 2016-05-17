@@ -17,17 +17,17 @@ else
         sessionStorage.setItem( "main_container", "pan-from-left" );
     }
 
-    var headerTransition = sessionStorage.getItem( "header" );
-    var mainContainerTransition = sessionStorage.getItem( "main_container" );
+    var headerTransition = "pan-from-right";
+    var mainContainerTransition = "pan-from-left";
 
-    transitionIn( headerTransition, mainContainerTransition );
-    setTimeout( function()
+    if( $( "#animations" ).length === 0 )   //checks if an id exists, if the id exists this is not the page that the user first loaded on and they got here from an AJAX link, based on the accepted answer here http://stackoverflow.com/questions/3373763/jquery-how-to-find-if-div-with-specific-id-exists
     {
         transitionIn( headerTransition, mainContainerTransition );
-        shadowNavbar();
-    }, 1000 );
-
-    toggleMainParts();
+        setTimeout( function()
+        {
+            transitionIn( headerTransition, mainContainerTransition );
+        }, 1000 );
+    }
 
     $( "#main-nav" ).find( "li" ).each( function()
     {
@@ -78,14 +78,18 @@ else
                     transitionOut( headerTransition, mainContainerTransition );
                 }
 
-                sessionStorage.setItem( "header", headerTransition.split( "to" ).join( "from" ) );
-                sessionStorage.setItem( "main_container", mainContainerTransition.split( "to" ).join( "from" ) );
 
-                setTimeout( function()
+                $( "#main-container" ).one( "animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function( animationEnd )
                 {
-                    toggleMainParts();
+                    console.log( "HELL" );
                     transitionOut( headerTransition, mainContainerTransition );
-                }, 950 );
+                    toggleVisibility();
+                    setTimeout( function()
+                    {
+                        transitionIn( headerTransition.split( "to" ).join( "from" ), mainContainerTransition.split( "to" ).join( "from" ) );
+                    }, 1 );
+                    toggleVisibility();
+                });
             }
 
             else
@@ -165,6 +169,14 @@ function isFileInURL( file )    //will figure out if file, ie "tour.php" is in t
     return getPath().indexOf( file ) === 0;
 }
 
+function getNextTransition( currTransition, start ) //will give the next transition that
+{
+    if( start )
+    {
+        return currTransition.split("").join("");
+    }
+}
+
 function toggleVisibility( element ) //uses an immediate fadeTo toggle if an object is shown( opacity is used instead of visibility since it is sort of glichy )
 {
     if( $( element ).css( "opacity" ) == 1 )    //no typecheck, it is technically a string check
@@ -189,7 +201,7 @@ function toggleMainParts()  //wrapper class for the visibility toggles that happ
 function reloadJS( source )    //reloads the javascript file, specifically will be used with animations.js, based on the second answer http://stackoverflow.com/questions/9642205/how-to-force-a-script-reload-and-re-execute
 {
     $( "script[ src=\"" + source + "\" ]" ).remove();
-    $( "<script>" ).attr( "src", source ).appendTo( "head" );
+    $( "<script>" ).attr( "src", source ).attr( "id", "animations" ).appendTo( "head" );
 }
 
 function callStartFunction( pageName )
