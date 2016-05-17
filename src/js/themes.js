@@ -94,16 +94,6 @@ function setNavAnimation( adding )  //add or remove the navbar animation
             $( this ).removeClass( "navbar-animation" );
         }
     });
-
-    if( adding )
-    {
-        $( "#theme-menu" ).addClass( "dropdown-menu-animate" );
-    }
-
-    else
-    {
-        $( "#theme-menu" ).removeClass( "dropdown-menu-animate" );
-    }
 }
 
 $( ".dropdown, .dropdown-menu" ).click( function( dropdown )   //this prevents the dropdown menu from opening and closing on click or closing when something is slected, based on http://stackoverflow.com/questions/11617048/stop-just-one-dropdown-toggle-from-closing-on-click
@@ -111,14 +101,22 @@ $( ".dropdown, .dropdown-menu" ).click( function( dropdown )   //this prevents t
     dropdown.stopPropagation();
 });
 
-//http://bootsnipp.com/snippets/nPlX7
-$(".dropdown").hover( function()
+//this allows me to add specific animations to how the dropdown menu appears on the screen, based off http://bootsnipp.com/snippets/nPlX7
+$( ".dropdown" ).hover( function()
 {
-    $('.dropdown-menu', this).stop( true, true ).fadeIn("fast");
-    $(this).toggleClass('open');
+    $( ".dropdown" ).toggleClass( "open" );
+    $( "#theme-menu" ).addClass( "dropdown-in" );
+    setTimeout( function()
+    {
+        $( "#theme-menu" ).removeClass( "dropdown-in" );
+    }, 1000 );
 },
 function()
 {
-    $('.dropdown-menu', this).stop( true, true ).fadeOut("fast");
-    $(this).toggleClass('open');
+    $( "#theme-menu" ).addClass( "dropdown-out" );
+    setTimeout( function()
+    {
+        $( "#theme-menu" ).removeClass( "dropdown-out" );
+        $( ".dropdown" ).toggleClass( "open" );    //doesn't hide the navbar until the animation is over
+    }, 1000 );
 });
