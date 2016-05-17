@@ -15,7 +15,7 @@
 
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-        <!--<link href="http://codegena.com/assets/css/image-preview-for-link.css" rel="stylesheet">-->
+        <link href="http://codegena.com/assets/css/image-preview-for-link.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.10.3/css/bootstrap-tour.min.css" rel="stylesheet">
         <?php include( "./format_files/fonts.php" ) ?>
         <link href="./css/themes.min.css" rel="stylesheet">
@@ -26,7 +26,7 @@
     <body class="subtle-pattern <?php echo ( $pageName !== "Tour" ) ? "fixed-navbar-padding": ""; ?>">
         <?php include_once( "./analyticstracking.php" ); ?>
         <!--top navigation bar-->
-        <div class="navbar <?php echo ( $pageName !== "Tour" ) ? "navbar-fixed-top": ""; ?> auto-show-navbar shadow-shown" id="main-nav">
+        <div class="navbar <?php echo ( $pageName !== "Tour" ) ? "navbar-fixed-top": ""; ?> auto-show-navbar shadow-shown falling-start" id="main-nav">
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-links">
                     <li id="index">
@@ -47,7 +47,7 @@
 
         <!--header-->
         <?php include( "./format_files/start-row-10.php" ); ?>
-        <div id="header">
+        <div id="header" class="pan-left-start">
             <hr class="header-footer">
             <h1 class="font-title font-header color">
                 <div class="dropdown colored-link">
@@ -68,8 +68,8 @@
             </h1>
             <hr class="header-footer">
         </div>
-        <?php include( "./format_files/end-row-10.php" ); ?>        
+        <?php include( "./format_files/end-row-10.php" ); ?>
 
         <!--start the main container which is closed in footer.php-->
         <?php include( "./format_files/start-row-10.php" ); ?>
-        <div class="container-main color-container" id="main-container">
+        <div id="main-container" class="container-main color-container pan-right-start">

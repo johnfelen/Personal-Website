@@ -2,7 +2,6 @@ if( localStorage.getItem( "tour_start" ) === null && isFileInURL( "tour" ) )   /
 {
     window.history.back();
 }
-toggleMainParts();
 
 var tour = new Tour({
     steps: [
@@ -64,6 +63,7 @@ var tour = new Tour({
 
 if( !tour.ended() )
 {
+    togglePageTransitions( "pan-left-start", "pan-right-start", true ); //removes the start animation for the tour
     tour.init();
     tour.start();
 }

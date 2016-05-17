@@ -1,5 +1,14 @@
 /*animiations for all the web page and transition between them*/
 %animations {
+    @keyframes shadow {
+        from {
+            box-shadow: 0px 5px 10px 5px rgba( 0, 0, 0, 0.35 );
+        }
+        to {
+            box-shadow: 0px 60px 35px 15px rgba( 0, 0, 0, 0.25 );
+        }
+    }
+
     %shadow-animation {
         animation-name: shadow;
         animation-timing-function: linear;
@@ -14,16 +23,6 @@
         @extend %shadow-animation;
         animation-direction: reverse;
     }
-
-    @keyframes shadow {
-        from {
-            box-shadow: 0px 5px 10px 5px rgba( 0, 0, 0, 0.35 );
-        }
-        to {
-            box-shadow: 0px 60px 35px 15px rgba( 0, 0, 0, 0.25 );
-        }
-    }
-
 
     //based off of https://davidwalsh.name/background-animation-css, sort of looks like the animation in the background of a video game title/selection screen
     @keyframes title-screen {
@@ -106,8 +105,18 @@
 
     .falling {
         animation-name: shadow, shadow, falling;
-        animation-direction: reverse, normal, normal;
+        animation-direction: normal, reverse, normal;
         @extend %animation-constants;
+        animation-duration: 1000ms, 1000ms, 2000ms;
+        animation-delay: 0ms, 1000ms, 0ms;
+    }
+
+    .falling-start {
+        animation-name: shadow, falling;
+        animation-direction: reverse, normal;
+        @extend %animation-constants;
+        animation-duration: 1000ms, 2000ms;
+        animation-delay: 0ms, -1000ms;
     }
 
     //climbing is for the footer transitions between pages
@@ -128,6 +137,12 @@
         @extend %animation-constants;
     }
 
+    .climbing-start {
+        animation-name: climbing;
+        @extend %animation-constants;
+        animation-delay: -1000ms;
+    }
+
     //panning is for the header and the main container transitions between pages
     @keyframes pan-left {
         0% {
@@ -146,6 +161,12 @@
         @extend %animation-constants;
     }
 
+    .pan-left-start {
+        animation-name: pan-left;
+        @extend %animation-constants;
+        animation-delay: -1000ms;
+    }
+
     @keyframes pan-right {
         0% {
             transform: translateX( 0% );
@@ -161,6 +182,12 @@
     .pan-right {
         animation-name: pan-right;
         @extend %animation-constants;
+    }
+
+    .pan-right-start {
+        animation-name: pan-right;
+        @extend %animation-constants;
+        animation-delay: -1000ms;
     }
 
     //struggle is for when the click the link that is the same page as the current page

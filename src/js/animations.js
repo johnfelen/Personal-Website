@@ -13,6 +13,10 @@ else
 
     if( $( "#animations" ).length === 0 )   //checks if an id exists, if the id exists this is not the page that the user first loaded on and they got here from an AJAX link, based on the accepted answer here http://stackoverflow.com/questions/3373763/jquery-how-to-find-if-div-with-specific-id-exists
     {
+        $( "#main-container" ).one( "animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function()  //listener that runs only once when the starting animations finish, based off accepted answer here http://stackoverflow.com/questions/9255279/callback-when-css3-transition-finishes
+        {
+            togglePageTransitions( "pan-left-start", "pan-right-start", true );
+        });
     }
 
     shadowNavbar();
@@ -63,10 +67,10 @@ else
                     mainContainerTransition = "pan-right";
                 }
 
-                togglePageTransitions( headerTransition, mainContainerTransition );
+                togglePageTransitions( headerTransition, mainContainerTransition, false );
                 $( "#main-container" ).one( "animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function()
                 {
-                    togglePageTransitions( headerTransition, mainContainerTransition );
+                    togglePageTransitions( headerTransition, mainContainerTransition, false );
                 });
             }
 
@@ -93,12 +97,23 @@ $( "a" ).click( function( link )    //will not allow links to be clicked on the 
     }
 });
 
-function togglePageTransitions( headerTransition, mainContainerTransition ) //header and container are panning( left or right ) to tell which way to go and the falling and climbing are constand between pages
+function togglePageTransitions( headerTransition, mainContainerTransition, onLoad ) //header and container are panning( left or right ) to tell which way to go and the falling and climbing are constand between pages, onLoad is run when somebody gets to a page not using AJAX links, such as typing in the URL
 {
-    $( "#header" ).toggleClass( headerTransition );
-    $( "#main-container" ).toggleClass( mainContainerTransition );
-    $( "#main-nav" ).toggleClass( "falling" );
-    $( "#footer" ).toggleClass( "climbing" );
+    if( onLoad )
+    {
+        $( "#main-nav" ).removeClass( "falling-start" );
+        $( "#footer" ).removeClass( "climbing-start" );
+        $( "#header" ).removeClass( headerTransition );
+        $( "#main-container" ).removeClass( mainContainerTransition );
+    }
+
+    else
+    {
+        $( "#main-nav" ).toggleClass( "falling" );
+        $( "#footer" ).toggleClass( "climbing" );
+        $( "#header" ).toggleClass( headerTransition );
+        $( "#main-container" ).toggleClass( mainContainerTransition );
+    }
 }
 
 function setNewData( pageName, fontAwesome, mainContainer, id ) //sets the new data on the page link that the user selected and updates the url
@@ -137,35 +152,6 @@ function getPath()  //returns the path, "" if index
 function isFileInURL( file )    //will figure out if file, ie "tour.php" is in the url, it is used in more than just tour.js
 {
     return getPath().indexOf( file ) === 0;
-}
-
-function getNextTransition( currTransition, start ) //will give the next transition that
-{
-    if( start )
-    {
-        return currTransition.split("").join("");
-    }
-}
-
-function toggleVisibility( element ) //uses an immediate fadeTo toggle if an object is shown( opacity is used instead of visibility since it is sort of glichy )
-{
-    if( $( element ).css( "opacity" ) == 1 )    //no typecheck, it is technically a string check
-    {
-        $( element ).fadeTo( 0, 0 );
-    }
-
-    else
-    {
-        $( element ).fadeTo( 0, 1 );
-    }
-}
-
-function toggleMainParts()  //wrapper class for the visibility toggles that happen when a link is clicked
-{
-    toggleVisibility( "#main-nav" );
-    toggleVisibility( "#header" );
-    toggleVisibility( "#main-container" );
-    toggleVisibility( "#footer" );
 }
 
 function reloadJS( source )    //reloads the javascript file, specifically will be used with animations.js, based on the second answer http://stackoverflow.com/questions/9642205/how-to-force-a-script-reload-and-re-execute
@@ -209,13 +195,13 @@ function shadowNavbar() //using the attrchange plugin to add a shadow( depending
             {
                 var oldVal = 0;
                 var newVal = 0;
-                //console.log( event.oldValue.indexOf( "top: " ) );
-                if( event.oldValue.indexOf( "top: " ) > -1 )   //just so there is not a print out of cannot read property 'split' of undefined
+
+                if( event.oldValue !== null && event.oldValue.indexOf( "top: " ) > -1 )   //just so there is not a print out of cannot read property 'split' of undefined
                 {
                     oldVal = parseFloat( event.oldValue.split( "top: " )[ 1 ].split( "px;" )[ 0 ] );
                 }
 
-                if( event.newValue.indexOf( "top: " ) > -1 )    //DITTO of above
+                if( event.newValue.indexOf( "top: " ) > -1 )
                 {
                     newVal = parseFloat( event.newValue.split( "top: " )[ 1 ].split( "px;" )[ 0 ] );
                 }

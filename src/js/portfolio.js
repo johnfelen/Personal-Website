@@ -40,19 +40,15 @@ function getProjects()  //display the projects and the current sorting buttons o
             });
 
             //based on the blog http://codegena.com/image-link-preview-on-hover/
-            // $( "p" ).children( "a" ).each( function()
-            // {
-            //     var currId = "#" + $( this ).attr( "id" );
-            //
-            //     if( currId !== "#undefined" )
-            //     {
-            //         $( currId ).miniPreview( { prefetch: "parenthover" } );
-            //     }
-            // });
-        },
-        error: function( e )
-        {
-            console.log( e.responseText );
+            $( "p" ).children( "a" ).each( function()
+            {
+                var currId = "#" + $( this ).attr( "id" );
+
+                if( currId !== "#undefined" )
+                {
+                    $( currId ).miniPreview( { prefetch: "parenthover" } );
+                }
+            });
         }
     });
 }

@@ -296,3 +296,16 @@ function blink()    //based on second last response on http://stackoverflow.com/
 
     blinkingTime = setTimeout( blink, 350 );
 }
+
+function toggleVisibility( element ) //uses an immediate fadeTo toggle if an object is shown( opacity is used instead of visibility since it is sort of glichy )
+{
+    if( $( element ).css( "opacity" ) == 1 )    //no typecheck, it is technically a string check
+    {
+        $( element ).fadeTo( 0, 0 );
+    }
+
+    else
+    {
+        $( element ).fadeTo( 0, 1 );
+    }
+}

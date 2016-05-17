@@ -41,7 +41,7 @@
     }
 
 
-    #header, #main-container, #main-nav, #footer, #picture-of-me, #blink, .select-name {
+    #picture-of-me, #blink, .select-name {
         opacity: 0; //for some reason visibility would not work for the first 4, it would not set the visibility css attribute, however opacity of 0 to 1 and 1 to 0 change in 0ms using fadeTo is the same experience for the user
     }
 
