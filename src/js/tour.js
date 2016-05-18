@@ -14,7 +14,7 @@ var tour = new Tour({
     {
         element: "#tour-theme-menu",
         title: "Theme Menu",
-        content: "On any page, click the icon here to dipslay the theme menu for the website.",
+        content: "On any page, hover over the icon here to dipslay the theme menu for the website.",
         placement: "right"
     },
     {

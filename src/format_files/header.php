@@ -49,8 +49,8 @@
         <div id="header" class="pan-left-start">
             <hr class="header-footer">
             <h1 class="font-title font-header color">
-                <div class="dropdown colored-link">
-                    <a href="javascript:;" id="tour-theme-menu" class="dropdown-toggle" <?php echo ( $pageName !== "Tour" ) ? "data-toggle=\"dropdown\"" : ""; ?> title="Change the Website Theme"><i id="font-awesome" class="fa fa-<?php echo "{$fontAwesome}";?> fa-fw"></i></a>
+                <div id="dropdown" class="dropdown colored-link">
+                    <a href="javascript:;" id="tour-theme-menu" class="dropdown-toggle" title="Change the Website Theme"><i id="font-awesome" class="fa fa-<?php echo "{$fontAwesome}";?> fa-fw"></i></a>
                     <ul class="dropdown-menu" id="theme-menu">
                         <li><a href="javascript:;" id="picnic-blanket">Picnic Blanket</a></li>
                         <li><a href="javascript:;" id="sunrise">Sunrise</a></li>
