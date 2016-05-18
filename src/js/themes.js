@@ -1,3 +1,7 @@
+//used so that the full animations will be played with the dropdown
+var endTime = 0;
+var dropdownStopped = true;
+
 if( localStorage.getItem( "current_theme" ) === null )
 {
     localStorage.setItem( "current_theme", "picnic-blanket" );
@@ -101,22 +105,75 @@ $( ".dropdown, .dropdown-menu" ).click( function( dropdown )   //this prevents t
     dropdown.stopPropagation();
 });
 
-//this allows me to add specific animations to how the dropdown menu appears on the screen, based off http://bootsnipp.com/snippets/nPlX7
-$( ".dropdown" ).hover( function()
+dropdownHover();
+function dropdownHover()    //this allows me to add specific animations to how the dropdown menu appears on the screen
 {
-    $( ".dropdown" ).toggleClass( "open" );
-    $( "#theme-menu" ).addClass( "dropdown-in" );
-    setTimeout( function()
+    $( ".dropdown" ).hover( function()
     {
-        $( "#theme-menu" ).removeClass( "dropdown-in" );
-    }, 1000 );
-},
-function()
-{
-    $( "#theme-menu" ).addClass( "dropdown-out" );
-    setTimeout( function()
+        if( !$( ".dropdown" ).hasClass( "open" ) )  //does not allow the dropdown-out animation be cut earlier and does not allow it to be accidentally hidden
+        {
+            if( dropdownStopped )
+            {
+                $( ".dropdown" ).addClass( "open" );
+                $( "#theme-menu" ).addClass( "dropdown-in" );
+                setTimeout( function()
+                {
+                    $( "#theme-menu" ).removeClass( "dropdown-in" );
+                    dropdownStopped = true;
+                    $( this ).unbind( "mouseenter" );
+                }, 1000 );
+            }
+
+            else
+            {
+                $( "#theme-menu" ).one( "animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function()
+                {
+                    $( ".dropdown" ).addClass( "open" );
+                    $( "#theme-menu" ).addClass( "dropdown-in" );
+                    setTimeout( function()
+                    {
+                        $( "#theme-menu" ).removeClass( "dropdown-in" );
+                        dropdownStopped = true;
+                        $( this ).unbind( "mouseenter" );
+                    }, 1000 );
+                });
+            }
+            dropdownStopped = false;
+        }
+    },
+    function()
     {
-        $( "#theme-menu" ).removeClass( "dropdown-out" );
-        $( ".dropdown" ).toggleClass( "open" );    //doesn't hide the navbar until the animation is over
-    }, 1000 );
-});
+        if( $( ".dropdown" ).hasClass( "open" ) )   //same idea as above but with the dropdwon-in animation
+        {
+            if( dropdownStopped )
+            {
+                $( "#theme-menu" ).addClass( "dropdown-out" );
+                setTimeout( function()
+                {
+                    $( ".dropdown" ).removeClass( "open" );
+                    $( "#theme-menu" ).removeClass( "dropdown-out" );
+                    dropdownStopped = true;
+                    $( this ).unbind( "mouseleave" );
+                    dropdownHover();
+                }, 1000 );
+            }
+
+            else
+            {
+                $( "#theme-menu" ).one( "animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function()
+                {
+                    $( "#theme-menu" ).addClass( "dropdown-out" );
+                    setTimeout( function()
+                    {
+                        $( ".dropdown" ).removeClass( "open" );
+                        $( "#theme-menu" ).removeClass( "dropdown-out" );
+                        dropdownStopped = true;
+                        $( this ).unbind( "mouseleave" );
+                        dropdownHover();
+                    }, 1000 );
+                });
+            }
+            dropdownStopped = false;
+        }
+    });
+}
