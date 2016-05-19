@@ -13,9 +13,9 @@
 <!--Since I am using HTML5 I don't have to worry about using php to check if nothing has been imputed I am using pattern and required found at the accepted answer at http://stackoverflow.com/questions/10281962/is-there-a-minlength-validation-attribute-in-html5 -->
 <form id="contact-me" data-toggle="validator">
     <br>
-    <div class="form-group has-feedback row">
+    <div class="control-group row">
         <div class="col-xs-5">
-            <textarea rows="1" class="form-control font-main font-small color color-border rounded-textarea-small subtle-pattern" id="name" placeholder="Your Name" minlength="1" maxlength="70" data-error="ERROR:  &nbsp;Enter 1 to 70 Characters!" required></textarea>
+            <textarea rows="1" class="font-main font-small color color-border rounded-textarea-small subtle-pattern" id="name" placeholder="Your Name" data-validation-required-message="ERROR:  &nbsp;Enter 1 to 70 Characters!" aria-invalid="false"></textarea>
             <div class="help-block"></div>    <!-- this extra error block and the one for email is used to make the spacing consistant between the contact form textareas( specifically the message one compared to the name and email one) since the actual error printing is to the right for the name and email textareas-->
         </div>
         <div class="col-xs-7">
@@ -24,10 +24,10 @@
     </div>
 
     <br>
-    <div class="form-group row">
+    <div class="control-group row">
         <div class="col-xs-5">
-            <textarea type="email" rows="1" class="form-control font-main font-small color color-border rounded-textarea-small subtle-pattern" id="email" placeholder="Your Email" minlength="1" maxlength="70" data-error="ERROR:  &nbsp;Enter 1 to 70 Characters!" required></textarea>
-            <div class="help-block"></div>
+            <textarea type="email" rows="1" class="font-main font-small color color-border rounded-textarea-small subtle-pattern" id="email" placeholder="Your Email" data-validation-required-message="ERROR:  &nbsp;Enter 1 to 70 Characters!" aria-invalid="false"></textarea>
+            <p class="help-block"></p>
         </div>
         <div class="col-xs-7">
             <div class="center-textarea-error color-accent font-main help-block with-errors"></div>
@@ -35,8 +35,8 @@
     </div>
 
     <br>
-    <div class="form-group">
-        <textarea rows="10" class="form-control font-main font-small color color-border rounded-textarea-large subtle-pattern" id="message" placeholder="Your Message" minlength="1" data-error="ERROR:  &nbsp;Enter at Least 1 Character!" required></textarea>
+    <div class="control-group">
+        <textarea rows="10" class="font-main font-small color color-border rounded-textarea-large subtle-pattern" id="message" placeholder="Your Message" data-validation-required-message="ERROR:  &nbsp;Enter at Least 1 Character!" aria-invalid="false"></textarea>
         <div class="center-textarea-error color-accent font-main help-block with-errors">&nbsp;</div>  <!--the &nbsp; causes no moving of DOM elements when there is an error-->
     </div>
 

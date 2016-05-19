@@ -20,7 +20,7 @@ addListeners();
 setTimeout( function()
 {
     setNavAnimation( true );
-}, 600 );    //must add a delay so that there is not a sideeffect animation when the page loads
+}, 1000 );    //must add a delay so that there is not a sideeffect animation when the page loads
 
 function addListeners() //adds hover( preview new theme ) and click( localStorage-setting and set theme theme )
 {
@@ -121,7 +121,7 @@ function dropdownWrapper( hoverOn, dropdownClass, mouseMovement )   //wrapper fo
     {
         $( "#theme-menu" ).one( "animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function()
         {
-            hoverAnimation( hoverOn, dropdownClass, mouseMovement )
+            hoverAnimation( hoverOn, dropdownClass, mouseMovement );
         });
     }
     dropdownStopped = false;

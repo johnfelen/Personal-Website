@@ -44,25 +44,26 @@ function displayContact()
         });
     });
 
-    $( "#contact-me" ).validator({
-        feedbackIcons: {
-    		valid: 'glyphicon glyphicon-ok',
-    		invalid: 'glyphicon glyphicon-remove',
-    		validating: 'glyphicon glyphicon-refresh'
-    	},
-        fields: {
-        		name: {
-        			validators: {
-        				notEmpty: {
-        					message: "You're required to fill in a first name!"
-        						  }, // notEmpty
-        				regexp: {
-        					regexp: /^[A-Za-z\s.'-]+$/,
-        					message: "Alphabetical characters, hyphens and spaces"
-        				}
-        						} // validators
-        				  }
-                      }
+    $( "input, textarea, select" ).not( "[type=submit]" ).jqBootstrapValidation({
+        preventSubmit: true,
+        submitError: function( $form, event, errors )
+        {
+            console.log( $form );
+            console.log( event );
+            console.log( errors );
+            // Here I do nothing, but you could do something like display
+            // the error messages to the user, log, etc.
+        },
+        submitSuccess: function( $form, event )
+        {
+            console.log( $form );
+            event.preventDefault();
+        },
+        filter: function()
+        {
+            console.log( "LOL" );
+            return $( this ).is( ":visible" );
+        }
     });
 }
 

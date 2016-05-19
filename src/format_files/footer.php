@@ -31,10 +31,10 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.10.3/js/bootstrap-tour.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.10.2/validator.min.js"></script>
         <script src="https://cdn.jsdelivr.net/bootstrap.autohidingnavbar/1.0.5/jquery.bootstrap-autohidingnavbar.min.js"></script>
         <script src="https://cdn.rawgit.com/meetselva/attrchange/master/js/attrchange.js"></script>
-        <!-- build:js inline ../../dist/js/personal-website.min.js-->        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqBootstrapValidation/1.3.7/jqBootstrapValidation.min.js"></script>
+        <!-- build:js inline ../../dist/js/personal-website.min.js-->
         <script src="./js/animations.js"></script>
         <script src="./js/themes.js"></script>
         <script src="./js/tour.js"></script>
