@@ -15,7 +15,7 @@
     <br>
     <div class="control-group row">
         <div class="col-xs-5">
-            <textarea rows="1" class="font-main font-small color color-border rounded-textarea-small subtle-pattern" id="name" placeholder="Your Name" data-validation-required-message="This field is required!" maxlength="70" data-validation-maxlength-message="This field can only have 70 characters!" aria-invalid="false"></textarea>
+            <textarea rows="1" class="font-main font-small color color-border rounded-textarea-small subtle-pattern" id="name" name="name" placeholder="Your Name" title="Your Name Requires 1 to 70 Characters" data-validation-required-message="Your name is required!" maxlength="70" data-validation-maxlength-message="Your name can only have 70 characters!" aria-invalid="false"></textarea>
         </div>
         <div class="col-xs-7">
             <div class="help-block"></div>
@@ -25,7 +25,7 @@
     <br>
     <div class="control-group row">
         <div class="col-xs-5">
-            <textarea type="email" rows="1" class="font-main font-small color color-border rounded-textarea-small subtle-pattern" id="email" placeholder="Your Email" data-validation-required-message="This field is required!" maxlength="70" data-validation-maxlength-message="This field can only have 70 characters!" data-validation-email-message="That is not a valid email address!" data-validation-ajax-ajax="./server_functionality/contact-functions.php" data-validation-ajax-message="The email address is already in the database!" aria-invalid="false"></textarea>
+            <textarea type="email" rows="1" class="font-main font-small color color-border rounded-textarea-small subtle-pattern" id="email" name="email" placeholder="Your Email" title="Your Email Requires 1 to 70 Characters" data-validation-required-message="Your email is required!" maxlength="70" data-validation-maxlength-message="Your email can only have 70 characters!" data-validation-email-message="That is not a valid email address!" data-validation-ajax-ajax="./server_functionality/contact-functions.php" aria-invalid="false"></textarea>
         </div>
         <div class="col-xs-7">
             <div class="help-block"></div>
@@ -34,7 +34,7 @@
 
     <br>
     <div class="control-group">
-        <textarea rows="10" class="font-main font-small color color-border rounded-textarea-large subtle-pattern" id="message" placeholder="Your Message" data-validation-required-message="This field is required!" aria-invalid="false"></textarea>
+        <textarea rows="10" class="font-main font-small color color-border rounded-textarea-large subtle-pattern" id="message" name="message" placeholder="Your Message" title="This Field Requires at Least 1 Character" data-validation-required-message="Your message is required!" aria-invalid="false"></textarea>
         <div class="help-block">&nbsp;</div>  <!--the &nbsp; causes no moving of DOM elements when there is an error-->
     </div>
 

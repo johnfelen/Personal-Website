@@ -1,5 +1,21 @@
 <?php
-    if( isset( $_POST[ "messageInfo" ] ) )
+    if( isset( $_REQUEST[ "value" ] ) )
+    {
+        $email = $_REQUEST[ "value" ];
+        unset( $_REQUEST[ "value" ] );
+        $contactDB = new mysqli( "localhost", "root", "jfelen62", "personal_website" );
+
+        $email = mysqli_real_escape_string( $contactDB, testInput( $email ) );
+        $checkPK = $contactDB->query( "SELECT * FROM  `messages`  WHERE `Email` = '{$email}'" );    //check if the email has already been in the database
+
+        echo json_encode([
+            "value" => $email,
+            "valid" => mysqli_num_rows( $checkPK ) === 0,
+            "message" => "That email address is already in the database!"
+        ]);
+    }
+
+    else if( isset( $_POST[ "messageInfo" ] ) )
     {
         $submittedMessage = json_decode( $_POST[ "messageInfo" ], true );
         unset( $_POST[ "messageInfo" ] );
@@ -73,13 +89,13 @@
 
         mysqli_close( $contactDB );
         echo json_encode( $response );
+    }
 
-        function testInput( $data )        //this function is also from http://www.w3schools.com/php/php_form_url_email.asp
-        {
-            $data = trim( $data );
-            $data = stripslashes( $data );
-            $data = htmlspecialchars( $data );
-            return $data;
-        }
+    function testInput( $data )        //this function is also from http://www.w3schools.com/php/php_form_url_email.asp
+    {
+        $data = trim( $data );
+        $data = stripslashes( $data );
+        $data = htmlspecialchars( $data );
+        return $data;
     }
 ?>
