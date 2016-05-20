@@ -56,12 +56,12 @@ function displayContact()
         },
         submitSuccess: function( $form, event )
         {
-            console.log( $form );
+            console.log( "SUCCESS" );
             event.preventDefault();
         },
         filter: function()
         {
-            console.log( "LOL" );
+            console.log( "FILTER" );
             return $( this ).is( ":visible" );
         }
     });

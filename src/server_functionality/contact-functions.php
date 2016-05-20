@@ -1,14 +1,6 @@
 <?php
     if( isset( $_POST[ "messageInfo" ] ) )
     {
-        function test_input( $data )        //this function is also from http://www.w3schools.com/php/php_form_url_email.asp
-        {
-            $data = trim( $data );
-            $data = stripslashes( $data );
-            $data = htmlspecialchars( $data );
-            return $data;
-        }
-
         $submittedMessage = json_decode( $_POST[ "messageInfo" ], true );
         unset( $_POST[ "messageInfo" ] );
 
@@ -23,7 +15,7 @@
         }
 
         //name and email validity test is based on http://www.w3schools.com/php/php_form_url_email.asp
-        $name = test_input( $name );
+        $name = testInput( $name );
         if( !preg_match( "/^[a-zA-Z ]*$/", $name ) )
         {
             $name = "Only letters and white space allowed.";
@@ -34,7 +26,7 @@
             $name = mysqli_real_escape_string( $contactDB, $name );
         }
 
-        $email = test_input( $email );
+        $email = testInput( $email );
         if( !filter_var( $email, FILTER_VALIDATE_EMAIL ) )
         {
             $email = "Invalid email format.";
@@ -81,5 +73,13 @@
 
         mysqli_close( $contactDB );
         echo json_encode( $response );
+
+        function testInput( $data )        //this function is also from http://www.w3schools.com/php/php_form_url_email.asp
+        {
+            $data = trim( $data );
+            $data = stripslashes( $data );
+            $data = htmlspecialchars( $data );
+            return $data;
+        }
     }
 ?>

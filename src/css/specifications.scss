@@ -9,6 +9,11 @@
         border-color: $primary;
     }
 
+    .help-block {
+        @extend .font-main;
+        color: $accent;
+    }
+
     .font-title {
         font-family: $titleFont;
     }
@@ -19,10 +24,6 @@
 
     .color {
         color: $primary;
-    }
-
-    .color-error {
-        color: $accent;
     }
 
     .form-control:focus {   //this removes the bootstrap efault blue and red shadow and the green and red outline on the textareas in the contact forms

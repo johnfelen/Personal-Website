@@ -15,29 +15,27 @@
     <br>
     <div class="control-group row">
         <div class="col-xs-5">
-            <textarea rows="1" class="font-main font-small color color-border rounded-textarea-small subtle-pattern" id="name" placeholder="Your Name" data-validation-required-message="ERROR:  &nbsp;Enter 1 to 70 Characters!" aria-invalid="false"></textarea>
-            <div class="help-block"></div>    <!-- this extra error block and the one for email is used to make the spacing consistant between the contact form textareas( specifically the message one compared to the name and email one) since the actual error printing is to the right for the name and email textareas-->
+            <textarea rows="1" class="font-main font-small color color-border rounded-textarea-small subtle-pattern" id="name" placeholder="Your Name" data-validation-required-message="This field is required!" maxlength="70" data-validation-maxlength-message="This field can only have 70 characters!" aria-invalid="false"></textarea>
         </div>
         <div class="col-xs-7">
-            <div class="center-textarea-error color-accent font-main help-block with-errors"></div>
+            <div class="help-block"></div>
         </div>
     </div>
 
     <br>
     <div class="control-group row">
         <div class="col-xs-5">
-            <textarea type="email" rows="1" class="font-main font-small color color-border rounded-textarea-small subtle-pattern" id="email" placeholder="Your Email" data-validation-required-message="ERROR:  &nbsp;Enter 1 to 70 Characters!" aria-invalid="false"></textarea>
-            <p class="help-block"></p>
+            <textarea type="email" rows="1" class="font-main font-small color color-border rounded-textarea-small subtle-pattern" id="email" placeholder="Your Email" data-validation-required-message="This field is required!" maxlength="70" data-validation-maxlength-message="This field can only have 70 characters!" data-validation-email-message="That is not a valid email address!" data-validation-ajax-ajax="./server_functionality/contact-functions.php" data-validation-ajax-message="The email address is already in the database!" aria-invalid="false"></textarea>
         </div>
         <div class="col-xs-7">
-            <div class="center-textarea-error color-accent font-main help-block with-errors"></div>
+            <div class="help-block"></div>
         </div>
     </div>
 
     <br>
     <div class="control-group">
-        <textarea rows="10" class="font-main font-small color color-border rounded-textarea-large subtle-pattern" id="message" placeholder="Your Message" data-validation-required-message="ERROR:  &nbsp;Enter at Least 1 Character!" aria-invalid="false"></textarea>
-        <div class="center-textarea-error color-accent font-main help-block with-errors">&nbsp;</div>  <!--the &nbsp; causes no moving of DOM elements when there is an error-->
+        <textarea rows="10" class="font-main font-small color color-border rounded-textarea-large subtle-pattern" id="message" placeholder="Your Message" data-validation-required-message="This field is required!" aria-invalid="false"></textarea>
+        <div class="help-block">&nbsp;</div>  <!--the &nbsp; causes no moving of DOM elements when there is an error-->
     </div>
 
     <input class="btn btn-lg btn-primary btn-color color-border font-main pull-right" type="submit" value="Submit Message" title="Send Me The Message!"/>

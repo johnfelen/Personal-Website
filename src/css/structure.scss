@@ -12,6 +12,15 @@
         display: inline-block;
     }
 
+    .help-block {
+        @extend .font-small;
+    }
+
+    .help-block ul {    //removes the bullet point and padding from the bullet point for the help-block
+        list-style-type: none;
+        padding: 0;
+    }
+
     h1 {    //allows the header text to look center
         margin-top: 10px;
     }
@@ -65,14 +74,6 @@
         display: flex;
         justify-content: center; // align horizontal
         align-items: center; // align vertical
-    }
-
-    .center-textarea-error {
-        margin-top: 12px;
-    }
-
-    .form-group {
-        margin-bottom: 0px;
     }
 
     //the rounded corners for the text area are based the accepted answer from http://stackoverflow.com/questions/26272350/rounded-corners-to-a-textarea */
