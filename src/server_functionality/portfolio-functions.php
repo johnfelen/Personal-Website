@@ -34,7 +34,7 @@
 
             if( $this->portfolioDB->connect_error )
             {
-                die( "Error connecting to database" );
+                die( "Error connecting to database." );
             }
 
             if( $sortType === "NAME" )
@@ -199,7 +199,7 @@
 
             if( !$result )
             {
-                die( "Error with query" );
+                die( "Error with query." );
             }
 
             else

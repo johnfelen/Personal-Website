@@ -19,13 +19,32 @@ function displayContact()
         }
     });
 
-    $( "textarea" ).not( "[type=submit]" ).jqBootstrapValidation({  //add the jqBootstrap functionality to the form
+    $( "textarea" ).not( "[type=submit]" ).jqBootstrapValidation({  //add the jqBootstrap functionality to the form and submitSuccess enters the information into the database
         preventSubmit: true,
         submitSuccess: function( $form, event )
         {
-            $( "#name" ).val( "" );
-            $( "#email" ).val( "" );
-            $( "#message" ).val( "Your message has successfully been sent!" );
+            $.ajax({
+                url: "./server_functionality/contact-functions.php",
+                type: "POST",
+                dataType: "text",
+                data: { name : $( "#name" ).val(), email : $( "#email" ).val(), message : $( "#message" ).val() },
+                success: function( databaseResponse )
+                {
+                    if( databaseResponse === "Success" )
+                    {
+                        $( "#name" ).val( "" );
+                        $( "#email" ).val( "" );
+                        $( "#message" ).val( "" );
+                        $( "#after-submit" ).html( "Your message has successfully been sent!" );
+                    }
+
+                    else
+                    {
+                        $( "#after-submit" ).html( "Error with query!" );
+                    }
+                }
+            });
+
             event.preventDefault();
         },
         filter: function()

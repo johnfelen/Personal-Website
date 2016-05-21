@@ -11,7 +11,7 @@
 </p>
 
 <!--Since I am using HTML5 I don't have to worry about using php to check if nothing has been imputed I am using pattern and required found at the accepted answer at http://stackoverflow.com/questions/10281962/is-there-a-minlength-validation-attribute-in-html5 -->
-<form id="contact-me" data-toggle="validator">
+<form id="contact-me">
     <br>
     <div class="control-group row">
         <div class="col-xs-5">
@@ -35,7 +35,7 @@
     <br>
     <div class="control-group">
         <textarea rows="10" class="font-main font-small color color-border rounded-textarea-large subtle-pattern" id="message" name="message" placeholder="Your Message" title="This Field Requires at Least 1 Character" data-validation-required-message="Your message is required!" aria-invalid="false"></textarea>
-        <div class="help-block">&nbsp;</div>  <!--the &nbsp; causes no moving of DOM elements when there is an error-->
+        <div id="after-submit" class="help-block">&nbsp;</div>  <!--the &nbsp; causes no moving of DOM elements when there is an error-->
     </div>
 
     <input class="btn btn-lg btn-primary btn-color color-border font-main pull-right" type="submit" value="Submit Message" title="Send Me The Message!"/>
