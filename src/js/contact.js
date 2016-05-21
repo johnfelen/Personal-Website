@@ -19,6 +19,31 @@ function displayContact()
         }
     });
 
+    $( "textarea" ).keyup( function()   //this method listens to keyups and wil keep the submit message button disabled until there are no errors and all textareas are completed, based on http://stackoverflow.com/questions/5614399/disabling-submit-button-until-all-fields-have-values
+    {
+        setTimeout( function()  //this timeout of 1ms is because if there is no timeout, when there is an error, it will come up as undefined and then it will be print out "alert" on the next keyup
+        {
+            var empty = false;
+            $( "textarea" ).each( function()
+            {
+                if( $( this ).val() === "" || $( "#contact-me" ).find( "ul" ).attr( "role" ) === "alert" )  //the right is what is what checks for errors, ul with "alert" roles are put into the .help-block divs
+                {
+                    empty = true;
+                }
+            });
+
+            if( empty )
+            {
+                $( "#submit-message" ).attr( "disabled", "disabled" );
+            }
+
+            else
+            {
+                $( "#submit-message" ).removeAttr( "disabled" );
+            }
+        }, 1 );
+    });
+
     $( "textarea" ).not( "[type=submit]" ).jqBootstrapValidation({  //add the jqBootstrap functionality to the form and submitSuccess enters the information into the database
         preventSubmit: true,
         submitSuccess: function( $form, event )
@@ -36,6 +61,7 @@ function displayContact()
                         $( "#email" ).val( "" );
                         $( "#message" ).val( "" );
                         $( "#after-submit" ).html( "Your message has successfully been sent!" );
+                        $( "#submit-message" ).attr( "disabled", "disabled" );
                     }
 
                     else

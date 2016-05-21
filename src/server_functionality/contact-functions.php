@@ -1,9 +1,6 @@
 <?php
-    $contactDB = new mysqli( "localhost", "root", "jfelen62", "personal_website" );
-    if( $contactDB->connect_error )
-    {
-        die( "Error connecting to database." );
-    }
+    include( "./database-setup.php" );
+    $contactDB = $genericDB;
 
     if( isset( $_REQUEST[ "value" ] ) ) //jqBootstrapValidator will use this code to check if the email has already been entered into the database
     {

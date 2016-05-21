@@ -38,7 +38,7 @@
         <div id="after-submit" class="help-block">&nbsp;</div>  <!--the &nbsp; causes no moving of DOM elements when there is an error-->
     </div>
 
-    <input class="btn btn-lg btn-primary btn-color color-border font-main pull-right" type="submit" value="Submit Message" title="Send Me The Message!"/>
+    <input class="btn btn-lg btn-primary btn-color color-border font-main pull-right" type="submit" id="submit-message" value="Submit Message" title="Send Me The Message!" disabled="disabled"/>
 </form>
 
 <?php
