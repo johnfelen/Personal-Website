@@ -19,62 +19,18 @@ function displayContact()
         }
     });
 
-    $( "#contact-me" ).submit( function( form )
-    {
-        form.preventDefault();
-        $.ajax({
-            url: "./server_functionality/contact-functions.php",
-            type: "POST",
-            dataType: "json",
-            data: { messageInfo : getMessageInfo() },
-            success: function( databaseResponse )
-            {
-                if( typeof databaseResponse.error !== "undefined" )
-                {
-                    $( "#name" ).val( databaseResponse.name );
-                    $( "#email" ).val( databaseResponse.email );
-                    $( "#message" ).val( databaseResponse.message );
-                }
-
-                else
-                {
-                    $( "#message" ).val( "Your message has successfully been sent." );
-                }
-            }
-        });
-    });
-
-    $( "input, textarea, select" ).not( "[type=submit]" ).jqBootstrapValidation({
+    $( "textarea" ).not( "[type=submit]" ).jqBootstrapValidation({  //add the jqBootstrap functionality to the form
         preventSubmit: true,
-        submitError: function( $form, event, errors )
-        {
-            console.log( $form );
-            console.log( event );
-            console.log( errors );
-            // Here I do nothing, but you could do something like display
-            // the error messages to the user, log, etc.
-        },
         submitSuccess: function( $form, event )
         {
-            console.log( "SUCCESS" );
+            $( "#name" ).val( "" );
+            $( "#email" ).val( "" );
+            $( "#message" ).val( "Your message has successfully been sent!" );
             event.preventDefault();
         },
         filter: function()
         {
-            console.log( "FILTER" );
             return $( this ).is( ":visible" );
         }
     });
-}
-
-function getMessageInfo()
-{
-    var formInput =
-    {
-        "name" : $( "#name" ).val(),
-        "email" : $( "#email" ).val(),
-        "message" : $( "#message" ).val()
-    };
-
-    return JSON.stringify( formInput );
 }
