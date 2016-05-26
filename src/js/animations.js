@@ -43,7 +43,7 @@ function addAJAXLinks()
             nonAJAXLink = false;
             if( nextPageNum !== currPageNum )   //allows the unload animations to run and if they hit the current page they are on, it does not change and the navbar and footer do not move
             {
-                if( currPageNum === 0 && nextPageNum !== 0 ) //since the page does not reload anymore, must clear global variables for index.php
+                if( currPageNum === 0 && nextPageNum !== 0 ) //since the page does not reload anymore, must unload index( set a time for the countadown if it started )
                 {
                     indexUnload();
                 }

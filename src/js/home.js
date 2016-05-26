@@ -1,13 +1,9 @@
-//NOTE: for some reason, naming this file gives an "Uncaught SyntaxError: Unexpected token < (index):1" error, but changing the name removes the error
-var count = 0;
-var currentlyTyping = false;    //used to stop repeat clicking which would cause gibberish to type out
-var blinkingTime = null;    //holds the timeout on the blink funciton
-var countingTime = null;    //holds the interval on the countDown/formattedTimeLeft function(s)
-
-if( blinkingTime || countingTime )
-{
-    console.log( "HELLO ");
-}
+//NOTE: for some reason, naming this file 'index.js' gives an "Uncaught SyntaxError: Unexpected token < (index):1" error, but changing the name to anything else removes the error
+var count;
+var currentlyTyping;    //used to stop repeat clicking which would cause gibberish to type out
+var blinkingTime;    //holds the timeout on the blink funciton
+var countingTime;    //holds the interval on the countDown/formattedTimeLeft function(s)
+var nextCharTime;    //holds the timeout for the typring of the next char
 
 if( isFileInURL( "index" ) || getPath() === "" )
 {
@@ -16,6 +12,13 @@ if( isFileInURL( "index" ) || getPath() === "" )
 
 function displayIndex()
 {
+    //clear all the global variables for index;
+    count = 0;
+    currentlyTyping = false;
+    clearTimeout( blinkingTime );
+    clearTimeout( nextCharTime );
+    clearInterval( countingTime );
+
     var chars;
     var currentCharIndex;
 
@@ -130,10 +133,6 @@ $( window ).unload( function()  //backup incase they do a traditional unload by 
 
 function indexUnload()  //set session storage( since if they restart the browser they it counts as fixing the "game" ) with the time that the page will reload, also reset the global variables so when AJAX linking back to the page it starts as normal
 {
-    count = 0;
-    currentlyTyping = false;
-    clearTimeout( blinkingTime );
-    clearInterval( countingTime );
     if( typeof timeFinishedSec !== "undefined" )
     {
         sessionStorage.setItem( "time_finished", timeFinishedSec );
@@ -266,7 +265,7 @@ function printNextChar()
         currentCharIndex++;
     }
 
-    setTimeout( printNextChar, 40 );
+    nextChar = setTimeout( printNextChar, 40 );
 }
 
 function blink()    //based on second last response on http://stackoverflow.com/questions/18105152/alternative-for-blink since the actual <blink> tag is deprecated, I wonder why
