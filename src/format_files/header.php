@@ -34,9 +34,9 @@
                     <li id="portfolio">
                         <a href="./portfolio.php" title="Portfolio"><i class="fa fa-code fa-fw navbar-colors"></i></a>
                     </li>
-                    <li id="blog">
+                    <!-- <li id="blog">
                         <a href="./blog.php" title="Blog"><i class="fa fa-pencil fa-fw navbar-colors"></i></a>
-                    </li>
+                    </li> -->
                     <li id="contact">
                         <a href="./contact.php" title="Contact Me"><i class="fa fa-envelope fa-fw navbar-colors"></i></a>
                     </li>
@@ -52,16 +52,16 @@
                 <div id="dropdown" class="dropdown colored-link">
                     <a href="javascript:;" id="tour-theme-menu" class="dropdown-toggle" title="Change the Website Theme"><i id="font-awesome" class="fa fa-<?php echo "{$fontAwesome}";?> fa-fw"></i></a>
                     <ul class="dropdown-menu" id="theme-menu">
-                        <li><a href="javascript:;" id="picnic-blanket">Picnic Blanket</a></li>
+                        <li><a href="javascript:;" id="picnic-blanket-i">Picnic Blanket I</a></li>
                         <li><a href="javascript:;" id="sunrise">Sunrise</a></li>
                         <li><a href="javascript:;" id="billards-table">Billards Table</a></li>
                         <li><a href="javascript:;" id="candy-cane">Candy Cane</a></li>
                         <li><a href="javascript:;" id="cartography">Cartography</a></li>
                         <li><a href="javascript:;" id="grandmas-house">Grandma's House</a></li>
-                        <li><a href="javascript:;" id="golf-argyle">Golf Argyle</a></li>
-                        <li><a href="javascript:;" id="wheat-field">Wheat Field</a></li>
+                        <li><a href="javascript:;" id="picnic-blanket-ii">Picnic Blanket II</a></li>
+                        <li><a href="javascript:;" id="playstation">Playstation</a></li>
                         <li><a href="javascript:;" id="stardust">Stardust</a></li>
-                        <li><a href="javascript:;" id="chinese-new-year">Chinese New Year</a></li>
+                        <li><a href="javascript:;" id="fourth-of-july">Fourth of July</a></li>
                     </ul>
                 </div><span id="page-name" class="header-footer"><?php echo $pageName; //it is one the same line as the closing div to remove the space between the font-awesome icon and the page name?></span>
             </h1>

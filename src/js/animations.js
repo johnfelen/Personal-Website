@@ -7,7 +7,12 @@ var pageToNum = { "" : 0,   //both "" and index point to 0 because there is no s
 
 if( isFileInURL( "tour" ) ) //don't show start animations when he tour is shown
 {
-    removeStartAnimations();
+    $( "#main-nav" ).removeClass( "falling-start" );
+    $( "#footer" ).removeClass( "climbing-start" );
+    $( "#header" ).removeClass( "pan-left" );
+    $( "#main-container" ).removeClass( "pan-left" );
+    $( "#header" ).removeClass( "pan-right" );
+    $( "#main-container" ).removeClass( "pan-right" );
 }
 
 else if( nonAJAXLink )   //the user got here by not clicking the ajax links so must show them the page parts comming together
@@ -251,7 +256,9 @@ function changeFavicon( theme, faviconName )
     $( "#favicon" ).attr( "href", faviconFilePath( theme, faviconName ) );
 }
 
+var refreshCount = 1;    //this variable will aloow the "?v=" part to force a favicon refresh and also force the current them to keeps its favicon if you hovered over another theme but then didn't choose one
 function faviconFilePath( theme, faviconName ) //returns the file path to the favicon
 {
-    return "./images/" + theme.split( "-" ).join( "_" ) + "/" + faviconName;
+    refreshCount++;
+    return "./images/" + theme.split( "-" ).join( "_" ) + "/" + faviconName + "?v=" + refreshCount;
 }

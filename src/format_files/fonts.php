@@ -19,15 +19,15 @@
 <!--Grandma's House-->
 <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Andika" rel="stylesheet">
-<!--Golf Argyle-->
+<!--Picnic Blanket II-->
 <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
-<!--Wheat Field-->
-<link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Alice" rel="stylesheet">
+<!--Playstation-->
+<link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Raleway:300" rel="stylesheet">
 <!--Stardust-->
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
-<!--Chinese New Year-->
+<!--Fourth of July-->
 <link href="https://fonts.googleapis.com/css?family=Rancho" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Gudea" rel="stylesheet">

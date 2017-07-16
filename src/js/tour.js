@@ -8,7 +8,8 @@ var tour = new Tour({
     {
         element: "#main-nav",
         title: "Main Navbar",
-        content: "Page links to Home, Portfolio, Blog, and Contact Me.",
+        // content: "Page links to Home, Portfolio, Blog, and Contact Me.",
+        content: "Page links to Home, Portfolio, and Contact Me.",
         placement: "bottom"
     },
     {

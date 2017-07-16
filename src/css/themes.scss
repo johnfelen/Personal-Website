@@ -1,15 +1,17 @@
-/*!Thanks to subtlepatterns.com for providing the background*/
-//favicons are font-awesome icons transformed into favicons from http://paulferrett.com/fontawesome-favicon/ except for the map-signs favicon, theses are where all the themes are created
-.picnic-blanket {
+/*!Thanks to subtlepatterns.com for providing the backgrounds*/
+//favicons are font-awesome icons transformed into favicons from http://paulferrett.com/fontawesome-favicon/ except for the map-signs favicon, this scss file is where all the themes are created
+.picnic-blanket-i {
     $deepBlue: #315481;
     $greyWhite: #DDDDDD;
     $wildSalmon: #FF5016;
 
     $raleway: 'Raleway', sans-serif;
+    $ralewayWeight: 700;
     $openSans: 'Open Sans', sans-serif;
+    $openSansWeight: 400;
 
     @extend %structure;
-    @include specifications( $deepBlue, $greyWhite, $wildSalmon, $raleway, $openSans, $picnic-blanket );
+    @include specifications( $deepBlue, $greyWhite, $wildSalmon, $raleway, $ralewayWeight, $openSans, $openSansWeight, $picnic-blanket-i );
     @extend %animations;
 }
 
@@ -19,10 +21,12 @@
     $paleOrange: #FFAB3B;
 
     $pacifico: 'Pacifico', cursive;
+    $pacificoWeight: 700;
     $arimo: 'Arimo', sans-serif;
+    $arimoWeight: 400;
 
     @extend %structure;
-    @include specifications( $paleBlue, $paleYellow, $paleOrange, $pacifico, $arimo, $sunrise );
+    @include specifications( $paleBlue, $paleYellow, $paleOrange, $pacifico, $pacificoWeight, $arimo, $arimoWeight, $sunrise );
     @extend %animations;
 }
 
@@ -32,10 +36,12 @@
     $purple: #57439A;
 
     $ubuntu: 'Ubuntu', sans-serif;
+    $ubuntuWeight: 700;
     $vollkorn: 'Vollkorn', Georgia, Times, serif;
+    $vollkornWeight: 400;
 
     @extend %structure;
-    @include specifications( $black, $cueBallWhite, $purple, $ubuntu, $vollkorn, $billards-table );
+    @include specifications( $black, $cueBallWhite, $purple, $ubuntu, $ubuntuWeight, $vollkorn, $vollkornWeight, $billards-table );
     @extend %animations;
 }
 
@@ -45,10 +51,12 @@
     $smoothBlue: #163C8D;
 
     $lobster: 'Lobster', cursive;
+    $lobsterWeight: 700;
     $droidSerif: 'Droid Serif', serif;
+    $droidSerifWeight: 400;
 
     @extend %structure;
-    @include specifications( $candyAppleRed, $darkerWhite, $smoothBlue, $lobster, $droidSerif, $candy-cane );
+    @include specifications( $candyAppleRed, $darkerWhite, $smoothBlue, $lobster, $lobsterWeight, $droidSerif, $droidSerifWeight, $candy-cane );
     @extend %animations;
 }
 
@@ -58,10 +66,12 @@
     $greyBlue: #92A997;
 
     $kaushanScript: 'Kaushan Script', cursive;
+    $kaushanScriptWeight: 700;
     $merriweather: 'Merriweather', serif;
+    $merriweatherWeight: 400;
 
     @extend %structure;
-    @include specifications( $brown, $cream, $greyBlue, $kaushanScript, $merriweather, $cartography );
+    @include specifications( $brown, $cream, $greyBlue, $kaushanScript, $kaushanScriptWeight, $merriweather, $merriweatherWeight, $cartography );
     @extend %animations;
 }
 
@@ -71,36 +81,42 @@
     $palePink: #ED77CC;
 
     $amaticSC: 'Amatic SC', cursive;
+    $amaticSCWeight: 700;
     $andika: 'Andika', sans-serif;
+    $sandikaWeight: 400;
 
     @extend %structure;
-    @include specifications( $almostWhite, $darkPurple, $palePink, $amaticSC, $andika, $grandmas-house );
+    @include specifications( $almostWhite, $darkPurple, $palePink, $amaticSC, $amaticSCWeight, $andika, $sandikaWeight, $grandmas-house );
     @extend %animations;
 }
 
-.golf-argyle {
+.picnic-blanket-ii {
     $blueIndigo: #171F67;
     $paleGreen: #67D977;
     $khaki: #F0E68C;
 
     $josefinSlab: 'Josefin Slab', serif;
+    $josefinSlabWeight: 700;
     $josefinSans: 'Josefin Sans', sans-serif;
+    $josefinSansWeight: 400;
 
     @extend %structure;
-    @include specifications( $blueIndigo, $paleGreen, $khaki, $josefinSlab, $josefinSans, $golf-argyle );
+    @include specifications( $blueIndigo, $paleGreen, $khaki, $josefinSlab, $josefinSlabWeight, $josefinSans, $josefinSansWeight, $picnic-blanket-ii );
     @extend %animations;
 }
 
-.wheat-field {
-    $lightGrey: #AF5A0D;
-    $darkGrey: #FCD609;
-    $goldenSun: #64A456;
+.playstation {
+    $white: #FFFFFF;
+    $lightPlayStationBlue: #008BE8;
+    $darkPlayStationBlue: #003ED7;
 
-    $sacramento: 'Sacramento', cursive;
-    $alice: 'Alice', serif;
+    $play: 'Play', sans-serif;
+    $playWeight: 700;
+    $ralewayLight: 'Raleway', sans-serif;
+    $ralewayLightWeight: 300;
 
     @extend %structure;
-    @include specifications( $lightGrey, $darkGrey, $goldenSun, $sacramento, $alice, $wheat-field );
+    @include specifications( $white, $lightPlayStationBlue, $darkPlayStationBlue, $play, $playWeight, $ralewayLight, $ralewayLightWeight, $playstation );
     @extend %animations;
 }
 
@@ -110,22 +126,26 @@
     $goldenSun: #FCF308;
 
     $montserrat: 'Montserrat', sans-serif;
+    $montserratWeight: 700;
     $sourceSansPro: 'Source Sans Pro', sans-serif;
+    $sourceSansProWeight: 400;
 
     @extend %structure;
-    @include specifications( $lightGrey, $darkGrey, $goldenSun, $montserrat, $sourceSansPro, $stardust );
+    @include specifications( $lightGrey, $darkGrey, $goldenSun, $montserrat, $montserratWeight, $sourceSansPro, $sourceSansProWeight, $stardust );
     @extend %animations;
 }
 
-.chinese-new-year {
-    $moneyGreen: #1AA41A;
-    $royalYellow: #ffEE00;
-    $dragonRed: #E62B1A;
+.fourth-of-july {
+    $oldGloryBlue: #0052A5;
+    $oldGloryWhite: #FFFFFF;
+    $oldGloryRed: #E0162B;
 
     $rancho: 'Rancho', cursive;
+    $ranchoWeight: 700;
     $gudea: 'Gudea', sans-serif;
+    $gudeaWeight: 400;
 
     @extend %structure;
-    @include specifications( $moneyGreen, $royalYellow, $dragonRed, $rancho, $gudea, $chinese-new-year );
+    @include specifications( $oldGloryBlue, $oldGloryWhite, $oldGloryRed, $rancho, $ranchoWeight, $gudea, $gudeaWeight, $fourth-of-july );
     @extend %animations;
 }

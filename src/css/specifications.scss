@@ -1,5 +1,5 @@
 /*mixin for the colors, fonts, and background image*/
-@mixin specifications( $primary, $secondary, $accent, $titleFont, $mainFont, $image ) {
+@mixin specifications( $primary, $secondary, $accent, $titleFont, $titleFontWeight, $mainFont, $mainFontWeight, $image ) {
     .subtle-pattern {
         background: $image repeat 0 0;
     }
@@ -16,10 +16,12 @@
 
     .font-title {
         font-family: $titleFont;
+        font-weight: $titleFontWeight;
     }
 
     .font-main {
         font-family: $mainFont;
+        font-weight: $mainFontWeight;
     }
 
     .color {
@@ -59,8 +61,16 @@
         background-color: $accent;
     }
 
-    %rounded-textarea:focus {   //placeholder here, is able to be extended from inside the theme-structure placeholder when .rounded-textarea-small and .rounded-textarea-large are defined
+    %rounded-textarea:focus {   //placeholder here is able to be extended from inside the theme-structure placeholder when .rounded-textarea-small and .rounded-textarea-large are defined
         background: $secondary;
+    }
+
+    %rounded-textarea:not(:placeholder-shown) {
+        background: $secondary;
+    }
+
+    %rounded-textarea::placeholder {
+        color: $primary;
     }
 
     .btn-color {

@@ -1,3 +1,4 @@
+<!-- Currenty this page is not being used because I have not had or taken the time to learn and set up blundit with my styles and website -->
 <?php
     $pageName = "Blog";
     $fontAwesome = "pencil";

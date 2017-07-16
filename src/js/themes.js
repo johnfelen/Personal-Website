@@ -7,9 +7,9 @@ if( !isFileInURL( "tour" ) )  //does not allow navbar animation for tour
     dropdownHover();
 }
 
-if( localStorage.getItem( "current_theme" ) === null )
+if( localStorage.getItem( "current_theme" ) === null )  //default theme
 {
-    localStorage.setItem( "current_theme", "picnic-blanket" );
+    localStorage.setItem( "current_theme", "picnic-blanket-i" );
 }
 
 var currentTheme = localStorage.getItem( "current_theme" );

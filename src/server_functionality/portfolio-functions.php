@@ -96,7 +96,7 @@
                     </div>
 
                     <div class=\"col-xs-9\">
-                        <p class=\"font-main font-center font-small color\">{$row[ "Description" ]}</p>
+                        <p class=\"font-main font-center font-small color colored-link\">{$row[ "Description" ]}</p>
                     </div>
                 </div>
                 <hr class=\"color-border\">";

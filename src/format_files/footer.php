@@ -15,7 +15,7 @@
                     </span>
                 </div>
                 <!-- the spans for the left and right footer for the highlight to look even with the tour blackdrop -->
-                <div class="col-xs-4 color font-center font-small" id="author" title="Yes, I Am Using My Initials">Designed and Written by J.T. Felen</div>
+                <div class="col-xs-4 color font-center font-small" id="author" title="Yes, I Am Using My Initials">Designed and Developed by J.T. Felen</div>
                 <div class="col-xs-4 font-right font-footer">
                     <span class="colored-link" id="right-footer-links">
                         <a href="https://github.com/johnfelen" class="footer-margin-left footer-margin-right" title="Check out My Github" target="_blank"><i class="fa fa-github fa-fw fa-lg fa-3d-icon"></i></a>
