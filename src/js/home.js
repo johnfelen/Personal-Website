@@ -160,7 +160,12 @@ function formattedTimeLeft()    //update text with minutes and seconds to be gra
     {
         sessionStorage.removeItem( "time_finished" );
         sessionStorage.removeItem( "selected_name" );
-        window.location.href = "./index.php";
+        timeFinishedSec = undefined;
+
+        if( isFileInURL( "index" ) || getPath() === "" )
+        {
+            window.location.href = "./index.php";
+        }
     }
 
     var pluralSec = ( ( diff % 60 ) === 1 ) ? "" : "s";
