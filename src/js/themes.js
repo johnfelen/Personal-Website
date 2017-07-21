@@ -72,13 +72,6 @@ function setTheme( theme, adding ) //change current theme on page
     {
         $( "html" ).addClass( theme );
         changeFavicon( theme, $( "#favicon" ).attr( "name" ) );
-
-        //copys the current theme favicon for the PDF to the root so it shows when you click my resume
-        $.ajax({
-            url: "./server_functionality/change-base-favicon.php",
-            type: "POST",
-            data: { faviconPath : faviconFilePath( theme, "favicon-file-text.ico" ) }
-        });
     }
 
     else
